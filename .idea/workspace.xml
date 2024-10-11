@@ -11,8 +11,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Zlin_ACM" targetName="M" />
-      <config projectName="Zlin_ACM" targetName="E" />
+      <config projectName="Zlin_ACM" targetName="B" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -22,9 +21,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,10">
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17: Jinan)/B.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17: Jinan)/E.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17: Jinan)/E.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,49 +65,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "CMake Application.E.executor": "Run",
-    "CMake Application.G.executor": "Run",
-    "CMake Application.K.executor": "Run",
-    "CMake Application.M.executor": "Run",
-    "CMake 应用程序.2001E1.executor": "Run",
-    "CMake 应用程序.A.executor": "Run",
-    "CMake 应用程序.AA.executor": "Run",
-    "CMake 应用程序.B.executor": "Run",
-    "CMake 应用程序.C.executor": "Run",
-    "CMake 应用程序.D.executor": "Run",
-    "CMake 应用程序.E.executor": "Run",
-    "CMake 应用程序.F.executor": "Run",
-    "CMake 应用程序.G.executor": "Run",
-    "CMake 应用程序.H.executor": "Run",
-    "CMake 应用程序.I.executor": "Run",
-    "CMake 应用程序.J.executor": "Run",
-    "CMake 应用程序.K.executor": "Run",
-    "CMake 应用程序.L.executor": "Run",
-    "CMake 应用程序.M.executor": "Run",
-    "CMake 应用程序.MM.executor": "Run",
-    "CMake 应用程序.P1919.executor": "Run",
-    "CMake 应用程序.P3803.executor": "Run",
-    "Notification.DisplayName-DoNotAsk-Vcs Important Messages": "VCS important messages",
-    "Notification.DoNotAsk-Vcs Important Messages": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;CMake Application.E.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.G.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.K.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.M.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.2001E1.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.A.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.AA.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.B.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.C.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.D.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.E.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.F.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.G.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.H.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.I.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.J.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.K.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.L.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.M.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.MM.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.P1919.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.P3803.executor&quot;: &quot;Run&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-Vcs Important Messages&quot;: &quot;VCS important messages&quot;,
+    &quot;Notification.DoNotAsk-Vcs Important Messages&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/_CF/CONTEST" />
@@ -119,26 +117,12 @@
       <recent name="$PROJECT_DIR$/_CF/1945" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.E">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="E" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="E" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="E">
+  <component name="RunManager">
+    <configuration name="B" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="B" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="B">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="M" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="M" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="M">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="CMake Application.E" />
-      <item itemvalue="CMake Application.M" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -153,7 +137,8 @@
       <workItem from="1728142560661" duration="43539000" />
       <workItem from="1728455784703" duration="3000" />
       <workItem from="1728455795620" duration="85000" />
-      <workItem from="1728455885736" duration="43561000" />
+      <workItem from="1728455885736" duration="47383000" />
+      <workItem from="1728619252009" duration="337000" />
     </task>
     <task id="LOCAL-00001" summary="10，2">
       <option name="closed" value="true" />
@@ -411,7 +396,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728551115737</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="10,10">
+      <option name="closed" value="true" />
+      <created>1728574552328</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1728574552328</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
