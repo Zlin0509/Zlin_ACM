@@ -15,47 +15,74 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-const int N = 1e5 + 10, NN = 1e3;
-const ll mo = 998244353;
+const int N = 1e5 + 10, NN = 1010;
+const int mo = 998244353;
 
 int n, k;
-ll dp[N][NN];
 vi e[N];
 
+int dp[N][NN], cur[NN];
+int siz[N];
+
 inline void dfs_1(int u, int fa) {
+    for (int i = 0; i <= k + 1; i++) dp[u][i] = 0;
+    siz[u] = dp[u][1] = 1;
     for (auto v: e[u]) {
         if (v == fa) continue;
         dfs_1(v, u);
-        for (int i = 1; i <= k + 1; i++)
-            dp[u][i] = dp[v][i - 1];
-        dp[u][0] = (dp[v][k] + dp[v][k + 1]) % mo;
+        for (int i = 0; i <= min(siz[u] + siz[v], k + 1); i++) cur[i] = 0;
+        for (int i = 0; i <= min(siz[u], k + 1); i++) {
+            for (int j = 0; j <= min(siz[v], k + 1); j++) {
+                if (i + j <= k + 1 && dp[u][i] && dp[v][j]) {
+                    int s = 1ll * dp[u][i] * dp[v][j] % mo;
+                    cur[i + j] = (cur[i + j] + s) % mo;
+                }
+            }
+        }
+        for (int i = 1; i <= min(siz[u] + siz[v], k + 1); i++) dp[u][i] = cur[i];
+        siz[u] += siz[v];
     }
+    dp[u][0] = (dp[u][k] + dp[u][k + 1]) % mo;
 }
 
-inline void dfs_2(int u, int fa) {
+unordered_map<int, int> Dp[N];
+unordered_map<int, int> Cur;
 
+inline void dfs_2(int u, int fa) {
+    Dp[u].clear();
+    Dp[u][1] = 1;
+    for (auto v: e[u]) {
+        if (v == fa) continue;
+        dfs_2(v, u);
+        Cur.clear();
+        for (auto i: Dp[u]) {
+            for (auto j: Dp[v]) {
+                if (i.first + j.first > k + 1) continue;
+                int s = 1ll * i.second * j.second % mo;
+                Cur[i.first + j.first] = (Cur[i.first + j.first] + s) % mo;
+            }
+        }
+        Dp[u] = Cur;
+    }
+    if (Dp[u].find(k) != Dp[u].end()) Dp[u][0] = (Dp[u][0] + Dp[u][k]) % mo;
+    if (Dp[u].find(k + 1) != Dp[u].end()) Dp[u][0] = (Dp[u][0] + Dp[u][k + 1]) % mo;
 }
 
 inline void Zlin() {
     cin >> n >> k;
-    for (int i = 1; i <= n; i++) {
-        e[i].clear();
-        for (int j = 1; j <= sqrt(n) + 1; j++)
-            dp[i][j] = 0;
-    }
+    for (int i = 1; i <= n; i++) e[i].clear();
     for (int i = 1, u, v; i < n; i++) {
         cin >> u >> v;
         e[u].push_back(v);
         e[v].push_back(u);
     }
-    ll ans;
-    if (k <= sqrt(n)) {
+    if (k <= 1000) {
         dfs_1(1, 0);
-        ans = (dp[1][k] + dp[1][k + 1]) % mo;
+        cout << dp[1][0] << '\n';
     } else {
         dfs_2(1, 0);
+        cout << Dp[1][0] << '\n';
     }
-    cout << ans << '\n';
 }
 
 int main() {
