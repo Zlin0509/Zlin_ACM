@@ -344,130 +344,97 @@ void update(int p, int l, int r, int ql, int qr, int v) {
 >        }
 >} tr[N];
 >int root = 0, tot = 0;
->```
 >
->更新节点大小
->
->```c++
 >inline void pushup(int x) // 更新点x的大小
 >{
->        tr[x].size = tr[tr[x].s[0]].size + tr[tr[x].s[1]].size + tr[x].cnt;
+>   tr[x].size = tr[tr[x].s[0]].size + tr[tr[x].s[1]].size + tr[x].cnt;
 >}
->```
 >
->旋转操作
->
->```c++
 >inline void rotate(int x) // 旋转x
->{
->        int y = tr[x].p, z = tr[y].p;
->        int k = tr[y].s[1] == x;
->        tr[z].s[tr[z].s[1] == y] = x;
->        tr[x].p = z;
->        tr[y].s[k] = tr[x].s[k ^ 1];
->        tr[tr[x].s[k ^ 1]].p = y;
->        tr[x].s[k ^ 1] = y;
->        tr[y].p = x;
+>     {
+>   int y = tr[x].p, z = tr[y].p;
+>   int k = tr[y].s[1] == x;
+>   tr[z].s[tr[z].s[1] == y] = x;
+>   tr[x].p = z;
+>   tr[y].s[k] = tr[x].s[k ^ 1];
+>   tr[tr[x].s[k ^ 1]].p = y;
+>   tr[x].s[k ^ 1] = y;
+>   tr[y].p = x;
 >        pushup(x), pushup(y);
->}
->```
->
->旋转节点x到它的父节点为k，如果父节点为0，说明是根节点
->
->```c++
->inline void splay(int x, int k)
->{
+>     }
+>     
+>     inline void splay(int x, int k)
+>     {
 >        while (tr[x].p != k)
 >        {
 >             int y = tr[x].p, z = tr[y].p;
 >             if (z != k)
->                 (tr[y].s[0] == x) ^ (tr[z].s[0] == y) ? rotate(x) : rotate(y);
->             rotate(x);
->        }
->        if (k == 0)
->             root = x;
+>            (tr[y].s[0] == x) ^ (tr[z].s[0] == y) ? rotate(x) : rotate(y);
+>        rotate(x);
+>   }
+>   if (k == 0)
+>        root = x;
 >}
->```
 >
->查找操作，把查找的点转换为根
->
->```c++
 >inline void find(int val) // 找到权值等于val的点并把它转为根
->{
+>     {
 >        int x = root;
 >        while (tr[x].s[val > tr[x].val] && tr[x].val != val)
 >             x = tr[x].s[val > tr[x].val];
 >        splay(x, 0);
->}
->```
->
->查找前驱和后继
->
->```c++
->inline int get_pre(int val) // 求前驱
->{
->        find(val);
->        int x = root;
->        if (tr[x].val < val)
->             return x;
->        x = tr[x].s[0];
->        while (tr[x].s[1])
->             x = tr[x].s[1];
+>     }
+>     
+>     inline int get_pre(int val) // 求前驱
+>     {
+>   find(val);
+>   int x = root;
+>   if (tr[x].val < val)
 >        return x;
->}
->
->inline int get_suc(int val) // 求后继
->{
->        find(val);
->        int x = root;
->        if (tr[x].val > val)
->             return x;
+>   x = tr[x].s[0];
+>   while (tr[x].s[1])
 >        x = tr[x].s[1];
->        while (tr[x].s[0])
->             x = tr[x].s[0];
+>   return x;
+>     }
+>     
+>     inline int get_suc(int val) // 求后继
+>     {
+>   find(val);
+>   int x = root;
+>   if (tr[x].val > val)
 >        return x;
->}
->```
->
->删除操作
->先把前驱转为根，后继转为前驱的儿子，这样val节点只有它自身，没有儿子节点，可以直接删除
->
->```c++
->inline void del(int val)
->{
+>   x = tr[x].s[1];
+>   while (tr[x].s[0])
+>        x = tr[x].s[0];
+>   return x;
+>     }
+>     
+>     inline void del(int val)
+>     {
 >        int pre = get_pre(val);
 >        int suc = get_suc(val);
 >        splay(pre, 0);
 >        splay(suc, pre);
->        int del = tr[suc].s[0];
->        if (tr[del].cnt > 1)
->             --tr[del].cnt, splay(del, 0);
->        else
+>   int del = tr[suc].s[0];
+>   if (tr[del].cnt > 1)
+>        --tr[del].cnt, splay(del, 0);
+>   else
 >             tr[suc].s[0] = 0, splay(suc, 0);
->}
->```
->
->查询排名
->
->```c++
->// 因为预处理插入了两个无穷大和无穷小的数，所以排名不需要+1
->inline int get_rank(int val) // 查询val的排名
->{
+>     }
+>     
+>     // 因为预处理插入了两个无穷大和无穷小的数，所以排名不需要+1
+>     inline int get_rank(int val) // 查询val的排名
+>     {
 >        find(val);
 >        if (tr[root].val < val) // 如果val没有出现过，要判断根节点和val的大小关系
->             return tr[tr[root].s[0]].size + tr[root].cnt;
->        return tr[tr[root].s[0]].size;
+>        return tr[tr[root].s[0]].size + tr[root].cnt;
+>   return tr[tr[root].s[0]].size;
 >}
->```
 >
->查询排名为k的val
->
->```c++
 >// 因为插入了无穷大和无穷小，所以传入k时要+1,k为实际情况的k+1
 >inline int get_val(int k) // 查询排名为k的val
 >{
->        int x = root;
->        while (1)
+>   int x = root;
+>   while (1)
 >        {
 >             int y = tr[x].s[0];
 >             if (tr[x].cnt + tr[y].size < k)
@@ -477,36 +444,33 @@ void update(int p, int l, int r, int ql, int qr, int v) {
 >             }
 >             else
 >             {
->                 if (tr[y].size >= k)
->                     x = tr[x].s[0];
->                 else
->                     break;
->             }
+>            if (tr[y].size >= k)
+>                x = tr[x].s[0];
+>            else
+>                break;
 >        }
->        splay(x, 0);
->        return tr[x].val;
+>   }
+>   splay(x, 0);
+>   return tr[x].val;
 >}
->```
->
->插入操作
->
->```c++
->inline void insert(int val)
->{
+>     
+>     inline void insert(int val)
+>     {
 >        int x = root, p = 0;
->        while (x && tr[x].val != val)
->             p = x, x = tr[x].s[val > tr[x].val];
->        if (x)
->             ++tr[x].cnt;
->        else
->        {
->             x = ++tot;
->             tr[p].s[val > tr[p].val] = x;
->             tr[x].init(p, val);
+>   while (x && tr[x].val != val)
+>        p = x, x = tr[x].s[val > tr[x].val];
+>   if (x)
+>        ++tr[x].cnt;
+>   else
+>   {
+>        x = ++tot;
+>        tr[p].s[val > tr[p].val] = x;
+>        tr[x].init(p, val);
 >        }
 >        splay(x, 0);
->}
->```
+>     }
+>     ```
+>     
 
 ### 字典树
 

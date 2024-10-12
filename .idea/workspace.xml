@@ -11,8 +11,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Zlin_ACM" targetName="C" />
-      <config projectName="Zlin_ACM" targetName="D" />
+      <config projectName="Zlin_ACM" targetName="M" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -22,9 +21,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,11">
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13: Shenyang)/C.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13: Shenyang)/D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13: Shenyang)/E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13: Shenyang)/J.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13: Shenyang)/K.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13: Shenyang)/M.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13: Shenyang)/C.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13: Shenyang)/C.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +74,10 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "CMake Application.B.executor": "Debug",
+    "CMake Application.C.executor": "Run",
     "CMake Application.E.executor": "Run",
     "CMake Application.G.executor": "Run",
+    "CMake Application.J.executor": "Run",
     "CMake Application.K.executor": "Run",
     "CMake Application.M.executor": "Run",
     "CMake 应用程序.2001E1.executor": "Run",
@@ -120,13 +125,8 @@
       <recent name="$PROJECT_DIR$/_CF/1945" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.C">
-    <configuration name="C" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="C" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="C">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="D">
+  <component name="RunManager">
+    <configuration name="M" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="M" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="M">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -136,10 +136,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="CMake Application.C" />
-      <item itemvalue="CMake Application.D" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -155,7 +151,7 @@
       <workItem from="1728455784703" duration="3000" />
       <workItem from="1728455795620" duration="85000" />
       <workItem from="1728455885736" duration="47383000" />
-      <workItem from="1728619252009" duration="7604000" />
+      <workItem from="1728619252009" duration="28032000" />
     </task>
     <task id="LOCAL-00001" summary="10，2">
       <option name="closed" value="true" />
@@ -437,7 +433,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728647517324</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="10,11">
+      <option name="closed" value="true" />
+      <created>1728648229447</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1728648229447</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
