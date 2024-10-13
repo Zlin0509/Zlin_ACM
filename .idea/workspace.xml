@@ -12,6 +12,10 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="Zlin_ACM" targetName="M" />
+      <config projectName="Zlin_ACM" targetName="F" />
+      <config projectName="Zlin_ACM" targetName="C" />
+      <config projectName="Zlin_ACM" targetName="I" />
+      <config projectName="Zlin_ACM" targetName="G" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -21,22 +25,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,12">
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Nanjing Regional Contest/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Nanjing Regional Contest/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Nanjing Regional Contest/F.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Nanjing Regional Contest/G.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Nanjing Regional Contest/I.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17 Jinan)/A.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest/A.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17 Jinan)/B.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest/B.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17 Jinan)/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest/D.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17 Jinan)/E.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest/E.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17 Jinan)/G.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest/G.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17 Jinan)/H.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest/H.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17 Jinan)/I.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest/I.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17 Jinan)/K.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest/K.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest (The 2nd Universal Cup. Stage 17 Jinan)/M.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Jinan Regional Contest/M.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13 Shenyang)/C.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest/C.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13 Shenyang)/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest/D.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13 Shenyang)/E.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest/E.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13 Shenyang)/J.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest/J.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13 Shenyang)/K.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest/K.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest (The 2nd Universal Cup. Stage 13 Shenyang)/M.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest/M.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest/M.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia Shenyang Regional Contest/M.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +80,9 @@
     "CMake Application.B.executor": "Debug",
     "CMake Application.C.executor": "Run",
     "CMake Application.E.executor": "Run",
-    "CMake Application.G.executor": "Run",
+    "CMake Application.F.executor": "Run",
+    "CMake Application.G.executor": "Debug",
+    "CMake Application.I.executor": "Run",
     "CMake Application.J.executor": "Run",
     "CMake Application.K.executor": "Run",
     "CMake Application.M.executor": "Run",
@@ -134,7 +131,27 @@
       <recent name="$PROJECT_DIR$/_CF/1945" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="CMake Application.F">
+    <configuration name="C" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="C" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="C">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="F" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="F" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="F">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="G" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="G" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="G">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="I" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="I" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="I">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="M" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="M" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="M">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -145,6 +162,13 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="CMake Application.C" />
+      <item itemvalue="CMake Application.F" />
+      <item itemvalue="CMake Application.G" />
+      <item itemvalue="CMake Application.I" />
+      <item itemvalue="CMake Application.M" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -160,7 +184,7 @@
       <workItem from="1728455784703" duration="3000" />
       <workItem from="1728455795620" duration="85000" />
       <workItem from="1728455885736" duration="47383000" />
-      <workItem from="1728619252009" duration="28437000" />
+      <workItem from="1728619252009" duration="45388000" />
     </task>
     <task id="LOCAL-00001" summary="10，2">
       <option name="closed" value="true" />
@@ -466,7 +490,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728744957244</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="10,12">
+      <option name="closed" value="true" />
+      <created>1728745388133</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1728745388133</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
