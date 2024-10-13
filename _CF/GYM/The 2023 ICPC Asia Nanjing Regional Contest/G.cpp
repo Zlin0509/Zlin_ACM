@@ -15,55 +15,40 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
+const int N = 5e3 + 20, M = 1e4 + 10;
+
+ll dp[N][M]{}, fin[N];
+
 struct node {
-    ll w, val;
+    int w, v;
 
     bool operator<(const node &x) const {
-        if (val * x.w != x.val * w)
-            return val * x.w > x.val * w;
-        return val < x.val;
+        return w > x.w;
     }
-};
+} a[N];
 
 inline void Zlin() {
     int n, w, k;
     cin >> n >> w >> k;
-    vector<node> a(n + 1);
-    for (int i = 1; i <= n; i++)
-        cin >> a[i].w >> a[i].val;
-    sort(a.begin() + 1, a.end());
-    vll vis[n + 1], dp(n + 1), cost(n + 1);
-    for (int i = 1; i <= n; i++) {
-        int tag = 0;
-        for (int j = 0; j < i; j++) {
-            if (cost[j] + a[i].w > w) continue;
-            if (dp[j] + a[i].val > dp[i]) {
-                cost[i] = cost[j] + a[i].w;
-                tag = j;
-                dp[i] = dp[j] + a[i].val;
-            } else if (dp[j] + a[i].val == dp[i] && vis[tag].size() < vis[j].size()) {
-                cost[i] = cost[j] + a[i].w;
-                tag = j;
-            } else if (dp[j] + a[i].val == dp[i] && vis[tag].size() == vis[j].size()) {
-                if (cost[j] + a[i].w < cost[i]) {
-                    cost[i] = cost[j] + a[i].w;
-                    tag = j;
-                }
-            }
+    for (int i = 1; i <= n; i++) cin >> a[i].w >> a[i].v;
+    sort(a + 1, a + 1 + n);
+    for (int i = n; i >= 1; i--) {
+        for (int j = 0; j <= w; j++) {
+            dp[i][j] = dp[i + 1][j];
+            if (j >= a[i].w) dp[i][j] = max(dp[i][j], dp[i + 1][j - a[i].w] + a[i].v);
+            fin[i] = max(fin[i], dp[i][j]);
         }
-        vis[i] = vis[tag];
-        vis[i].push_back(i);
     }
-    ll ans = 0, check;
+    ll sum = 0, ans = 0;
+    priority_queue<int, vi, greater<int>> p;
     for (int i = 1; i <= n; i++) {
-        vll used(n + 1), b;
-        for (auto it: vis[i]) used[it]++;
-        for (int j = 1; j <= n; j++) if (!used[j]) b.push_back(a[j].val);
-        if (b.empty()) continue;
-        sort(b.begin(), b.end(), greater<ll>());
-        check = dp[i];
-        for (int j = 0; j < min(k, (int) b.size()); j++) check += b[j];
-        ans = max(ans, check);
+        ans = max(ans, fin[i] + sum);
+        sum += a[i].v;
+        p.push(a[i].v);
+        while (p.size() > k) {
+            sum -= p.top();
+            p.pop();
+        }
     }
     cout << ans << '\n';
 }

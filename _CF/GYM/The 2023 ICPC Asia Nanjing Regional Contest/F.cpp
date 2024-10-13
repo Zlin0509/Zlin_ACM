@@ -15,55 +15,51 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-struct cmp {
-    bool operator()(const vector<int> &a, const vector<int> &b) {
-        return a.size() < b.size(); // 大的优先排在后面（小顶堆）
-    }
-};
 
 inline void Zlin() {
     int n, m;
     cin >> n >> m;
     vi cnt(m + 1);
-    vector<vi> a(n), b(n + 1);
-    for (int i = 0, x; i < n; i++) {
+    vector<vi> a(n + 1);
+    for (int i = 1, x; i <= n; i++) {
         cin >> x;
         for (int j = 1, y; j <= x; j++) {
             cin >> y;
-            cnt[y]++;
+            ++cnt[y];
             a[i].push_back(y);
         }
     }
-    for (int i = 0; i < n; i++) for (auto j: a[i]) if (cnt[j] >= 2) b[i + 1].push_back(j);
-    int ans1 = 0, ans2 = 0;
-    priority_queue<vi, vector<vi>, cmp> p;
-    for (int i = 1; i <= n; i++) {
-        for (auto j: b[i]) --cnt[j];
-        p.push(b[i]);
-        while (!p.empty()) {
-            bool check = true;
-            vi u = p.top();
-            p.pop();
-            for (auto j: u) {
-                if (!cnt[j]) {
-                    check = false;
-                    break;
-                }
-            }
-            if (check) {
-                if (!ans1) ans1 = i;
-                else ans2 = i;
-            }
-            if (ans1 && ans2) break;
+    set<int> b[n + 1];
+    for (int i = 1; i <= n; i++)
+        for (auto j: a[i])
+            if (cnt[j] >= 2)
+                b[i].insert(j);
+    int tag = 0;
+    for (int i = 1; i < n; i++) {
+        bool check = true;
+        for (auto j: b[i]) {
+            --cnt[j];
+            if (cnt[j] == 1 && b[i + 1].find(j) != b[i + 1].end())
+                check = false;
         }
-        if (ans1 && ans2) break;
+        if (check) {
+            tag = i;
+            break;
+        }
     }
-    if (!ans1 || !ans2) {
+    if (!tag) {
         cout << "No" << '\n';
+        return;
     } else {
         cout << "Yes" << '\n';
-        cout << ans1 << ' ' << ans2 << ' ';
-        for (int i = 1; i <= n; i++) if (i != ans1 && i != ans2) cout << i << ' ';
+        for (int i = 1; i <= n; i++) {
+            if (i == tag) {
+                cout << i + 1 << ' ' << i << ' ';
+                i++;
+            } else {
+                cout << i << ' ';
+            }
+        }
         cout << '\n';
     }
 }
