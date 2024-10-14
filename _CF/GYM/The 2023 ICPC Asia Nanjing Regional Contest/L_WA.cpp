@@ -15,11 +15,13 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
+const int N = 1e5 + 5;
+
 int n;
 ll k, ans, cnt, kk, dif;
 
 struct node {
-    ll c, f;
+    ll c, w, f;
 
     bool operator<(const node &x) const {
         if (f != x.f) return f > x.f;
@@ -33,21 +35,23 @@ inline void Zlin() {
     vector<node> a;
     for (int i = 1, c, w, f; i <= n; i++) {
         cin >> c >> w >> f;
-        a.push_back({c * w, f});
+        a.push_back({c, w, f});
     }
     sort(a.begin(), a.end());
-    for (int i = 0, l; i < a.size(); i++) {
-        kk = a[i].c / k;
-        ans += a[i].f * kk;
-        a[i].c -= k * kk;
+    for (int i = 0; i < a.size(); i++) {
+        kk = a[i].c * a[i].w / k;
+        if (kk) {
+            ans += a[i].f * kk;
+            a[i].c -= k / a[i].w * kk;
+        }
         if (a[i].c) {
             ans += a[i].f;
-            l = i;
+            int l = i;
             cnt = 0;
             while (cnt < k && l < a.size()) {
-                dif = min(k - cnt, a[l].c);
+                dif = min(k - cnt, a[l].c * a[l].w);
                 cnt += dif;
-                a[l].c -= dif;
+                a[l].c -= dif / a[l].w;
                 ++l;
             }
         }
