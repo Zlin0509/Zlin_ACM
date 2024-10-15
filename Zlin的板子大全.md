@@ -572,6 +572,7 @@ ll query(string s)//查询函数
 >叉积 
 >
 >AB*AC小于零说明AB能顺时针旋转到AC，大于零说明逆时针
+>pi = 3.14159265358979323846
 
 #### 极角排序
 
@@ -1205,6 +1206,10 @@ bool cmp(vector<int>& A, vector<int>& B)
 >
 >*扩展欧几里得算法*
 >ax+by=gcd(a,b)
+
+#### 递推逆元
+
+[text{inv}[i] = text{inv}[i+1] times (i+1) mod p]
 
 ### 组合数
 
