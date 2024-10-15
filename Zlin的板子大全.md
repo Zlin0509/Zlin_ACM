@@ -574,7 +574,6 @@ ll query(string s)//查询函数
 >AB*AC小于零说明AB能顺时针旋转到AC，大于零说明逆时针
 >pi = 3.14159265358979323846
 >
->
 >cout保留几位小数	
 >cout << fixed << setprecision(12) << ans << '\n';
 
@@ -1953,6 +1952,42 @@ void get_d(char s[], int n)			//求出每个位置的最大回文子串
 		if (i + d[i] - 1 > r) l = i - d[i] + 1, r = i + d[i] - 1;
 		ans = max(ans, d[i] - 1);
 	}
+}
+```
+
+### 矩阵乘法求字符串匹配
+
+```c++
+vector<vll> mul(vector<vll> A, vector<vll> B) {
+    int n = A.size();
+    vector<vll> C(n, vll(n, 0));
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            for (int k = 0; k < n; ++k)
+                C[i][j] = (C[i][j] + A[i][k] * B[k][j] % mo) % mo;
+    return C;
+}
+
+vector<vll> build(const string &S, char c) {
+    int n = S.size();
+    vector<vll> F(n + 1, vll(n + 1, 0));
+    for (int i = 0; i <= n; ++i) {
+        if (i < n && S[i] == c)
+            F[i][i + 1] = 1;
+        F[i][i] = 1;
+    }
+    return F;
+}
+
+ll cal(const string &S, const string &T) {
+    int n = S.size();
+    vector<vll> res(n + 1, vll(n + 1, 0));
+    for (int i = 0; i <= n; ++i) res[i][i] = 1;
+    for (char c: T) {
+        vector<vll> Fc = build(S, c);
+        res = mul(res, Fc);
+    }
+    return res[0][n];
 }
 ```
 

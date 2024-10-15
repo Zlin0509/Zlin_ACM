@@ -11,7 +11,8 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Zlin_ACM" targetName="I" />
+      <config projectName="Zlin_ACM" targetName="F" />
+      <config projectName="Zlin_ACM" targetName="G" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -21,7 +22,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,15">
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/F.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/G.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Online Contest/D.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_CF/GYM/2020 ICPC Shanghai Site/I.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/2020 ICPC Shanghai Site/I.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,8 +133,13 @@
       <recent name="$PROJECT_DIR$/_CF/1945" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="I" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="I" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="I">
+  <component name="RunManager" selected="CMake Application.F">
+    <configuration name="F" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="F" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="F">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="G" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="G" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="G">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -139,6 +149,10 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="CMake Application.F" />
+      <item itemvalue="CMake Application.G" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -154,7 +168,7 @@
       <workItem from="1728455784703" duration="3000" />
       <workItem from="1728455795620" duration="85000" />
       <workItem from="1728455885736" duration="47383000" />
-      <workItem from="1728619252009" duration="109964000" />
+      <workItem from="1728619252009" duration="117082000" />
     </task>
     <task id="LOCAL-00001" summary="10，2">
       <option name="closed" value="true" />
@@ -524,7 +538,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728980840639</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="10,15">
+      <option name="closed" value="true" />
+      <created>1728981392300</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1728981392300</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
