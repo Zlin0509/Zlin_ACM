@@ -573,6 +573,10 @@ ll query(string s)//查询函数
 >
 >AB*AC小于零说明AB能顺时针旋转到AC，大于零说明逆时针
 >pi = 3.14159265358979323846
+>
+>
+>cout保留几位小数	
+>cout << fixed << setprecision(12) << ans << '\n';
 
 #### 极角排序
 

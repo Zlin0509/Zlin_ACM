@@ -27,18 +27,15 @@ inline void Zlin() {
     k = ceil(2 * m / pi);
     all = (m * 2 - k * 2 + 1) * 2;
     for (int i = 1; i < k; i++)
-        k2 += (db) 2 * i / m;
-    cout << k2 << ' ';
+        k2 += (db) 2 * i;
     for (int i = 1; i <= n; i++) {
-        sum[i] = sum[i - 1] + (i - 1) * m * 2.0 + all * i + k2 * i * pi;
+        sum[i] = sum[i - 1] + (i - 1) * m * 2.0 + all * i + k2 * i * pi / m;
         ans += sum[i];
-        cout << sum[i] << ' ';
     }
-    cout << ans << ' ';
     ans *= m;
     db cnt = m * (m - 1.0) / 2.0;
     ans += n * (n + 1.0) * m * cnt;
-    printf("%.012lf", ans);
+    cout << fixed << setprecision(12) << ans << '\n';
 }
 
 int main() {
