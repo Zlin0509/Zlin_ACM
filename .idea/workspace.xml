@@ -11,6 +11,8 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="Zlin_ACM" targetName="P1903" />
+      <config projectName="Zlin_ACM" targetName="U490850" />
       <config projectName="Zlin_ACM" targetName="F" />
       <config projectName="Zlin_ACM" targetName="G" />
     </generated>
@@ -22,7 +24,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,15">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Luogu/P1903.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Luogu/U490850.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +87,8 @@
     "CMake Application.L.executor": "Run",
     "CMake Application.L_WA.executor": "Run",
     "CMake Application.M.executor": "Run",
+    "CMake Application.P1903.executor": "Run",
+    "CMake Application.U490850.executor": "Run",
     "CMake Application.data.executor": "Run",
     "CMake 应用程序.2001E1.executor": "Run",
     "CMake 应用程序.A.executor": "Run",
@@ -128,13 +135,23 @@
       <recent name="$PROJECT_DIR$/_CF/1945" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.F">
+  <component name="RunManager" selected="CMake Application.U490850">
     <configuration name="F" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="F" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="F">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="G" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="G" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="G">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="P1903" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="P1903" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="P1903">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="U490850" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="U490850" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="U490850">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -147,6 +164,8 @@
     <list>
       <item itemvalue="CMake Application.F" />
       <item itemvalue="CMake Application.G" />
+      <item itemvalue="CMake Application.P1903" />
+      <item itemvalue="CMake Application.U490850" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -163,15 +182,7 @@
       <workItem from="1728455784703" duration="3000" />
       <workItem from="1728455795620" duration="85000" />
       <workItem from="1728455885736" duration="47383000" />
-      <workItem from="1728619252009" duration="118995000" />
-    </task>
-    <task id="LOCAL-00002" summary="10，3">
-      <option name="closed" value="true" />
-      <created>1727957330135</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1727957330135</updated>
+      <workItem from="1728619252009" duration="134774000" />
     </task>
     <task id="LOCAL-00003" summary="10，3">
       <option name="closed" value="true" />
@@ -557,7 +568,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729007044691</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="10,15">
+      <option name="closed" value="true" />
+      <created>1729007073309</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1729007073309</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -595,5 +614,15 @@
     <MESSAGE value="10,14" />
     <MESSAGE value="10,15" />
     <option name="LAST_COMMIT_MESSAGE" value="10,15" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="cnt" language="ObjectiveC" />
+        <watch expression="resa" language="ObjectiveC" />
+        <watch expression="resb" language="ObjectiveC" />
+        <watch expression="q[i]" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
