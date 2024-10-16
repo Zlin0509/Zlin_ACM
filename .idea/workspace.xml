@@ -23,11 +23,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,15">
-      <change afterPath="$PROJECT_DIR$/_Luogu/P1903.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_Luogu/U490850.cpp" afterDir="false" />
+    <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,16">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/U490850.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_Luogu/U490850.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,62 +68,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "CMake Application.A.executor": "Run",
-    "CMake Application.B.executor": "Run",
-    "CMake Application.C.executor": "Run",
-    "CMake Application.D.executor": "Run",
-    "CMake Application.E.executor": "Run",
-    "CMake Application.F.executor": "Run",
-    "CMake Application.G.executor": "Run",
-    "CMake Application.H.executor": "Run",
-    "CMake Application.I.executor": "Run",
-    "CMake Application.J.executor": "Run",
-    "CMake Application.K.executor": "Run",
-    "CMake Application.L.executor": "Run",
-    "CMake Application.L_WA.executor": "Run",
-    "CMake Application.M.executor": "Run",
-    "CMake Application.P1903.executor": "Run",
-    "CMake Application.U490850.executor": "Run",
-    "CMake Application.data.executor": "Run",
-    "CMake 应用程序.2001E1.executor": "Run",
-    "CMake 应用程序.A.executor": "Run",
-    "CMake 应用程序.AA.executor": "Run",
-    "CMake 应用程序.B.executor": "Run",
-    "CMake 应用程序.C.executor": "Run",
-    "CMake 应用程序.D.executor": "Run",
-    "CMake 应用程序.E.executor": "Run",
-    "CMake 应用程序.F.executor": "Run",
-    "CMake 应用程序.G.executor": "Run",
-    "CMake 应用程序.H.executor": "Run",
-    "CMake 应用程序.I.executor": "Run",
-    "CMake 应用程序.J.executor": "Run",
-    "CMake 应用程序.K.executor": "Run",
-    "CMake 应用程序.L.executor": "Run",
-    "CMake 应用程序.M.executor": "Run",
-    "CMake 应用程序.MM.executor": "Run",
-    "CMake 应用程序.P1919.executor": "Run",
-    "CMake 应用程序.P3803.executor": "Run",
-    "Notification.DisplayName-DoNotAsk-Vcs Important Messages": "VCS important messages",
-    "Notification.DoNotAsk-Vcs Important Messages": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;CMake Application.A.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.B.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.C.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.D.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.E.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.F.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.G.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.H.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.I.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.J.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.K.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.L.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.L_WA.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.M.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.P1903.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.U490850.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.data.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.2001E1.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.A.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.AA.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.B.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.C.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.D.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.E.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.F.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.G.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.H.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.I.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.J.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.K.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.L.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.M.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.MM.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.P1919.executor&quot;: &quot;Run&quot;,
+    &quot;CMake 应用程序.P3803.executor&quot;: &quot;Run&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-Vcs Important Messages&quot;: &quot;VCS important messages&quot;,
+    &quot;Notification.DoNotAsk-Vcs Important Messages&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/_CF/CONTEST" />
@@ -156,11 +154,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="CMake Application.F" />
       <item itemvalue="CMake Application.G" />
@@ -182,15 +175,8 @@
       <workItem from="1728455784703" duration="3000" />
       <workItem from="1728455795620" duration="85000" />
       <workItem from="1728455885736" duration="47383000" />
-      <workItem from="1728619252009" duration="134774000" />
-    </task>
-    <task id="LOCAL-00003" summary="10，3">
-      <option name="closed" value="true" />
-      <created>1727957344179</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1727957344179</updated>
+      <workItem from="1728619252009" duration="135175000" />
+      <workItem from="1729062464878" duration="1528000" />
     </task>
     <task id="LOCAL-00004" summary="10，3">
       <option name="closed" value="true" />
@@ -576,7 +562,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729007073309</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="10,16">
+      <option name="closed" value="true" />
+      <created>1729062168314</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1729062168314</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +607,8 @@
     <MESSAGE value="10,13" />
     <MESSAGE value="10,14" />
     <MESSAGE value="10,15" />
-    <option name="LAST_COMMIT_MESSAGE" value="10,15" />
+    <MESSAGE value="10,16" />
+    <option name="LAST_COMMIT_MESSAGE" value="10,16" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

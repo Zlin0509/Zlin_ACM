@@ -24,15 +24,14 @@ int n, m, len;
 ll B[N], ans[N], resa = 0, resb = 0, cnt = 0, sum = 0;
 vi up[N];
 
-int get(int i) {
-    return i / len;
-}
+int get(int i) { return i / len; }
 
 bool cmp(const Query &a, const Query &b) {
     int la = get(a.l), ra = get(a.r);
     int lb = get(b.l), rb = get(b.r);
     if (la != lb) return la < lb;
-    return ra < rb;
+    if (ra != rb) return ra < rb;
+    return a.r < b.r;
 }
 
 void add_l(int l, int r) {
@@ -59,7 +58,6 @@ void del_l(int l, int r) {
     resa -= 2 * sum - cnt;
     sum -= cnt;
     resb -= B[l];
-    if (!B[l] && l) --cnt;
 }
 
 void add_r(int l, int r) {
@@ -112,4 +110,5 @@ int main() {
     int ttt = 1;
 //    cin >> ttt;
     while (ttt--) Zlin();
+    return 0;
 }
