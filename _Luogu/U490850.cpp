@@ -31,7 +31,7 @@ bool cmp(const Query &a, const Query &b) {
     int lb = get(b.l), rb = get(b.r);
     if (la != lb) return la < lb;
     if (ra != rb) return ra < rb;
-    return a.r < b.r;
+    return a.l < b.l;
 }
 
 void add_l(int l, int r) {
