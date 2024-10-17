@@ -15,13 +15,13 @@ duipai模版
 using namespace std;  
 int main()  
 {  
-    int t=10;
+    int t=1000;
     while(t)  
     {  
       	t--;  
         system("data.exe > data.txt");  
         system("a.exe < data.txt > a.txt");  
-         system("b.exe < data.txt > b.txt");  
+        system("b.exe < data.txt > b.txt");  
         if(system("fc a.txt b.txt"))   break;  
     }  
     if(t==0) cout<<"no error"<<endl;  
@@ -37,7 +37,7 @@ int main()
 using namespace std;
 
 int main() {
-    int t = 10;
+    int t = 1000;
     for (int i = 1; i <= t; i++) {
         system("./data > data.txt");
         system("./a < data.txt > a.txt");
