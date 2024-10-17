@@ -12,12 +12,7 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="Zlin_ACM" targetName="L" />
-      <config projectName="Zlin_ACM" targetName="AC" />
-      <config projectName="Zlin_ACM" targetName="E" />
-      <config projectName="Zlin_ACM" targetName="F" />
-      <config projectName="Zlin_ACM" targetName="C" />
-      <config projectName="Zlin_ACM" targetName="J" />
-      <config projectName="Zlin_ACM" targetName="G" />
+      <config projectName="Zlin_ACM" targetName="test" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -26,29 +21,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,16">
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1981/1981D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/AC.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/C.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/E.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/J.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/L.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/WA.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/data.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/duipai.cpp" afterDir="false" />
+    <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,17">
+      <change afterPath="$PROJECT_DIR$/test.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/F.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/F.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/G.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/G.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest/A.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest/A.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest/B.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest/B.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest/C.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest/C.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest/D.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest/F.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest/F.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest/H.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest/H.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest/I.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest/I.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest/J.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest/J.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest and Provincial Collegiate Programming Contest/K.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2024 CCPC Shandong Invitational Contest/K.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/L.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/L.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,50 +135,20 @@
       <recent name="$PROJECT_DIR$/_CF/1945" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.E">
-    <configuration name="AC" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="AC" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="AC">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="C" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="C" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="C">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="E" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="E" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="E">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="F" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="F" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="F">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="G" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="G" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="G">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="J" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="J" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="J">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="CMake Application.L">
     <configuration name="L" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="L" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="L">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="test">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="CMake Application.AC" />
-      <item itemvalue="CMake Application.C" />
-      <item itemvalue="CMake Application.E" />
-      <item itemvalue="CMake Application.F" />
-      <item itemvalue="CMake Application.G" />
-      <item itemvalue="CMake Application.J" />
       <item itemvalue="CMake Application.L" />
+      <item itemvalue="CMake Application.test" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -220,38 +167,8 @@
       <workItem from="1728455885736" duration="47383000" />
       <workItem from="1728619252009" duration="135175000" />
       <workItem from="1729062464878" duration="32439000" />
-    </task>
-    <task id="LOCAL-00006" summary="10，3">
-      <option name="closed" value="true" />
-      <created>1727958229404</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1727958229404</updated>
-    </task>
-    <task id="LOCAL-00007" summary="10，3">
-      <option name="closed" value="true" />
-      <created>1727958276340</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1727958276340</updated>
-    </task>
-    <task id="LOCAL-00008" summary="10，4">
-      <option name="closed" value="true" />
-      <created>1728023763364</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1728023763364</updated>
-    </task>
-    <task id="LOCAL-00009" summary="10，4">
-      <option name="closed" value="true" />
-      <created>1728027420476</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1728027420476</updated>
+      <workItem from="1729156225728" duration="7052000" />
+      <workItem from="1729167901749" duration="5004000" />
     </task>
     <task id="LOCAL-00010" summary="10，4">
       <option name="closed" value="true" />
@@ -613,7 +530,39 @@
       <option name="project" value="LOCAL" />
       <updated>1729070301711</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="10,17">
+      <option name="closed" value="true" />
+      <created>1729156242286</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1729156242286</updated>
+    </task>
+    <task id="LOCAL-00056" summary="10,17">
+      <option name="closed" value="true" />
+      <created>1729156402459</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1729156402459</updated>
+    </task>
+    <task id="LOCAL-00057" summary="10,17">
+      <option name="closed" value="true" />
+      <created>1729157946856</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1729157946856</updated>
+    </task>
+    <task id="LOCAL-00058" summary="10,17">
+      <option name="closed" value="true" />
+      <created>1729158375385</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1729158375385</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,17 +600,7 @@
     <MESSAGE value="10,14" />
     <MESSAGE value="10,15" />
     <MESSAGE value="10,16" />
-    <option name="LAST_COMMIT_MESSAGE" value="10,16" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Xian Regional Contest/E.cpp</url>
-          <line>70</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="10,17" />
+    <option name="LAST_COMMIT_MESSAGE" value="10,17" />
   </component>
 </project>

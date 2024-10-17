@@ -15,21 +15,37 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-const int N = 1e6;
-int cnt[N];
+const int N = 1e6 + 5;
+int n, fa[N], d[N], ans, cnt, k;
 
 inline void Zlin() {
-    int n;
     cin >> n;
     for (int i = 2, x; i <= n; i++) {
         cin >> x;
-        cnt[x]++;
-        cnt[i]++;
+        fa[i] = x;
+        ++d[x], ++d[i];
     }
-    int ans = 0;
-    for (int i = 1; i <= n; i++) if (cnt[i] == 1)++ans;
-    for (int i = 1; i <= n; i++) cnt[i] = 0;
-    cout << ans - 1 << '\n';
+    queue<int> q;
+    for (int i = 2; i <= n; i++) {
+        if (d[i] == 1) q.push(i);
+        --d[i];
+    }
+    ans = n;
+    cnt = 0;
+    while (!q.empty()) {
+        k = q.size();
+        ans = min(ans, k + cnt);
+        ++cnt;
+        while (k--) {
+            int u = q.front();
+            q.pop();
+            if (!fa[u]) continue;
+            --d[fa[u]];
+            if (!d[fa[u]]) q.push(fa[u]);
+        }
+    }
+    cout << ans << '\n';
+    for (int i = 1; i <= n; i++) d[i] = fa[i] = 0;
 }
 
 int main() {
