@@ -15,98 +15,40 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-vll a(7);
-
-
-ll cal(ll tag, ll now) {
-    return tag * now + (now - 1) * 3 / 2;
+ll cal(ll x) {
+    ll sum = 0;
+    while (x >= 3) {
+        sum += x % 3 + 1;
+        x /= 3;
+    }
+    return sum + (x == 1 ? 2 : 3);
 }
 
 inline void Zlin() {
-    ll l, r, ans = 0, ans1 = 0;
-    ll dep = 0, now = 1;
-    ll tag = 1, cnt = 2;
+    ll l, r, ans = 0;
     cin >> l >> r;
-    ans = dep = 0, now = 1;
-    while (now * 3 <= r) {
-        now *= 3;
-        ++dep;
+    vll have;
+    ll rx = r;
+    while (rx) {
+        have.push_back(rx % 3);
+        rx /= 3;
     }
-    tag = 1, cnt = 2;
-    while (dep) {
-        if (cal(tag * 3 + 2, now / 3) >= l && cal(tag * 3 + 2, now / 3) <= r) {
-            ans = max(ans, cnt + dep * 3);
-            break;
-        } else if (cal(tag * 3 + 1, now / 3) >= l && cal(tag * 3 + 1, now / 3) <= r) {
-            ans = max(ans, cnt + dep * 3 - 1);
-            break;
-        } else if (cal(tag * 3, now / 3) >= l && cal(tag * 3, now / 3) <= r) {
-            ans = max(ans, cnt + dep * 3 - 2);
-            break;
-        }
-        if (tag * now > r || cal(tag * 3 + 2, now / 3) < l) break;
-        if (cal(tag * 3, now / 3) >= l) {
-            tag = tag * 3;
-            ++cnt;
-        } else if (cal(tag * 3 + 1, now / 3) >= l) {
-            tag = tag * 3 + 1;
-            cnt += 2;
-        } else {
-            tag = tag * 3 + 2;
-            cnt += 3;
-        }
-        now /= 3;
-        --dep;
+    reverse(have.begin(), have.end());
+    for (int i = 0; i < have.size(); i++) {
+        ll x = 0;
+        for (int j = 0; j < i; j++) x = x * 3 + have[j];
+        x = x * 3 + have[i] - 1;
+        for (int j = i + 1; j < have.size(); j++) x = x * 3 + 2;
+        if (x >= l) ans = max(ans, cal(x));
     }
-    while ((tag + 1) % 3 && tag + 1 <= r) {
-        ++ans;
-        ++tag;
-    }
-    ans1 = dep = 0, now = 1;
-    while (now * 3 <= r / 2) {
-        now *= 3;
-        ++dep;
-    }
-    tag = 2, cnt = 3;
-    while (dep) {
-        if (cal(tag * 3 + 2, now / 3) >= l && cal(tag * 3 + 2, now / 3) <= r) {
-            ans1 = max(ans1, cnt + dep * 3);
-            break;
-        } else if (cal(tag * 3 + 1, now / 3) >= l && cal(tag * 3 + 1, now / 3) <= r) {
-            ans1 = max(ans1, cnt + dep * 3 - 1);
-            break;
-        } else if (cal(tag * 3, now / 3) >= l && cal(tag * 3, now / 3) <= r) {
-            ans1 = max(ans1, cnt + dep * 3 - 2);
-            break;
-        }
-        if (tag * now > r || cal(tag * 3 + 2, now / 3) < l) break;
-        if (cal(tag * 3, now / 3) >= l) {
-            tag = tag * 3;
-            ++cnt;
-        } else if (cal(tag * 3 + 1, now / 3) >= l) {
-            tag = tag * 3 + 1;
-            cnt += 2;
-        } else {
-            tag = tag * 3 + 2;
-            cnt += 3;
-        }
-        now /= 3;
-        --dep;
-    }
-    while ((tag + 1) % 3 && tag + 1 <= r) {
-        ++ans1;
-        ++tag;
-    }
-    ans = max(ans, ans1);
-    cout << ans << '\n';
+    cout << max({ans, cal(l), cal(r)}) << '\n';
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    a[0] = 1, a[1] = 2, a[2] = a[3] = 3, a[6] = 3;
-    cin >> ttt;
+//    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
