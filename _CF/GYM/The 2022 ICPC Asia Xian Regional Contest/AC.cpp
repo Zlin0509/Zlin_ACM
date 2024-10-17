@@ -1,5 +1,5 @@
 //
-// Created by Zlin on 2024/10/15.
+// Created by Zlin on 2024/10/17.
 //
 
 #include "bits/stdc++.h"
@@ -15,19 +15,26 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-inline void Zlin() {
-    int n, c1, c2, ans = 0;
-    cin >> n >> c1 >> c2;
-    char x, y, z;
-    for (int i = 1; i <= n; i++) {
-        cin >> x >> y >> z;
-        if (x == y || y == z || x == z) {
-            ans += min(c1, c2) + min(c1 * 2, c2);
-        } else {
-            ans += min(c1, c2) * 3;
-        }
+const ll N = 1e7;
+vll a(N + 10);
+
+void dd() {
+    a[0] = 1;
+    for (int i = 1; i <= N; i++) {
+        if (i % 3 == 0) a[i] = a[i / 3] + 1;
+        else a[i] = a[i - 1] + 1;
     }
-    cout << ans;
+}
+
+inline void Zlin() {
+    ll l, r;
+    cin >> l >> r;
+    ll ans = 0;
+    for (ll i = l; i < r; i++) {
+//        cout << a[i] << ' ' << i << '\n';
+        ans = max(ans, a[i]);
+    }
+    cout << ans << '\n';
 }
 
 int main() {
@@ -35,5 +42,7 @@ int main() {
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
 //    cin >> ttt;
+    dd();
     while (ttt--) Zlin();
+    return 0;
 }

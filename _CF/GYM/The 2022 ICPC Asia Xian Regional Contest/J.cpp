@@ -1,5 +1,5 @@
 //
-// Created by Zlin on 2024/10/15.
+// Created by Zlin on 2024/10/17.
 //
 
 #include "bits/stdc++.h"
@@ -16,18 +16,13 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
 inline void Zlin() {
-    int n, c1, c2, ans = 0;
-    cin >> n >> c1 >> c2;
-    char x, y, z;
-    for (int i = 1; i <= n; i++) {
-        cin >> x >> y >> z;
-        if (x == y || y == z || x == z) {
-            ans += min(c1, c2) + min(c1 * 2, c2);
-        } else {
-            ans += min(c1, c2) * 3;
-        }
-    }
-    cout << ans;
+    int n;
+    cin >> n;
+    vi a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    sort(a.begin(), a.end(), greater<int>());
+    cout << max(a[0], 0) + max(a[1], 0) << '\n';
+
 }
 
 int main() {
@@ -36,4 +31,5 @@ int main() {
     int ttt = 1;
 //    cin >> ttt;
     while (ttt--) Zlin();
+    return 0;
 }
