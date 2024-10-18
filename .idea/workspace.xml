@@ -11,13 +11,6 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Zlin_ACM" targetName="L" />
-      <config projectName="Zlin_ACM" targetName="A" />
-      <config projectName="Zlin_ACM" targetName="II" />
-      <config projectName="Zlin_ACM" targetName="F" />
-      <config projectName="Zlin_ACM" targetName="D" />
-      <config projectName="Zlin_ACM" targetName="I" />
-      <config projectName="Zlin_ACM" targetName="J" />
       <config projectName="Zlin_ACM" targetName="G" />
       <config projectName="Zlin_ACM" targetName="test" />
     </generated>
@@ -28,20 +21,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,17">
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /A.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /F.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /G.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /I.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /II.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /J.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /L.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /data.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /z.cpp" afterDir="false" />
+    <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,18">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /G.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /G.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,48 +134,13 @@
       <recent name="$PROJECT_DIR$/_CF/1945" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.I">
+  <component name="RunManager" selected="CMake Application.G">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="A" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="A" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="A">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="D">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="F" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="F" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="F">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="G" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="G" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="G">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="I" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="I" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="I">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="II" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="II" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="II">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="J" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="J" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="J">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="L" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="L" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="L">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -204,14 +151,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.A" />
-      <item itemvalue="CMake Application.D" />
-      <item itemvalue="CMake Application.F" />
       <item itemvalue="CMake Application.G" />
-      <item itemvalue="CMake Application.I" />
-      <item itemvalue="CMake Application.II" />
-      <item itemvalue="CMake Application.J" />
-      <item itemvalue="CMake Application.L" />
       <item itemvalue="CMake Application.test" />
     </list>
   </component>
@@ -232,15 +172,7 @@
       <workItem from="1728619252009" duration="135175000" />
       <workItem from="1729062464878" duration="32439000" />
       <workItem from="1729156225728" duration="7052000" />
-      <workItem from="1729167901749" duration="34153000" />
-    </task>
-    <task id="LOCAL-00011" summary="10，4">
-      <option name="closed" value="true" />
-      <created>1728099352258</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1728099352258</updated>
+      <workItem from="1729167901749" duration="36659000" />
     </task>
     <task id="LOCAL-00012" summary="10，4">
       <option name="closed" value="true" />
@@ -626,7 +558,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729173173814</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="10,18">
+      <option name="closed" value="true" />
+      <created>1729255892202</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1729255892202</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,18 +605,10 @@
     <MESSAGE value="10,15" />
     <MESSAGE value="10,16" />
     <MESSAGE value="10,17" />
-    <option name="LAST_COMMIT_MESSAGE" value="10,17" />
+    <MESSAGE value="10,18" />
+    <option name="LAST_COMMIT_MESSAGE" value="10,18" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/_CF/GYM/The 2023 ICPC Asia EC Regionals Online Contest (I) /I.cpp</url>
-          <line>60</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="sum[a[i]][t1][t2][1]" language="ObjectiveC" />
