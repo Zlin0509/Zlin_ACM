@@ -3,9 +3,19 @@
 小白Zlin自学ACM的收集，代码风格一般，运行效率低下，代码实用性弱，收集完善度弱，路过大佬轻点骂
 欢迎提出各种意见^本人版权意识薄弱^
 
-## 杂项
+^0^0^0^
 
-### 对拍
+
+
+
+
+
+
+你看nm呢，回去训练
+
+# 杂项
+
+## 对拍
 
 duipai模版
 
@@ -120,6 +130,21 @@ void generateGraph() {//随机生成一张n个点m条边的无向图，图中不
     }
 }
 
+// 生成一个随机字符串，包含大小写字母、数字和问号
+string String(int length) {
+    const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789?";
+    random_device rd; // 随机设备
+    mt19937 gen(rd()); // 使用Mersenne Twister算法
+    uniform_int_distribution<> dis(0, characters.size() - 1); // 定义一个分布
+
+    string randomString;
+    for (int i = 0; i < length; ++i) {
+        randomString += characters[dis(gen)]; // 从字符集随机选择字符
+    }
+
+    return randomString;
+}
+
 int main() {
     srand(time(0));
     /*随机生成*/
@@ -127,7 +152,7 @@ int main() {
 }
 ```
 
-### 离散化
+## 离散化
 
 ```c++
 vector<int> disc(const vector<int> &a) {
@@ -140,11 +165,11 @@ vector<int> disc(const vector<int> &a) {
 }
 ```
 
-### 莫队
+## 莫队
 
 最优大小为n*m^-0.5^
 
-#### 普通莫队
+### 普通莫队
 
 每次先更新右边界，避免出现l大于r的情况
 
@@ -206,7 +231,7 @@ inline void Zlin() {
 }
 ```
 
-#### 修改莫队
+### 修改莫队
 
 ```c++
 struct Query {
@@ -287,11 +312,11 @@ inline void Zlin() {
 
 
 
-## 数据结构
+# 数据结构
 
-### 基础
+## 基础
 
-#### 优先队列
+### priority_queue
 
 不标注默认大根堆，pair内容先比较第一个元素，然后比较第二个元素
 
@@ -302,30 +327,66 @@ priority_queue <int,vector<int>,greater<int> > q;
 priority_queue <int,vector<int>,less<int> >q;
 ```
 
-#### set
+### set/multiset
 
-Set 自动排序，去重
+set 自动排序，去重
 multiset 自动排序，不去重
 
-代码	含义
-s.begin()	返回set容器的第一个元素的地址（迭代器）
-s.end()	返回set容器的最后一个元素的地址（迭代器）
-s.rbegin()	返回逆序迭代器，指向容器元素最后一个位置
-s.rend()	返回逆序迭代器，指向容器第一个元素前面的位置
-s.clear()	删除set容器中的所有的元素,返回unsigned int类型O(N)
-s.empty()	判断set容器是否为空
-s.insert()	插入一个元素 O(NlogN)
-s.size()	返回当前set容器中的元素个数O(1)
-erase(iterator)	删除定位器iterator指向的值
-erase(first,second）	删除定位器first和second之间的值
-erase(key_value)	删除键值key_value的值O(NlogN)	
-s.find(元素)	查找set中的某一元素，有则返回该元素对应的迭代器，无则返回结束迭代器
-s.lower_bound(k)	返回大于等于k的第一个元素的迭代器
-s.upper_bound(k)	返回大于k的第一个元素的迭代器
+```c++
+s.begin(); // 返回set容器的第一个元素的地址（迭代器）
+s.end(); //	返回set容器的最后一个元素的地址（迭代器）
+s.rbegin(); // 返回逆序迭代器，指向容器元素最后一个位置
+s.rend(); // 返回逆序迭代器，指向容器第一个元素前面的位置
+s.clear(); // 删除set容器中的所有的元素,返回unsigned int类型O(N)
+s.empty(); // 判断set容器是否为空
+s.insert(x); //	插入一个元素 O(NlogN)
+s.size(); // 返回当前set容器中的元素个数O(1)
+s.erase(iterator); //	删除定位器iterator指向的值
+s.erase(first, second）; // 删除定位器first和second之间的值
+s.erase(key_value); // 删除键值key_value的值O(NlogN) // multiset中是删除这个值的所有元素，要仅删除一个，只能用迭代器
+s.find(x); //查找set中的某一元素，有则返回该元素对应的迭代器，无则返回结束迭代器
+s.lower_bound(x); //	返回大于等于x的第一个元素的迭代器
+s.upper_bound(x); //	返回大于x的第一个元素的迭代器 把这串东西放入代码框，解释加上注释
+```
 
-### 并查集(DSU)
+### vector
 
-##### 普通并查集
+```c++
+vector<int> v;            // 定义空的 int 类型 vector
+vector<int> v1(10);       // 初始化大小为 10 的 vector，默认值为 0
+vector<int> v2(10, 5);    // 初始化大小为 10 的 vector，每个元素值为 5
+vector<int> v3 = {1, 2, 3, 4}; // 使用初始化列表创建 vector
+sort(v.begin(), v.end());           // 升序排序
+sort(v.begin(), v.end(), greater<int>());  // 降序排序
+v.size();       // 返回 vector 的元素个数
+v.capacity();   // 返回当前 vector 的容量（可容纳的元素个数）
+v.empty();      // 检查 vector 是否为空，返回 true 或 false
+v.front();      // 返回第一个元素
+v.back();       // 返回最后一个元素
+v.push_back(5);     // 在 vector 尾部添加元素 5
+v.insert(v.begin(), 10);  // 在第一个位置插入元素 10
+v.insert(v.begin() + 2, 7); // 在第 3 个位置插入元素 7
+v.pop_back();      // 删除 vector 尾部的元素
+v.erase(v.begin() + 1); // 删除第 2 个元素
+v.erase(v.begin(), v.begin() + 3); // 删除前 3 个元素
+v.clear();         // 清空所有元素
+```
+
+### stack
+
+```c++
+stk.push(x);  // 将 x 压入栈
+stk.pop();  // 移除栈顶元素
+stk.empty(); // 判断是否为空
+stk.size();  // 获取栈中元素的个数
+stk1.swap(stk2);  // 交换 stk1 和 stk2 的内容
+```
+
+
+
+## 并查集(DSU)
+
+### 普通并查集
 
 ```c++
 inline int find(int x) { return f[x] == x ? x : f[x] = find(f[x]); }
@@ -337,12 +398,12 @@ inline int find(int x) {
 }
 ```
 
-##### 种类并查集
+### 种类并查集
 
 根据不同种类开n倍的空间，每个空间存一种关系
 每个不同的空间表示一种对立关系，维护一种对立情况
 
-### ST表
+## ST表
 
 ```c++
 inline void ST_prework() {
@@ -360,7 +421,7 @@ inline int ST_query(int l, int r) {
 }
 ```
 
-### 树状数组
+## 树状数组
 
 ```c++
 #define lowbit(x) (x & (-x))
@@ -382,15 +443,15 @@ inline int ask(int l, int r) {
 }
 ```
 
-### 树
+## 树
 
-#### 线段树
+### 线段树
 
-##### 无懒标记^懒得写^
+#### 无懒标记^懒得写^
 
-##### 带懒标记 
+#### 带懒标记 
 
-###### 区间加减
+##### 区间加减
 
 ```c++
 struct Tree {
@@ -444,7 +505,17 @@ int query(int i, int l, int r) {
 }
 ```
 
-#### 扫描线
+
+
+### 李超线段树
+
+```c++
+
+```
+
+
+
+### 扫描线
 
 ```c++
 struct Line {
@@ -495,9 +566,9 @@ void update(int p, int l, int r, int ql, int qr, int v) {
 }
 ```
 
-#### 主席树
+### 主席树
 
-##### 求静态区间K大值
+#### 求静态区间K大值
 
 ```c++
 const int maxn = 2e5 + 10;
@@ -544,7 +615,7 @@ int query(int l, int r, int lrt, int rrt, int k) {
 }
 ```
 
-##### 求区间不重复个数
+#### 求区间不重复个数
 
 ```c++
 const int maxn = 30010;
@@ -605,13 +676,13 @@ void slove() {
 
 
 
-#### 左偏树/可并堆
+### 左偏树/可并堆
 
 更适合处理合并工作，合并最坏复杂度 logn
 
 
 
-#### 平衡树(Splay)
+### 平衡树(Splay)
 
 适合用来维护有序队列
 
@@ -747,7 +818,7 @@ inline void insert(int val) {
 
 
 
-#### 字典树
+### 字典树
 
 遇到相似题目可以选择离散化，在套入字典树
 
@@ -785,9 +856,9 @@ ll query(string s)//查询函数
 }
 ```
 
-#### 树链剖分
+### 树链剖分
 
-##### 重链剖分 
+#### 重链剖分 
 
 
 
@@ -889,7 +960,7 @@ int query_2(int x, int y) {
 }
 ```
 
-##### 长链剖分 
+#### 长链剖分 
 
 
 
@@ -897,7 +968,7 @@ int query_2(int x, int y) {
 
 ```
 
-##### 实链剖分
+#### 实链剖分
 
 
 
@@ -905,54 +976,49 @@ int query_2(int x, int y) {
 
 ```
 
-### 分块
+## 分块
 
->初始化操作，做好分块的左边界和右边界，大小一般为sqrt(n)
->
->```c++
->inline void init()
->{
->        int len = sqrt(n), tot = (n - 1) / len + 1;
->        for (int i = 1; i <= tot; i++)
->             l[i] = r[i - 1] + 1, r[i] = i * len;
->        r[tot] = n;
->        for (int i = 1; i <= tot; i++)
->             for (int j = l[i]; j <= r[i]; j++)
->                 belong[j] = i;
->}
->```
->
->单点修改
->
->区间修改
->利用tag数组存整个区块的修改情况
+### 普通分块
 
-#### 时间分块
+```c++
+inline void init()
+{
+   int len = sqrt(n), tot = (n - 1) / len + 1;
+   for (int i = 1; i <= tot; i++)
+        l[i] = r[i - 1] + 1, r[i] = i * len;
+   r[tot] = n;
+   for (int i = 1; i <= tot; i++)
+        for (int j = l[i]; j <= r[i]; j++)
+            belong[j] = i;
+}
+```
 
->
+### 时间分块
 
-## 数学
 
-### 基础
 
->### cbrt() 返回立方根
->
->2ab = (a+b)^2^-a^2^-b^2^ 
->2ab+2ac+2bd = (a+b+c)^2^-a^2^-b^2^-c^2^
->
->多元同理
->
->大数不能直接用sqrt，要自己用二分查找求值
->
->叉积 
->
->AB*AC小于零说明AB能顺时针旋转到AC，大于零说明逆时针
->pi = 3.14159265358979323846
->
->cout保留几位小数	
->cout << fixed << setprecision(12) << ans << '\n';
+# 数学
 
-#### 极角排序
+## 基础
+
+cbrt() 返回立方根
+
+2ab = (a+b)^2^-a^2^-b^2^ 
+2ab+2ac+2bd = (a+b+c)^2^-a^2^-b^2^-c^2^
+
+多元同理
+
+大数不能直接用sqrt，要自己用二分查找求值
+
+叉积 
+
+AB*AC小于零说明AB能顺时针旋转到AC，大于零说明逆时针
+pi = 3.14159265358979323846
+
+cout保留几位小数	
+cout << fixed << setprecision(12) << ans << '\n';
+
+### 极角排序
 
 o表示原点
 
@@ -963,7 +1029,7 @@ bool cmp(node a, node b) {
 }
 ```
 
-#### 扩展欧几里得公式
+### 扩展欧几里得公式
 
 $$
 \gcd(a, b) = \gcd(b,a\mod b)\\
@@ -991,11 +1057,11 @@ int ext_gcd(int a, int b, int &x, int &y) {
 
 
 
-### FFT
+## FFT
 
 快速计算多项式乘法/大数乘法
 
-#### 主体
+### 主体
 
 ```c++
 const double PI = acos(-1.0);
@@ -1046,7 +1112,7 @@ void fft(vector<Cp> &a, int n, int d) {
 }
 ```
 
-#### 大数乘法
+### 大数乘法
 
 ```c++
 // 大数乘法主函数
@@ -1075,7 +1141,7 @@ vector<int> multiply(const vector<int>& A, const vector<int>& B) {
 }
 ```
 
-#### 多项式乘法
+### 多项式乘法
 
 ```c++
 // 多项式乘法
@@ -1106,9 +1172,9 @@ vector<int> multiply(const vector<int> &A, const vector<int> &B) {
 }
 ```
 
-### NTT
+## NTT
 
-#### 主体
+### 主体
 
 受模数的限制，数也比较大，但精度不易缺失
 
@@ -1163,7 +1229,7 @@ void ntt(vector<int> &a, int n, int inv) {
 }
 ```
 
-#### 多项式求逆
+### 多项式求逆
 
 ```c++
 // 多项式乘法
@@ -1205,7 +1271,7 @@ vector<int> poly_inv(const vector<int> &a) {
 
 
 
-#### 如何求原根
+### 如何求原根
 
 ```c++
 #include <iostream>
@@ -1258,9 +1324,9 @@ int main() {
 }
 ```
 
-### 几何
+## 几何
 
-#### 计算几何
+### 计算几何
 
 高斯面积计算公式  
 $$
@@ -1268,7 +1334,7 @@ A = \frac{1}{2} \left| \sum_{i=1}^{n-1} (x_i y_{i+1} - x_{i+1} y_i) + (x_n y_1 -
 $$
 
 
-#### 构建凸包
+### 构建凸包
 
 ```c++
 struct P {
@@ -1319,7 +1385,7 @@ vector<P> convexHull(vector<P> &pts) {
 
 
 
-#### 旋转卡壳
+### 旋转卡壳
 
 旋转卡壳，求凸包的直径，可以处理三点共线
 
@@ -1359,21 +1425,21 @@ double rotCalipers(const vector<P> &h) {
 
 
 
-### 线性基
+## 线性基
 
 可以插入也可以删除
 
-#### 异或线形基
+### 异或线形基
 
 最后求出来k个答案，要注意0的情况，如果k!=n+1说明存在0
 
-##### 贪心算法
+#### 贪心算法
 
 ```c++
 
 ```
 
-##### 高斯消元法
+#### 高斯消元法
 
 ```c++
 inline void gauss() {
@@ -1391,7 +1457,7 @@ inline void gauss() {
 }
 ```
 
-##### 区间线性基
+#### 区间线性基
 
 更新当前位置永远保证是最右一位
 
@@ -1434,9 +1500,9 @@ int query_min(int l, int r)
 }
 ```
 
-### 高精度
+## 高精度
 
-#### 加法
+### 加法
 
 >存储数据
 >lenc = max(lena,lenb)，字符串读取输入，翻转存入数组
@@ -1470,7 +1536,7 @@ int query_min(int l, int r)
 >}
 >```
 
-#### 减法
+### 减法
 
 >a - b
 >
@@ -1499,7 +1565,7 @@ int query_min(int l, int r)
 >}
 >```
 
-#### 乘法
+### 乘法
 
 >从低位到高位，先累加乘积，然后进位，存余
 >
@@ -1520,7 +1586,7 @@ int query_min(int l, int r)
 >}
 >```
 
-#### 除法
+### 除法
 
 >***从高位到低位***
 >大数a除以小数b，r保存余数
@@ -1543,7 +1609,7 @@ int query_min(int l, int r)
 >}
 >```
 
-#### 比较大小
+### 比较大小
 
 ```
 //比较哪个数大，注意这里的数是从倒序存的，故后面的才是高位
@@ -1560,7 +1626,7 @@ bool cmp(vector<int>& A, vector<int>& B)
 
 
 
-### 快速幂
+## 快速幂
 
 >快速求a^n^的值
 >
@@ -1577,7 +1643,7 @@ bool cmp(vector<int>& A, vector<int>& B)
 >     }
 >     ```
 
-### 快速GCD
+## 快速GCD
 
 > 利用更减相损术和builtin内置函数，二进制运算速度更快
 >
@@ -1600,9 +1666,9 @@ bool cmp(vector<int>& A, vector<int>& B)
 > }
 > ```
 
-### 逆元
+## 逆元
 
-#### 费马定理
+### 费马定理
 
 给定两个数a,p，p为质数，a^p-2^为a模p的乘法逆元
 
@@ -1624,7 +1690,7 @@ ll inv(ll a) {
 }
 ```
 
-#### 递推逆元
+### 递推逆元
 
 递推逆元：如果你需要在区间  [1, n]  内计算逆元，可以使用递推的方式
 设  inv[1] = 1 。对于 i大于2小于n的区间
@@ -1632,51 +1698,134 @@ $$
 inv[i] = (mod - (mod / i) \times inv[mod \% i]) \mod mod
 $$
 
-
-### 组合数
-
-#### 杨辉三角
-
-> C(n,m)= C(n,n-m)= C(n-1,m-1)+C(n-1,m)
-> 适合n<5e3的情况 
->
-> ```c++
-> // c[n][m]表示从n个元素中取m个的方案数
-> inline void prework()
-> {
->  for (int i = 0; i <= 5001; i++)
->      for (int j = 0; j <= i; j++)
->          if (!j)
->              c[i][j] = 1;
->          else
->              c[i][j] = (c[i - 1][j] + c[i - 1][j - 1]) % q;
-> }
-> ```
-
-#### 预处理法,乘法逆元
+### 预处理法,乘法逆元
 
 **适用范围**：n，m在1e5以内，且取模的数mod为素数时
 利用快速幂求逆元
 
->```c++
->inline void init() // 预处理，fac[]表示阶乘, inf[]表示阶乘的逆元
->{
->fac[0] = inf[0] = 1;
->for (int i = 1; i <= N; i++)
->{
->fac[i] = fac[i - 1] * i % mod;
->inf[i] = inf[i - 1] * quick_pow(i, mod - 2) % mod;
->}
->}
->```
+```c++
+inline void init() // 预处理，fac[]表示阶乘, inf[]表示阶乘的逆元
+{
+    fac[0] = inf[0] = 1;
+    for (int i = 1; i <= N; i++) {
+        fac[i] = fac[i - 1] * i % mod;
+        inf[i] = inf[i - 1] * quick_pow(i, mod - 2) % mod;
+    }
+}
+```
 
-## 图论
+## 组合数
 
-### 基础
+### 直接定义公式法
+
+组合数公式 C(n, k)  的定义为：
+$$
+ C(n, k) = \frac{n!}{k!(n-k)!} 
+$$
+其中 \( n! \) 表示 \( n \) 的阶乘。这个方法可以用递推或循环计算阶乘，然后利用公式求出组合数。
+
+### **递推公式法 (Pascal’s Triangle)**
+
+$$
+C(n, k) = C(n-1, k-1) + C(n-1, k)
+$$
+
+```c++
+const int N = 1000; // 定义最大 N 值 适合N<5e3的情况
+long long C[N+1][N+1];
+
+void init_comb() {
+    for (int i = 0; i <= N; ++i) {
+        C[i][0] = C[i][i] = 1; // 边界条件
+        for (int j = 1; j < i; ++j) {
+            C[i][j] = C[i-1][j-1] + C[i-1][j]; // 递推公式
+        }
+    }
+}
+```
+
+### **逆元法 (费马小定理)**
+
+对于模 ( p ) (质数) 的组合数计算，利用费马小定理可以高效求组合数。公式为：
+$$
+C(n, k) = \frac{n!}{k!(n-k)!} \mod p
+$$
+利用费马小定理求逆元：
+$$
+a^{-1} \equiv a^{p-2} \mod p
+$$
+这样可以通过预处理阶乘和逆元，快速求出组合数。
+
+```c++
+const int N = 100000; // 定义最大 N 值
+const ll mo = 1e9 + 7;
+ll fact[N + 1], inv[N + 1];
+
+// 快速幂求 a^b % mo
+ll qpw(ll a, ll b) {
+    long long res = 1;
+    while (b) {
+        if (b % 2 == 1) res = res * a % mo;
+        a = a * a % mo;
+        b /= 2;
+    }
+    return res;
+}
+
+// 预处理阶乘和逆元
+void init_fact() {
+    fact[0] = inv[0] = 1;
+    for (int i = 1; i <= N; ++i) {
+        fact[i] = fact[i - 1] * i % mo;
+    }
+    inv[N] = qpw(fact[N], mo - 2); // 利用费马小定理求逆元
+    for (int i = N - 1; i >= 1; --i) {
+        inv[i] = inv[i + 1] * (i + 1) % mo;
+    }
+}
+
+// 快速求组合数
+ll comb(int n, int k) {
+    if (k > n || k < 0) return 0;
+    return fact[n] * inv[k] % mo * inv[n - k] % mo;
+}
+```
+
+### **逐项计算法**
+
+$$
+[ C(n, k) = \frac{n \times (n-1) \times \dots \times (n-k+1)}{k \times (k-1) \times \dots \times 1} ]
+$$
+
+```c++
+ll comb(int n, int k) { // 避免溢出
+    if (k > n) return 0;
+    long long res = 1;
+    for (int i = 1; i <= k; ++i) {
+        res = res * (n - i + 1) / i;
+    }
+    return res;
+}
+```
+
+
+
+### **Lucas 定理**
+
+对于较大的 ( n ) 和 ( k )，在模 ( p ) 的情况下，可以使用 Lucas 定理计算组合数。当 ( n ) 和 ( k ) 非常大，但 ( p ) 是质数时，Lucas 定理是一种有效的求解方法。
+将 ( n ) 和 ( k ) 分解成模 ( p ) 的系数来递归计算组合数：
+$$
+[ C(n, k) \mod p = C(n \mod p, k \mod p) \times C(n/p, k/p) \mod p ]
+$$
+
+
+# 图论
+
+## 基础
 
 奇数完全图的欧拉路径等于他的所有边，欧拉路径要求图中奇数度的定点不超过二
 
-### 欧拉路径
+## 欧拉路径
 
 #### 无向图
 
@@ -1704,7 +1853,7 @@ $$
 非零度顶点是强连通的
 每个顶点的入度和出度相等
 
-####  Hierholzer 算法
+###  Hierholzer 算法
 
 贪心思想，每次走到走不下去为止，那个点就为欧拉路径的顶点，把他放入ans中，走过一条边要把那条边删除ßß
 
@@ -1723,23 +1872,23 @@ void dfs(int u) {
 
 
 
-### 找环思路
+## 找环思路
 
-#### 无向图找环
+### 无向图找环
 
 DFS
 
 DSU
 
-#### 判断奇数环和偶数环
+### 判断奇数环和偶数环
 
-##### 二分图染色法
+二分图染色法
 
 
 
-### 最短路算法
+## 最短路算法
 
-#### Dijkstra
+### Dijkstra
 
 主体，优先队列为小根堆
 时间复杂度:nlog^m^ 
@@ -1767,7 +1916,7 @@ inline void dijkstra() {
 }
 ```
 
-#### Bellman-Ford
+### Bellman-Ford
 
 堆优化版——SPFA
 时间复杂度:最好O(m)，最坏O(nm)，菊花图的情况
@@ -1795,7 +1944,7 @@ inline void spfa() {
 }
 ```
 
-#### Johnson
+### Johnson
 
 >Johnson优化，能有处理负权值和有负环的情况
 >时间复杂度:n^2^log^m^
@@ -1854,9 +2003,9 @@ inline void spfa() {
 >
 >更新完成后可以保证权值全为正数，随后根据题意运行Dijkstra，最终输出答案要注意减去h数组差值
 
-### LCA/最近公共祖先
+## LCA/最近公共祖先
 
-#### 倍增
+### 倍增
 
 ```c++
 struct edge {
@@ -1899,7 +2048,7 @@ inline int lca(int u, int v) {
 
 
 
-### Tarjan算法
+## Tarjan算法
 
 >时间戳 dfn[x] 节点x第一次被访问的顺序
 >
@@ -1944,7 +2093,7 @@ inline int lca(int u, int v) {
 >
 >
 
-##### 点双连通分量
+### 点双连通分量
 
 >基础性质：
 >**1、** 除了一种比较特殊的点双，其他的点双都满足：任意两点间都存在至少两条点不重复路径。
@@ -1978,7 +2127,7 @@ inline int lca(int u, int v) {
 >}
 >```
 
-##### 边双连通分量
+### 边双连通分量
 
 >基础性质:
 >**1、** 割边不属于任意边双，而其它非割边的边都属于且仅属于一个边双。
@@ -2016,11 +2165,11 @@ inline int lca(int u, int v) {
 >```
 >
 
-### 拓扑排序
+## 拓扑排序
 
 有向无环图（DAG），可以判断有向图中是否有环
 
-#### DFS算法
+### DFS算法
 
 >通过c数组来存放颜色，表示不同的状态
 >
@@ -2055,7 +2204,7 @@ inline int lca(int u, int v) {
 >
 >
 
-#### 卡恩算法（Kahn）
+### 卡恩算法（Kahn）
 
 通过队列来维护入度为0的集合
 
@@ -2081,12 +2230,12 @@ inline int lca(int u, int v) {
 >    }
 >    ```
 
-### 最小生成树
+## 最小生成树
 
 **稀疏图一般选择 prim
 稠密图一般选择 Kruskal**
 
-#### Prim
+### Prim
 
 ```c++
 struct edge
@@ -2126,7 +2275,7 @@ bool prim(int s)
 }
 ```
 
-#### Kruskal
+### Kruskal
 
 ```c++
 struct Edge {
@@ -2182,11 +2331,11 @@ int kruskal(int n, vector<Edge> &edges) {
 }
 ```
 
-### 二分图
+## 二分图
 
-#### 最大匹配问题
+### 最大匹配问题
 
-##### **匈牙利算法**
+#### **匈牙利算法**
 
 时间复杂度Omn
 
@@ -2224,7 +2373,7 @@ int hungarian(int n) {
 }
 ```
 
-##### **Hopcroft-Karp算法**
+#### **Hopcroft-Karp算法**
 
 时间复杂度On^0.5^m
 
@@ -2285,13 +2434,13 @@ int HK() {
 }
 ```
 
-### 网络流
+## 网络流
 
-#### 最大流 
+### 最大流 
 
 V是节点数 E是边数
 
-##### EK算法
+#### EK算法
 
 时间复杂度O(VE^2^)
 
@@ -2349,7 +2498,7 @@ ll EK() {
 
 
 
-##### Dinic算法
+#### Dinic算法
 
 在普通情况下， DINIC算法时间复杂度为O(V^2^E) 
 在二分图中， DINIC算法时间复杂度为O(V^0.5^E)
@@ -2421,27 +2570,27 @@ ll dinic() {
 
 
 
-## 字符串
+# 字符串
 
-### 字符串哈希
+## 字符串哈希
 
-#### 自然溢出
+### 自然溢出
 
 hash[i]=hash[i−1]∗Base+idx(s[i])
 
 数据结构要求ull，不能用ll
 
-#### 单哈希
+### 单哈希
 
 hash[i]=(hash[i−1]∗Base+idx(s[i]))%MOD
 
 数据结构无要求，可以用ll
 
-#### 双哈希
+### 双哈希
 
 Base，MOD不同，进行两遍hash
 
-### Manacher算法
+## Manacher算法
 
 ```c++
 void init()		//对S串进行处理加上‘#’
@@ -2472,7 +2621,7 @@ void get_d(char s[], int n)			//求出每个位置的最大回文子串
 }
 ```
 
-### 矩阵乘法求字符串匹配
+## 矩阵乘法求字符串匹配
 
 ```c++
 vector<vll> mul(vector<vll> A, vector<vll> B) {
@@ -2485,7 +2634,7 @@ vector<vll> mul(vector<vll> A, vector<vll> B) {
     return C;
 }
 
-vector<vll> build(const string &S, char c) {
+vector<vll> build(string S, char c) {
     int n = S.size();
     vector<vll> F(n + 1, vll(n + 1, 0));
     for (int i = 0; i <= n; ++i) {
@@ -2496,7 +2645,7 @@ vector<vll> build(const string &S, char c) {
     return F;
 }
 
-ll cal(const string &S, const string &T) {
+ll cal(string S, string T) {
     int n = S.size();
     vector<vll> res(n + 1, vll(n + 1, 0));
     for (int i = 0; i <= n; ++i) res[i][i] = 1;
@@ -2508,7 +2657,7 @@ ll cal(const string &S, const string &T) {
 }
 ```
 
-### KMP
+## KMP
 
 蓝书P82
 
@@ -2548,11 +2697,4 @@ void kmp(const string &txt, const string &pat) {
     }
 }
 ```
-
-## 博弈论
-
-### Nim game
-
-题目描述：通常涉及两名玩家轮流从几堆物品（如石子或饼干）中取走一定数量的物品。每个玩家每次可以从任意一堆中取走任意数量的物品，但必须至少取走一个。最后无法进行操作的玩家输掉游戏。
-如果异或和为0，对后手玩家有利。如果异或和不为零，对先手玩家有利。
 
