@@ -33,21 +33,37 @@ ll inv(ll a) {
 
 const int N = 1e6 + 5;
 int n;
-int o1[N], o2[N];
-map<pii, int> e;
-ll x = 1, y = 1;
+int f[N], siz[N];
+
+int find(int u) { return f[u] == u ? u : f[u] = find(f[u]); }
+
+void merge(int x, int y) {
+    int fx = find(x), fy = find(y);
+    if (fx == fy) return;
+    f[fx] = fy;
+    siz[fy] += siz[fx];
+}
 
 inline void Zlin() {
     cin >> n;
-    for (int i = 1; i < n; i++) cin >> o1[i] >> o2[i];
-    for (int i = 1, u, v; i < n; i++) {
-        cin >> u >> v;
-        e[{u, v}] = e[{v, u}] = 1;
+    for (int i = 1; i <= n; i++) f[i] = i, siz[i] = 1;
+    vector<pii> a(n - 1), b(n - 1);
+    for (auto &[x, y]: a)
+        cin >> x >> y;
+    for (auto &[x, y]: b)
+        cin >> x >> y;
+    ll res = 1;
+    for (int i = 0; i < n - 1; i++) {
+        int x = find(a[i].first), y = find(a[i].second);
+        int xx = find(b[i].first), yy = find(b[i].second);
+        if (!(x == xx && y == yy || x == yy && y == xx)) {
+            res = 0;
+            break;
+        }
+        res = res * inv(1ll * siz[x] * siz[y] % mo) % mo;
+        merge(x, y);
     }
-    for (int i = 1; i < n; i++) {
-
-    }
-    cout << x * inv(y) % mo;
+    cout << res << '\n';
 }
 
 int main() {
