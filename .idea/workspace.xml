@@ -11,7 +11,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Zlin_ACM" targetName="D" />
+      <config projectName="Zlin_ACM" targetName="M" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -21,8 +21,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,20">
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Nanjing Regional Contest/M.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Nanjing Regional Contest/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Nanjing Regional Contest/D.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +139,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="D">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="M" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="M" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="M">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -172,15 +177,7 @@
       <workItem from="1729353401652" duration="298000" />
       <workItem from="1729353706613" duration="21000" />
       <workItem from="1729353734660" duration="19000" />
-      <workItem from="1729353758214" duration="3624000" />
-    </task>
-    <task id="LOCAL-00017" summary="10，5">
-      <option name="closed" value="true" />
-      <created>1728120554421</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1728120554421</updated>
+      <workItem from="1729353758214" duration="4493000" />
     </task>
     <task id="LOCAL-00018" summary="10，5">
       <option name="closed" value="true" />
@@ -566,7 +563,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729355021321</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="10,20">
+      <option name="closed" value="true" />
+      <created>1729358319574</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1729358319574</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
