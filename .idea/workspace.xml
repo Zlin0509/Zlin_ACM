@@ -21,7 +21,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,20">
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Nanjing Regional Contest/M.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,15 +176,7 @@
       <workItem from="1729353401652" duration="298000" />
       <workItem from="1729353706613" duration="21000" />
       <workItem from="1729353734660" duration="19000" />
-      <workItem from="1729353758214" duration="4493000" />
-    </task>
-    <task id="LOCAL-00018" summary="10，5">
-      <option name="closed" value="true" />
-      <created>1728121121703</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1728121121703</updated>
+      <workItem from="1729353758214" duration="5494000" />
     </task>
     <task id="LOCAL-00019" summary="10，6">
       <option name="closed" value="true" />
@@ -571,7 +562,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729358319574</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="10,20">
+      <option name="closed" value="true" />
+      <created>1729372087046</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1729372087046</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
