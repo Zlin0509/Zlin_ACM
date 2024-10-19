@@ -456,7 +456,7 @@ inline int ask(int l, int r) {
 ```c++
 struct Tree {
     int l, r, val, tag;
-} t[N];
+} t[N << 2];
 
 // 建树
 void build(int i, int l, int r) {
@@ -489,6 +489,7 @@ void modify(int i, int l, int r, int z) {
     pushdown(i);
     if (t[i].l >= l && t[i].r <= r) {
         t[i].tag += z;
+      	pushdown(i);
         return;
     }
     modify(i << 1, l, r, z);
