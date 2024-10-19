@@ -20,7 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,19">
+    <list default="true" id="38802b48-beb0-41a6-9a8e-7d21688469e3" name="更改" comment="10,20">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Nanjing Regional Contest/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Nanjing Regional Contest/D.cpp" afterDir="false" />
     </list>
@@ -172,15 +172,7 @@
       <workItem from="1729353401652" duration="298000" />
       <workItem from="1729353706613" duration="21000" />
       <workItem from="1729353734660" duration="19000" />
-      <workItem from="1729353758214" duration="718000" />
-    </task>
-    <task id="LOCAL-00016" summary="10，5">
-      <option name="closed" value="true" />
-      <created>1728118047333</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1728118047333</updated>
+      <workItem from="1729353758214" duration="3624000" />
     </task>
     <task id="LOCAL-00017" summary="10，5">
       <option name="closed" value="true" />
@@ -566,7 +558,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729353466897</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="10,20">
+      <option name="closed" value="true" />
+      <created>1729355021320</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1729355021321</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,9 +607,19 @@
     <MESSAGE value="10,17" />
     <MESSAGE value="10,18" />
     <MESSAGE value="10,19" />
-    <option name="LAST_COMMIT_MESSAGE" value="10,19" />
+    <MESSAGE value="10,20" />
+    <option name="LAST_COMMIT_MESSAGE" value="10,20" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/_CF/GYM/The 2022 ICPC Asia Nanjing Regional Contest/D.cpp</url>
+          <line>52</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="ans" language="ObjectiveC" />
