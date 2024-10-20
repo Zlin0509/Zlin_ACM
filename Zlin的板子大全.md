@@ -511,7 +511,73 @@ int query(int i, int l, int r) {
 ### 李超线段树
 
 ```c++
+const ll N = 1e6 + 5;
+const ll MOD = 998244353;
+const ll inf = 0x7fffffff;
+const double eps = 1e-12;
 
+struct line {
+    db k, b;//斜率和与y轴
+    int l, r;
+    int tag;
+} t[N << 2];
+
+//计算某条线段在某一个横坐标的纵坐标值
+db calc(line a, int pos) { return a.k * pos + a.b; }
+
+//求两条线段交点的横坐标
+int cross(line a, line b) { return floor((a.b - b.b) / (b.k - a.k)); }
+
+void build(int root, int l, int r) {
+    t[root] = {0, 0, 1, 50000, 0};
+    if (l == r) return;
+    int mid = (l + r) >> 1;
+    build(root << 1, l, mid);
+    build(root << 1 | 1, mid + 1, r);
+}
+
+void modify(int root, int l, int r, line k) {
+    if (k.l > r || k.r < l) return;
+    if (k.l <= l && r <= k.r) {
+        if (!t[root].tag) {
+            // 1.这个区间内没有记录有过优势线段：直接把这个区间的势线段修改为这条线段
+            t[root] = k;
+            t[root].tag = 1;
+        } else if (calc(k, l) - calc(t[root], l) > eps && calc(k, r) - calc(t[root], r) > eps) {
+            // 2.新线段完全覆盖了之前记录的线段：优势线段为新线段，直接赋值替换
+            t[root] = k;
+        } else if (calc(k, l) - calc(t[root], l) > eps || calc(k, r) - calc(t[root], r) > eps) {
+            // 3.区间内线段有交点的情况：判断哪根线段为优势线段，把区间记录的值给修改一下，然后把短的那一半递归处理
+            int mid = (l + r) >> 1;//取出区间的中点
+            // 与中点交点更高的一条直线作为优势线段
+            if (calc(k, mid) - calc(t[root], mid) > eps) swap(t[root], k);
+            if (mid - cross(k, t[root]) > eps) {
+                // 交点在中点的左侧，此时老线可能比被标记的优势线段高需要修改
+                modify(root << 1, l, mid, k);
+            } else {
+                // 交点在中点的右侧，同理需要修改右侧区间的优势线段
+                modify(root << 1 | 1, mid + 1, r, k);
+            }
+        }
+        return;
+    }
+    int mid = (l + r) >> 1;
+    modify(root << 1, l, mid, k);
+    modify(root << 1 | 1, mid + 1, r, k);
+}
+
+db query(int root, int l, int r, int x) {
+    //由于是标记永久化，查询就比较类似于标记永久化的线段树
+    //那么就要从线段树一层层递归，直到递归到某个点
+    //每个区间的最优线段的交点取 max
+    if (l == r)return calc(t[root], x);
+    else {
+        int mid = (l + r) >> 1;
+        db ans = calc(t[root], x);
+        if (x <= mid)return max(ans, query(root << 1, l, mid, x));
+        else return max(ans, query(root << 1 | 1, mid + 1, r, x));
+    }
+}
 ```
 
 
@@ -1003,6 +1069,10 @@ inline void init()
 ## 基础
 
 cbrt() 返回立方根
+
+Ceil 向上取整
+
+floor 向下取整	
 
 2ab = (a+b)^2^-a^2^-b^2^ 
 2ab+2ac+2bd = (a+b+c)^2^-a^2^-b^2^-c^2^
