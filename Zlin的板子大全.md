@@ -1699,20 +1699,22 @@ bool cmp(vector<int>& A, vector<int>& B)
 
 ## 快速幂
 
->快速求a^n^的值
->
->```c++
->// 快速幂函数：计算 a^b % mo
->ll qpow(ll a, ll b) {
->         ll res = 1;
->         while (b) {
->             if (b & 1) res = res * a % mo;
->             a = a * a % mo;
->             b >>= 1;
->         }
->         return res;
->     }
->     ```
+快速求a^n^的值
+
+```c++
+// 快速幂函数：计算 a^b % mo
+ll qpow(ll a, ll b) {
+    ll res = 1;
+    while (b) {
+        if (b & 1) res = res * a % mo;
+        a = a * a % mo;
+        b >>= 1;
+    }
+    return res;
+}
+```
+
+
 
 ## 快速GCD
 
