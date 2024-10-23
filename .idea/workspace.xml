@@ -17,6 +17,7 @@
       <config projectName="Zlin_ACM" targetName="2013E" />
       <config projectName="Zlin_ACM" targetName="2014H" />
       <config projectName="Zlin_ACM" targetName="2020E" />
+      <config projectName="Zlin_ACM" targetName="2009G2" />
       <config projectName="Zlin_ACM" targetName="2018B" />
       <config projectName="Zlin_ACM" targetName="2005E1" />
       <config projectName="Zlin_ACM" targetName="WA" />
@@ -30,11 +31,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee0f672a-6412-4a0d-b680-4fca4fabcedd" name="更改" comment="10，23">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/2013/2013E.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/2013/2013E.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/a.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_test/a.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/b.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_test/b.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_test/data.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2009/2009G2.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +108,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="2009G2" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2009G2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2009G2">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="2013D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2013D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2013D">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -151,6 +153,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -158,6 +165,7 @@
     </configuration>
     <list>
       <item itemvalue="CMake 应用程序.2005E1" />
+      <item itemvalue="CMake 应用程序.2009G2" />
       <item itemvalue="CMake 应用程序.2013D" />
       <item itemvalue="CMake 应用程序.2013E" />
       <item itemvalue="CMake 应用程序.2014F" />
@@ -179,6 +187,7 @@
       <updated>1729516594269</updated>
       <workItem from="1729516595375" duration="12519000" />
       <workItem from="1729653201891" duration="14431000" />
+      <workItem from="1729672408728" duration="119000" />
     </task>
     <task id="LOCAL-00001" summary="10，21">
       <option name="closed" value="true" />
@@ -212,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729670195288</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="10，23">
+      <option name="closed" value="true" />
+      <created>1729672509823</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729672509823</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
