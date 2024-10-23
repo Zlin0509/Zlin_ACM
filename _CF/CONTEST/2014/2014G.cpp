@@ -16,22 +16,27 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
 struct ss {
-    int val, cnt;
+    ll val, cnt;
 
     bool operator<(const ss &x) const {
-        return val > x.val;
-    }
-
-    ss operator+(const ss &x) const {
-        return {x.val, cnt + x.cnt};
+        return val < x.val;
     }
 };
 
 const int N = 1e6 + 5;
-int n, m, k;
+ll n, m, k;
 
-bool check(ss a, ss b, int tag) {
+void add(ss &x, ss y, ll tag) {
+    if (x.cnt / m + tag - 1 >= y.val) return;
+    if ((x.cnt + y.cnt) / m + tag - 1 <= y.val) {
+        x = {y.val, x.cnt + y.cnt};
+    } else {
+        x = {y.val, (y.val - tag + 1) * m};
+    }
+}
 
+void add2(ss &x, ss y) {
+    x = {y.val, x.cnt + y.cnt};
 }
 
 inline void Zlin() {
@@ -39,20 +44,39 @@ inline void Zlin() {
     vi d(n), a(n);
     for (int i = 0; i < n; i++) cin >> d[i] >> a[i];
     priority_queue<ss> q;
-    int l = 0, ans = 0, dif, tag;
+    ss u;
+    ll l = 0, ans = 0, dif, tag;
     while (l < n - 1) {
-        ss u{0, 0};
+        u = {0, 0};
+        tag = d[l];
         dif = d[l + 1] - d[l];
         q.push({d[l] + k - 1, a[l]});
-        while (u.cnt < dif * m && !q.empty()) {
-            if (check(u, q.top(), tag)) u = u + q.top();
+        while (u.cnt / m < dif && !q.empty()) {
+            add(u, q.top(), tag);
             q.pop();
         }
-        ans += u.val / m;
-        u.val %= m;
-        if (!u.val) q.push(u);
+        tag = min(dif, u.cnt / m);
+        ans += tag;
+        u.cnt -= m * tag;
+        if (u.cnt) q.push(u);
+        if (tag != dif) {
+            u = {0, 0};
+            tag = (dif - tag) * m;
+            while (u.cnt < tag && !q.empty()) {
+                add2(u, q.top());
+                q.pop();
+            }
+            if (u.cnt > tag && u.val >= d[l + 1]) q.push({u.val, u.cnt - tag});
+        }
+        ++l;
     }
-
+    u = {0, 0};
+    q.push({d[l] + k - 1, a[l]});
+    while (!q.empty()) {
+        add(u, q.top(), d[l]);
+        q.pop();
+    }
+    ans += u.cnt / m;
     cout << ans << '\n';
 }
 
