@@ -31,37 +31,40 @@ ll qpow(ll a, ll b) {
 
 struct ss {
     ll a, b;
+
+    ss operator+(const ss &x) const {
+        ss res{a * x.b + b * x.a, b * x.b};
+        ll z = gcd(res.a, res.b);
+        return {res.a / z, res.b / z};
+    }
+
+    ss operator-(const ss &x) const {
+        ss res{a * x.b - b * x.a, b * x.b};
+        ll z = gcd(res.a, res.b);
+        return {res.a / z, res.b / z};
+    }
+
+    ss operator*(const ss &x) const {
+        ss res{a * x.a, b * x.b};
+        ll z = gcd(res.a, res.b);
+        return {res.a / z, res.b / z};
+    }
 } dp[N][1024]{0, 1}, p[N]{0, 1};
 
 int a[N];
 int n;
 
-ss mul(ss x, ss y) {
-    ss res = {x.a * y.a, x.b * y.b};
-    ll z = gcd(res.a, res.b);
-    res.a /= z, res.b /= z;
-    return res;
-}
-
-ss add(ss x, ss y) {
-    ss res = {x.a * y.b + x.b * y.a, x.b * y.b};
-    ll z = gcd(res.a, res.b);
-    res.a /= z, res.b /= z;
-    return res;
-}
-
 inline void Zlin() {
-    cout << 1;
-//    cin >> n;
-//    for (int i = 1; i <= n; i++) cin >> a[i];
-//    for (int i = 1; i <= n; i++) cin >> p[i].a, p[i].b = 10000;
-//    for (int i = 1; i <= n; i++)
-//        for (int j = 1; j <= 1023; j++)
-//            dp[i][j] = add(mul(p[i], dp[i - 1][j ^ a[i]]), mul(ss{10000 - p[i].a, 10000}, dp[i - 1][j]));
-//    ss res{0, 1};
-//    for (int i = 1; i <= 1023; i++)
-//        res = add(res, mul(dp[n][i], ss{i * i, 1}));
-//    cout << res.a * qpow(res.b, mo - 2) % mo << '\n';
+    cin >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i];
+    for (int i = 1; i <= n; i++) cin >> p[i].a, p[i].b = 10000;
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= 1023; j++)
+            dp[i][j] = p[i] * dp[i - 1][j ^ a[i]] + (ss{1, 1} - p[i]) * dp[i - 1][j];
+    ss res{0, 1};
+    for (int i = 1; i <= 1023; i++)
+        res = res + dp[n][i] * ss{i * i, 1};
+    cout << res.a * qpow(res.b, mo - 2) % mo << '\n';
 }
 
 int main() {
