@@ -36,7 +36,7 @@ inline void Zlin() {
     for (int i = 0; i < len; i++) dp[1][i] = cc[1][i] = used[i];
     for (int i = 2; i <= len; i++) {
         for (int j = 0; j < len; j++) {
-            dp[i][j] = 1e9;
+            dp[i][j] = 1e8;
             for (int q = 0; q < len; q++) {
                 if (dp[i][j] > gcd(cc[i - 1][q], used[j]) + dp[i - 1][q]) {
                     cc[i][j] = gcd(cc[i - 1][q], used[j]);
@@ -45,7 +45,7 @@ inline void Zlin() {
             }
         }
     }
-    tag = 1e9;
+    tag = 1e8;
     for (int i = 0; i < len; i++) tag = min(tag, dp[len][i]);
 //    cout << tag << " ";
     cout << ans + tag << '\n';
@@ -55,7 +55,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
+//    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }

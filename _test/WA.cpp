@@ -16,14 +16,29 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
 const int N = 1e5 + 5;
-int n, a[N], dp[30][30], cc[30][30];
+int n, a[N], tt = 1e8;
+map<int, int> tzt;
+vi used;
+
+inline void dfs(int dep, int cal, int sum) {
+    if (dep == used.size()) {
+        tt = min(tt, sum);
+        return;
+    }
+    for (auto it: used) {
+        if (tzt[it]) continue;
+        tzt[it] = 1;
+        dfs(dep + 1, gcd(cal, it), sum + gcd(cal, it));
+        tzt[it] = 0;
+    }
+}
 
 inline void Zlin() {
     cin >> n;
     for (int i = 1; i <= n; i++) cin >> a[i];
     sort(a + 1, a + 1 + n);
     int tag = a[1];
-    vi used;
+
     used.push_back(a[1]);
     for (int i = 2; i <= n; i++) {
         if (gcd(tag, a[i]) < tag) {
@@ -32,30 +47,19 @@ inline void Zlin() {
         }
     }
     ll ans = 1ll * tag * (n - used.size());
-    int len = used.size();
-    for (int i = 0; i < len; i++) dp[1][i] = cc[1][i] = used[i];
-    for (int i = 2; i <= len; i++) {
-        for (int j = 0; j < len; j++) {
-            dp[i][j] = 1e9;
-            for (int q = 0; q < len; q++) {
-                if (dp[i][j] > gcd(cc[i - 1][q], used[j]) + dp[i - 1][q]) {
-                    cc[i][j] = gcd(cc[i - 1][q], used[j]);
-                    dp[i][j] = cc[i][j] + dp[i - 1][q];
-                }
-            }
-        }
+    for (auto it: used) {
+        tzt[it] = 1;
+        dfs(1, it, it);
+        tzt[it] = 0;
     }
-    tag = 1e9;
-    for (int i = 0; i < len; i++) tag = min(tag, dp[len][i]);
-//    cout << tag << " ";
-    cout << ans + tag << '\n';
+    cout << ans + tt << '\n';
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
+//    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }

@@ -19,6 +19,7 @@
       <config projectName="Zlin_ACM" targetName="2020E" />
       <config projectName="Zlin_ACM" targetName="2018B" />
       <config projectName="Zlin_ACM" targetName="2005E1" />
+      <config projectName="Zlin_ACM" targetName="WA" />
       <config projectName="Zlin_ACM" targetName="test" />
     </generated>
   </component>
@@ -29,9 +30,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee0f672a-6412-4a0d-b680-4fca4fabcedd" name="更改" comment="10，23">
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2013/2013E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/AC.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/WA.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/a.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/b.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/data.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/data.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/duipai.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/z" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/2014/2014G.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/2014/2014G.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/2013/2013E.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/2013/2013E.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,13 +87,16 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "CMake 应用程序.2005E1.executor": "Run",
     "CMake 应用程序.2013D.executor": "Run",
+    "CMake 应用程序.2013E.executor": "Run",
     "CMake 应用程序.2014F.executor": "Run",
     "CMake 应用程序.2014G.executor": "Run",
     "CMake 应用程序.2014H.executor": "Run",
     "CMake 应用程序.2018B.executor": "Run",
     "CMake 应用程序.2020E.executor": "Run",
+    "CMake 应用程序.WA.executor": "Run",
     "CMake 应用程序.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -145,6 +159,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WA" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="WA" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="WA">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -160,6 +179,7 @@
       <item itemvalue="CMake 应用程序.2018B" />
       <item itemvalue="CMake 应用程序.2020E" />
       <item itemvalue="CMake 应用程序.test" />
+      <item itemvalue="CMake 应用程序.WA" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -171,7 +191,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729516594269</updated>
       <workItem from="1729516595375" duration="12519000" />
-      <workItem from="1729653201891" duration="6437000" />
+      <workItem from="1729653201891" duration="12025000" />
     </task>
     <task id="LOCAL-00001" summary="10，21">
       <option name="closed" value="true" />
@@ -189,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729660333761</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="10，23">
+      <option name="closed" value="true" />
+      <created>1729664997451</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729664997451</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +229,7 @@
     <isAutomaticReloadCMake value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="10，21" />
     <MESSAGE value="10，23" />
     <option name="LAST_COMMIT_MESSAGE" value="10，23" />
@@ -215,5 +244,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="dp" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
