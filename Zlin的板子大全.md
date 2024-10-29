@@ -316,6 +316,51 @@ inline void Zlin() {
 
 ## 基础
 
+### bitset
+
+```c++
+// 定义两个8位的bitset，并通过字符串初始化
+bitset<8> b1("1010");   // b1为 00001010
+bitset<8> b2("1100");   // b2为 00001100
+
+// 基本操作
+cout << "b1: " << b1 << '\n';                    // 输出b1的值
+cout << "b2: " << b2 << '\n';                    // 输出b2的值
+cout << "b1 size: " << b1.size() << '\n';        // 输出b1的位数（大小）
+cout << "b1 count of 1s: " << b1.count() << '\n';// 输出b1中1的个数
+cout << "b1 any 1s: " << b1.any() << '\n';       // 检查b1中是否存在至少一个1
+cout << "b1 all 1s: " << b1.all() << '\n';       // 检查b1的所有位是否都是1
+cout << "b1 none 1s: " << b1.none() << '\n';     // 检查b1的所有位是否都是0
+
+// 位操作
+b1.set();                // 将b1的所有位都设置为1
+cout << "b1 after set: " << b1 << '\n';
+b1.reset();              // 将b1的所有位都重置为0
+cout << "b1 after reset: " << b1 << '\n';
+b1.flip();               // 将b1的所有位取反（0变1，1变0）
+cout << "b1 after flip: " << b1 << '\n';
+b1.set(2);               // 将b1的第2位（从0开始计数）设置为1
+cout << "b1 after setting bit 2: " << b1 << '\n';
+cout << "b1 test bit 2: " << b1.test(2) << '\n'; // 测试b1的第2位是否为1
+
+// 位运算
+cout << "b1 & b2: " << (b1 & b2) << '\n';        // b1 和 b2 的按位与操作
+cout << "b1 | b2: " << (b1 | b2) << '\n';        // b1 和 b2 的按位或操作
+cout << "b1 ^ b2: " << (b1 ^ b2) << '\n';        // b1 和 b2 的按位异或操作
+cout << "~b1: " << (~b1) << '\n';                // 对b1按位取反
+cout << "b1 << 2: " << (b1 << 2) << '\n';        // 将b1左移2位
+cout << "b1 >> 2: " << (b1 >> 2) << '\n';        // 将b1右移2位
+
+// 单个位访问与修改
+cout << "b1[2]: " << b1[2] << '\n';              // 访问b1的第2位的值
+b1[3] = 1;                                       // 将b1的第3位（从0开始计数）设置为1
+cout << "b1 after modifying bit 3: " << b1 << '\n';
+
+// 转换操作
+cout << "b1 to string: " << b1.to_string() << '\n'; // 将b1转换为字符串形式
+cout << "b1 to ulong: " << b1.to_ulong() << '\n';   // 将b1转换为无符号长整数
+```
+
 ### priority_queue
 
 不标注默认大根堆，pair内容先比较第一个元素，然后比较第二个元素
@@ -2224,7 +2269,7 @@ inline int lca(int u, int v) {
 >        if (!dfn[y]) {
 >            tarjan(y, j);
 >            low[x] = min(low[x], low[y]);
->            if (low[y] > dfn[x]) //如果low值大于dfn值，说明只能从x到y，为割边
+>            if (low[y] > dfn[x]) //如果low值大于dfn值，说明只能从x到y为割边
 >                bri[++cnt] = {x, y};
 >        } else if (j != (in_edg ^ 1)) //判断是否为反边
 >            low[x] = min(low[x], dfn[y]);

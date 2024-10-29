@@ -21,24 +21,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee0f672a-6412-4a0d-b680-4fca4fabcedd" name="更改" comment="10，24">
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1970/G2.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1971/H1.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/duipai" afterDir="false" />
+    <list default="true" id="ee0f672a-6412-4a0d-b680-4fca4fabcedd" name="更改" comment="10，29">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/sol/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/sol/D.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/sol/I.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/I.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/AC.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_test/AC.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/WA.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_test/WA.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/a" beforeDir="false" afterPath="$PROJECT_DIR$/_test/a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/a.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_test/a.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/b" beforeDir="false" afterPath="$PROJECT_DIR$/_test/b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/b.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_test/b.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/data" beforeDir="false" afterPath="$PROJECT_DIR$/_test/data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/data.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_test/data.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_test/data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/1970/G2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/1970/G2.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +79,7 @@
     "CMake 应用程序.2018B.executor": "Run",
     "CMake 应用程序.2020E.executor": "Run",
     "CMake 应用程序.D.executor": "Run",
+    "CMake 应用程序.G2.executor": "Run",
     "CMake 应用程序.H1.executor": "Run",
     "CMake 应用程序.I.executor": "Run",
     "CMake 应用程序.WA.executor": "Run",
@@ -143,7 +130,7 @@
       <updated>1729516594269</updated>
       <workItem from="1729516595375" duration="12519000" />
       <workItem from="1729653201891" duration="14431000" />
-      <workItem from="1729672408728" duration="11769000" />
+      <workItem from="1729672408728" duration="15550000" />
     </task>
     <task id="LOCAL-00001" summary="10，21">
       <option name="closed" value="true" />
@@ -201,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729754765777</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="10，29">
+      <option name="closed" value="true" />
+      <created>1730191441619</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730191441619</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +212,8 @@
     <MESSAGE value="10，21" />
     <MESSAGE value="10，23" />
     <MESSAGE value="10，24" />
-    <option name="LAST_COMMIT_MESSAGE" value="10，24" />
+    <MESSAGE value="10，29" />
+    <option name="LAST_COMMIT_MESSAGE" value="10，29" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
