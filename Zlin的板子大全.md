@@ -1943,6 +1943,57 @@ $$
 
 奇数完全图的欧拉路径等于他的所有边，欧拉路径要求图中奇数度的定点不超过二
 
+## 哈蜜顿路径
+
+### 状压DP
+
+mask按位存经过的点
+例如：mask=5 换成二进制位 101 说明节点2和0已经经过。 mask=10 换成二进制 1010 说明节点3和1已经经过
+
+```c++
+// 全局变量定义
+int n, dp[1 << N][N]; // n: 节点数量，dp: 动态规划表
+vi e[N]; // 邻接表
+
+// 初始化函数
+void init() {
+    // 将 dp 表初始化为 -inf，表示未访问的状态
+    for (int i = 0; i < (1 << n); i++)
+        memset(dp[i], -inf, sizeof(dp[i])); // 每个状态都初始化为 -inf
+    for (int i = 0; i < n; i++)
+        e[i].clear(); // 清空邻接表
+}
+
+// 哈密顿路径计算函数
+int hmd() {
+    // 从每个节点作为起点初始化
+    for (int i = 0; i < n; i++) 
+        dp[1 << i][i] = 1; // 每个节点的状态设置为可访问，路径长度为1
+
+    // 遍历所有状态和节点
+    for (int mask = 1; mask < (1 << n); mask++) {
+        for (int u = 0; u < n; u++) {
+            if (dp[mask][u] == -inf) continue; // 如果状态不可达，跳过
+            
+            // 遍历与节点 u 相邻的所有节点 v
+            for (int v: e[u]) {
+                if (mask & (1 << v)) continue; // 如果 v 已访问，跳过
+                int newMask = mask | (1 << v); // 更新状态，标记节点 v 为已访问
+                dp[newMask][v] = max(dp[newMask][v], dp[mask][u] + 1); // 更新经过节点 v 的最大路径长度
+            }
+        }
+    }
+
+    int res = 1; // 至少会有一个节点
+    // 查找经过所有节点的最大路径
+    for (int i = 0; i < n; i++)
+        res = max(res, dp[(1 << n) - 1][i]); // 更新最终结果
+    return res; // 返回最大路径长度
+}
+```
+
+
+
 ## 欧拉路径
 
 #### 无向图
