@@ -1,5 +1,5 @@
 //
-// Created by Zlin on 2024/10/24.
+// Created by Zlin on 2024/10/29.
 //
 
 #include "bits/stdc++.h"
@@ -15,26 +15,17 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
+const int N = 310;
+
 inline void Zlin() {
-    double p,q;
-    cin>>p>>q;
-    if(sqrt(p+2*q)==(int)sqrt(p+2*q))
-    {
-        int k=(int) sqrt(p+2*q);
-        cout<<1<<" "<<k-1<<endl;
-    }
-    else
-    {
-        cout<<0<<" "<<0<<endl;
-    }
+
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-//    int ttt;
-//    cin >> ttt;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }

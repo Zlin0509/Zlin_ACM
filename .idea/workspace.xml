@@ -11,17 +11,8 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Zlin_ACM" targetName="2013D" />
-      <config projectName="Zlin_ACM" targetName="2014G" />
-      <config projectName="Zlin_ACM" targetName="2014F" />
-      <config projectName="Zlin_ACM" targetName="2013E" />
-      <config projectName="Zlin_ACM" targetName="2014H" />
-      <config projectName="Zlin_ACM" targetName="2020E" />
-      <config projectName="Zlin_ACM" targetName="2009G2" />
-      <config projectName="Zlin_ACM" targetName="2018B" />
-      <config projectName="Zlin_ACM" targetName="2005E1" />
-      <config projectName="Zlin_ACM" targetName="WA" />
-      <config projectName="Zlin_ACM" targetName="test" />
+      <config projectName="Zlin_ACM" targetName="G2" />
+      <config projectName="Zlin_ACM" targetName="H1" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -30,10 +21,24 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee0f672a-6412-4a0d-b680-4fca4fabcedd" name="更改" comment="10，23">
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/sol/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/sol/E.cpp" afterDir="false" />
+    <list default="true" id="ee0f672a-6412-4a0d-b680-4fca4fabcedd" name="更改" comment="10，24">
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1970/G2.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1971/H1.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_test/duipai" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/sol/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/sol/D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/sol/I.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/GYM/The 2021 ICPC Asia Shanghai Regional Programming Contest/I.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/AC.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_test/AC.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/WA.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_test/WA.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/a" beforeDir="false" afterPath="$PROJECT_DIR$/_test/a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/a.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_test/a.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/b" beforeDir="false" afterPath="$PROJECT_DIR$/_test/b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/b.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_test/b.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/data" beforeDir="false" afterPath="$PROJECT_DIR$/_test/data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/data.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_test/data.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_test/data.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,81 +81,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;CMake 应用程序.2005E1.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.2013D.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.2013E.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.2014F.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.2014G.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.2014H.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.2018B.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.2020E.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.WA.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "CMake 应用程序.2005E1.executor": "Run",
+    "CMake 应用程序.2013D.executor": "Run",
+    "CMake 应用程序.2013E.executor": "Run",
+    "CMake 应用程序.2014F.executor": "Run",
+    "CMake 应用程序.2014G.executor": "Run",
+    "CMake 应用程序.2014H.executor": "Run",
+    "CMake 应用程序.2018B.executor": "Run",
+    "CMake 应用程序.2020E.executor": "Run",
+    "CMake 应用程序.D.executor": "Run",
+    "CMake 应用程序.H1.executor": "Run",
+    "CMake 应用程序.I.executor": "Run",
+    "CMake 应用程序.WA.executor": "Run",
+    "CMake 应用程序.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.sync",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="CMake 应用程序.2013E">
-    <configuration name="2005E1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2005E1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2005E1">
+}]]></component>
+  <component name="RunManager" selected="CMake 应用程序.G2">
+    <configuration name="G2" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="G2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="G2">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="2009G2" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2009G2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2009G2">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="2013D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2013D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2013D">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="2013E" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2013E" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2013E">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="2014F" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2014F" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2014F">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="2014G" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2014G" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2014G">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="2014H" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2014H" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2014H">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="2018B" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2018B" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2018B">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="2020E" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="2020E" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="2020E">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WA" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="WA" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="WA">
+    <configuration name="H1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="H1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="H1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -160,23 +128,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="test">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="CMake 应用程序.2005E1" />
-      <item itemvalue="CMake 应用程序.2009G2" />
-      <item itemvalue="CMake 应用程序.2013D" />
-      <item itemvalue="CMake 应用程序.2013E" />
-      <item itemvalue="CMake 应用程序.2014F" />
-      <item itemvalue="CMake 应用程序.2014G" />
-      <item itemvalue="CMake 应用程序.2014H" />
-      <item itemvalue="CMake 应用程序.2018B" />
-      <item itemvalue="CMake 应用程序.2020E" />
-      <item itemvalue="CMake 应用程序.test" />
-      <item itemvalue="CMake 应用程序.WA" />
+      <item itemvalue="CMake 应用程序.G2" />
+      <item itemvalue="CMake 应用程序.H1" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -189,7 +143,7 @@
       <updated>1729516594269</updated>
       <workItem from="1729516595375" duration="12519000" />
       <workItem from="1729653201891" duration="14431000" />
-      <workItem from="1729672408728" duration="1081000" />
+      <workItem from="1729672408728" duration="11769000" />
     </task>
     <task id="LOCAL-00001" summary="10，21">
       <option name="closed" value="true" />
@@ -239,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729672534557</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="10，24">
+      <option name="closed" value="true" />
+      <created>1729754765777</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729754765777</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +216,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="10，21" />
     <MESSAGE value="10，23" />
-    <option name="LAST_COMMIT_MESSAGE" value="10，23" />
+    <MESSAGE value="10，24" />
+    <option name="LAST_COMMIT_MESSAGE" value="10，24" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

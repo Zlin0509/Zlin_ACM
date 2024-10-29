@@ -15,13 +15,10 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-int N = 1000;
+int N = 1e7;
 
 inline void Zlin() {
-    int n = rand() % 10000;
-    cout << n << " ";
-    for (int i = 1; i <= n; i++)
-        cout << rand() % 10000 << ' ';
+    cout << rand() % N + 1 << ' ' << rand() % N + 1;
 }
 
 int main() {

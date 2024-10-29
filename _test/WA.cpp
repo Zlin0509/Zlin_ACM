@@ -1,65 +1,38 @@
-//
-// Created by Zlin on 2024/10/23.
-//
+#include <bits/stdc++.h>
 
-#include "bits/stdc++.h"
-
+#define int long long
+#define endl '\n'
+#define ff double
 using namespace std;
 
-typedef double db;
-typedef long double ldb;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<int> vi;
-typedef vector<long long> vll;
-typedef pair<int, int> pii;
-typedef pair<long long, long long> pll;
+int p, q;
 
-const int N = 1e5 + 5;
-int n, a[N], tt = 1e8;
-map<int, int> tzt;
-vi used;
+int sqr(int x) { return x * x; }
 
-inline void dfs(int dep, int cal, int sum) {
-    if (dep == used.size()) {
-        tt = min(tt, sum);
+void solve() {
+    cin >> p >> q;
+    int tmp = sqr(p) - sqr(2 * q);
+    if (tmp < 0) {
+        cout << "0 0\n";
         return;
     }
-    for (auto it: used) {
-        if (tzt[it]) continue;
-        tzt[it] = 1;
-        dfs(dep + 1, gcd(cal, it), sum + gcd(cal, it));
-        tzt[it] = 0;
+    ff s = sqrt(tmp);
+    if (s == (int) s) {
+        int ans1 = s + p;
+        int ans2 = q * 2;
+        int g = gcd(ans1, ans2);
+        cout << ans1 / g << " " << ans2 / g << endl;
+    } else {
+        cout << "0 0\n";
+        return;
     }
 }
 
-inline void Zlin() {
-    cin >> n;
-    for (int i = 1; i <= n; i++) cin >> a[i];
-    sort(a + 1, a + 1 + n);
-    int tag = a[1];
+signed main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int t=1;
+    while (t--) solve();
 
-    used.push_back(a[1]);
-    for (int i = 2; i <= n; i++) {
-        if (gcd(tag, a[i]) < tag) {
-            tag = gcd(tag, a[i]);
-            used.push_back(a[i]);
-        }
-    }
-    ll ans = 1ll * tag * (n - used.size());
-    for (auto it: used) {
-        tzt[it] = 1;
-        dfs(1, it, it);
-        tzt[it] = 0;
-    }
-    cout << ans + tt << '\n';
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int ttt = 1;
-//    cin >> ttt;
-    while (ttt--) Zlin();
     return 0;
 }

@@ -2128,43 +2128,38 @@ inline int lca(int u, int v) {
 >追溯值 low[x] 从x节点出发，能到的最早的时间戳
 >
 >```c++
->vector<int> e[N];
+>vi e[N];
 >int dfn[N], low[N], tot;
 >int stk[N], instk[N], top;
->int scc[N], siz[N], cnt;
->inline void tarjan(int x)
->{
+>int scc[N], cnt;
+>
+>inline void tarjan(int x) {
 >    // 入X点，盖时间戳，入栈
->    dfn[x] = low[x] = ++tot;
->    stk[++top] = x, instk[x] = 1;
->    for (int y : e[x])
->    {
->        // 未访问
->        if (!dfn[y])
->        {
->            tarjan(y);
->            low[x] = min(low[x], low[y]);
->        }
->        else if (instk[y])
->            low[x] = min(low[x], dfn[y]);
->    }
->    // X为强连通图的根,输出分量图
->    if (dfn[x] == low[x])
->    {
->        int y;
->        ++cnt;
->        do
->        {
->            y = stk[top--];
->            instk[y] = 0;
->            scc[y] = cnt;
->            siz[cnt]++;
->        } while (y != x);
->    }
->}
->```
->
->
+>        dfn[x] = low[x] = ++tot;
+>        stk[++top] = x, instk[x] = 1;
+>        for (int y: e[x]) {
+>            // 未访问
+>             if (!dfn[y]) {
+>                 tarjan(y);
+>                 low[x] = min(low[x], low[y]);
+>             } else if (instk[y])
+>                 low[x] = min(low[x], dfn[y]);
+>         }
+>     // X为强连通图的根,输出分量图
+>         if (dfn[x] == low[x]) {
+>            int y;
+>            ++cnt;
+>            do {
+>                y = stk[top--];
+>                 instk[y] = 0;
+>                 scc[y] = cnt;
+>                 siz[cnt]++;
+>             } while (y != x);
+>         }
+>     }
+>     ```
+>     
+>     
 
 ### 点双连通分量
 

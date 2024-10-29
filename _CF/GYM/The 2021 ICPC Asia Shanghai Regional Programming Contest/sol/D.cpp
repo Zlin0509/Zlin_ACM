@@ -14,7 +14,7 @@ void solve() {
     if(s == (int)s) {
         int ans1 = s + p;
         int ans2 = q * 2;
-        int g = __gcd(ans1, ans2);
+        int g = gcd(ans1, ans2);
         cout << ans1 / g << " " << ans2 / g << endl;
     } else {
         cout << "0 0\n"; return ;
