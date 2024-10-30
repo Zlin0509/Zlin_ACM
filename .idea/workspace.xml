@@ -20,11 +20,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee0f672a-6412-4a0d-b680-4fca4fabcedd" name="更改" comment="10，29">
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1926/G.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1933/F.cpp" afterDir="false" />
+    <list default="true" id="ee0f672a-6412-4a0d-b680-4fca4fabcedd" name="更改" comment="10，30">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/1941/G.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/1941/G.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/1926/G.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/1926/G.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +121,7 @@
       <updated>1729516594269</updated>
       <workItem from="1729516595375" duration="12519000" />
       <workItem from="1729653201891" duration="14431000" />
-      <workItem from="1729672408728" duration="24688000" />
+      <workItem from="1729672408728" duration="25708000" />
     </task>
     <task id="LOCAL-00001" summary="10，21">
       <option name="closed" value="true" />
@@ -213,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730206347923</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="10，30">
+      <option name="closed" value="true" />
+      <created>1730259279752</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1730259279752</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +236,8 @@
     <MESSAGE value="10，23" />
     <MESSAGE value="10，24" />
     <MESSAGE value="10，29" />
-    <option name="LAST_COMMIT_MESSAGE" value="10，29" />
+    <MESSAGE value="10，30" />
+    <option name="LAST_COMMIT_MESSAGE" value="10，30" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
