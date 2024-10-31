@@ -2031,31 +2031,66 @@ int hmd() {
 
 ## 欧拉路径
 
-#### 无向图
+### 无向图
 
-##### 存在欧拉通路的充要条件
+存在欧拉通路的充要条件
 
 非零度顶点是连通的
 恰有 2 个奇度顶点
 
-##### 存在欧拉回路的充要条件
+存在欧拉回路的充要条件
 
 非零度顶点是连通的
 顶点的度数都是偶数
 
-#### 有向图
+### 有向图
 
-##### 存在欧拉通路的充要条件
+存在欧拉通路的充要条件
 
 非零度顶点是弱连通的
 至多一个顶点的出度与入度之差为 1
 至多一个顶点的入度与出度之差为 1
 其他顶点的入度和出度相等
 
-##### 存在欧拉回路的充要条件
+存在欧拉回路的充要条件
 
 非零度顶点是强连通的
 每个顶点的入度和出度相等
+
+```c++
+void add(int u, int v) {
+    e[u].push_back(v);
+    out[u]++, in[v]++;
+}
+
+bool check_eul() {
+    int l = 0, r = 0;
+    for (int i = 1; i <= n; i++) {
+        if (out[i] - in[i] == 1) l++;
+        else if (in[i] - out[i] == 1) r++;
+        else if (in[i] != out[i]) return false;
+    }
+    return (l == 0 && r == 0) || (l == 1 && r == 1);
+}
+
+void findEul(int start) {
+    stack<int> stk;
+    stk.push(start);
+    while (!stk.empty()) {
+        int u = stk.top();
+        if (!e[u].empty()) {
+            int v = e[u].back();
+            e[u].pop_back();  // 移除已访问的边
+            stk.push(v);
+        } else {
+            eul.push_back(u);
+            stk.pop();
+        }
+    }
+}
+```
+
+
 
 ###  Hierholzer 算法
 
