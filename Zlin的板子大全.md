@@ -9,8 +9,6 @@
 
 
 
-
-
 你看nm呢，回去训练
 
 # 杂项
@@ -310,7 +308,44 @@ inline void Zlin() {
 }
 ```
 
+## 哈希
 
+### 随机数生成
+
+**std::mt19937**
+
+这里使用 chrono::steady_clock::now().time_since_epoch().count() 作为随机数种子，这样每次运行代码时种子都会不同，从而保证生成的随机数在不同次运行间不会重复。
+
+```c++
+// 初始化随机数生成器
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+// 生成一个64位随机哈希值
+ull generateRandomHash() {
+    // 返回生成的随机哈希值
+    return rng();
+}
+```
+
+### 字符串哈希
+
+#### 自然溢出
+
+hash[i]=hash[i−1]∗Base+idx(s[i])
+
+数据结构要求ull，不能用ll
+
+#### 单哈希
+
+hash[i]=(hash[i−1]∗Base+idx(s[i]))%MOD
+
+数据结构无要求，可以用ll
+
+#### 双哈希
+
+Base，MOD不同，进行两遍hash
+
+## 
 
 # 数据结构
 
@@ -2045,9 +2080,28 @@ void dfs(int u) {
 
 ### 无向图找环
 
-DFS
+#### DFS
 
-DSU
+```c++
+bool Dfs(int u) {
+    vis[u] = 1;
+    for (int i = head[u]; i; i = e[i].nxt) {
+        int v = e[i].to;
+        if (!vis[v]) {
+            f[v] = u;
+            if (Dfs(v)) return true;
+        } else if (v != f[u]) {
+            cc.push_back(v);
+            for (int x = u; x != v; x = f[x])
+                cc.push_back(x);
+            return true;
+        }
+    }
+    return false;
+}
+```
+
+#### DSU
 
 ### 判断奇数环和偶数环
 
@@ -2249,7 +2303,6 @@ inline int lca(int u, int v) {
 >                y = stk[top--];
 >                 instk[y] = 0;
 >                 scc[y] = cnt;
->                 siz[cnt]++;
 >             } while (y != x);
 >         }
 >     }
@@ -2735,24 +2788,6 @@ ll dinic() {
 
 
 # 字符串
-
-## 字符串哈希
-
-### 自然溢出
-
-hash[i]=hash[i−1]∗Base+idx(s[i])
-
-数据结构要求ull，不能用ll
-
-### 单哈希
-
-hash[i]=(hash[i−1]∗Base+idx(s[i]))%MOD
-
-数据结构无要求，可以用ll
-
-### 双哈希
-
-Base，MOD不同，进行两遍hash
 
 ## Manacher算法
 
