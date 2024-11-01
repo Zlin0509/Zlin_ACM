@@ -2156,9 +2156,8 @@ inline void dijkstra() {
     dis[s] = 0;
     q.push({0, s});
     while (!q.empty()) {
-        node u = q.top();
+        int x = q.top().pos;
         q.pop();
-        int x = u.pos;
         if (vis[x])
             continue;
         vis[x] = 1;
@@ -2307,6 +2306,61 @@ inline int lca(int u, int v) {
 
 
 ## Tarjan算法
+
+### Tarjan缩点/有向图
+
+```c++
+vi e[N], E[N];
+int in[N], out[N];
+
+int dfn[N], low[N], cnt;
+int stk[N], instk[N], top;
+int scc[N], siz[N], num;
+
+ll val[N], f2[N], ans2;
+int n, m, a[N], f1[N], ans1;
+
+void tarjan(int x) {
+    dfn[x] = low[x] = ++cnt;
+    stk[++top] = x, instk[x] = 1;
+    for (int y: E[x]) {
+        if (!dfn[y]) {
+            tarjan(y);
+            low[x] = min(low[x], low[y]);
+        } else if (instk[y]) {
+            low[x] = min(low[x], dfn[y]);
+        }
+    }
+    if (low[x] == dfn[x]) {
+        int y;
+        ++num;
+        do {
+            y = stk[top--];
+            instk[y] = 0;
+            scc[y] = num;
+            val[num] += a[y];
+            siz[num]++;
+        } while (x != y);
+    }
+}
+
+void build_new() {
+    for (int i = 1; i <= n; i++) if (!dfn[i]) tarjan(i);
+    for (int x = 1; x <= n; x++)
+        for (int y: E[x])
+            if (scc[x] != scc[y])
+                e[scc[x]].push_back(scc[y]);
+    for (int i = 1; i <= num; i++) {
+        sort(e[i].begin(), e[i].end());
+        e[i].erase(unique(e[i].begin(), e[i].end()), e[i].end());
+    }
+    for (int x = 1; x <= num; x++)
+        for (int y: e[x])
+            ++out[x], ++in[y];
+}
+```
+
+
 
 >时间戳 dfn[x] 节点x第一次被访问的顺序
 >

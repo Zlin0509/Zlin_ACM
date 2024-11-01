@@ -13,6 +13,7 @@
     <generated>
       <config projectName="Zlin_ACM" targetName="B" />
       <config projectName="Zlin_ACM" targetName="E" />
+      <config projectName="Zlin_ACM" targetName="C" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -21,11 +22,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e3c5c5f-6126-4bad-b4cd-15939d3e3565" name="更改" comment="10,31">
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1887/B.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1900/E.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1907/G_AC.cpp" afterDir="false" />
+    <list default="true" id="7e3c5c5f-6126-4bad-b4cd-15939d3e3565" name="更改" comment="11,1">
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1876/C.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/1887/B.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/1887/B.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +71,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "CMake 应用程序.B.executor": "Run",
     "CMake 应用程序.E.executor": "Run",
     "CMake 应用程序.G.executor": "Run",
     "CMake 应用程序.P1127.executor": "Run",
@@ -94,6 +96,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="C" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="C" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="C">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="E" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="E" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="E">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -106,6 +113,7 @@
     </configuration>
     <list>
       <item itemvalue="CMake 应用程序.B" />
+      <item itemvalue="CMake 应用程序.C" />
       <item itemvalue="CMake 应用程序.E" />
     </list>
   </component>
@@ -118,7 +126,7 @@
       <option name="presentableId" value="Default" />
       <updated>1730339165975</updated>
       <workItem from="1730339167007" duration="18783000" />
-      <workItem from="1730363099346" duration="6618000" />
+      <workItem from="1730363099346" duration="10275000" />
     </task>
     <task id="LOCAL-00001" summary="10,31">
       <option name="closed" value="true" />
@@ -144,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730363435501</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="11,1">
+      <option name="closed" value="true" />
+      <created>1730440812893</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730440812893</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +173,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="10,31" />
-    <option name="LAST_COMMIT_MESSAGE" value="10,31" />
+    <MESSAGE value="11,1" />
+    <option name="LAST_COMMIT_MESSAGE" value="11,1" />
   </component>
 </project>
