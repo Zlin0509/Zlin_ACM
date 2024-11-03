@@ -23,6 +23,7 @@ inline void Zlin() {
     if (a < x && b < x) {
         cout << "NO" << '\n';
         return;
+
     }
     if ((a - x) % z == 0 || (b - x) % z == 0) {
         cout << "YES" << '\n';
