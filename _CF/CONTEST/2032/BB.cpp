@@ -15,18 +15,17 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
+
 inline void Zlin() {
-    int n;
-    cin >> n;
-    vi a(n << 1);
-    int ans1, ans2, cnt = 0;
-    for (int i = 0; i < n * 2; i++) {
-        cin >> a[i];
-        if (a[i]) ++cnt;
+    int n, k;
+    cin >> n >> k;
+    if (k != n / 2 + 1) {
+        cout << -1 << '\n';
+        return;
     }
-    if (cnt > n) cnt = n * 2 - cnt;
-    ans1 = cnt % 2, ans2 = cnt;
-    cout << ans1 << ' ' << ans2 << '\n';
+    cout << n << '\n';
+    for (int i = 1; i <= n; i++) cout << i << ' ';
+    cout << '\n';
 }
 
 int main() {

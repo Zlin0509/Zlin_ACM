@@ -12,6 +12,11 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="Zlin_ACM" targetName="A" />
+      <config projectName="Zlin_ACM" targetName="B" />
+      <config projectName="Zlin_ACM" targetName="E" />
+      <config projectName="Zlin_ACM" targetName="F" />
+      <config projectName="Zlin_ACM" targetName="C" />
+      <config projectName="Zlin_ACM" targetName="D" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -21,9 +26,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e3c5c5f-6126-4bad-b4cd-15939d3e3565" name="更改" comment="11,1">
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2032/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1866/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2032/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2032/BB.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2032/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2032/CC.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Game/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Game/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Game/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Game/D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Game/E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Game/F.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/1876/C.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/1876/C.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/2032/A.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/2032/A.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/AC.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_test/AC.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_test/WA.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_test/WA.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,9 +85,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "CMake 应用程序.A.executor": "Run",
     "CMake 应用程序.B.executor": "Run",
+    "CMake 应用程序.BB.executor": "Run",
     "CMake 应用程序.C.executor": "Run",
+    "CMake 应用程序.CC.executor": "Run",
+    "CMake 应用程序.D.executor": "Run",
     "CMake 应用程序.E.executor": "Run",
+    "CMake 应用程序.F.executor": "Run",
     "CMake 应用程序.G.executor": "Run",
     "CMake 应用程序.P1127.executor": "Run",
     "CMake 应用程序.P1155.executor": "Run",
@@ -88,8 +110,33 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="CMake 应用程序.F">
     <configuration name="A" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="A" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="A">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="B" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="B" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="B">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="C" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="C">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="D">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="E" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="E" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="E">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="F" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="F" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="F">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -99,6 +146,14 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="CMake 应用程序.A" />
+      <item itemvalue="CMake 应用程序.B" />
+      <item itemvalue="CMake 应用程序.C" />
+      <item itemvalue="CMake 应用程序.D" />
+      <item itemvalue="CMake 应用程序.E" />
+      <item itemvalue="CMake 应用程序.F" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -109,7 +164,7 @@
       <option name="presentableId" value="Default" />
       <updated>1730339165975</updated>
       <workItem from="1730339167007" duration="18783000" />
-      <workItem from="1730363099346" duration="14779000" />
+      <workItem from="1730363099346" duration="35414000" />
     </task>
     <task id="LOCAL-00001" summary="10,31">
       <option name="closed" value="true" />
@@ -151,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730445025875</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="11,1">
+      <option name="closed" value="true" />
+      <created>1730451027945</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730451027945</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

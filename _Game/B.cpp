@@ -29,10 +29,10 @@ inline void Zlin() {
     cin >> k >> x;
     ll tag = (1 + k) * k / 2ll;
     ll ans = 0;
-    if (x <= tag) {
+    if (x < tag) {
         ll l = 0, r = k, mid;
         while (l < r) {
-            mid = l + r >> 1;
+            mid = (l + r) / 2ll;
             if (check(mid)) r = mid;
             else l = mid + 1;
         }
@@ -42,7 +42,7 @@ inline void Zlin() {
         ans += k;
         ll l = 0, r = k - 1, mid;
         while (l < r) {
-            mid = l + r >> 1;
+            mid = (l + r) / 2ll;
             if (check1(mid)) r = mid;
             else l = mid + 1;
         }
@@ -55,7 +55,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-//    cin >> ttt;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }

@@ -15,40 +15,30 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-ll k, x;
+const ll mo = 1e9 + 7;
 
-bool check(ll z) {
-    return (1 + z) * z / 2ll >= x;
-}
-
-bool check1(ll z) {
-    return (k - 1 + k - z) * z / 2ll >= x;
-}
+ll n, k;
 
 inline void Zlin() {
-    cin >> k >> x;
-    ll sum = 0;
-    for (int i = 1; i <= k; i++) {
-        sum += i;
-        if (sum >= x) {
-            cout << i << '\n';
-            return;
+    cin >> n >> k;
+    ll ans = 0;
+    while (k) {
+        ll x = 1, sum = 1;
+        while ((x << 1ll) <= k) {
+            x <<= 1ll;
+            sum = sum * n % mo;
         }
+        k -= x;
+        ans = (ans + sum) % mo;
     }
-    for (int i = 1; i <= k - 1; i++) {
-        sum += k = i;
-        if (sum >= x) {
-            cout << k + i << '\n';
-            return;
-        }
-    }
+    cout << ans << '\n';
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-//    cin >> ttt;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
