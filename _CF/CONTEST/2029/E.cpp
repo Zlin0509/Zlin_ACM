@@ -1,5 +1,5 @@
 //
-// Created by Zlin on 2024/10/23.
+// Created by Zlin on 2024/12/10.
 //
 
 #include "bits/stdc++.h"
@@ -15,17 +15,21 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-int N = 1e7;
+const int N = 1e5+5;
+int n;
+vi a;
 
 inline void Zlin() {
-    cout << rand() % N + 1 << ' ' << rand() % N + 1;
+    cin>>n;
+    a.assign(n,0);
+
 }
 
 int main() {
-    srand(time(0));
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }

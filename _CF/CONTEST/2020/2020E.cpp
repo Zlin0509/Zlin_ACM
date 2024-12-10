@@ -49,7 +49,7 @@ struct ss {
         ll z = gcd(res.a, res.b);
         return {res.a / z, res.b / z};
     }
-} dp[N][1024]{0, 1}, p[N]{0, 1};
+} dp[N][1024],  p[N];
 
 int a[N];
 int n;
