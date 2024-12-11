@@ -3,16 +3,15 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader">{
-  &quot;useNewFormat&quot;: true
-}</component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="Zlin_ACM" targetName="E" />
-      <config projectName="Zlin_ACM" targetName="D" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -21,41 +20,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e3c5c5f-6126-4bad-b4cd-15939d3e3565" name="更改" comment="11,3">
-      <change afterPath="$PROJECT_DIR$/Game/A.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1857/G.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1863/E.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2022/D1.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2026/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2028/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2029/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/2/gen.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/2/ggen.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/2/std.cpp" afterDir="false" />
+    <list default="true" id="c5416de3-07ad-4cd1-877d-51d81426ad3f" name="更改" comment="">
       <change afterPath="$PROJECT_DIR$/_test/2/testlib.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/2/vail.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/ggen.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/spj.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/std.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/tle.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_test/vali.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/1866/C.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/1866/C.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/2020/2020E.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/2020/2020E.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Game/F.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_Game/F.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/AC.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/WA.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/data.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_test/gen.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/data.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/duipai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/duipai.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_test/z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/2029/E.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/2029/E.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,82 +37,56 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Zlin0509&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Zlin0509"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:Zlin0509/Zlin_ACM.git&quot;,
-    &quot;accountId&quot;: &quot;57206e25-dbee-47b1-b992-a646b2853ff2&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:Zlin0509/Zlin_ACM.git",
+    "accountId": "57206e25-dbee-47b1-b992-a646b2853ff2"
   }
-}</component>
+}]]></component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2024" />
     <option name="minorVersion" value="1.5" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2oBNmEfk1bSxele5bi1K7IGVr1P" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2q1lvqmEV4yDNr77KvFSbstih3I" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;CMake 应用程序.2020E.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.A.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.B.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.BB.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.C.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.CC.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.D.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.E.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.F.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.G.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.P1127.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.P1155.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.std.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.tle.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.vali.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake 应用程序.E.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/_test/2" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="D">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="E" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="E" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="E">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -153,96 +95,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="7e3c5c5f-6126-4bad-b4cd-15939d3e3565" name="更改" comment="" />
-      <created>1730339165975</created>
+      <changelist id="c5416de3-07ad-4cd1-877d-51d81426ad3f" name="更改" comment="" />
+      <created>1733838195296</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730339165975</updated>
-      <workItem from="1730339167007" duration="18783000" />
-      <workItem from="1730363099346" duration="36687000" />
-      <workItem from="1730713886282" duration="32000" />
-      <workItem from="1730713923162" duration="111000" />
-      <workItem from="1730714039135" duration="6170000" />
-      <workItem from="1730720237063" duration="11132000" />
-      <workItem from="1731389576463" duration="1643000" />
-      <workItem from="1732079047278" duration="17000" />
-      <workItem from="1732079068600" duration="149000" />
-      <workItem from="1732079230069" duration="915000" />
-      <workItem from="1732188977534" duration="2162000" />
-      <workItem from="1732290535076" duration="2541000" />
-      <workItem from="1732299733451" duration="9879000" />
-      <workItem from="1732621846825" duration="14858000" />
-      <workItem from="1732785612443" duration="22000" />
-      <workItem from="1732785640468" duration="1672000" />
-      <workItem from="1732945889196" duration="32000" />
-      <workItem from="1732957226760" duration="37850000" />
-      <workItem from="1733740140222" duration="15029000" />
+      <updated>1733838195296</updated>
+      <workItem from="1733838196485" duration="1924000" />
     </task>
-    <task id="LOCAL-00001" summary="10,31">
-      <option name="closed" value="true" />
-      <created>1730354710684</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1730354710684</updated>
-    </task>
-    <task id="LOCAL-00002" summary="10,31">
-      <option name="closed" value="true" />
-      <created>1730361585516</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1730361585516</updated>
-    </task>
-    <task id="LOCAL-00003" summary="10,31">
-      <option name="closed" value="true" />
-      <created>1730363435501</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1730363435501</updated>
-    </task>
-    <task id="LOCAL-00004" summary="11,1">
-      <option name="closed" value="true" />
-      <created>1730440812893</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1730440812893</updated>
-    </task>
-    <task id="LOCAL-00005" summary="11,1">
-      <option name="closed" value="true" />
-      <created>1730445025875</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1730445025875</updated>
-    </task>
-    <task id="LOCAL-00006" summary="11,1">
-      <option name="closed" value="true" />
-      <created>1730451027945</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1730451027945</updated>
-    </task>
-    <task id="LOCAL-00007" summary="11,1">
-      <option name="closed" value="true" />
-      <created>1730623180415</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1730623180415</updated>
-    </task>
-    <task id="LOCAL-00008" summary="11,3">
-      <option name="closed" value="true" />
-      <created>1730623202514</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1730623202514</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,23 +111,5 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="10,31" />
-    <MESSAGE value="11,1" />
-    <MESSAGE value="11,3" />
-    <option name="LAST_COMMIT_MESSAGE" value="11,3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/_CF/CONTEST/2026/D.cpp</url>
-          <line>40</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
