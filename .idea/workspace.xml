@@ -10,9 +10,7 @@
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated>
-      <config projectName="Zlin_ACM" targetName="E" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -20,8 +18,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5416de3-07ad-4cd1-877d-51d81426ad3f" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/_test/2/testlib.h" afterDir="false" />
+    <list default="true" id="c5416de3-07ad-4cd1-877d-51d81426ad3f" name="更改" comment="00">
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2031/E.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_CF/CONTEST/2029/E.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/2029/E.cpp" afterDir="false" />
     </list>
@@ -59,6 +57,9 @@
   "associatedIndex": 8
 }]]></component>
   <component name="ProjectId" id="2q1lvqmEV4yDNr77KvFSbstih3I" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -100,8 +101,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1733838195296</updated>
-      <workItem from="1733838196485" duration="1924000" />
+      <workItem from="1733838196485" duration="11137000" />
     </task>
+    <task id="LOCAL-00001" summary="00">
+      <option name="closed" value="true" />
+      <created>1733891569953</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733891569953</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,5 +121,9 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="00" />
+    <option name="LAST_COMMIT_MESSAGE" value="00" />
   </component>
 </project>
