@@ -16,9 +16,15 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
 inline void Zlin() {
-    int n;
-    cin >> n;
-    cout << n - 1 << '\n';
+    string x;
+    cin >> x;
+    string ans;
+    for (auto it: x) {
+        if (it == 'w') ans = 'w' + ans;
+        else if (it == 'q') ans = 'p' + ans;
+        else ans = 'q' + ans;
+    }
+    cout << ans << '\n';
 }
 
 int main() {

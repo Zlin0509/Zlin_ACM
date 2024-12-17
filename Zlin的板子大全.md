@@ -345,7 +345,11 @@ hash[i]=(hash[i−1]∗Base+idx(s[i]))%MOD
 
 Base，MOD不同，进行两遍hash
 
-## 
+## 文件读写操作
+
+### std::ios::
+
+
 
 # 数据结构
 
@@ -1206,6 +1210,18 @@ int ext_gcd(int a, int b, int &x, int &y) {
 }
 ```
 
+### 位运算
+
+前缀和异或：从0～x连续异或的结论
+$$
+f(x) =
+\begin{cases}
+x, & \text{if } x \mod 4 = 0 \\
+1, & \text{if } x \mod 4 = 1 \\
+x + 1, & \text{if } x \mod 4 = 2 \\
+0, & \text{if } x \mod 4 = 3 \\
+\end{cases}
+$$
 
 
 ## FFT
