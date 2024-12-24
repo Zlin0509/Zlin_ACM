@@ -18,7 +18,6 @@ typedef pair<long long, long long> pll;
 inline void Zlin() {
     ll l, r, i, k;
     cin >> l >> r >> i >> k;
-
 }
 
 int main() {
