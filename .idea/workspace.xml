@@ -27,15 +27,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5416de3-07ad-4cd1-877d-51d81426ad3f" name="更改" comment="00">
-      <change afterPath="$PROJECT_DIR$/_nowcoder/98985/A.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/98985/B.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/98985/C.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/98985/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/98985/E.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/98985/F.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/98985/G.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/98985/J.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +39,8 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -230,7 +222,7 @@
       <workItem from="1735449492372" duration="50000" />
       <workItem from="1735649513748" duration="6494000" />
       <workItem from="1735662582141" duration="22000" />
-      <workItem from="1735984734255" duration="1000" />
+      <workItem from="1735984734255" duration="67000" />
     </task>
     <task id="LOCAL-00001" summary="00">
       <option name="closed" value="true" />
@@ -280,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735649522329</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="00">
+      <option name="closed" value="true" />
+      <created>1735984740256</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1735984740256</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,6 +290,17 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="00" />
