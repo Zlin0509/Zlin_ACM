@@ -13,9 +13,7 @@
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated>
-      <config projectName="Zlin_ACM" targetName="D" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -23,9 +21,91 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5416de3-07ad-4cd1-877d-51d81426ad3f" name="更改" comment="00">
+    <list default="true" id="c5416de3-07ad-4cd1-877d-51d81426ad3f" name="更改" comment="1.5">
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/118/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/158/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1829/E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1899/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1899/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1900/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1900/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1904/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1904/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1907/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1909/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1913/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1914/D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1914/E1.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1914/E2.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1915/E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1915/F.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1916/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1916/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1917/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1918/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1918/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1919/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1920/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1921/D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1921/E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1922/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1922/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1924/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1925/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1927/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1927/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1927/D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1927/E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1928/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1928/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1928/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1929/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1929/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1929/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1931/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1931/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1931/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1931/D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1931/E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1934/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1934/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1934/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1934/D1.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1934/D2.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1937/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/1937/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/492/B.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/14/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/14/D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1038_2.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1038_2.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1038_3.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1038_3.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1064 [NOIP2006 提高组] 金明的预算方案..bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1168_1.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1168_1.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1175 表达式的转换.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1833 樱花.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1966_1.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1966_1.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P1972 [SDOI2009].bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P2937_1.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P2937_1.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P3128 [USACO15DEC] Max Flow P.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P3258 [JLOI2014].bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P3369_2.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P3369_2.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P3586 [POI2015].bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P3605 [USACO17JAN] Promotion Counting P.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P3870 [TJOI2009].bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P3960_13.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P3960_13.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P4054 [JSOI2009].bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P4113 [HEOI2012].bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P4427 [BJOI2018].bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P5836 [USACO19DEC] Milk Visits S.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Luogu/P9704 「TFOI R1」Tree Home.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/题目记录.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +266,7 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="D">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -211,7 +291,7 @@
       <workItem from="1734702094824" duration="7915000" />
       <workItem from="1735040860111" duration="16000" />
       <workItem from="1735040882089" duration="3982000" />
-      <workItem from="1736041363096" duration="2000" />
+      <workItem from="1736041363096" duration="1969000" />
     </task>
     <task id="LOCAL-00001" summary="00">
       <option name="closed" value="true" />
@@ -261,7 +341,23 @@
       <option name="project" value="LOCAL" />
       <updated>1735222306231</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1.5">
+      <option name="closed" value="true" />
+      <created>1736041377501</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1736041377501</updated>
+    </task>
+    <task id="LOCAL-00008" summary="1.5">
+      <option name="closed" value="true" />
+      <created>1736041435400</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1736041435400</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +393,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="00" />
-    <option name="LAST_COMMIT_MESSAGE" value="00" />
+    <MESSAGE value="1.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
