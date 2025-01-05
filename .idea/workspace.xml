@@ -9,15 +9,12 @@
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
 }</component>
-  <component name="CMakeProjectFlavorService">
-    <option name="flavorId" value="CMakePlainProjectFlavor" />
-  </component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Zlin_ACM" targetName="C" />
+      <config projectName="Zlin_ACM" targetName="D" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -27,7 +24,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5416de3-07ad-4cd1-877d-51d81426ad3f" name="更改" comment="00">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/14/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/14/D.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +37,6 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -171,7 +168,6 @@
     &quot;CMake 应用程序.F.executor&quot;: &quot;Run&quot;,
     &quot;CMake 应用程序.FF.executor&quot;: &quot;Run&quot;,
     &quot;CMake 应用程序.G1.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.J.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
@@ -179,8 +175,6 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/27682/Desktop/Zlin_ACM&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -192,7 +186,7 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="C" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="C" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="C">
+    <configuration name="D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="D" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="D">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -216,13 +210,8 @@
       <workItem from="1734697264865" duration="614000" />
       <workItem from="1734702094824" duration="7915000" />
       <workItem from="1735040860111" duration="16000" />
-      <workItem from="1735040882089" duration="1000" />
-      <workItem from="1735134326417" duration="10000" />
-      <workItem from="1735134341042" duration="4459000" />
-      <workItem from="1735449492372" duration="50000" />
-      <workItem from="1735649513748" duration="6494000" />
-      <workItem from="1735662582141" duration="22000" />
-      <workItem from="1735984734255" duration="67000" />
+      <workItem from="1735040882089" duration="3982000" />
+      <workItem from="1736041363096" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="00">
       <option name="closed" value="true" />
@@ -258,29 +247,21 @@
     </task>
     <task id="LOCAL-00005" summary="00">
       <option name="closed" value="true" />
-      <created>1735449533688</created>
+      <created>1735040896387</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1735449533688</updated>
+      <updated>1735040896387</updated>
     </task>
     <task id="LOCAL-00006" summary="00">
       <option name="closed" value="true" />
-      <created>1735649522329</created>
+      <created>1735222306231</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1735649522329</updated>
+      <updated>1735222306231</updated>
     </task>
-    <task id="LOCAL-00007" summary="00">
-      <option name="closed" value="true" />
-      <created>1735984740256</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1735984740256</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +277,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
