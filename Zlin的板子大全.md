@@ -1505,9 +1505,49 @@ int main() {
 
 ### 计算几何
 
-高斯面积计算公式  
+#### 高斯面积计算公式  
+
 $$
 A = \frac{1}{2} \left| \sum_{i=1}^{n-1} (x_i y_{i+1} - x_{i+1} y_i) + (x_n y_1 - x_1 y_n) \right|
+$$
+
+#### 计算向量夹角
+
+计算坐标系中两个线段之间的夹角
+$$
+\cos \theta = \frac{\mathbf{v_1} \cdot \mathbf{v_2}}{|\mathbf{v_1}| |\mathbf{v_2}|} \\
+
+\mathbf{v_1} \cdot \mathbf{v_2} = v_{1x} \cdot v_{2x} + v_{1y} \cdot v_{2y} + v_{1z} \cdot v_{2z} \\
+
+|\mathbf{v_1}| = \sqrt{v_{1x}^2 + v_{1y}^2 + v_{1z}^2} \\
+
+|\mathbf{v_2}| = \sqrt{v_{2x}^2 + v_{2y}^2 + v_{2z}^2}
+$$
+
+#### 叉积
+
+
+$$
+\text{如果叉积为正} \ (\mathbf{A} \times \mathbf{B} > 0): \text{表示向量 } \mathbf{B} \text{ 在向量 } \mathbf{A} \text{ 的逆时针方向。} \\
+
+
+
+\text{如果叉积为负} \ (\mathbf{A} \times \mathbf{B} < 0): \text{表示向量 } \mathbf{B} \text{ 在向量 } \mathbf{A} \text{ 的顺时针方向。} \\
+
+
+
+\text{如果叉积为零} \ (\mathbf{A} \times \mathbf{B} = 0): \text{表示向量 } \mathbf{A} \text{ 和 } \mathbf{B} \text{ 是共线的（即它们在同一直线上）。} \\
+
+
+
+\mathbf{A} \times \mathbf{B} = \begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+A_x & A_y & A_z \\
+B_x & B_y & B_z
+\end{vmatrix}
+= \left( A_y B_z - A_z B_y \right) \mathbf{i} - \left( A_x B_z - A_z B_x \right) \mathbf{j} + \left( A_x B_y - A_y B_x \right) \mathbf{k} (三维坐标系)\\
+ \\
+ \mathbf{A} \times \mathbf{B} = A_x B_y - A_y B_x（二维坐标系）
 $$
 
 
