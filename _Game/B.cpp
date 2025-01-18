@@ -15,47 +15,72 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-ll k, x;
+const int MAXN = 200005;
 
-bool check(ll z) {
-    return (1 + z) * z / 2ll >= x;
-}
+vector<int> adj[MAXN];
+int degree[MAXN];
+bool visited[MAXN];
 
-bool check1(ll z) {
-    return (k - 1 + k - z) * z / 2ll >= x;
+
+void dfs(int u) {
+    visited[u] = true;
+    for (int v : adj[u]) {
+        if (!visited[v]) {
+            dfs(v);
+        }
+    }
 }
 
 inline void Zlin() {
-    cin >> k >> x;
-    ll tag = (1 + k) * k / 2ll;
-    ll ans = 0;
-    if (x < tag) {
-        ll l = 0, r = k, mid;
-        while (l < r) {
-            mid = (l + r) / 2ll;
-            if (check(mid)) r = mid;
-            else l = mid + 1;
-        }
-        ans += l;
-    } else {
-        x -= tag;
-        ans += k;
-        ll l = 0, r = k - 1, mid;
-        while (l < r) {
-            mid = (l + r) / 2ll;
-            if (check1(mid)) r = mid;
-            else l = mid + 1;
-        }
-        ans += l;
+    int N, M;
+    cin >> N >> M;
+
+    for (int i = 0; i < N; ++i) {
+        adj[i].clear();
+        degree[i] = 0;
+        visited[i] = false;
     }
-    cout << ans << '\n';
+
+    for (int i = 0; i < M; ++i) {
+        int u, v;
+        cin >> u >> v;
+        u--; v--;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+        degree[u]++;
+        degree[v]++;
+    }
+
+    int count_1 = 0, count_2 = 0;
+    for (int i = 0; i < N; ++i) {
+        if (degree[i] == 1) count_1++;
+        else if (degree[i] == 2) count_2++;
+        else {
+            cout << "No" << endl;
+            return;
+        }
+    }
+
+    if (count_1 != 2 || count_2 != N - 2) {
+        cout << "No" << endl;
+        return;
+    }
+
+    dfs(0);
+    for (int i = 0; i < N; ++i) {
+        if (!visited[i]) {
+            cout << "No" << endl;
+            return;
+        }
+    }
+
+    cout << "Yes" << endl;
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }

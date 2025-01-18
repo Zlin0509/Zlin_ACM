@@ -2426,7 +2426,61 @@ void build_new() {
 }
 ```
 
+### Tarjan缩点/无向图
 
+```c++
+constexpr int N = 2e5 + 10;
+int cnt = 0, comp_count = 0;
+vector<vi> e, tree;
+vi dfn, low, fa, compID;
+vector<bool> vis;
+set<pii> bridges;
+
+inline void tarjan(int u)
+{
+    vis[u] = true;
+    dfn[u] = low[u] = ++cnt;
+    for (int v : e[u])
+    {
+        if (!vis[v])
+        {
+            fa[v] = u;
+            tarjan(v);
+            low[u] = min(low[u], low[v]);
+            if (low[v] > dfn[u])
+                bridges.insert({min(u, v), max(u, v)});
+        }
+        else if (v != fa[u]) low[u] = min(low[u], dfn[v]);
+    }
+}
+
+inline void dfs(int u, int ID)
+{
+    compID[u] = ID;
+    for (int v : e[u])
+        if (compID[v] == -1 && bridges.find({min(u, v), max(u, v)}) == bridges.end())
+            dfs(v, ID);
+}
+
+inline void build(int n)
+{
+    compID.assign(n + 1, -1);
+
+    for (int i = 1; i <= n; i++)
+        if (compID[i] == -1)
+            dfs(i, ++comp_count);
+    for (auto it : bridges)
+    {
+        int u = compID[it.first], v = compID[it.second];
+        tree[u].push_back(v);
+        tree[v].push_back(u);
+    }
+}
+```
+
+
+
+### 标准tarjan
 
 >时间戳 dfn[x] 节点x第一次被访问的顺序
 >
