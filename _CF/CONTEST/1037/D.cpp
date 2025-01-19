@@ -15,12 +15,11 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-int n, m;
-
 inline void Zlin()
 {
-    cin >> n >> m;
-    cout << gcd(n - 1, m - 1) + 1 << '\n';
+    int n;
+    cin >> n;
+    vector<int>
 }
 
 int main()

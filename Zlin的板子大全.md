@@ -1501,17 +1501,15 @@ int main() {
 }
 ```
 
-## 几何
+## 计算几何
 
-### 计算几何
-
-#### 高斯面积计算公式  
+### 高斯面积计算公式  
 
 $$
 A = \frac{1}{2} \left| \sum_{i=1}^{n-1} (x_i y_{i+1} - x_{i+1} y_i) + (x_n y_1 - x_1 y_n) \right|
 $$
 
-#### 计算向量夹角
+### 计算向量夹角
 
 计算坐标系中两个线段之间的夹角
 $$
@@ -1524,7 +1522,7 @@ $$
 |\mathbf{v_2}| = \sqrt{v_{2x}^2 + v_{2y}^2 + v_{2z}^2}
 $$
 
-#### 叉积
+### 叉积
 
 
 $$
@@ -2428,6 +2426,8 @@ void build_new() {
 
 ### Tarjan缩点/无向图
 
+#### 普通版
+
 ```c++
 constexpr int N = 2e5 + 10;
 int cnt = 0, comp_count = 0;
@@ -2476,6 +2476,78 @@ inline void build(int n)
         tree[v].push_back(u);
     }
 }
+```
+
+#### 类标准
+
+```c++
+class Brige
+{
+private:
+    int n;
+    vector<bool> vis;
+    vector<vi> e, tree;
+    set<pii> bridges;
+    vi parent, dfn, low, compID;
+    int tot = 0, comp_ID = 0;
+
+    inline void dfs(int u, int ID)
+    {
+        compID[u] = ID;
+        for (int v : e[u])
+            if (!compID[v] && bridges.find({min(u, v), max(u, v)}) != bridges.end())
+                dfs(v, ID);
+    }
+
+    inline void tarjan(int u)
+    {
+        vis[u] = true;
+        dfn[u] = low[u] = ++tot;
+        for (int v : e[u])
+        {
+            if (!vis[v])
+            {
+                parent[v] = u;
+                tarjan(v);
+                low[u] = min(low[u], low[v]);
+                if (low[v] > dfn[u])
+                    bridges.insert({min(u, v), max(u, v)});
+            }
+            else if (v != parent[u]) low[u] = min(low[u], dfn[v]);
+        }
+    }
+
+public:
+    Brige(vector<vi> ee, int nn): e(ee), n(nn)
+    {
+        vis.assign(n + 1, false);
+        parent.assign(n + 1, 0);
+        dfn.assign(n + 1, 0);
+        low.assign(n + 1, 0);
+        compID.assign(n + 1, -1);
+    }
+
+    inline void build(int n)
+    {
+        compID.assign(n + 1, -1);
+
+        for (int i = 1; i <= n; i++)
+            if (compID[i] == -1)
+                dfs(i, ++comp_ID);
+        for (auto it : bridges)
+        {
+            int u = compID[it.first], v = compID[it.second];
+            tree[u].push_back(v);
+            tree[v].push_back(u);
+        }
+    }
+
+    inline void get(vector<vi>& ee, vi& compId)
+    {
+        ee = tree;
+        compId = compID;
+    }
+};
 ```
 
 
