@@ -16,7 +16,10 @@
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated />
+    <generated>
+      <config projectName="Zlin_ACM" targetName="M" />
+      <config projectName="Zlin_ACM" targetName="B" />
+    </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -24,22 +27,20 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b145ccf8-c578-4bfa-aa88-49796ec79324" name="更改" comment="1,19">
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/190/E.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/195/E.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/196/B.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/A.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/B.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/C.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/E.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/F.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/G.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/H.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/J.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest 1/M.cpp" afterDir="false" />
+    <list default="true" id="b145ccf8-c578-4bfa-aa88-49796ec79324" name="更改" comment="1,11">
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/F.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/G.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/H.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/J.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/K.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest2/M.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/144/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/144/D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/196/B.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/196/B.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +72,47 @@
     <setting file="file://$PROJECT_DIR$/_CF/CONTEST/13/B.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/_CF/CONTEST/190/E.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/_nowcoder/25寒假/contest 1/A.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/_nowcoder/25寒假/contest 1/F.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/_nowcoder/25寒假/contest 1/F.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -643,9 +684,10 @@
     "CMake 应用程序.D.executor": "Run",
     "CMake 应用程序.E.executor": "Run",
     "CMake 应用程序.F.executor": "Run",
-    "CMake 应用程序.G.executor": "Run",
+    "CMake 应用程序.G.executor": "Debug",
     "CMake 应用程序.H.executor": "Run",
     "CMake 应用程序.J.executor": "Run",
+    "CMake 应用程序.K.executor": "Run",
     "CMake 应用程序.M.executor": "Run",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -665,12 +707,26 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="CMake 应用程序.M">
+    <configuration name="B" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="B" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="B">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="M" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="M" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="M">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="CMake 应用程序.B" />
+      <item itemvalue="CMake 应用程序.M" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -690,7 +746,7 @@
       <workItem from="1737214934067" duration="1900000" />
       <workItem from="1737216952460" duration="1482000" />
       <workItem from="1737218447668" duration="24365000" />
-      <workItem from="1737373206234" duration="36370000" />
+      <workItem from="1737373206234" duration="58983000" />
     </task>
     <task id="LOCAL-00001" summary="1,1-1,15">
       <option name="closed" value="true" />
@@ -732,7 +788,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737283226585</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1,11">
+      <option name="closed" value="true" />
+      <created>1737543395732</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737543395732</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -748,7 +812,8 @@
     <MESSAGE value="1,16" />
     <MESSAGE value="1,18" />
     <MESSAGE value="1,19" />
-    <option name="LAST_COMMIT_MESSAGE" value="1,19" />
+    <MESSAGE value="1,11" />
+    <option name="LAST_COMMIT_MESSAGE" value="1,11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -758,13 +823,26 @@
           <line>75</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/_nowcoder/25寒假/contest2/G.cpp</url>
+          <line>25</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/_nowcoder/25寒假/contest2/K.cpp</url>
+          <line>47</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/_nowcoder/25寒假/contest2/K.cpp</url>
+          <line>66</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="ans" language="C++" />
-        <watch expression="mx" language="C++" />
-        <watch expression="it" />
       </configuration>
     </watches-manager>
   </component>
