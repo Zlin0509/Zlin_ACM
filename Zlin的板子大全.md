@@ -507,6 +507,8 @@ inline int ST_query(int l, int r) {
 
 ## 树状数组
 
+### 普通版本
+
 ```c++
 #define lowbit(x) (x & (-x))
 
@@ -526,6 +528,48 @@ inline int ask(int l, int r) {
     return sum;
 }
 ```
+
+### 类模版版本
+
+```c++
+class FenwickTree
+{
+private:
+    vi t;
+
+public:
+    FenwickTree(int n) : t(n + 1, 0)
+    {
+    }
+
+    void upd(int i, int v)
+    {
+        while (i < t.size())
+        {
+            t[i] += v;
+            i += i & -i;
+        }
+    }
+
+    int qry(int i)
+    {
+        int s = 0;
+        while (i > 0)
+        {
+            s += t[i];
+            i -= i & -i;
+        }
+        return s;
+    }
+
+    int qryRange(int l, int r)
+    {
+        return qry(r) - qry(l - 1);
+    }
+};
+```
+
+
 
 ## 树
 
