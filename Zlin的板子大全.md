@@ -529,6 +529,95 @@ inline int ask(int l, int r) {
 
 ## 树
 
+### 字典树
+
+```c++
+struct Node {
+    unordered_map<char, Node*> nxt;  // 子节点
+    int cnt = 0;                     // 以当前节点为结尾的单词个数
+    int pre = 0;                     // 以当前节点为前缀的单词个数
+};
+
+class Trie {
+private:
+    Node* root;
+
+public:
+    Trie() { root = new Node(); }
+
+    // 插入单词
+    void ins(const string& s) {
+        Node* cur = root;
+        for (char c : s) {
+            if (!cur->nxt[c]) cur->nxt[c] = new Node();
+            cur = cur->nxt[c];
+            cur->pre++;
+        }
+        cur->cnt++;
+    }
+
+    // 查询单词是否存在
+    bool qry(const string& s) {
+        Node* cur = root;
+        for (char c : s) {
+            if (!cur->nxt[c]) return false;
+            cur = cur->nxt[c];
+        }
+        return cur->cnt > 0;
+    }
+
+    // 查询前缀是否存在
+    bool pre(const string& s) {
+        Node* cur = root;
+        for (char c : s) {
+            if (!cur->nxt[c]) return false;
+            cur = cur->nxt[c];
+        }
+        return cur->pre > 0;
+    }
+
+    // 删除单词
+    bool del(const string& s) {
+        return delHelper(root, s, 0);
+    }
+
+    // 查询前缀个数
+    int cntPre(const string& s) {
+        Node* cur = root;
+        for (char c : s) {
+            if (!cur->nxt[c]) return 0;
+            cur = cur->nxt[c];
+        }
+        return cur->pre;
+    }
+
+private:
+    // 删除单词的辅助函数
+    bool delHelper(Node* cur, const string& s, int d) {
+        if (!cur) return false;
+        if (d == s.size()) {
+            if (cur->cnt > 0) {
+                cur->cnt--;
+                cur->pre--;
+                return true;
+            }
+            return false;
+        }
+
+        char c = s[d];
+        if (delHelper(cur->nxt[c], s, d + 1)) {
+            cur->pre--;
+            if (cur->nxt[c]->pre == 0) {
+                delete cur->nxt[c];
+                cur->nxt.erase(c);
+            }
+            return true;
+        }
+        return false;
+    }
+};
+```
+
 ### 线段树
 
 #### 无懒标记^懒得写^
