@@ -466,6 +466,18 @@ stk.size();  // 获取栈中元素的个数
 stk1.swap(stk2);  // 交换 stk1 和 stk2 的内容
 ```
 
+### 二进制基础操作
+__builtin_popcount(x)	统计 x 的二进制表示中 1 的个数（适用于 int 类型）	__builtin_popcount(5) == 2 (101)
+
+__builtin_popcountll(x)	统计 long long 类型的 1 数量	__builtin_popcountll(9) == 2 (1001)
+
+__builtin_clz(x)	计算 x 的 **前导零** 个数（适用于 int）	__builtin_clz(8) == 28 (000...1000)
+
+__builtin_clzll(x)	long long 版
+
+__builtin_ctz(x)	计算 x 的 **后缀零** 个数	__builtin_ctz(8) == 3 (1000)
+
+__builtin_ctzll(x)	long long 版
 
 
 ## 并查集(DSU)
