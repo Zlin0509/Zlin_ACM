@@ -153,12 +153,14 @@ int main() {
 ## 离散化
 
 ```c++
-vector<int> disc(const vector<int> &a) {
-    vector<int> v(a);
+inline vi disc(const vi& a)
+{
+    vi v(a);
     sort(v.begin(), v.end());
     v.erase(unique(v.begin(), v.end()), v.end());
-    vector<int> res(a.size());
-    for (int i = 0; i < a.size(); i++)res[i] = lower_bound(v.begin(), v.end(), a[i]) - v.begin();
+    vi res(a.size());
+    for (int i = 0; i < a.size(); i++)
+        res[i] = lower_bound(v.begin(), v.end(), a[i]) - v.begin();
     return res;
 }
 ```
@@ -544,13 +546,13 @@ inline int ask(int l, int r) {
 ### 类模版版本
 
 ```c++
-class FenwickTree
+class Ftree
 {
 private:
     vi t;
 
 public:
-    FenwickTree(int n) : t(n + 1, 0)
+    Ftree(int n) : t(n + 1, 0)
     {
     }
 
@@ -563,7 +565,7 @@ public:
         }
     }
 
-    int qry(int i)
+    int qry1(int i)
     {
         int s = 0;
         while (i > 0)
@@ -574,7 +576,7 @@ public:
         return s;
     }
 
-    int qryRange(int l, int r)
+    int qry2(int l, int r)
     {
         return qry(r) - qry(l - 1);
     }

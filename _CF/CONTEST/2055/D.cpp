@@ -42,7 +42,7 @@ inline void Zlin()
     }
     if (tag < z)
         ans += z - tag;
-    cout << ans * 2 << endl;
+    cout << int(ans * 2) << endl;
 }
 
 int main()
