@@ -17,20 +17,6 @@ typedef pair<long long, long long> pll;
 
 inline void Zlin()
 {
-    int n;
-    cin >> n;
-    vi a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-    int ans = 0, tag = -1;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] == tag)
-            continue;
-        ++ans;
-        tag = a[i];
-    }
-    cout << ans << endl;
 }
 
 int main()

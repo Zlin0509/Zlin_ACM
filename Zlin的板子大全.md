@@ -579,7 +579,7 @@ public:
 
     int qry2(int l, int r)
     {
-        return qry(r) - qry(l - 1);
+        return qry1(r) - qry1(l - 1);
     }
 };
 ```

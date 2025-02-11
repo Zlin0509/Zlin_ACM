@@ -17,20 +17,22 @@ typedef pair<long long, long long> pll;
 
 inline void Zlin()
 {
-    int n;
-    cin >> n;
-    vi a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-    int ans = 0, tag = -1;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] == tag)
-            continue;
-        ++ans;
-        tag = a[i];
+    ll n, x, y;
+    cin >> n >> x >> y;
+    ll ans = 0;
+    ll M = min(y, n);
+    for (ll m = 0; m <= M; m++){
+        ll A = x + m;
+        ll R = n - m;
+        ll maxAttack = A + (y - m);
+        ll r_attack = min(R, maxAttack);
+        ll v = min(y - m, r_attack);
+        ll u = r_attack - v;
+        ll damage = v * (A + 1) + (u * A - (u * (u - 1)) / 2);
+        ans = max(ans, damage);
     }
-    cout << ans << endl;
+
+    cout << ans << "\n";
 }
 
 int main()

@@ -17,20 +17,25 @@ typedef pair<long long, long long> pll;
 
 inline void Zlin()
 {
-    int n;
-    cin >> n;
-    vi a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-    int ans = 0, tag = -1;
-    for (int i = 0; i < n; i++)
+    ll x, y;
+    cin >> x >> y;
+    if (!(y & 1))
     {
-        if (a[i] == tag)
-            continue;
-        ++ans;
-        tag = a[i];
+        cout << "NO\n";
+        return;
     }
-    cout << ans << endl;
+    if (y == 1)
+    {
+        cout << (x & 1 ? "NO" : "YES") << endl;
+        return;
+    }
+    ll z = y / 2;
+    if (abs(z - x) & 1)
+    {
+        cout << "NO\n";
+        return;
+    }
+    cout << "YES\n";
 }
 
 int main()
