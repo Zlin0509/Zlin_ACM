@@ -36,7 +36,8 @@ int find1(int x)
 */
 bool check(const int& x)
 {
-    int res = 0;
+    // res可能超过int 硬控我两小时
+    ll res = 0;
     for (int i = 0, k; i < n; i++)
     {
         k = find1(x - a[i]);
@@ -62,44 +63,43 @@ bool check(const int& x)
 
 inline void Zlin()
 {
-int n, p, k;
     cin >> n >> p >> k;
-
-    vector<int> a(n + 1);
-    for (int i = 1; i <= n; i++) {
-        cin >> a[i];
-        a[i] %= p;
+    a.assign(n, 0);
+    ans.clear();
+    for (int i = 0; i < n; i++)
+        cin >> a[i], a[i] %= p;
+    sort(a.begin(), a.end());
+    int l = 0, r = p - 1, mid;
+    while (l < r)
+    {
+        mid = l + r + 1 >> 1;
+        if (check(mid))
+            l = mid;
+        else
+            r = mid - 1;
     }
+    int tag = check(l) ? l + 1 : l;
+    for (int i = 0; i < n; i++)
+    {
+        l = find1(tag - a[i]);
+        l = max(l, i + 1);
+        r = find1(p - a[i]);
+        r = max(r, i + 1);
+        for (int j = l; j < r; j++)
+            ans.push_back(a[j] + a[i]);
 
-    ranges::sort(a);
-    multiset<int> st;
-
-    // 预填充 k 个 -1
-    for (int i = 1; i <= k; i++) {
-        st.insert(-1);
+        l = find1(p + tag - a[i]);
+        l = max(l, i + 1);
+        r = find1(2 * p - a[i]);
+        r = max(r, i + 1);
+        for (int j = l; j < r; j++)
+            ans.push_back(a[j] + a[i] - p);
     }
-
-    vector<int> r(n + 1);
-    for (int i = n; i >= 1; i--) {
-        r[i] = ranges::lower_bound(a, p - a[i]) - a.begin();
-        if (r[i] > i) r[i] = i;
-
-        for (int j = i - 1; j >= 1; j--) {
-            int t = (a[i] + a[j]) % p;
-            if (t <= *st.begin()) {
-                if (j >= r[i])
-                    j = r[i];
-                else
-                    break;
-            }
-            st.insert(t);
-            st.erase(st.begin());
-        }
-    }
-
-    for (auto &i : st | views::reverse) {
-        cout << i << " ";
-    }
+    while (ans.size() < k)
+        ans.push_back(tag - 1);
+    sort(ans.begin(), ans.end(), greater<int>());
+    for (auto it : ans)
+        cout << it << ' ';
     cout << endl;
 }
 

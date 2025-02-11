@@ -38,6 +38,7 @@ int main()
     return 0;  
 }
 
+// 注意编译文件的路径
 //Mac 记得在终端编译运行，Zlin's MBP默认g++-14
 #include<iostream>
 #include<stdlib.h>  // 在 Unix 系统下包含 system 函数需要使用 <stdlib.h>

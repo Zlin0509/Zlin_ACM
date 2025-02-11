@@ -17,7 +17,8 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Zlin_ACM" targetName="F" />
+      <config projectName="Zlin_ACM" targetName="L" />
+      <config projectName="Zlin_ACM" targetName="H" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -26,22 +27,24 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b145ccf8-c578-4bfa-aa88-49796ec79324" name="更改" comment="2,3">
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2046/C.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2063/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/A.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/B.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/C.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/CC.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/E.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/F.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/I.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/K.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/L.cpp" afterDir="false" />
+    <list default="true" id="b145ccf8-c578-4bfa-aa88-49796ec79324" name="更改" comment="2,7">
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/J.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest5/A.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest5/B.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest5/C.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest5/D.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest5/E.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest5/H.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest5/I.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest5/J.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest5/L.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/check/AC.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/check/Main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/check/WA.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/check/data.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_CF/CONTEST/2055/D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_CF/CONTEST/2055/D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/F.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest4/F.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,48 +162,6 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -219,46 +180,64 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;CMake 应用程序.A.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.B.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.C.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.D.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.E.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.F.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.F1.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.G.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.H.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.I.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.J.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.K.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.L.executor&quot;: &quot;Run&quot;,
-    &quot;CMake 应用程序.M.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake 应用程序.A.executor": "Run",
+    "CMake 应用程序.AC.executor": "Run",
+    "CMake 应用程序.B.executor": "Run",
+    "CMake 应用程序.C.executor": "Run",
+    "CMake 应用程序.D.executor": "Run",
+    "CMake 应用程序.E.executor": "Run",
+    "CMake 应用程序.F.executor": "Run",
+    "CMake 应用程序.F1.executor": "Run",
+    "CMake 应用程序.G.executor": "Run",
+    "CMake 应用程序.H.executor": "Run",
+    "CMake 应用程序.I.executor": "Run",
+    "CMake 应用程序.J.executor": "Run",
+    "CMake 应用程序.K.executor": "Run",
+    "CMake 应用程序.L.executor": "Run",
+    "CMake 应用程序.M.executor": "Run",
+    "CMake 应用程序.Main.executor": "Run",
+    "CMake 应用程序.WA.executor": "Run",
+    "CMake 应用程序.data.executor": "Run",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
-    <configuration name="F" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="F" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="F">
+}]]></component>
+  <component name="RunManager" selected="CMake 应用程序.H">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="H" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="H" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="H">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="L" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="L" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="L">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake 应用程序.H" />
+      <item itemvalue="CMake 应用程序.L" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -283,6 +262,10 @@
       <workItem from="1737877882448" duration="19466000" />
       <workItem from="1737969938366" duration="65043000" />
       <workItem from="1738840032282" duration="8205000" />
+      <workItem from="1738862853042" duration="4381000" />
+      <workItem from="1738899926072" duration="234000" />
+      <workItem from="1738900180779" duration="1223000" />
+      <workItem from="1738902538665" duration="23068000" />
     </task>
     <task id="LOCAL-00001" summary="1,1-1,15">
       <option name="closed" value="true" />
@@ -372,7 +355,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738566109572</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="2,7">
+      <option name="closed" value="true" />
+      <created>1738862908148</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1738862908148</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +385,8 @@
     <MESSAGE value="1,26" />
     <MESSAGE value="1,27" />
     <MESSAGE value="2,3" />
-    <option name="LAST_COMMIT_MESSAGE" value="2,3" />
+    <MESSAGE value="2,7" />
+    <option name="LAST_COMMIT_MESSAGE" value="2,7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -426,5 +418,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="ans" language="C++" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
