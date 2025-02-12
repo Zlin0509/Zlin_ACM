@@ -27,24 +27,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b145ccf8-c578-4bfa-aa88-49796ec79324" name="更改" comment="2,11">
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2067/A.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2067/B.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_CF/CONTEST/2067/C.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/B.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/C.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/F.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/H.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/HH.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/I.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/J.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/K.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/L.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zlin的板子大全.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zlin的板子大全.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/A.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/_nowcoder/25寒假/contest6/A.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大头照/Main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/photo/Main.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大头照/zhu.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/photo/zhu.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大头照/曼波.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/photo/曼波.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,6 +363,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -389,11 +374,6 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="A" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Zlin_ACM" TARGET_NAME="A" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Zlin_ACM" RUN_TARGET_NAME="A">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -427,6 +407,7 @@
       <workItem from="1738899926072" duration="234000" />
       <workItem from="1738900180779" duration="1223000" />
       <workItem from="1738902538665" duration="44093000" />
+      <workItem from="1739347277812" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="1,1-1,15">
       <option name="closed" value="true" />
