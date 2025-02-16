@@ -17,26 +17,21 @@ typedef pair<long long, long long> pll;
 
 inline void Zlin()
 {
-    string s;
     int n;
-    cin >> n >> s;
-    bool tag = false;
-    int ans = 0;
-    for (auto it : s)
-    {
-        if (it == '0')
-        {
-            if (tag)
-            {
-                ans += 2;
-                tag = 0;
-            }
-        }
-        else
-            tag = 1;
-    }
-    if (tag)
-        ++ans;
+    cin >> n;
+    vi a(n);
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    vll l(n), r(n);
+    l[0] = max(0, a[0]);
+    r[n - 1] = max(0, -a[n - 1]);
+    for (int i = 1; i < n; i++)
+        l[i] = l[i - 1] + max(0, a[i]);
+    for (int i = n - 2; i >= 0; i--)
+        r[i] = r[i + 1] + max(0, -a[i]);
+    ll ans = 0;
+    for (int i = 0; i < n; i++)
+        ans = max(ans, l[i] + r[i]);
     cout << ans << endl;
 }
 

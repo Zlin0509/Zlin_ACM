@@ -15,29 +15,29 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
+constexpr ll mo = (1ll << 32) - 1;
+
+
 inline void Zlin()
 {
-    string s;
-    int n;
-    cin >> n >> s;
-    bool tag = false;
-    int ans = 0;
-    for (auto it : s)
+    int n, q;
+    cin >> n >> q;
+    vi a(n + 1);
+    for (int i = 1; i <= n; i++)
+        cin >> a[n - i + 1];
+
+    vll Q(n + 1);
+    Q[0] = mo;
+    for (int i = 1; i <= n; i++)
+        Q[i] ^= Q[i - 1];
+
+
+
+    while (q--)
     {
-        if (it == '0')
-        {
-            if (tag)
-            {
-                ans += 2;
-                tag = 0;
-            }
-        }
-        else
-            tag = 1;
+        int x;
+        cin >> x;
     }
-    if (tag)
-        ++ans;
-    cout << ans << endl;
 }
 
 int main()
