@@ -32,7 +32,6 @@ inline void Zlin()
         Q[i] ^= Q[i - 1];
 
 
-
     while (q--)
     {
         int x;
