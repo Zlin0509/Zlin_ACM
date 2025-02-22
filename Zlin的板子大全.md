@@ -544,17 +544,18 @@ inline int ask(int l, int r) {
 }
 ```
 
-### 类模版版本
+### 结构体版本
 
 ```c++
-class Ftree
+struct Ftree
 {
 private:
     vi t;
 
 public:
-    Ftree(int n) : t(n + 1, 0)
+    void init(int n)
     {
+        t.assign(n + 1, 0);
     }
 
     void upd(int i, int v)
@@ -581,7 +582,7 @@ public:
     {
         return qry1(r) - qry1(l - 1);
     }
-};
+} t;
 ```
 
 
