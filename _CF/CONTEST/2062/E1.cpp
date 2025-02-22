@@ -21,19 +21,8 @@ inline void Zlin()
     cin >> n;
     vi a(n + 1);
     unordered_map<int, int> cnt;
-    int max1 = 0;
     for (int i = 1; i <= n; i++)
-        cin >> a[i], max1 = max(max1, a[i]), cnt[a[i]]++;
-    int tag = 0;
-    if (cnt[max1] == 1)
-    {
-        int max2 = 0;
-        for (int i = 1; i <= n; i++)
-            if (a[i] != max1)
-                max2 = max(max2, a[i]);
-        tag = max2;
-    }
-    else tag = max1;
+        cin >> a[i], cnt[a[i]]++;
     vector e(n + 1, vi());
     for (int i = 1, u, v; i < n; i++)
     {
