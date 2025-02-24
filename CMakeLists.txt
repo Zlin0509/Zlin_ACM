@@ -4,4 +4,4 @@ project(Zlin_ACM)
 set(CMAKE_CXX_STANDARD 23)
 
 
-add_executable(E "_CF/GYM/2023 Hubei Provincial Collegiate Programming Contest/E.cpp")
+add_executable(E _CF/CONTEST/2048/E.cpp)
