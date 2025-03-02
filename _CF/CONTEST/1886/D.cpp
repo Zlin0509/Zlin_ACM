@@ -15,8 +15,14 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
+constexpr ll mo = 998244353;
+
+int n, m;
+
 inline void Zlin()
 {
+    cin >> n >> m;
+
 }
 
 int main()
@@ -24,7 +30,6 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
