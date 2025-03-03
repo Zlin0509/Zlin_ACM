@@ -17,12 +17,51 @@ typedef pair<long long, long long> pll;
 
 constexpr ll mo = 998244353;
 
-int n, m;
+inline ll qpow(ll a, ll b)
+{
+    ll res = 1;
+    while (b)
+    {
+        if (b & 1)
+            res = res * a % mo;
+        a = a * a % mo;
+        b >>= 1;
+    }
+    return res;
+}
+
+ll fac[300010];
 
 inline void Zlin()
 {
-    cin >> n >> m;
-
+    for (int i = 1; i <= 3e5; i++)
+        fac[i] = qpow(i, mo - 2);
+    int n, m;
+    string s;
+    cin >> n >> m >> s;
+    bool check = s[0] != '?';
+    ll res = 1;
+    for (int i = 1; i < s.length(); i++)
+        if (s[i] == '?')
+            res = res * i % mo;
+    cout << (check ? res : 0) << endl;
+    while (m--)
+    {
+        int x;
+        char c;
+        cin >> x >> c;
+        --x;
+        swap(s[x], c);
+        check = s[0] != '?';
+        if (x)
+        {
+            if (c == '?' && s[x] != '?')
+                res = res * fac[x] % mo;
+            if (c != '?' && s[x] == '?')
+                res = res * x % mo;
+        }
+        cout << (check ? res : 0) << endl;
+    }
 }
 
 int main()
