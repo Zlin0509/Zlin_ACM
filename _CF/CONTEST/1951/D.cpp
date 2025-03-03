@@ -17,6 +17,27 @@ typedef pair<long long, long long> pll;
 
 inline void Zlin()
 {
+    ll n, k;
+    cin >> n >> k;
+    if (n == k)
+    {
+        cout << "YES" << endl;
+        cout << 1 << endl << 1 << endl;
+    }
+    else if (n / k >= 2)
+    {
+        cout << "YES" << endl;
+        if (n / (n / k) == k)
+            cout << 1 << endl << n / k << endl;
+        else
+            cout << 2 << endl << n - k + 1 << ' ' << 1 << endl;
+    }
+    else if (n / 2 + n % 2 == k)
+    {
+        cout << "YES" << endl;
+        cout << 2 << endl << 2 << ' ' << 1 << endl;
+    }
+    else cout << "NO" << endl;
 }
 
 int main()
