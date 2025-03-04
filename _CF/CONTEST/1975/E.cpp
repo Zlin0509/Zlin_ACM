@@ -17,69 +17,103 @@ typedef pair<ll, ll> pll;
 
 int n, q;
 vector<vi> e;
-vi c, d;
-vi dd;
+vi c, f, d;
 
-inline void dfs(int u, int fa) {
-    if (c[u] && c[fa])
-        d[u]++, d[fa]++;
-    for (int v: e[u]) {
-        if (v == fa)
-            continue;
-        dfs(v, u);
-    }
+inline void dfs(int u, int fa)
+{
+    f[u] = fa;
+    if (c[u])
+        --d[u], ++d[fa];
+    for (int v : e[u])
+        if (v != fa)
+            dfs(v, u);
 }
 
-inline void Zlin() {
+inline void Zlin()
+{
     cin >> n >> q;
-    dd.assign(4, 0);
     e.assign(n + 1, vi());
-    c.assign(n + 1, 0);
+    f.assign(n + 1, 0);
     d.assign(n + 1, 0);
+    c.assign(n + 1, 0);
     for (int i = 1; i <= n; i++)
         cin >> c[i];
-    for (int i = 1, u, v; i < n; i++) {
+    for (int i = 1, u, v; i < n; i++)
+    {
         cin >> u >> v;
         e[u].push_back(v);
         e[v].push_back(u);
     }
     dfs(1, 0);
-    for (int i = 1; i <= n; i++) {
-        if (!c[i]) continue;
-        ++dd[min(d[i], 3)];
+    set<int> l, r;
+    for (int i = 0; i <= n; i++)
+    {
+        if (d[i] == 1)
+            r.insert(i);
+        if (d[i] == -1)
+            l.insert(i);
     }
-    while (q--) {
+    while (q--)
+    {
         int u;
         cin >> u;
-        c[u] ^= 1;
-        if (!c[u])
-            --dd[min(d[u], 3)];
-        for (int v: e[u]) {
-            if (c[u]) {
-                if (c[v]) {
-                    --dd[min(d[v], 3)];
-                    ++d[u], ++d[v];
-                    ++dd[min(d[v], 3)];
-                }
-            } else {
-                if (c[v]) {
-                    --dd[min(d[v], 3)];
-                    --d[u], --d[v];
-                    ++dd[min(d[v], 3)];
-                }
-            }
-        }
         if (c[u])
-            ++dd[min(d[u], 3)];
-        if (dd[0]) {
-            cout << (dd[0] == 1 && dd[1] == 0 && dd[2] == 0 && dd[3] == 0 ? "Yes" : "No") << endl;
-        } else {
-            cout << (dd[1] == 2 && dd[3] == 0 ? "Yes" : "No") << endl;
+        {
+            ++d[u];
+            --d[f[u]];
+            if (d[u] == 2)
+                r.erase(u);
+            if (d[u] == 1)
+                r.insert(u);
+            if (d[u] == 0)
+                l.erase(u);
+            if (d[u] == -1)
+                l.insert(u);
+            if (d[f[u]] == -2)
+                l.erase(f[u]);
+            if (d[f[u]] == -1)
+                l.insert(f[u]);
+            if (d[f[u]] == 0)
+                r.erase(f[u]);
+            if (d[f[u]] == 1)
+                r.insert(f[u]);
         }
+        else
+        {
+            --d[u];
+            ++d[f[u]];
+            if (d[u] == -2)
+                l.erase(u);
+            if (d[u] == -1)
+                l.insert(u);
+            if (d[u] == 0)
+                r.erase(u);
+            if (d[u] == 1)
+                r.insert(u);
+            if (d[f[u]] == 2)
+                r.erase(f[u]);
+            if (d[f[u]] == 1)
+                r.insert(f[u]);
+            if (d[f[u]] == 0)
+                l.erase(f[u]);
+            if (d[f[u]] == -1)
+                l.insert(f[u]);
+        }
+        c[u] ^= 1;
+        bool check = false;
+        if (l.size() == 1 && r.size() == 1)
+            check = true;
+        if (l.size() == 2 && r.size() == 2)
+        {
+            int x = *r.begin(), y = *prev(r.end());
+            check = (f[x] == y || f[y] == x) && c[x] != c[y];
+        }
+        cout << (check ? "Yes" : "No") << endl;
     }
 }
 
-int main() {
+int main()
+{
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
     int ttt = 1;
