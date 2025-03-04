@@ -16,6 +16,30 @@ typedef pair<ll, ll> pll;
 
 inline void Zlin()
 {
+    int n, x;
+    cin >> n >> x;
+    vi c(n);
+    for (int& it : c)
+        cin >> it;
+    priority_queue<int> now;
+    ll have = 0, need = 0;
+    for (int it : c)
+    {
+        if (need + it <= have)
+        {
+            now.push(it);
+            need += it;
+        }
+        else if (!now.empty() && now.top() > it)
+        {
+            need -= now.top();
+            now.pop();
+            need += it;
+            now.push(it);
+        }
+        have += x;
+    }
+    cout << now.size() << endl;
 }
 
 int main()
