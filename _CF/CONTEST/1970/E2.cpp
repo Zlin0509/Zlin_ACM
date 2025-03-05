@@ -1,5 +1,5 @@
 //
-// Created by 27682 on 2025/3/4.
+// Created by 27682 on 2025/3/5.
 //
 
 #include "bits/stdc++.h"
@@ -16,8 +16,6 @@ typedef pair<ll, ll> pll;
 
 inline void Zlin()
 {
-    ll p, q;
-    cin >> p >> q;
 }
 
 int main()
@@ -25,6 +23,7 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
     int ttt = 1;
+    cin >> ttt;
     while (ttt--)
         Zlin();
     return 0;
