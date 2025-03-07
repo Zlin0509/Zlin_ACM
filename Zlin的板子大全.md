@@ -3347,6 +3347,7 @@ public:
     void init(string s)
     {
         int n = s.length() * 2;
+        tot = np = 1;
         fa.assign(n + 1, 0);
         len.assign(n + 1, 0);
         cnt.assign(n + 1, 0);

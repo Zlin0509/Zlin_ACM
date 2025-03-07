@@ -24,8 +24,8 @@ typedef pair<ll, ll> pll;
 struct SAM
 {
 private:
-    int tot = 1, np = 1;
-    vi fa, len, cnt;
+    int tot, np;
+    vll fa, len, cnt;
     vector<unordered_map<char, int>> ch;
 
     void extend(char c)
@@ -72,6 +72,7 @@ public:
     void init(string s)
     {
         int n = s.length() * 2;
+        tot = np = 1;
         fa.assign(n + 1, 0);
         len.assign(n + 1, 0);
         cnt.assign(n + 1, 0);
@@ -93,10 +94,83 @@ public:
 
 inline void Zlin()
 {
-    string x;
-    cin >> x;
-    sam.init(x);
-    cout << sam.get_count();
+    int n, q, x;
+    cin >> n;
+    string x1 = "OXO", x2 = "OOOXXXX", x3 = "OOOOOOOOXXXXXXXXOX";
+    if (n == 1)
+    {
+        cout << x1 << endl;
+        cout.flush();
+        cin >> q;
+        while (q--)
+        {
+            cin >> x;
+            cout << 1 << ' ' << 1 << endl;
+            cout.flush();
+        }
+    }
+    else if (n == 2)
+    {
+        cout << x1 << endl << x2 << endl;
+        cout.flush();
+        cin >> q;
+        sam.init(x1 + x1);
+        int t11 = sam.get_count();
+        sam.init(x1 + x2);
+        int t12 = sam.get_count();
+        sam.init(x2 + x1);
+        int t21 = sam.get_count();
+        sam.init(x2 + x2);
+        int t22 = sam.get_count();
+        while (q--)
+        {
+            cin >> x;
+            if (x == t11) cout << 1 << ' ' << 1 << endl;
+            else if (x == t12) cout << 1 << ' ' << 2 << endl;
+            else if (x == t21) cout << 2 << ' ' << 1 << endl;
+            else if (x == t22) cout << 2 << ' ' << 2 << endl;
+            cout.flush();
+            cout.flush();
+        }
+    }
+    else
+    {
+        cout << x1 << endl << x2 << endl << x3 << endl;
+        cout.flush();
+        cin >> q;
+        sam.init(x1 + x1);
+        int t11 = sam.get_count();
+        sam.init(x1 + x2);
+        int t12 = sam.get_count();
+        sam.init(x1 + x3);
+        int t13 = sam.get_count();
+        sam.init(x2 + x1);
+        int t21 = sam.get_count();
+        sam.init(x2 + x2);
+        int t22 = sam.get_count();
+        sam.init(x2 + x3);
+        int t23 = sam.get_count();
+        sam.init(x3 + x1);
+        int t31 = sam.get_count();
+        sam.init(x3 + x2);
+        int t32 = sam.get_count();
+        sam.init(x3 + x3);
+        int t33 = sam.get_count();
+        while (q--)
+        {
+            cin >> x;
+            if (x == t11) cout << 1 << ' ' << 1 << endl;
+            else if (x == t12) cout << 1 << ' ' << 2 << endl;
+            else if (x == t13) cout << 1 << ' ' << 3 << endl;
+            else if (x == t21) cout << 2 << ' ' << 1 << endl;
+            else if (x == t22) cout << 2 << ' ' << 2 << endl;
+            else if (x == t23) cout << 2 << ' ' << 3 << endl;
+            else if (x == t31) cout << 3 << ' ' << 1 << endl;
+            else if (x == t32) cout << 3 << ' ' << 2 << endl;
+            else if (x == t33) cout << 3 << ' ' << 3 << endl;
+            cout.flush();
+        }
+    }
 }
 
 int main()
