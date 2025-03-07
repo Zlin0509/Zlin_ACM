@@ -2215,7 +2215,7 @@ void init_fact() {
     for (int i = N - 1; i >= 1; --i) {
         inv[i] = inv[i + 1] * (i + 1) % mo;
     }
-}
+}j
 
 // 快速求组合数
 ll comb(int n, int k) {
@@ -3370,34 +3370,44 @@ public:
 
 
 
-## Manacher算法
+## Manacher 判断回文串
 
 ```c++
-void init()		//对S串进行处理加上‘#’
+inline string get_new(const string& s)
 {
-	s[0] = '~';
-	n = strlen(s + 1) * 2;
-	for (int i = n; i ; i -= 2)
-	{
-		s[i] = s[i / 2];
-		s[i - 1] = 'z' + 1;
-	}
-	s[++n] = 'z' + 1;
+    string res = "#";
+    for (auto it : s)
+    {
+        res += it;
+        res += '#';
+    }
+    return res;
 }
-int ans = 0;
-void get_d(char s[], int n)			//求出每个位置的最大回文子串
+
+// res代表以i为中心的回文串的长度
+inline vi work(const string& x)
 {
+    string s = get_new(x);
+    int n = s.length();
+    vi res(n);
+    // 当前最长回文中间点所在位置
+    int c = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int l = 2 * c - i;
+        if (i < c + res[c])res[i] = min(res[l], c + res[c] - i);
+        while (i - res[i] - 1 >= 0 && i + res[i] + 1 < n && s[i - res[i] - 1] == s[i + res[i] + 1]) ++res[i];
+        if (i + res[i] > c + res[c]) c = i;
+    }
+    return res;
+}
 
-	d[1] = 1;
-	for (int i = 2, l, r = 1; i <= n; i++)
-	{
-		if (i <= r) d[i] = min(d[r - i + l], r - i + 1);
-
-
-		while (s[i - d[i]] == s[i + d[i]]) d[i]++;
-		if (i + d[i] - 1 > r) l = i - d[i] + 1, r = i + d[i] - 1;
-		ans = max(ans, d[i] - 1);
-	}
+// 判断是否为回文串,l r为未修改前字符串的坐标
+bool ch(int l, int r, vi& p)
+{
+    int ll = l * 2 + 1, rr = r * 2 + 1;
+    int mid = ll + rr >> 1;
+    return mid + p[mid] - 1 >= rr;
 }
 ```
 
