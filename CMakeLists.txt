@@ -4,4 +4,6 @@ project(Zlin_ACM)
 set(CMAKE_CXX_STANDARD 23)
 
 
-add_executable(1002 "_HDU/25 Spring/1/1002.cpp")
+add_executable(C "_CF/GYM/2023 (ICPC) Jiangxi Provincial Contest -- Official Contest/C.cpp")
+add_executable(J "_CF/GYM/2023 (ICPC) Jiangxi Provincial Contest -- Official Contest/J.cpp")
+add_executable(B "_CF/GYM/2023 (ICPC) Jiangxi Provincial Contest -- Official Contest/B.cpp")
