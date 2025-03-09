@@ -19,10 +19,24 @@ inline void Zlin()
 {
     int n;
     cin >> n;
-    vi a(n);
-    for (int& it : a)
-        cin >> it;
-    cout << 1 << ' ' << n << endl;
+    vector<pii> a(n);
+    for (auto& it : a)
+        cin >> it.first >> it.second;
+    int tag = max(a[0].first, a[0].second);
+    for (int i = 1; i < n; i++)
+    {
+        auto [x,y] = a[i];
+        if (max(x, y) <= tag)
+            tag = max(x, y);
+        else if (min(x, y) <= tag)
+            tag = min(x, y);
+        else
+        {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    cout << "YES" << endl;
 }
 
 int main()
@@ -30,7 +44,6 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }

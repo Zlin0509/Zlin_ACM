@@ -19,10 +19,19 @@ inline void Zlin()
 {
     int n;
     cin >> n;
-    vi a(n);
-    for (int& it : a)
-        cin >> it;
-    cout << 1 << ' ' << n << endl;
+    vi a(n + 1);
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+    sort(a.begin(), a.end());
+    vll sum(n + 1);
+    for (int i = 1; i <= n; i++)
+        sum[i] = sum[i - 1] + a[i];
+    ll p = 0, q = n;
+    for (int i = 1; i <= n; i++)
+        p += 1ll * a[i] * i - sum[i - 1] + sum[n] - sum[i] - 1ll * a[i] * (n - i);
+    ll z = gcd(p, q);
+    p /= z, q /= z;
+    cout << p << ' ' << q << endl;
 }
 
 int main()
@@ -30,7 +39,6 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }

@@ -15,14 +15,30 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
+constexpr ll mo = 1e9 + 7;
+
 inline void Zlin()
 {
     int n;
     cin >> n;
     vi a(n);
-    for (int& it : a)
-        cin >> it;
-    cout << 1 << ' ' << n << endl;
+    for (int i = 0, x; i < n; i++)
+    {
+        cin >> x;
+        a[x] = i;
+    }
+    set<int> now;
+    now.insert(a[0]);
+    ll ans = 1;
+    for (int i = 1; i < n; i++)
+    {
+        int id = a[i];
+        int l = *now.begin(), r = *prev(now.end());
+        if (l < id && id < r)
+            ans = ans * (r - l + 1 - now.size()) % mo;
+        now.insert(id);
+    }
+    cout << ans << endl;
 }
 
 int main()
