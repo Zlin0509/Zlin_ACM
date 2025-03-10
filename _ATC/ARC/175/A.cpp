@@ -16,45 +16,41 @@ typedef pair<ll, ll> pll;
 
 constexpr ll mo = 998244353;
 
-inline ll qpow(ll x, ll y)
-{
-    ll res = 1;
-    while (y)
-    {
-        if (y & 1)
-            res = res * x % mo;
-        x = x * x % mo;
-        y >>= 1;
-    }
-    return res;
-}
-
 inline void Zlin()
 {
     int n;
     cin >> n;
     vi a(n);
-    for (int& it : a) cin >> it;
+    for (int& it : a)
+        cin >> it, --it;
     string s;
     cin >> s;
-    ll cnt = 0;
-    for (char it : s)
-        if (it == '?')
-            ++cnt;
-    cnt -= s[0] == '?';
-    ll ans = 0;
-    if (s[0] == '?' || s[0] == 'L')
+    ll ans1 = (s[a[n - 1]] == '?' ? 2 : 1), ans2 = (s[a[n - 1]] == '?' ? 2 : 1);
+    vi used(n);
+    for (int i = 0; i < n - 1; i++)
     {
-        bool check = true;
-        for (int i = 1; i < n - 1; i++)
-            if (s[i] == 'R')
-                check = false;
-        if (check && s[n - 1] == '?')
-            ans = 2;
+        int it = a[i], l = it - 1;
+        if (l == -1) l = n - 1;
+        if (s[it] == '?')
+            ans1 *= used[l] ? 2 : 1;
+        if (s[it] == 'L')
+            ans1 *= used[l] ? 1 : 0;
+        ans1 %= mo;
+        used[it] = 1;
     }
-    if (s[0] == '?' || s[0] == 'R')
-        ans = (ans + qpow(2, cnt)) % mo;
-    cout << ans << endl;
+    used.assign(n, 0);
+    for (int i = 0; i < n - 1; i++)
+    {
+        int it = a[i], r = it + 1;
+        if (r == n) r = 0;
+        if (s[it] == '?')
+            ans2 *= used[r] ? 2 : 1;
+        if (s[it] == 'R')
+            ans2 *= used[r] ? 1 : 0;
+        ans2 %= mo;
+        used[it] = 1;
+    }
+    cout << (ans1 + ans2) % mo << endl;
 }
 
 int main()

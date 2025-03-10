@@ -3,4 +3,4 @@ project(Zlin_ACM)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(A _ATC/ARC/175/A.cpp)
+add_executable(C _ATC/ARC/175/C.cpp)
