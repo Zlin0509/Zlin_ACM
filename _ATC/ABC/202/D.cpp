@@ -23,6 +23,7 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
     int ttt = 1;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
