@@ -1,9 +1,9 @@
 //
-// Created by Zlin on 2025/3/8.
+// Created by 27682 on 2025/3/11.
 //
 
 #include "bits/stdc++.h"
-#define endl "\n"
+#define endl '\n'
 using namespace std;
 
 typedef double db;
@@ -17,16 +17,9 @@ typedef pair<long long, long long> pll;
 
 inline void Zlin()
 {
-    ll n, p;
-    cin >> n >> p;
-    vll a(n);
-    ll ans = 0;
-    for (ll& it : a)
-    {
-        cin >> it;
-        ans ^= it;
-    }
-    cout << (ans ? "GOOD" : "BAD") << endl;
+    int l, r, d, u;
+    cin >> l >> r >> d >> u;
+    cout << (l == r && r == d && d == u ? "Yes" : "No") << endl;
 }
 
 int main()
@@ -34,6 +27,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
