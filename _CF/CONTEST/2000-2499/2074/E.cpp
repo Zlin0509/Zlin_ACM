@@ -70,7 +70,13 @@ inline void Zlin()
             cout.flush();
             return;
         }
-        a = p;
+        int z = rand();
+        if(z%3==0)
+          a = p;
+        else if(z%3==1)
+          b = p;
+        else
+          c = p;
     }
 }
 
