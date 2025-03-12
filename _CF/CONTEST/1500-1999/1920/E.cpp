@@ -20,7 +20,9 @@ constexpr ll mo = 998244353;
 inline void Zlin()
 {
     int n, k;
+    cin >> n >> k;
 }
+
 
 int main()
 {
