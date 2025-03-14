@@ -21,6 +21,8 @@ inline void Zlin()
 {
     int n, k;
     cin >> n >> k;
+    vector f(n + 1, vll(k + 1, 0)), g(n + 1, vll(k + 1, 0));
+    f[0][0] = 1;
 }
 
 
