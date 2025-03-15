@@ -3454,36 +3454,31 @@ ll cal(string S, string T) {
 ```c++
 vi nxt;
 
-// 优化版计算 next 数组
-void get_nxt(const string &pat) {
+void get(const string& pat)
+{
     int m = pat.size();
     nxt.assign(m, 0);
-    for (int i = 1, j = 0; i < m; i++) {
-        while (j > 0 && pat[i] != pat[j]) {
-            j = nxt[j - 1]; // 利用之前计算的 nxt 值减少比较次数
-        }
-        if (pat[i] == pat[j]) {
-            j++;
-        }
-        nxt[i] = j; // 更新 nxt 数组
+    for (int i = 2, j = 0; i < m; i++)
+    {
+        while (j > 0 && pat[i] != pat[j + 1])
+            j = nxt[j];
+        if (pat[i] == pat[j + 1])
+            ++j;
+        nxt[i] = j;
     }
 }
 
-// 优化版 KMP 搜索
-void kmp(const string &txt, const string &pat) {
-    int n = txt.size(), m = pat.size();
-    get_nxt(pat); // 预处理 next 数组
-    for (int i = 0, j = 0; i < n; i++) {
-        while (j > 0 && txt[i] != pat[j]) {
-            j = nxt[j - 1]; // 尽量减少 txt[i] 的多次扫描
-        }
-        if (txt[i] == pat[j]) {
-            j++;
-        }
-        if (j == m) { // 完全匹配
-            cout << "Pattern found at index " << i - m + 1 << '\n';
-            j = nxt[j - 1]; // 匹配后重置 j，继续寻找下一个匹配
-        }
+void kmp(const string& txt, const string& pat)
+{
+    int n = txt.size() - 1, m = pat.size() - 1;
+    get(pat);
+    for (int i = 1, j = 0; i <= n; i++)
+    {
+        while (j > 0 && (j == m || txt[i] != pat[j + 1]))
+            j = nxt[j];
+        if (txt[i] == pat[j + 1])
+            ++j;
+        ans = max(ans, j);
     }
 }
 ```
