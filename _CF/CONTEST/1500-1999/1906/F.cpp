@@ -22,7 +22,7 @@ private:
     {
         int l, r;
         ll val, tag;
-        ll be, en;
+        ll pre, suf;
 
         friend node operator +(const node& a, const node& b)
         {
@@ -30,9 +30,9 @@ private:
             res.l = min(a.l, b.l);
             res.r = max(a.r, b.r);
             res.val = a.val + b.val;
-            res.be = max(a.be, a.val + b.be);
-            res.en = max(b.en, b.val + a.en);
-            res.tag = max({a.tag, b.tag, a.en + b.be});
+            res.pre = max(a.pre, a.val + b.pre);
+            res.suf = max(b.suf, b.val + a.suf);
+            res.tag = max({a.tag, b.tag, a.suf + b.pre});
             return res;
         }
     };
@@ -49,7 +49,7 @@ private:
         t[i].l = l, t[i].r = r;
         if (l == r)
         {
-            t[i].val = t[i].tag = t[i].be = t[i].en = 0;
+            t[i].val = t[i].tag = t[i].pre = t[i].suf = 0;
             return;
         }
         int mid = l + r >> 1;
@@ -74,8 +74,8 @@ public:
         {
             t[i].val += val;
             t[i].tag += val;
-            t[i].be += val;
-            t[i].en += val;
+            t[i].pre += val;
+            t[i].suf += val;
             return;
         }
         update(i << 1, id, val);

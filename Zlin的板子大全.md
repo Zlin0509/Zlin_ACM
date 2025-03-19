@@ -739,7 +739,91 @@ int query(int i, int l, int r) {
 }
 ```
 
+#### 线段树维护区间最大子串价值(单点修区间查)
 
+```c++
+struct STree
+{
+private:
+    struct node
+    {
+        int l, r;
+        ll val, tag;
+        ll pre, suf;
+
+        friend node operator +(const node& a, const node& b)
+        {
+            node res;
+            res.l = min(a.l, b.l);
+            res.r = max(a.r, b.r);
+            res.val = a.val + b.val;
+            res.pre = max(a.pre, a.val + b.pre);
+            res.suf = max(b.suf, b.val + a.suf);
+            res.tag = max({a.tag, b.tag, a.suf + b.pre});
+            return res;
+        }
+    };
+
+    vector<node> t;
+
+    void pushup(int i)
+    {
+        t[i] = t[i << 1] + t[i << 1 | 1];
+    }
+
+    void build(int i, int l, int r)
+    {
+        t[i].l = l, t[i].r = r;
+        if (l == r)
+        {
+            t[i].val = t[i].tag = t[i].pre = t[i].suf = 0;
+            return;
+        }
+        int mid = l + r >> 1;
+        build(i << 1, l, mid);
+        build(i << 1 | 1, mid + 1, r);
+        pushup(i);
+    }
+
+public:
+    void init(int n)
+    {
+        t.assign(n << 2, {});
+        build(1, 1, n);
+    }
+
+    void update(int i, int id, int val)
+    {
+        int lx = t[i].l, rx = t[i].r;
+        if (rx < id || lx > id)
+            return;
+        if (lx == id && rx == id)
+        {
+            t[i].val += val;
+            t[i].tag += val;
+            t[i].pre += val;
+            t[i].suf += val;
+            return;
+        }
+        update(i << 1, id, val);
+        update(i << 1 | 1, id, val);
+        pushup(i);
+    }
+
+    node query(int i, int l, int r)
+    {
+        int lx = t[i].l, rx = t[i].r;
+        if (lx == l && rx == r)
+            return t[i];
+        int mid = lx + rx >> 1;
+        if (mid >= r)
+            return query(i << 1, l, r);
+        if (mid + 1 <= l)
+            return query(i << 1 | 1, l, r);
+        return query(i << 1, l, mid) + query(i << 1 | 1, mid + 1, r);
+    }
+} t;
+```
 
 ### 李超线段树
 
