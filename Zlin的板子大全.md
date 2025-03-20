@@ -1464,7 +1464,30 @@ $$
 A = \sqrt{s(s-a)(s-b)(s-c)}  （s = \frac{a + b + c}{2}）
 $$
 
+### 素数
 
+```c++
+vector<int> primes; // 存储所有素数
+vector<bool> is_p; // is_prime[i] 为 true 表示 i 是素数
+
+inline void su(int n)
+{
+    is_p.assign(n + 1, true);
+    is_p[0] = is_p[1] = false; // 0 和 1 不是素数
+
+    for (int i = 2; i <= n; i++)
+    {
+        if (is_p[i])
+            primes.push_back(i); // 记录素数
+        for (int p : primes)
+        {
+            if (i * p > n) break; // 超出范围，停止
+            is_p[i * p] = false; // 标记合数
+            if (i % p == 0) break; // 保证每个数只被其最小素因子筛掉
+        }
+    }
+}
+```
 
 
 ## FFT
