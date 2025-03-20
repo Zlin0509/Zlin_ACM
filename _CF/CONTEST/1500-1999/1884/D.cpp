@@ -15,31 +15,28 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-constexpr int N = 1e6 + 5;
-
 inline void Zlin()
 {
     int n;
     cin >> n;
-    vi a(n), cnt(n + 1);
-    vector check(n + 1, false);
-    for (int& it : a) cin >> it, cnt[it]++;
-    sort(a.begin(), a.end());
-    a.erase(unique(a.begin(), a.end()), a.end());
-    ll ans = 1ll * n * (n - 1);
-    for (int i : a)
-    {
-        if (check[i]) continue;
-        ll val1 = 0, val2 = 0;
+    vll a(n), cnt(n + 1), cnt1(n + 1), val(n + 1);
+    for (ll& it : a) cin >> it, cnt[it]++;
+    for (int i = 1; i <= n; i++)
         for (int j = 1; i * j <= n; j++)
-        {
-            if (!cnt[i * j]) continue;
-            check[i * j] ? val2 += cnt[i * j] : val1 += cnt[i * j];
-            check[i * j] = true;
-        }
-        ans -= val1 * (val1 - 1) - val2 * (val2 - 1);
+            cnt1[i * j] += cnt[i];
+    for (int i = n; i; i--)
+    {
+        for (int j = 1; i * j <= n; j++)
+            val[i] += cnt[i * j];
+        val[i] = (val[i] - 1) * val[i] / 2;
+        for (int j = 2; i * j <= n; j++)
+            val[i] -= val[i * j];
     }
-    cout << ans / 2 << endl;
+    ll ans = 0;
+    for (int i = 1; i <= n; i++)
+        if (!cnt1[i])
+            ans += val[i];
+    cout << ans << endl;
 }
 
 int main()
