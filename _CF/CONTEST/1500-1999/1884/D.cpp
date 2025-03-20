@@ -17,32 +17,29 @@ typedef pair<long long, long long> pll;
 
 constexpr int N = 1e6 + 5;
 
-int f[N], siz[N];
-
-inline int find(int u) { return f[u] == u ? u : f[u] = find(f[u]); }
-
-inline void merge(int x, int y)
-{
-    int fx = find(x), fy = find(y);
-    if (fx == fy)
-        return;
-    if (fx > fy) swap(fx, fy);
-    f[fy] = fx;
-    siz[fx] += siz[fy];
-}
-
-vector<int> fac(N);
-
-
-
 inline void Zlin()
 {
     int n;
     cin >> n;
-    vi a(n);
-    for (int& it : a)
-        cin >> it;
-    sort(a.begin(), a.end(), greater<int>());
+    vi a(n), cnt(n + 1);
+    vector check(n + 1, false);
+    for (int& it : a) cin >> it, cnt[it]++;
+    sort(a.begin(), a.end());
+    a.erase(unique(a.begin(), a.end()), a.end());
+    ll ans = 1ll * n * (n - 1);
+    for (int i : a)
+    {
+        if (check[i]) continue;
+        ll val1 = 0, val2 = 0;
+        for (int j = 1; i * j <= n; j++)
+        {
+            if (!cnt[i * j]) continue;
+            check[i * j] ? val2 += cnt[i * j] : val1 += cnt[i * j];
+            check[i * j] = true;
+        }
+        ans -= val1 * (val1 - 1) - val2 * (val2 - 1);
+    }
+    cout << ans / 2 << endl;
 }
 
 int main()
