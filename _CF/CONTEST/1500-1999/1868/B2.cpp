@@ -17,6 +17,17 @@ typedef pair<ll, ll> pll;
 
 inline void Zlin()
 {
+    int n;
+    cin >> n;
+    vi a(n);
+    ll sum = 0;
+    for (int& it : a) cin >> it, sum += it;
+    if (sum % n)
+    {
+        cout << "No" << endl;
+        return;
+    }
+    sum /= n;
 }
 
 int main()

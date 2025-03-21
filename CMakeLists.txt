@@ -4,4 +4,4 @@ project(Zlin_ACM)
 set(CMAKE_CXX_STANDARD 23)
 
 
-add_executable(B2 _CF/CONTEST/1500-1999/1868/B2.cpp)
+add_executable(1009 "_HDU/25 Spring/3/1009.cpp")
