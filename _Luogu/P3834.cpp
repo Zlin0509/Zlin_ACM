@@ -73,22 +73,22 @@ private:
         pushup(now);
     }
 
-    int query(const node now, int k)
+    int query(const node* now, int k)
     {
-        if (now.l == now.r)
-            return now.l;
-        if (now.ls->val >= k)
-            return query(*now.ls, k);
-        return query(*now.rs, k - now.ls->val);
+        if (now->l == now->r)
+            return now->l;
+        if (now->ls->val >= k)
+            return query(now->ls, k);
+        return query(now->rs, k - now->ls->val);
     }
 
-    int query1(const node bef, const node now, int k)
+    int query1(const node* bef, const node* now, int k)
     {
-        if (now.l == now.r)
-            return now.l;
-        if (now.ls->val - bef.ls->val >= k)
-            return query1(*bef.ls, *now.ls, k);
-        return query1(*bef.rs, *now.rs, k - now.ls->val + bef.ls->val);
+        if (now->l == now->r)
+            return now->l;
+        if (now->ls->val - bef->ls->val >= k)
+            return query1(bef->ls, now->ls, k);
+        return query1(bef->rs, now->rs, k - now->ls->val + bef->ls->val);
     }
 
 public:
@@ -107,12 +107,12 @@ public:
 
     int qry(int now, int k)
     {
-        return query(*t[now], k);
+        return query(t[now], k);
     }
 
     int qry1(int bef, int now, int k)
     {
-        return query1(*t[bef - 1], *t[now], k);
+        return query1(t[bef - 1], t[now], k);
     }
 } t;
 
