@@ -952,51 +952,109 @@ void update(int p, int l, int r, int ql, int qr, int v) {
 
 ### 主席树
 
-#### 求静态区间K大值
+#### 求静态区间K小值
 
 ```c++
-const int maxn = 2e5 + 10;
-const int M = maxn * 40;
-int T[maxn];///T[i]表示第i颗线段树的顶结点
-int lson[M], rson[M], C[M];///c[i]就代表第i个点的权值,即上述权值线段树的sum
-int s[maxn], f[maxn];     /// lson[i], rson[i] 表示第 i 个点的左儿子,右儿子是谁
-int tot = 0, en;          /// tot 用于动态开点
+struct PStree
+{
+private:
+    struct node
+    {
+        int l, r;
+        int val;
+        node* ls = nullptr;
+        node* rs = nullptr;
+    };
 
-int getId(int x) {
-    return lower_bound(s + 1, s + 1 + en, x) - s;
-}
+    vector<node*> t;
 
-void build(int &i, int l, int r) {
-    i = ++tot;
-    C[i] = 0;
-    if (l == r) return;
-    int mid = (l + r) >> 1;
-    build(lson[i], l, mid);
-    build(rson[i], mid + 1, r);
-}
+    void pushup(node& t)
+    {
+        t.val = t.ls->val + t.rs->val;
+    }
 
-void update(int l, int r, int &i, int last, int pos) {
-    C[++tot] = C[last];
-    lson[tot] = lson[last];
-    rson[tot] = rson[last];
-    i = tot;
-    ++C[i];
-    if (l == r) return;
-    int mid = (l + r) >> 1;
-    if (pos <= mid)
-        update(l, mid, lson[i], lson[last], pos);
-    else
-        update(mid + 1, r, rson[i], rson[last], pos);
-}
+    void build(node& t, int l, int r)
+    {
+        t.l = l, t.r = r;
+        if (l == r)
+        {
+            t.val = 0;
+            return;
+        }
+        t.ls = new node();
+        t.rs = new node();
+        int mid = l + r >> 1;
+        build(*t.ls, l, mid);
+        build(*t.rs, mid + 1, r);
+        pushup(t);
+    }
 
-int query(int l, int r, int lrt, int rrt, int k) {
-    if (l == r) return l;
-    int mid = (l + r) >> 1;
-    int tmp = C[lson[rrt]] - C[lson[lrt]];
-    if (tmp >= k)
-        return query(l, mid, lson[lrt], lson[rrt], k);
-    return query(mid + 1, r, rson[lrt], rson[rrt], k - tmp);
-}
+    void update(const node& bef, node& now, int k, int val)
+    {
+        now.l = bef.l, now.r = bef.r;
+        if (now.l == k && k == now.r)
+        {
+            now.val = bef.val + val;
+            return;
+        }
+        int mid = now.l + now.r >> 1;
+        if (k <= mid)
+        {
+            now.ls = new node();
+            update(*bef.ls, *now.ls, k, val);
+            now.rs = bef.rs;
+        }
+        else
+        {
+            now.ls = bef.ls;
+            now.rs = new node();
+            update(*bef.rs, *now.rs, k, val);
+        }
+        pushup(now);
+    }
+
+    int query(const node now, int k)
+    {
+        if (now.l == now.r)
+            return now.l;
+        if (now.ls->val >= k)
+            return query(*now.ls, k);
+        return query(*now.rs, k - now.ls->val);
+    }
+
+    int query1(const node bef, const node now, int k)
+    {
+        if (now.l == now.r)
+            return now.l;
+        if (now.ls->val - bef.ls->val >= k)
+            return query1(*bef.ls, *now.ls, k);
+        return query1(*bef.rs, *now.rs, k - now.ls->val + bef.ls->val);
+    }
+
+public:
+    void init(int n, int val)
+    {
+        t.resize(n + 1, nullptr);
+        t[0] = new node();
+        build(*t[0], 1, val);
+    }
+
+    void upd(int bef, int now, int k, int val)
+    {
+        t[now] = new node();
+        update(*t[bef], *t[now], k, val);
+    }
+
+    int qry(int now, int k)
+    {
+        return query(*t[now], k);
+    }
+
+    int qry1(int bef, int now, int k)
+    {
+        return query1(*t[bef - 1], *t[now], k);
+    }
+} t;
 ```
 
 #### 求区间不重复个数
