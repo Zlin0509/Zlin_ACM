@@ -3469,6 +3469,28 @@ private:
 public:
     AC_auto() { root = new node(); }
 
+    // 多测注意内存开销
+    // ~AC_auto()
+    // {
+    //     unordered_set<node*> visited;
+    //     queue<node*> s;
+    //     s.push(root);
+    //     while (!s.empty())
+    //     {
+    //         node* cur = s.front();
+    //         s.pop();
+    //         if (visited.count(cur))
+    //             continue;
+    //         visited.insert(cur);
+    //         for (int i = 0; i < 26; i++)
+    //         {
+    //             if (cur->next[i] != nullptr && !visited.count(cur->next[i]))
+    //                 s.push(cur->next[i]);
+    //         }
+    //         delete cur;
+    //     }
+    // }
+
     void ins(const string& s, int val)
     {
         node* now = root;
