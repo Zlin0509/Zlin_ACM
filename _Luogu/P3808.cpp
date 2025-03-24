@@ -21,7 +21,7 @@ struct AC_auto
 private:
     struct node
     {
-        int val;
+        int val = 0;
         node* nex;
         node* next[26];
     };
@@ -31,14 +31,14 @@ private:
 public:
     AC_auto() { root = new node(); }
 
-    void insert(const string& s, int val)
+    void ins(const string& s, int val)
     {
         node* now = root;
         for (char it : s)
         {
             if (now->next[it - 'a'] == nullptr)
                 now->next[it - 'a'] = new node();
-            now = now->next[it];
+            now = now->next[it - 'a'];
         }
         now->val += val;
     }
@@ -46,9 +46,14 @@ public:
     void build()
     {
         queue<node*> q;
+        root->nex = root;
         for (int i = 0; i < 26; i++)
         {
-            if (root->next[i] != nullptr) q.push(root->next[i]);
+            if (root->next[i] != nullptr)
+            {
+                root->next[i]->nex = root;
+                q.push(root->next[i]);
+            }
             else root->next[i] = root;
         }
         while (!q.empty())
@@ -71,17 +76,11 @@ public:
     {
         int res = 0;
         node* now = root;
-        node* cal;
         for (char it : s)
         {
             now = now->next[it - 'a'];
-            cal = now;
-            while (cal != root && cal->val != -1)
-            {
+            for (node* cal = now; cal != root && ~cal->val; cal = cal->nex)
                 res += cal->val;
-                cal->val = -1;
-                cal = cal->nex;
-            }
         }
         return res;
     }
@@ -89,6 +88,14 @@ public:
 
 inline void Zlin()
 {
+    int n;
+    cin >> n;
+    string s;
+    for (int i = 0; i < n; i++)
+        cin >> s, t.ins(s, 1);
+    t.build();
+    cin >> s;
+    cout << t.qry(s) << endl;
 }
 
 int main()
@@ -96,7 +103,6 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
