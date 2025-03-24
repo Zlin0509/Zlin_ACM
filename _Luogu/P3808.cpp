@@ -37,7 +37,7 @@ public:
         for (char it : s)
         {
             if (now->next[it - 'a'] == nullptr)
-                now->next[it] = new node();
+                now->next[it - 'a'] = new node();
             now = now->next[it];
         }
         now->val += val;
@@ -47,8 +47,10 @@ public:
     {
         queue<node*> q;
         for (int i = 0; i < 26; i++)
-            if (root->next[i] != nullptr)
-                q.push(root->next[i]);
+        {
+            if (root->next[i] != nullptr) q.push(root->next[i]);
+            else root->next[i] = root;
+        }
         while (!q.empty())
         {
             node* now = q.front();
