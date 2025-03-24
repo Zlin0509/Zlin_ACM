@@ -17,6 +17,8 @@ typedef pair<long long, long long> pll;
 
 inline void Zlin()
 {
+    int n, k;
+    cin >> n >> k;
 }
 
 int main()
@@ -24,7 +26,6 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
