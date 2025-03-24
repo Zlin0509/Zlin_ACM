@@ -17,6 +17,23 @@ typedef pair<ll, ll> pll;
 
 inline void Zlin()
 {
+    int n;
+    cin >> n;
+    vi a(n), d(n);
+    for (int& it : a) cin >> it;
+    for (int& it : d) cin >> it;
+    auto check = [&](int x)
+    {
+        return true;
+    };
+    ll l = 0, r = 1e16, mid;
+    while (l < r)
+    {
+        mid = l + r >> 1;
+        if (check(mid)) r = mid;
+        else l = mid + 1;
+    }
+    cout << l << endl;
 }
 
 int main()
@@ -24,7 +41,6 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
