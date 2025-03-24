@@ -3460,36 +3460,28 @@ private:
     struct node
     {
         int val = 0;
-        node* nex;
-        node* next[26];
+        node* nex = nullptr;
+        node* next[26] = {nullptr};
     };
+
+    static const int N = 1e6 + 5;
+    node pool[N];
+    int tot = 0;
+
+    node* alloc()
+    {
+        pool[tot] = node();
+        return &pool[tot++];
+    }
 
     node* root;
 
 public:
-    AC_auto() { root = new node(); }
-
-    // 多测注意内存开销
-    // ~AC_auto()
-    // {
-    //     unordered_set<node*> visited;
-    //     queue<node*> s;
-    //     s.push(root);
-    //     while (!s.empty())
-    //     {
-    //         node* cur = s.front();
-    //         s.pop();
-    //         if (visited.count(cur))
-    //             continue;
-    //         visited.insert(cur);
-    //         for (int i = 0; i < 26; i++)
-    //         {
-    //             if (cur->next[i] != nullptr && !visited.count(cur->next[i]))
-    //                 s.push(cur->next[i]);
-    //         }
-    //         delete cur;
-    //     }
-    // }
+    void init()
+    {
+        tot = 0;
+        root = alloc();
+    }
 
     void ins(const string& s, int val)
     {
@@ -3497,7 +3489,7 @@ public:
         for (char it : s)
         {
             if (now->next[it - 'a'] == nullptr)
-                now->next[it - 'a'] = new node();
+                now->next[it - 'a'] = alloc();
             now = now->next[it - 'a'];
         }
         now->val += val;
@@ -3510,11 +3502,10 @@ public:
         for (int i = 0; i < 26; i++)
         {
             if (root->next[i] != nullptr)
-            {
-                root->next[i]->nex = root;
                 q.push(root->next[i]);
-            }
-            else root->next[i] = root;
+            else
+                root->next[i] = root;
+            root->next[i]->nex = root;
         }
         while (!q.empty())
         {
@@ -3540,7 +3531,7 @@ public:
         {
             now = now->next[it - 'a'];
             for (node* cal = now; cal != root && ~cal->val; cal = cal->nex)
-                res += cal->val;
+                res += cal->val, cal->val = -1;
         }
         return res;
     }

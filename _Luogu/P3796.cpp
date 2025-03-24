@@ -20,48 +20,41 @@ struct AC_auto
 private:
     struct node
     {
-        int val = 0;
-        node* nex;
-        node* next[26];
+        int val = 0, id = -1;
+        node* nex = nullptr;
+        node* next[26] = {nullptr};
     };
+
+    static const int N = 2e5 + 5;
+    node pool[N];
+    int tot = 0;
+
+    node* alloc()
+    {
+        pool[tot] = node();
+        return &pool[tot++];
+    }
 
     node* root;
 
 public:
-    AC_auto() { root = new node(); }
+    void init()
+    {
+        tot = 0;
+        root = alloc();
+    }
 
-    // 多测注意内存开销
-    // ~AC_auto()
-    // {
-    //     unordered_set<node*> visited;
-    //     queue<node*> s;
-    //     s.push(root);
-    //     while (!s.empty())
-    //     {
-    //         node* cur = s.front();
-    //         s.pop();
-    //         if (visited.count(cur))
-    //             continue;
-    //         visited.insert(cur);
-    //         for (int i = 0; i < 26; i++)
-    //         {
-    //             if (cur->next[i] != nullptr && !visited.count(cur->next[i]))
-    //                 s.push(cur->next[i]);
-    //         }
-    //         delete cur;
-    //     }
-    // }
-
-    void ins(const string& s, int val)
+    void ins(const string& s, int val, int id)
     {
         node* now = root;
         for (char it : s)
         {
             if (now->next[it - 'a'] == nullptr)
-                now->next[it - 'a'] = new node();
+                now->next[it - 'a'] = alloc();
             now = now->next[it - 'a'];
         }
         now->val += val;
+        now->id = id;
     }
 
     void build()
@@ -71,11 +64,10 @@ public:
         for (int i = 0; i < 26; i++)
         {
             if (root->next[i] != nullptr)
-            {
-                root->next[i]->nex = root;
                 q.push(root->next[i]);
-            }
-            else root->next[i] = root;
+            else
+                root->next[i] = root;
+            root->next[i]->nex = root;
         }
         while (!q.empty())
         {
@@ -93,22 +85,37 @@ public:
         }
     }
 
-    int qry(const string& s)
+    void qry(const string& s, vi& cnt)
     {
-        int res = 0;
         node* now = root;
         for (char it : s)
         {
             now = now->next[it - 'a'];
-            for (node* cal = now; cal != root && ~cal->val; cal = cal->nex)
-                res += cal->val;
+            for (node* cal = now; cal != root; cal = cal->nex)
+                if (~cal->id)
+                    ++cnt[cal->id];
         }
-        return res;
     }
 } t;
 
-inline void Zlin()
+inline void Zlin(int n)
 {
+    t.init();
+    string s;
+    vector<string> v(n);
+    for (int i = 0; i < n; i++)
+        cin >> v[i], t.ins(v[i], 1, i);
+    t.build();
+    cin >> s;
+    vi cnt(n);
+    t.qry(s, cnt);
+    int res = 0;
+    for (int i = 0; i < n; i++)
+        res = max(res, cnt[i]);
+    cout << res << endl;
+    for (int i = 0; i < n; i++)
+        if (res == cnt[i])
+            cout << v[i] << endl;
 }
 
 int main()
@@ -116,7 +123,11 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
-    while (ttt--) Zlin();
+    while (cin >> ttt)
+    {
+        if (ttt == 0)
+            break;
+        Zlin(ttt);
+    }
     return 0;
 }
