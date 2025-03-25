@@ -20,29 +20,88 @@ inline ll qpow(ll a, ll b) {
     return res;
 }
 
+ll ans;
+
+struct Trie {
+private:
+    struct node {
+        int val = 0;
+        node *ls = nullptr, *rs = nullptr;
+    };
+
+    static const int N = 7e6;
+    node pool[N];
+    int tot = 0;
+
+    node *root;
+
+    node *alloc() {
+        pool[tot] = {0, nullptr, nullptr};
+        return &pool[tot++];
+    }
+
+public:
+    void init() {
+        tot = 0;
+        root = alloc();
+    }
+
+    void ins(int s) {
+        node *now = root;
+        ll val;
+        for (int i = 30, cnt = 0; ~i; i--) {
+            val = cnt * 2 + 3;
+            if (s >> i & 1) {
+                if (now->ls != nullptr) {
+                    val = now->ls->val * val;
+                    ans = (ans + val) % mo;
+                }
+                if (now->rs == nullptr)
+                    now->rs = alloc();
+                now = now->rs;
+                ++now->val;
+                ++cnt;
+            } else {
+                if (now->rs != nullptr) {
+                    val = now->rs->val * val;
+                    ans = (ans + val) % mo;
+                }
+                if (now->ls == nullptr)
+                    now->ls = alloc();
+                now = now->ls;
+                now->val++;
+            }
+        }
+    }
+} t;
+
 inline void Zlin() {
     int n;
     cin >> n;
     vi a(n);
-    for (int &it: a) cin >> it;
-    vector f0(32, vi(32, 0)), f1(32, vi(32, 0));
-    for (int it: a) {
-        for (int i = 30, cnt = 0; ~i; i--) {
-            if (it >> i & 1) f1[i][cnt++]++;
-            else f0[i][cnt]++;
-        }
-    }
-    ll ans = 0, val;
-    for (int i = 0; i < 30; i++) {
-        for (int j = 0; j < 30; j++) {
-            val = f0[i][j] * f1[i][j];
-            val = val * 2 * j + val * (2 * j + 1);
+    t.init();
+    ans = 0;
+    for (int &it: a) cin >> it, t.ins(it);
+
+    // cout << ans << ' ';
+
+    sort(a.begin(), a.end());
+    for (int i = 1, cnt = 1, tag, val; i <= n; i++) {
+        if (i != n && a[i] == a[i - 1])
+            ++cnt;
+        else {
+            tag = a[i - 1];
+            val = 1;
+            for (int j = 30; ~j; j--)
+                if (tag >> j & 1)
+                    ++val;
+            val = 1ll * cnt * cnt * val % mo;
             ans = (ans + val) % mo;
+            cnt = 1;
         }
     }
-    ans = ans * 2 % mo;
-    cout << ans << ' ';
-    ans = ans * qpow(1ll * n * n, mo - 2) % mo;
+    // cout << ans << ' ';
+    ans = ans * qpow(1ll * n * n % mo, mo - 2) % mo;
     cout << ans << endl;
 }
 
