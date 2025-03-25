@@ -36,10 +36,12 @@ inline void Zlin() {
     for (int i = 0; i < 30; i++) {
         for (int j = 0; j < 30; j++) {
             val = f0[i][j] * f1[i][j];
-            val = val * (6 * j + 3);
+            val = val * 2 * j + val * (2 * j + 1);
             ans = (ans + val) % mo;
         }
     }
+    ans = ans * 2 % mo;
+    cout << ans << ' ';
     ans = ans * qpow(1ll * n * n, mo - 2) % mo;
     cout << ans << endl;
 }
