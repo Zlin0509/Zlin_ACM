@@ -16,37 +16,39 @@ typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
 constexpr int N = 2e5 + 5;
+constexpr int inf = 1e8;
 
 int n, m;
+int in[N], f[N], siz[N], vis[N];
 vi e[N];
 
-int dfn[N], low[N], tot;
-int stk[N], instk[N], top;
-bool cut[N];
+inline int find(int u) {
+    return f[u] == u ? u : f[u] = find(f[u]);
+}
+
+inline void merge(int x, int y) {
+    int fx = find(x), fy = find(y);
+    if (fx == fy)
+        return;
+    f[fy] = fx;
+    siz[fx] += siz[fy];
+}
 
 void init() {
-    tot = top = 0;
     for (int i = 1; i <= n; i++) {
+        in[i] = vis[i] = 0;
+        f[i] = i;
+        siz[i] = 1;
         e[i].clear();
-        dfn[i] = low[i] = 0;
-        stk[i] = instk[i] = 0;
-        cut[i] = false;
     }
 }
 
-void tarjan(int x, int s) {
-    int ss = 0;
-    dfn[x] = low[x] = ++tot;
-    stk[++top] = x, instk[x] = 1;
-    for (int y: e[x]) {
-        if (!dfn[y]) {
-            ++ss;
-            tarjan(y, s);
-            low[x] = min(low[x], low[y]);
-            if (low[y] >= dfn[x]) cut[x] = true;
-        } else if (instk[y]) low[x] = min(low[x], dfn[y]);
+void dfs(int u) {
+    for (int v: e[u]) {
+        if (in[v] != 2 || find(u) == find(v)) continue;
+        merge(u, v);
+        dfs(v);
     }
-    if (ss == 1 && x == s) cut[x] = false;
 }
 
 inline void Zlin() {
@@ -56,7 +58,40 @@ inline void Zlin() {
         cin >> u >> v;
         e[u].push_back(v);
         e[v].push_back(u);
+        merge(u, v);
+        ++in[u], ++in[v];
     }
+    int k = sqrt(n);
+    if (k * k != n || siz[find(1)] != n) {
+        cout << "NO" << endl;
+        return;
+    }
+    for (int i = 1; i <= n; i++)
+        f[i] = i, siz[i] = 1;
+    int cnt = 0;
+    for (int i = 1; i <= n; i++) {
+        if (in[i] == 2) continue;
+        if (in[i] == 4) {
+            ++cnt;
+        } else {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    if (cnt != k) {
+        cout << "NO" << endl;
+        return;
+    }
+    for (int i = 1; i <= n; i++)
+        if (in[i] == 4)
+            dfs(i);
+    for (int i = 1; i <= n; i++) {
+        if (siz[find(i)] != k) {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    cout << "YES" << endl;
 }
 
 int main() {
