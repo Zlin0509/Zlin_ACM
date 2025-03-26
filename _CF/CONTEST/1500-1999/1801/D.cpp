@@ -19,61 +19,65 @@ typedef __int128 i128;
 constexpr int N = 810;
 constexpr ll inf = 1e16;
 
+ll dis[N][N];
 int n, m, p;
-i128 w[N], vis[N];
-
-struct edge {
-    i128 to, val;
-};
-
-vector<edge> e[N];
 
 struct node {
-    i128 val, time, mx;
+    int val, id;
 
     bool operator<(const node &x) const {
-        if (time != x.time) return time < x.time;
-        return val < x.val;
+        if (val != x.val) return val < x.val;
+        return id < x.id;
     }
-} dis[N];
+} w[N];
 
-bool check(ll x) {
-    for (int i = 1; i <= n; i++) {
-        vis[i] = 0;
-        dis[i] = {0, 0};
-    }
-    priority_queue<pair<node, int> > pq;
-    dis[1] = {p, x};
-    pq.push({dis[1], 1});
-    while (!pq.empty()) {
-        int u = pq.top().second;
-        pq.pop();
-        if (vis[u]) continue;
-        vis[u] = 1;
-        for (auto [v,val]: e[u]) {
-        }
-    }
-}
+pll ans[N];
 
 inline void Zlin() {
     cin >> n >> m >> p;
     for (int i = 1; i <= n; i++) {
-        e[i].clear();
+        w[i] = {0, 0};
+        ans[i] = {inf, 0};
+        for (int j = 1; j <= n; j++) {
+            dis[i][j] = inf;
+        }
     }
-    for (int i = 1, x; i <= n; i++) cin >> x, w[i] = x;
+    for (int i = 1; i <= n; i++) {
+        cin >> w[i].val;
+        w[i].id = i;
+    }
+    sort(w + 1, w + 1 + n);
     for (int i = 1, u, v, s; i <= m; i++) {
         cin >> u >> v >> s;
-        e[u].push_back({v, s});
+        dis[u][v] = min(dis[u][v], (ll) s);
     }
-    ll l = 0, r = 1e14, mid;
-    while (l < r) {
-        mid = l + r >> 1;
-        if (check(mid)) r = mid;
-        else l = mid + 1;
+    for (int k = 1; k <= n; k++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j]);
+            }
+        }
     }
-    if (l == 1e14) l = -1;
-    ll ans = l;
-    cout << ans << endl;
+    auto update = [&](int id, ll f, ll g) {
+        if (f < ans[id].first) ans[id] = {f, g};
+        else if (f == ans[id].first && g > ans[id].second) ans[id] = {f, g};
+    };
+    ans[1] = {0, p};
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            int x = w[i].id, y = w[j].id;
+            if (dis[x][y] != inf && i != j) {
+                auto [f, g] = ans[x];
+                if (g >= dis[x][y]) update(y, f, g - dis[x][y]);
+                else {
+                    ll k = (dis[x][y] - g + w[i].val - 1) / w[i].val;
+                    update(y, f + k, g + k * w[i].val - dis[x][y]);
+                }
+            }
+        }
+    }
+    if (ans[n].first == inf) cout << -1 << endl;
+    else cout << ans[n].first << endl;
 }
 
 int main() {
