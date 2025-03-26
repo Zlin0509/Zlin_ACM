@@ -45,29 +45,35 @@ ll comb(int n, int k) {
 inline void Zlin() {
     int n, k;
     cin >> n >> k;
-    vi a(n + 1);
-    vector f(n + 2, vll(n + 2, 0)), cnt(n + 2, vll(n + 2, 0));
-    f[n + 1][0] = 1;
+    vi a(n + 2);
+    vector cnt(n + 1, vll(n + 1, 0));
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
         cnt[i][a[i]] = 1;
     }
-    for (int i = 1; i <= n + 1; i++)
+    for (int i = 1; i <= n; i++)
         for (int j = 1; j <= n; j++)
             cnt[i][j] += cnt[i - 1][j];
+    vector f(n + 2, pll({0, 0}));
+    f[n + 1] = {0, 1};
     ll ans = 0, mx = 0;
-    for (int l = n; l; l--) {
-        for (int r = l + 1; r <= n + 1; r++) {
-            if (cnt[r - 1][a[l]] - cnt[l - 1][a[l]] < k) continue;
-            for (int z = 0; z < n; z++) {
-                if (!f[r][z]) continue;
-                f[l][z + 1] += f[r][z] * comb(cnt[r - 1][a[l]] - cnt[l - 1][a[l]] - 1, k - 1) % mo;
-                mx = max(mx, (ll) z + 1);
+    for (int l = n, tag; l; l--) {
+        for (int r = n + 1; r > l; r--) {
+            if (!f[r].second || a[r] == a[l] || cnt[r - 1][a[l]] - cnt[l - 1][a[l]] < k) continue;
+            tag = (cnt[r - 1][a[l]] - cnt[l - 1][a[l]]) / k;
+            if (f[r].first + tag > f[l].first) {
+                f[l].first = f[r].first + tag;
+                f[l].second = f[r].second * comb(cnt[r - 1][a[l]] - cnt[l][a[l]], tag * k - 1) % mo;
+                mx = max(mx, f[l].first);
+            } else if (f[r].first + tag == f[l].first) {
+                f[l].second = (f[l].second + f[r].second * comb(cnt[r - 1][a[l]] - cnt[l][a[l]], tag * k - 1) % mo) %
+                              mo;
             }
         }
     }
     for (int i = 1; i <= n + 1; i++)
-        ans = (ans + f[i][mx]) % mo;
+        if (f[i].first == mx)
+            ans = (ans + f[i].second) % mo;
     cout << ans << endl;
 }
 
