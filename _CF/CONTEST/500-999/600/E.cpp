@@ -16,14 +16,27 @@ typedef vector<i64> vll;
 typedef pair<int, int> pii;
 typedef pair<i64, i64> pll;
 
+constexpr int N = 1e5 + 10;
+
+int n;
+int c[N];
+vi e[N];
+
 inline void Zlin() {
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+        cin >> c[i];
+    for (int i = 1, u, v; i < n; i++) {
+        cin >> u >> v;
+        e[u].push_back(v);
+        e[v].push_back(u);
+    }
 }
 
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
