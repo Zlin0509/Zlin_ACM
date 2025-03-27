@@ -54,6 +54,8 @@ constexpr int N = 2e5;
 
 ll fac[N + 10];
 
+constexpr ll mo = 998244353;
+
 inline void Zlin() {
     string s;
     int n, q;
