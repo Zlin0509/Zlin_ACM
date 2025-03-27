@@ -15,47 +15,38 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-constexpr int N = 2e5 + 5;
+string s[40];
+string c1 = "easy", c2 = "qiandao", it;
+string ans = "Wo AK le";
 
-ll fa[N], sum[N], cnt = 0, ans[N], used[N];
-ll n;
-ll a[N], b[N];
-
-inline int find(int x) { return fa[x] == x ? x : fa[x] = find(fa[x]); }
-
-inline void merge(int x, int y)
-{
-    int fx = find(x), fy = find(y);
-    if (fx == fy) return;
-    fa[fx] = fy;
-    sum[fy] += sum[fx];
-    cnt = max(cnt, sum[fy]);
-}
-
-inline void Zlin()
-{
-    cin >> n;
-    for (int i = 1; i <= n; i++) cin >> a[i], fa[i] = i;
-    for (int i = 1; i <= n; i++) cin >> b[i];
-    for(int i = 0;i<=n+3;i++) used[i] = -1;
-    for (int i = n; i >= 1; i--)
-    {
-        int tag = b[i];
-        used[tag] = a[tag];
-        sum[tag] = a[tag];
-        cnt = max(cnt, sum[tag]);
-        if (used[tag - 1] != -1) merge(tag, tag - 1);
-        if (used[tag + 1] != -1) merge(tag, tag + 1);
-        ans[i - 1] = cnt;
+int main() {
+    int n, m;
+    cin >> n >> m;
+    for (int q = 0; q < n; q++) {
+        getline(cin, it);
+        bool check = false;
+        for (int j = 0; j < it.length(); j++) {
+            for (int k = 0; k < c1.length(); k++) {
+                if (j + k >= it.length() || it[j + k] != c1[k])
+                    break;
+                if (k == c1.length() - 1)
+                    check = true;
+            }
+            if (check) break;
+            for (int k = 0; k < c2.length(); k++) {
+                if (j + k >= it.length() || it[j + k] != c2[k])
+                    break;
+                if (k == c2.length() - 1)
+                    check = true;
+            }
+            if (check) break;
+        }
+        if (check) continue;
+        if (!m) {
+            ans = it;
+        }
+        --m;
     }
-    for (int i = 1; i <= n; i++)cout << ans[i] << '\n';
-}
-
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int ttt = 1;
-    while (ttt--) Zlin();
+    cout << ans;
     return 0;
 }
