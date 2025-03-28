@@ -20,7 +20,42 @@ typedef pair<i64, i64> pll;
 constexpr int N = 1e6 + 10;
 
 int n;
+int len[N], son[N];
 vi e[N];
+
+void dfs(int u, int fa) {
+    len[u] = 1;
+    for (int v: e[u]) {
+        if (v == fa) continue;
+        dfs(v, u);
+        if (len[v] + 1 > len[u])
+            len[u] = len[v] + 1, son[u] = v;
+    }
+}
+
+int ans[N];
+int pool[N];
+int *f[N], *tag = pool;
+
+void dfs1(int u, int fa) {
+    f[u][0] = 1;
+    if (son[u]) {
+        f[son[u]] = f[u] + 1;
+        dfs1(son[u], u);
+        ans[u] = ans[son[u]] + 1;
+    }
+    for (int v: e[u]) {
+        if (v == fa || v == son[u]) continue;
+        f[v] = tag, tag += len[v];
+        dfs1(v, u);
+        for (int i = 1; i <= len[v]; i++) {
+            f[u][i] += f[v][i - 1];
+            if (f[u][i] > f[u][ans[u]] || (f[u][i] == f[u][ans[u]] && i < ans[u]))
+                ans[u] = i;
+        }
+    }
+    if (f[u][ans[u]] == 1) ans[u] = 0;
+}
 
 inline void Zlin() {
     cin >> n;
@@ -29,6 +64,11 @@ inline void Zlin() {
         e[u].push_back(v);
         e[v].push_back(u);
     }
+    dfs(1, 0);
+    f[1] = tag, tag += len[1];
+    dfs1(1, 0);
+    for (int i = 1; i <= n; i++)
+        cout << ans[i] << endl;
 }
 
 int main() {
