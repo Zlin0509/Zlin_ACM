@@ -16,11 +16,25 @@ typedef vector<ll> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
+
+ll k, b, c, v;
+int zz;
+
+inline ll dfs(int i, ll pre) {
+    ll res = 0;
+    if (pre ^ c < 1ll << zz) {
+
+        return res;
+    }
+    if (pre ^ c >= 1ll << zz + 1) {
+        return 0;
+    }
+    return res;
+}
+
 inline void Zlin() {
-    int n;
-    cin >> n;
-    vi a(n);
-    for (int &it: a) cin >> it;
+    cin >> k >> b >> c >> v;
+    cout << dfs(63, 0) << endl;
 }
 
 int main() {

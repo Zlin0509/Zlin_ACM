@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 23)
 
 
 
-add_executable(D _CF/CONTEST/2000-2499/2056/D.cpp)
+add_executable(1003 "_HDU/25 Spring/4/1003.cpp")
+add_executable(1004 "_HDU/25 Spring/4/1004.cpp")
