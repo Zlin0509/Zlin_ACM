@@ -16,7 +16,11 @@ typedef vector<ll> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
+constexpr ll mo = 998244353;
+
 inline void Zlin() {
+    int n;
+    cin >> n;
 }
 
 int main() {
