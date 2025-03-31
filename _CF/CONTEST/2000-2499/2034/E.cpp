@@ -1,5 +1,5 @@
 //
-// Created by 27682 on 2025/3/29.
+// Created by 27682 on 2025/3/31.
 //
 
 #include "bits/stdc++.h"
@@ -16,15 +16,12 @@ typedef vector<ll> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-constexpr ll mo = 998244353;
-
-inline void Zlin() {
-    int n;
-    cin >> n;
-    vll f(n + 2), sum(n + 2);
+inline void Zlin()
+{
 }
 
-int main() {
+int main()
+{
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
     int ttt = 1;
