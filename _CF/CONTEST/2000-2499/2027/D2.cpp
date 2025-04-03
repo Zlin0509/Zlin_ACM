@@ -1,8 +1,7 @@
 //
 // Created by Zlin on 2025/4/3.
 //
-
-#include "bits/stdc++.h"
+#include"bits/stdc++.h"
 #define endl "\n"
 using namespace std;
 
@@ -17,6 +16,11 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
 inline void Zlin() {
+    int n, m;
+    cin >> n >> m;
+    vi a(n), b(m);
+    for (int &it: a) cin >> it;
+    for (int &it: b) cin >> it;
 }
 
 int main() {
