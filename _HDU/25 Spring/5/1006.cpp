@@ -1,11 +1,12 @@
 //
-// Created by Zlin on 2024/10/23.
+// Created by Zlin on 2025/4/4.
 //
 
 #include "bits/stdc++.h"
-
+#define endl "\n"
 using namespace std;
 
+typedef __int128 i128;
 typedef double db;
 typedef long double ldb;
 typedef long long ll;
@@ -16,7 +17,19 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
 inline void Zlin() {
-
+    int d, r, x, y;
+    cin >> d >> r >> x >> y;
+    int ans = INT_MAX;
+    if (y >= -d && y <= d) {
+        ans = min(abs(r - x), abs(-r - x));
+    } else if (y > d) {
+        db len = sqrt((y - d) * (y - d) + x * x);
+        ans = abs(len - r) + 0.5;
+    } else {
+        db len = sqrt((y + d) * (y + d) + x * x);
+        ans = abs(len - r) + 0.5;
+    }
+    cout << ans << endl;
 }
 
 int main() {

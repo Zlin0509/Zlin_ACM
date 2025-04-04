@@ -50,7 +50,7 @@ inline void Zlin() {
     if (f[now ^ 1][n] >= inf) {
         cout << -1 << "\n";
     } else {
-        cout << f[now ^ 1][n] << " " << g[now ^ 1][n] << "\n";
+        cout << f[now ^ 1][n] << "\n";
     }
 }
 
