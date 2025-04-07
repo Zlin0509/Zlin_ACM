@@ -17,6 +17,26 @@ typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
 inline void Zlin() {
+    int n, m;
+    cin >> n >> m;
+    ll ans = 0;
+    // for (int k = 1; k <= n; k++) {
+    //     for (int a = 1; a <= n; a++) {
+    //         for (int b = 1; b <= m; b++) {
+    //             if (b * gcd(a, b) == k * (a + b)) {
+    //                 cout << k << ' ' << a << ' ' << b << endl;
+    //                 ++ans;
+    //             }
+    //         }
+    //     }
+    //     cout << endl;
+    // }
+    for (int a = 1; a <= n / a; ++a) {
+        for (int b = 1; b <= m / b; ++b) {
+            if (gcd(a, b) == 1) ans += min(n / a, m / b) / (a + b);
+        }
+    }
+    cout << ans << endl;
 }
 
 int main() {
