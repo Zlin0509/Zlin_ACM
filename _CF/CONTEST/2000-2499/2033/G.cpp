@@ -1,71 +1,55 @@
 //
-// Created by Zlin on 2025/4/3.
+// Created by 27682 on 2025/3/31.
 //
 
 #include "bits/stdc++.h"
-#define endl "\n"
+#define endl '\n'
 using namespace std;
 
+typedef long long ll;
+typedef unsigned long long ull;
 typedef __int128 i128;
 typedef double db;
 typedef long double ldb;
-typedef long long ll;
-typedef unsigned long long ull;
 typedef vector<int> vi;
-typedef vector<long long> vll;
+typedef vector<ll> vll;
 typedef pair<int, int> pii;
-typedef pair<long long, long long> pll;
+typedef pair<ll, ll> pll;
 
 constexpr int N = 2e5 + 10;
 
-int n, f[N][22], val[N][22], m1[N], m2[N], len[N], dep[N];
+int son[N], len[N], top[N], dep[N], f[N], val[N][22];
 vi e[N];
 
 inline void dfs(int u, int fa) {
-    len[u] = m1[u] = m2[u] = 0;
+    f[u] = fa;
+    len[u] = 1;
     for (int v: e[u]) {
-        if (v == fa) continue;
+        if (v == fa)
+            continue;
         dep[v] = dep[u] + 1;
         dfs(v, u);
-        if (len[v] >= m1[u]) {
-            m2[u] = m1[u];
-            m1[u] = len[v] + 1;
-        } else if (len[v] >= m2[u]) {
-            m2[u] = len[v] + 1;
-        }
-    }
-    len[u] = m1[u];
-    for (int v: e[u]) {
-        if (v == fa) continue;
-        if (len[v] + 1 == m1[u])
-            val[v][0] = m2[u];
-        else
-            val[v][0] = m1[u];
+        if (len[u] < len[v] + 1)
+            len[u] = len[v] + 1, son[u] = v;
     }
 }
 
-inline void dfs1(int u, int fa) {
+inline void dfs1(int u, int fa, int s) {
+    top[u] = s;
+    if (son[u]) dfs1(son[u], u, s);
     for (int v: e[u]) {
-        if (v == fa) continue;
-
-        f[v][0] = u;
-        for (int i = 1; i < 22; i++) {
-            f[v][i] = f[f[v][i - 1]][i - 1];
-            val[v][i] = max(val[v][i - 1], val[f[v][i - 1]][i - 1] + (1 << i - 1));
-        }
-
-        dfs1(v, u);
+        if (v == fa || v == son[u])
+            continue;
+        dfs1(v, u, u);
     }
 }
 
 inline void Zlin() {
+    int n;
     cin >> n;
     for (int i = 1; i <= n; i++) {
+        son[i] = len[i] = top[i] = dep[i] = 0;
         e[i].clear();
-        m1[i] = m2[i] = 0;
-        dep[i] = len[i] = 0;
-        for (int j = 0; j < 22; j++)
-            f[i][j] = val[i][j] = 0;
     }
     for (int i = 1, u, v; i < n; i++) {
         cin >> u >> v;
@@ -73,29 +57,23 @@ inline void Zlin() {
         e[v].push_back(u);
     }
     dfs(1, 0);
-    dfs1(1, 0);
+    dfs1(1, 0, 1);
     int q;
     cin >> q;
     while (q--) {
         int v, k;
         cin >> v >> k;
-        k = min(k, dep[v]);
-        int ans = max(k, len[v]),lst = 1;
-        for (int i = 20; ~i; i--) {
-            if (k < 1 << i) continue;
-            k -= 1 << i;
-            ans = max(ans , val[v][i] + lst);
-            v = f[v][i];
-            lst += 1 << i;
+        int u = v, ans = len[v];
+        while (dep[v] - dep[u] <= k) {
+            u = top[u];
         }
-        cout << ans << ' ';
+        cout << ans << endl;
     }
-    cout << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
+    ios::sync_with_stdio(0);
+    cin.tie(0), cout.tie(0);
     int ttt = 1;
     cin >> ttt;
     while (ttt--) Zlin();

@@ -3,7 +3,7 @@
 //
 
 #include "bits/stdc++.h"
-
+#define endl '\n'
 using namespace std;
 
 typedef double db;
@@ -16,39 +16,68 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
 constexpr int N = 2e5 + 10;
+constexpr int MAXN = 20;
+
+int n, k, q;
+ll nxt[N][MAXN], val[N][MAXN];
+ll a[N], f[N];
 
 inline void Zlin() {
-    int n, k, q;
     cin >> n >> k >> q;
-    vi a(n + 1), f(n + 1);
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
         a[i] -= i;
     }
-    unordered_map<int, int> cnt, used;
-    multiset<int> have;
-    int l, r = 1;
-    while (r <= k) {
-        if (cnt[a[r]]) have.erase(have.find(cnt[a[r]]));
-        ++cnt[a[r]];
-        have.insert(cnt[a[r]]);
-        ++r;
+
+    map<ll, ll> mp;
+    multiset<ll> s;
+    for (int i = 1; i <= k; i++) {
+        if (mp[a[i]]) s.erase(s.find(mp[a[i]]));
+        ++mp[a[i]];
+        s.insert(mp[a[i]]);
     }
-    for (l = 1; l <= n - k + 1; l++) {
-        while (r - l < k) {
-            if (cnt[a[r]]) have.erase(have.find(cnt[a[r]]));
-            ++cnt[a[r]];
-            have.insert(cnt[a[r]]);
-            ++r;
+    for (int i = k + 1; i <= n; i++) {
+        f[i - k] = k - *prev(s.end());
+        s.erase(s.find(mp[a[i - k]]));
+        --mp[a[i - k]];
+        s.insert(mp[a[i - k]]);
+        if (mp[a[i]]) s.erase(s.find(mp[a[i]]));
+        ++mp[a[i]];
+        s.insert(mp[a[i]]);
+    }
+    f[n + 1 - k] = k - *prev(s.end());
+
+    // for (int i = 1; i <= n; i++)
+    //     cout << f[i] << " ";
+    // cout << endl;
+
+    stack<pll> have;
+    for (int i = n - k + 1; i; i--) {
+        while (!have.empty() && have.top().second >= f[i]) have.pop();
+        have.empty() ? nxt[i][0] = n - k + 2 : nxt[i][0] = have.top().first;
+        val[i][0] = f[i] * (nxt[i][0] - i);
+        have.push({i, f[i]});
+    }
+    for (int i = 0; i < MAXN; i++)
+        nxt[n - k + 2][i] = n - k + 2;
+    for (int j = 1; j < MAXN; j++) {
+        for (int i = 1; i <= n - k + 1; i++) {
+            nxt[i][j] = nxt[nxt[i][j - 1]][j - 1];
+            val[i][j] = val[i][j - 1] + val[nxt[i][j - 1]][j - 1];
         }
-        f[l] = k - *prev(have.end());
     }
-    for (int i = 1; i <= n; i++)
-        cout << f[i] << " ";
-    cout << endl;
 
     while (q--) {
+        ll l, r;
         cin >> l >> r;
+        r = r - k + 1;
+        ll ans = 0;
+        for (int i = MAXN - 1; ~i; i--) {
+            if (nxt[l][i] > r) continue;
+            ans += val[l][i];
+            l = nxt[l][i];
+        }
+        cout << ans + (r - l + 1) * f[l] << endl;
     }
 }
 

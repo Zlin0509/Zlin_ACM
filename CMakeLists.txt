@@ -4,4 +4,4 @@ project(Zlin_ACM)
 set(CMAKE_CXX_STANDARD 23)
 
 
-add_executable(G2 _CF/CONTEST/2000-2499/2009/G2.cpp)
+add_executable(G2 _CF/CONTEST/1500-1999/1968/G2.cpp)
