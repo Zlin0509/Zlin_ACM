@@ -55,12 +55,16 @@ inline void Zlin() {
         cout << 0 << endl;
         return;
     }
-    ll al = 1, ar = 1;
+    ll ans;
+    if (ml == 1 || mr == 1) {
+        ans = 1;
+    } else {
+        ans = comb(n - 1, rx[0] - 1);
+    }
     for (int i = 1; i < ml; i++)
-        al = al * fac[lx[i] - lx[i - 1] - 1] % mo;
+        ans = ans * fac[lx[i] - lx[i - 1] - 1] % mo;
     for (int i = 1; i < mr; i++)
-        ar = ar * fac[rx[i] - rx[i - 1] - 1] % mo;
-    ll ans = al * ar % mo * comb(n - 1, lx.back() - 1) % mo;
+        ans = ans * fac[rx[i] - rx[i - 1] - 1] % mo;
     cout << ans << endl;
 }
 
