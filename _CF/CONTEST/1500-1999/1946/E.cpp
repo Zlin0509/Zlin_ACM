@@ -51,20 +51,19 @@ inline void Zlin() {
     vi lx(ml), rx(mr);
     for (int &it: lx) cin >> it;
     for (int &it: rx) cin >> it;
-    if (lx[ml - 1] != rx[0]) {
+    if (lx[ml - 1] != rx[0] || lx[0] != 1 || rx[mr - 1] != n) {
         cout << 0 << endl;
         return;
     }
-    ll ans;
-    if (ml == 1 || mr == 1) {
-        ans = 1;
-    } else {
-        ans = comb(n - 1, rx[0] - 1);
+    ll ans = comb(n - 1, rx[0] - 1);
+    for (int i = ml - 2; ~i; i--) {
+        ans = ans * fac[lx[i + 1] - lx[i] - 1] % mo;
+        ans = ans * comb(lx[i + 1] - 2, lx[i + 1] - lx[i] - 1) % mo;
     }
-    for (int i = 1; i < ml; i++)
-        ans = ans * fac[lx[i] - lx[i - 1] - 1] % mo;
-    for (int i = 1; i < mr; i++)
+    for (int i = 1; i < mr; i++) {
         ans = ans * fac[rx[i] - rx[i - 1] - 1] % mo;
+        ans = ans * comb(n - rx[i - 1] - 1, rx[i] - rx[i - 1] - 1) % mo;
+    }
     cout << ans << endl;
 }
 
