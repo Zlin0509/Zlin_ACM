@@ -3,6 +3,7 @@
 //
 
 #include "bits/stdc++.h"
+
 #define endl "\n"
 using namespace std;
 
@@ -19,29 +20,30 @@ typedef pair<long long, long long> pll;
 constexpr int N = 5e5 + 10;
 
 int n;
-vi e[N];
-ll ans, dp[N], a[N];
+ll a[N], dp[N], ans;
 
-inline void dfs(int u, int fa) {
+vi e[N];
+
+void dfs(int u, int fa) {
+    ll x;
+    vll d;
     ans = max(ans, dp[u]);
-    vll have;
     for (int v: e[u]) {
         if (v == fa) continue;
-        dfs(v, u);
-        have.push_back(dp[v]);
+        dfs(v, u), d.push_back(dp[v]);
+        ans = max(ans, a[u] + dp[v]), dp[u] = max(dp[u], dp[v]);
     }
-    sort(have.begin(), have.end(), greater<ll>());
-    if (!have.empty())
-        dp[u] = max(dp[u], have[0]);
-
-    ll res = a[u];
-    for (ll it: have) {
-        if (it <= 0) break;
-        res += it;
+    sort(d.begin(), d.end(), greater<ll>());
+    if (d.size() >= 2) {
+        x = d[0] + d[1], ans = max(ans, x);
+        for (int i = 2; i < d.size() && d[i] > 0; i++) x += d[i];
+        dp[u] = max(dp[u], a[u] + x);
     }
-    ans = max(ans, res);
-    if (have.size() >= 2)
-        ans = max(ans, have[0] + have[1]);
+    if (d.size() >= 3) {
+        x = d[0] + d[1] + d[2];
+        for (int i = 3; i < d.size() && d[i] > 0; i++) x += d[i];
+        ans = max(ans, a[u] + x);
+    }
 }
 
 inline void Zlin() {
