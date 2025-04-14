@@ -4,6 +4,4 @@ project(Zlin_ACM)
 set(CMAKE_CXX_STANDARD 23)
 
 
-
-
-add_executable(J "_CF/GYM/The 2021 CCPC Guilin Onsite (XXII Open Cup, Grand Prix of EDG)/J.cpp")
+add_executable(1009 "_HDU/25 Spring/6/1009.cpp")
