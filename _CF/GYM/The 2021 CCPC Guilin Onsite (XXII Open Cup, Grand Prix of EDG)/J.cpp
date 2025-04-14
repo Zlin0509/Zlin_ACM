@@ -16,12 +16,20 @@ typedef vector<ll> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-inline void Zlin()
-{
+class SA {
+private:
+    int n, m;
+    vi sa, rank, tmp;
+    string s;
+
+    void Rsort() {
+    }
+};
+
+inline void Zlin() {
 }
 
-int main()
-{
+int main() {
     ios::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
     int ttt = 1;

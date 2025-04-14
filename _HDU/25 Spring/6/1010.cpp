@@ -22,24 +22,22 @@ ll ans[N];
 int n;
 vi e[N];
 
+
 inline ll dfs(int u, int fa) {
-    vll have;
+    vector<ll> have;
     ll cnt = 1, all;
     for (int v: e[u]) {
         if (v == fa) continue;
         ll now = dfs(v, u);
+        cnt += now;
         have.push_back(now);
     }
-    have.push_back(n - cnt);
+    have.push_back({n - cnt});
     all = 0;
-    for (ll val: have) {
-        all += (n - 1 - val) * val;
-    }
+    for (ll val: have) all += (n - 1 - val) * val;
     all /= 2;
     ans[u] = all + n;
-    for (ll val: have) {
-        ans[u] += val * (n - val + all - val * (n - 1 - val));
-    }
+    for (ll val: have) ans[u] += val * (n - val + all - val * (n - 1 - val));
     return cnt;
 }
 
