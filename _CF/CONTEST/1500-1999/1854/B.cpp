@@ -16,16 +16,43 @@ typedef vector<ll> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-inline void Zlin()
-{
+constexpr int N = 2e5 + 10;
+bool f[N];
+bitset<N> dp;
+int a[N];
+ll sum[N];
+
+inline void Zlin() {
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+        sum[i] = sum[i - 1] + a[i];
+    }
+    dp[1] = 1;
+    for (int i = 1; i <= n; i++) {
+        dp |= dp << a[i];
+        f[i] = dp[i];
+        dp[i] = 0;
+    }
+    for (int i = n + 1; i <= n * 2; i++) {
+        f[i] = dp[i];
+        sum[i] = sum[i - 1];
+    }
+    ll ans = 0;
+    for (int i = 1; i <= n * 2; i++) {
+        if (f[i]) {
+            ans = max(ans, sum[i] - i + 1);
+        }
+    }
+    cout << ans << endl;
 }
 
-int main()
-{
+int main() {
     ios::sync_with_stdio(0);
-    cin.tie(0), cout.tie(0);
+    cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
+    // cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
