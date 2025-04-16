@@ -16,6 +16,8 @@ typedef vector<ll> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
+mt19937_64 rng;
+
 inline void Zlin() {
     int x;
     cin >> x;

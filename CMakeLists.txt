@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD 23)
 
 
 
-add_executable(G1 _CF/CONTEST/1500-1999/1840/G1.cpp)
+add_executable(F _CF/CONTEST/1500-1999/1840/F.cpp)
