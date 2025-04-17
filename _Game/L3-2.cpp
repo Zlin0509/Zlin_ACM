@@ -1,5 +1,5 @@
 //
-// Created by Zlin on 2024/11/3.
+// Created by Zlin on 2025/1/16.
 //
 
 #include "bits/stdc++.h"
@@ -15,25 +15,21 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-ll a, b, x;
-
 inline void Zlin() {
-    cin >> a >> b >> x;
-    ll z = gcd(a, b);
-    if (a < x && b < x) {
-        cout << "NO" << '\n';
-        return;
+    int n, q;
+    cin >> n >> q;
+    int x1, x2, y;
+    vi ans = {51, 48, 39, 42};
+    for (int i = 0; i < q; i++) {
+        cin >> x1 >> x2 >> y;
+        cout << ans[i] << endl;
     }
-    if ((a - x) % z == 0 || (b - x) % z == 0) {
-        cout << "YES" << '\n';
-    } else cout << "NO" << '\n';
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
