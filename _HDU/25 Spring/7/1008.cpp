@@ -17,19 +17,18 @@ typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
 inline void Zlin() {
-    string s;
-    cin >> s;
-    for (int i = 6; i < s.length(); i++)
-        cout << s[i];
-    cout << '-';
-    for (int i = 0; i < 5; i++)
-        cout << s[i];
+    ll a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    ll ans = a * b * c * d * e;
+    if (d >= 2) ans += a * b * c * d * (d - 1) / 2;
+    cout << ans << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0), cout.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
