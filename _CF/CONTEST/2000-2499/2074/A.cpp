@@ -1,0 +1,33 @@
+//
+// Created by 27682 on 2025/3/11.
+//
+
+#include "bits/stdc++.h"
+#define endl '\n'
+using namespace std;
+
+typedef double db;
+typedef long double ldb;
+typedef long long ll;
+typedef unsigned long long ull;
+typedef vector<int> vi;
+typedef vector<long long> vll;
+typedef pair<int, int> pii;
+typedef pair<long long, long long> pll;
+
+inline void Zlin()
+{
+    int l, r, d, u;
+    cin >> l >> r >> d >> u;
+    cout << (l == r && r == d && d == u ? "Yes" : "No") << endl;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int ttt = 1;
+    cin >> ttt;
+    while (ttt--) Zlin();
+    return 0;
+}

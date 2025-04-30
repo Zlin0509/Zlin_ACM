@@ -1,0 +1,50 @@
+# ---------------------------
+# CLion 相关配置
+# ---------------------------
+# 忽略 .idea 目录中用户私有的设置（如 workspace.xml、tasks.xml、shelf 等），但保留共享配置
+.idea/*
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
+!.idea/runConfigurations/
+!.idea/modules.xml
+!.idea/misc.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+
+# ---------------------------
+# 构建目录（默认 CMake 构建目录一般以 cmake-build- 开头）
+# ---------------------------
+cmake-build-*/
+
+# ---------------------------
+# CMake 生成文件
+# ---------------------------
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# ---------------------------
+# 编译生成的二进制文件和中间文件
+# ---------------------------
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.dylib
+*.exe
+*.out
+
+# ---------------------------
+# 日志文件
+# ---------------------------
+*.log
+
+# ---------------------------
+# 操作系统产生的临时文件
+# ---------------------------
+.DS_Store
+Thumbs.db
