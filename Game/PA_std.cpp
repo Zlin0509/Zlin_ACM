@@ -21,11 +21,30 @@ constexpr ll inf = 2e18;
 int n;
 ll a1, b1, a2, b2;
 
-ll cost(ll a, ll b, ll k) {
-    return a * k * (k + 1) / 2 + b * k;
+// 将 i128 转换为字符串输出
+void print_i128(i128 x) {
+    if (x == 0) {
+        cout << 0;
+        return;
+    }
+    if (x < 0) {
+        cout << '-';
+        x = -x;
+    }
+    string s;
+    while (x) {
+        s += char(x % 10 + '0');
+        x /= 10;
+    }
+    reverse(s.begin(), s.end());
+    cout << s;
 }
 
-ll total_cost(ll x) {
+i128 cost(ll a, ll b, ll k) {
+    return i128(a) * k * (k + 1) / 2 + i128(b) * k;
+}
+
+i128 total_cost(ll x) {
     ll y = n - x;
     return cost(a1, b1, x) + cost(a2, b2, y);
 }
@@ -41,11 +60,12 @@ inline void Zlin() {
         else
             l = midl + 1;
     }
-    ll ans = inf;
+    i128 ans = 1e38;
     for (int i = l; i <= r; i++) {
         ans = min(ans, total_cost(i));
     }
-    cout << ans << endl;
+    print_i128(ans);
+    cout << endl;
 }
 
 int main() {
