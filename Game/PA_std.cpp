@@ -21,8 +21,7 @@ constexpr ll inf = 2e18;
 int n;
 ll a1, b1, a2, b2;
 
-// 将 i128 转换为字符串输出
-void print_i128(i128 x) {
+void output(i128 x) {
     if (x == 0) {
         cout << 0;
         return;
@@ -33,10 +32,10 @@ void print_i128(i128 x) {
     }
     string s;
     while (x) {
-        s += char(x % 10 + '0');
+        s += static_cast<char>(x % 10 + '0');
         x /= 10;
     }
-    reverse(s.begin(), s.end());
+    ranges::reverse(s);
     cout << s;
 }
 
@@ -64,7 +63,7 @@ inline void Zlin() {
     for (int i = l; i <= r; i++) {
         ans = min(ans, total_cost(i));
     }
-    print_i128(ans);
+    output(ans);
     cout << endl;
 }
 
