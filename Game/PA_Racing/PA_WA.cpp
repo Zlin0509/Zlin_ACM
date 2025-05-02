@@ -6,18 +6,6 @@
 #define endl "\n"
 using namespace std;
 
-typedef __int128 i128;
-typedef double db;
-typedef long double ldb;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<int> vi;
-typedef vector<long long> vll;
-typedef pair<int, int> pii;
-typedef pair<long long, long long> pll;
-
-constexpr ll inf = 2e18;
-
 int n;
 int a1, b1, a2, b2;
 
