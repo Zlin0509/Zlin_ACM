@@ -21,29 +21,11 @@ constexpr ll inf = 2e18;
 int n;
 ll a1, b1, a2, b2;
 
-void output(i128 x) {
-    if (x == 0) {
-        cout << 0;
-        return;
-    }
-    if (x < 0) {
-        cout << '-';
-        x = -x;
-    }
-    string s;
-    while (x) {
-        s += static_cast<char>(x % 10 + '0');
-        x /= 10;
-    }
-    ranges::reverse(s);
-    cout << s;
+ll cost(ll a, ll b, ll k) {
+    return a * k * (k + 1) / 2 + b * k;
 }
 
-i128 cost(ll a, ll b, ll k) {
-    return i128(a) * k * (k + 1) / 2 + i128(b) * k;
-}
-
-i128 total_cost(ll x) {
+ll total_cost(ll x) {
     ll y = n - x;
     return cost(a1, b1, x) + cost(a2, b2, y);
 }
@@ -59,12 +41,9 @@ inline void Zlin() {
         else
             l = midl + 1;
     }
-    i128 ans = 1e38;
-    for (int i = l; i <= r; i++) {
-        ans = min(ans, total_cost(i));
-    }
-    output(ans);
-    cout << endl;
+    ll ans = 2e18;
+    for (int i = l; i <= r; i++) ans = min(ans, total_cost(i));
+    cout << ans << endl;
 }
 
 int main() {

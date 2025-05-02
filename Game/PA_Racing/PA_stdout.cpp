@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
 
     cout << T << '\n';
     while (T--) {
-        long long n = uniform_int_distribution<long long>(2, 1'000'000'000)(rng);
+        long long n = uniform_int_distribution<int>(2, 1'000'000)(rng);
         int a1 = uniform_int_distribution<int>(1, 100'000)(rng);
         int b1 = uniform_int_distribution<int>(1, 100'000)(rng);
         int a2 = uniform_int_distribution<int>(1, 100'000)(rng);
