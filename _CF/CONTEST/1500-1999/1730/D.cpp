@@ -2,7 +2,8 @@
 // Created by Zlin on 2025/5/1.
 //
 
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
+
 #define endl "\n"
 using namespace std;
 
@@ -20,6 +21,26 @@ inline void Zlin() {
     int n;
     string a, b;
     cin >> n >> a >> b;
+    int cnt[26];
+    for (char it: a) cnt[it - 'a']++;
+    for (char it: b) cnt[it - 'a']++;
+    for (int i = 0; i < 26; i++) {
+        if (cnt[i] & 1) {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    int tag = 0;
+    for (int i = 0; i < 26; i++) {
+        if (cnt[i] & 1) {
+            ++tag;
+        }
+    }
+    if (tag > 1 || (tag == 1 && !(n & 1))) {
+        cout << "NO" << endl;
+        return;
+    }
+    cout << "YES" << endl;
 }
 
 int main() {
