@@ -561,6 +561,7 @@ __builtin_ctz(x)    计算 x 的 **后缀零** 个数    __builtin_ctz(8) == 3 (
 
 __builtin_ctzll(x)    long long 版
 
+
 ## 并查集(DSU)
 
 ### 普通并查集
@@ -1602,6 +1603,7 @@ inline void init(int n) {
 }
 ```
 
+
 ## FFT
 
 快速计算多项式乘法/大数乘法
@@ -1890,6 +1892,7 @@ $$
 
 ### 叉积
 
+
 $$
 \text{如果叉积为正} \ (\mathbf{A} \times \mathbf{B} > 0): \text{表示向量 } \mathbf{B} \text{ 在向量 } \mathbf{A} \text{
 的逆时针方向。} \\
@@ -1910,6 +1913,7 @@ B_x & B_y & B_z
 \\
 \mathbf{A} \times \mathbf{B} = A_x B_y - A_y B_x（二维坐标系）
 $$
+
 
 ### 构建凸包
 
@@ -2281,7 +2285,7 @@ ll qpow(ll a, ll b) {
 }
 ```
 
-## 快速GCD
+## GCD
 
 > 利用更减相损术和builtin内置函数，二进制运算速度更快
 >
@@ -2303,6 +2307,22 @@ ll qpow(ll a, ll b) {
 >        return b << z;
 > }
 > ```
+
+$gcd(x, y) = 1, x + y = n$ 求x，y对数，欧拉函数
+
+```c++
+int phi(int n) {
+    int res = n;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            res -= res / i;
+            while (n % i == 0) n /= i;
+        }
+    }
+    if (n > 1) res -= res / n;
+    return res;
+}
+```
 
 ## 逆元
 
@@ -2454,6 +2474,7 @@ ll comb(int n, int k) { // 避免溢出
 $$
 [ C(n, k) \mod p = C(n \mod p, k \mod p) \times C(n/p, k/p) \mod p ]
 $$
+
 
 # 图论
 
