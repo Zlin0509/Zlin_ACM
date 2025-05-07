@@ -3,6 +3,7 @@
 //
 
 #include "bits/stdc++.h"
+
 #define endl "\n"
 using namespace std;
 
@@ -19,42 +20,53 @@ typedef pair<long long, long long> pll;
 constexpr int N = 1010;
 constexpr ll mo = 998244353;
 
-int n, m, in[N], vis[N];
-ll a[N], dep[N];
+int n, m, in1[N], in2[N];
+ll a[N], tmp[N];
 vi e[N];
-vll val[N];
-
-inline void dfs(int u) {
-    if (vis[u]) return;
-    vis[u] = 1;
-    bool tag = a[u] == 0;
-    for (int v: e[u]) {
-        dfs(v);
-        dep[u] = max(dep[u], dep[v] + a[v]);
-        a[u] += a[v];
-    }
-    ll dif = -tag;
-    for (int v: e[u]) dif = max(dif, dep[u] - dep[v] - tag);
-    a[u] -= dif;
-}
 
 inline void Zlin() {
     cin >> n >> m;
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
-        in[i] = dep[i] = vis[i] = 0;
+        in1[i] = in2[i] = 0;
         e[i].clear();
-        val[i].clear();
     }
     for (int i = 1, u, v; i <= m; i++) {
-        cin >> v >> u;
+        cin >> u >> v;
         e[u].push_back(v);
-        ++in[v];
+        ++in2[u], ++in1[v];
+    }
+    for (int t = 1; t <= n; t++) {
+        bool tag = false;
+        for (int i = 1; i <= n; i++) tag |= a[i], tmp[i] = 0;
+        if (!tag) {
+            cout << t - 1 << endl;
+            return;
+        }
+        for (int u = 1; u <= n; u++) {
+            if (!a[u]) continue;
+            --a[u];
+            for (int v: e[u]) tmp[v] += 1;
+        }
+        for (int i = 1; i <= n; i++) a[i] += tmp[i];
+    }
+    queue<int> q;
+    for (int i = 1; i <= n; i++) {
+        if (!in1[i]) {
+            q.push(i);
+        }
+    }
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        for (int v: e[u]) {
+            a[v] = (a[v] + a[u]) % mo;
+            if (!--in1[v]) q.push(v);
+        }
     }
     for (int i = 1; i <= n; i++) {
-        if (!in[i]) {
-            dfs(i);
-            cout << (a[i] + dep[i]) % mo << endl;
+        if (!in2[i]) {
+            cout << (a[i] + n) % mo << endl;
         }
     }
 }
