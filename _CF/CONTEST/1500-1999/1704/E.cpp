@@ -27,10 +27,15 @@ vll val[N];
 inline void dfs(int u) {
     if (vis[u]) return;
     vis[u] = 1;
+    bool tag = a[u] == 0;
     for (int v: e[u]) {
         dfs(v);
         dep[u] = max(dep[u], dep[v] + a[v]);
+        a[u] += a[v];
     }
+    ll dif = -tag;
+    for (int v: e[u]) dif = max(dif, dep[u] - dep[v] - tag);
+    a[u] -= dif;
 }
 
 inline void Zlin() {
@@ -49,7 +54,7 @@ inline void Zlin() {
     for (int i = 1; i <= n; i++) {
         if (!in[i]) {
             dfs(i);
-            cout << (a[i] + dep[i] + 1) % mo << endl;
+            cout << (a[i] + dep[i]) % mo << endl;
         }
     }
 }
