@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 23)
 
 
 add_executable(B2 _CF/CONTEST/2000-2499/2089/B2.cpp)
+add_executable(B1 _CF/CONTEST/2000-2499/2089/B1.cpp)
