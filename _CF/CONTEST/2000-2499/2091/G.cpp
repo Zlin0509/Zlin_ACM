@@ -15,8 +15,40 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-inline void Zlin() {
+constexpr int N = 1e6 + 10;
 
+bitset<N> f, g, z;
+
+inline void Zlin() {
+    int s, k;
+    cin >> s >> k;
+    if (s >= k * k) {
+        cout << (s % k ? max(k - 2, 1) : k) << endl;
+        return;
+    }
+    z.reset(), f.reset(), g.reset();
+    for (int i = 0; i <= s; i++) {
+        z[i] = true;
+        if (i % k == 0) f[i] = true;
+    }
+    for (int i = k - 1; i; i--) {
+        if (f[s]) {
+            cout << i + 1 << endl;
+            return;
+        }
+        g.reset();
+        if (k - i & 1) { // 往左走
+            for (int j = 1; j * i <= s; j++) {
+                g |= f >> j * i;
+            }
+        } else { // 往右走
+            for (int j = 1; j * i <= s; j++) {
+                g |= f << j * i;
+            }
+        }
+        f = g & z;
+    }
+    cout << 1 << endl;
 }
 
 int main() {
