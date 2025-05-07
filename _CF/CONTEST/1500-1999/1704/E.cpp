@@ -22,17 +22,15 @@ constexpr ll mo = 998244353;
 int n, m, in[N], vis[N];
 ll a[N], dep[N];
 vi e[N];
+vll val[N];
 
 inline void dfs(int u) {
     if (vis[u]) return;
     vis[u] = 1;
-    for (int v: e[u]) dfs(v);
-    bool tag = a[u];
     for (int v: e[u]) {
-        a[u] += a[v];
+        dfs(v);
         dep[u] = max(dep[u], dep[v] + a[v]);
     }
-    a[u] -= dep[u] - !tag;
 }
 
 inline void Zlin() {
@@ -41,6 +39,7 @@ inline void Zlin() {
         cin >> a[i];
         in[i] = dep[i] = vis[i] = 0;
         e[i].clear();
+        val[i].clear();
     }
     for (int i = 1, u, v; i <= m; i++) {
         cin >> v >> u;
