@@ -47,6 +47,14 @@ inline void gauss() {
         }
         tag[i] = check;
     }
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= p; j++) {
+            if (!tag[i] && c[i][j]) {
+                cout << "NO" << endl;
+                return;
+            }
+        }
+    }
 }
 
 inline void Zlin() {
@@ -66,14 +74,6 @@ inline void Zlin() {
         }
     }
     gauss();
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= p; j++) {
-            if (!tag[i] && c[i][j]) {
-                cout << "NO" << endl;
-                return;
-            }
-        }
-    }
     for (int j = 1; j <= p; j++) {
         for (int i = 1; i <= m; i++) {
             if (idx[i]) {
