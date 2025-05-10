@@ -15,9 +15,27 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
+constexpr int N = 2e5 + 10;
 constexpr ll mo = 1e9 + 7;
 
+int n, a[N];
+map<int, ll> val;
+
 inline void Zlin() {
+    cin >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i];
+
+    val.clear();
+    val[0] = 1;
+    for (int i = 1; i <= n; i++) {
+        a[i] ^= a[i - 1];
+        val[a[i - 1]] = (3 * val[a[i - 1]] + 2 * val[a[i]]) % mo;
+    }
+    ll ans = 0;
+    for (auto it: val) {
+        ans = (ans + it.second) % mo;
+    }
+    cout << ans << endl;
 }
 
 int main() {
