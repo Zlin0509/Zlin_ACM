@@ -15,9 +15,16 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-constexpr ll mo = 1e9 + 7;
-
 inline void Zlin() {
+    int v, w;
+    cin >> v >> w;
+    int k = w / 2 + 1;
+    int ans = v / k;
+    v -= ans * k;
+    if (ans) {
+        if (w - k < v) ++ans;
+    } else if (v) ++ans;
+    cout << ans << endl;
 }
 
 int main() {
