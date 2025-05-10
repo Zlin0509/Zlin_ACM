@@ -32,6 +32,7 @@ inline void Zlin() {
             cin >> B[i][j];
         }
     }
+    bool check = true;
     for (int k = 0; k < 32; k++) {
         for (int j = 1; j <= m; j++) sum[j] = 0;
         for (int i = 1; i <= n; i++) {
@@ -68,16 +69,74 @@ inline void Zlin() {
                     continue;
                 }
                 if (sum[j] != i - 1) {
-                    cout << "No" << endl;
-                    return;
+                    check = false;
+                    break;
                 }
                 sum[j]++;
                 a[i][j] = 1;
                 used[j] = 1;
             }
+            if (!check) break;
         }
+        if (!check) break;
     }
-    cout << "Yes" << endl;
+    if (check) {
+        cout << "Yes" << endl;
+        return;
+    }
+    check = true;
+    for (int k = 0; k < 32; k++) {
+        for (int j = 1; j <= m; j++) sum[j] = 0;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                a[i][j] = A[i][m - j + 1] >> k & 1;
+                b[i][j] = B[i][m - j + 1] >> k & 1;
+            }
+        }
+        for (int i = 1; i <= n; i++) {
+            // 全零直接跳过
+            bool tag = true;
+            for (int j = 1; j <= m; j++) {
+                if (b[i][j]) {
+                    tag = false;
+                    break;
+                }
+            }
+            if (tag) {
+                for (int j = 1; j <= m; j++) ++sum[j];
+                continue;
+            }
+            // 判断是否需要先&0
+            tag = true;
+            for (int j = 1; j <= m; j++) {
+                if (a[i][j] | used[j] && !b[i][j]) {
+                    tag = false;
+                    break;
+                }
+            }
+            // 想要进行|1操作必须前面位置全为1
+            for (int j = 1; j <= m; j++) {
+                if (a[i][j] | used[j] & tag == b[i][j]) {
+                    sum[j] += b[i][j];
+                    continue;
+                }
+                if (sum[j] != i - 1) {
+                    check = false;
+                    break;
+                }
+                sum[j]++;
+                a[i][j] = 1;
+                used[j] = 1;
+            }
+            if (!check) break;
+        }
+        if (!check) break;
+    }
+    if (check) {
+        cout << "Yes" << endl;
+        return;
+    }
+    cout << "No" << endl;
 }
 
 int main() {
