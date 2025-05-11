@@ -1,111 +1,56 @@
-//
-// Created by 27682 on 2025/5/10.
-//
-
-#include "bits/stdc++.h"
-#define endl '\n'
+#include <bits/stdc++.h>
 using namespace std;
 
-typedef double db;
-typedef long double ldb;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<int> vi;
-typedef vector<long long> vll;
-typedef pair<int, int> pii;
-typedef pair<long long, long long> pll;
-
-int A[1005][1005], B[1005][1005];
-int a[1005][1005], b[1005][1005];
-int n, m;
-
-inline void opa() {
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            cout << a[i][j] << ' ';
-        }
-        cout << endl;
-    }
-    cout << endl;
-}
-
-inline void opb() {
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            cout << b[i][j] << ' ';
-        }
-        cout << endl;
-    }
-    cout << endl;
-}
-
-vi e[2010];
-int used[2010], vis[2010];
+const int N = 1e3 + 5;
+int n, m, a[N][N], b[N][N];
+vector<int> g[N << 1];
+bool must[N << 1], vis[N], in[N];
 
 bool dfs(int u) {
-    vis[u] = 1;
-    for (int v: e[u]) {
-        if (vis[v] == 0) {
-            if (dfs(v)) return true;
-        } else if (vis[v] == 1) return true;
+    if (in[u]) return false;
+    in[u] = 1;
+    for (int v: g[u]) {
+        if (!vis[v] && !dfs(v)) return false;
     }
-    vis[u] = 2;
-    return false;
+    in[u] = 0, vis[u] = 1;
+    return true;
 }
 
-inline void Zlin() {
+bool solve() {
     cin >> n >> m;
     for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            cin >> A[i][j];
-        }
+        for (int j = 1; j <= m; j++) cin >> a[i][j];
     }
     for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            cin >> B[i][j];
-        }
+        for (int j = 1; j <= m; j++) cin >> b[i][j];
     }
-    for (int k = 0; k < 32; k++) {
-        for (int i = 1; i <= n + m; i++) {
-            used[i] = vis[i] = 0;
-            e[i].clear();
-        }
+    for (int t = 30; ~t; t--) {
+        fill(must + 1, must + n + m + 1, 0);
+        fill(vis + 1, vis + n + m + 1, 0);
+        fill(in + 1, in + n + m + 1, 0);
+        for (int i = 1; i <= n + m; i++) g[i].clear();
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
-                a[i][j] = A[i][j] >> k & 1;
-                b[i][j] = B[i][j] >> k & 1;
-            }
-        }
-        // cout << k << endl;
-        // opa(), opb();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= m; j++) {
-                if (b[i][j]) {
-                    e[i].push_back(i + j);
-                }
-                if (!b[i][j]) {
-                    e[i + j].push_back(i);
-                }
-                if (a[i][j] != b[i][j]) {
-                    b[i][j] ? used[i + j] = 1 : used[i] = 1;
-                }
+                bool A = (a[i][j] >> t) & 1, B = (b[i][j] >> t) & 1;
+                if (B) g[i].push_back(j + n);
+                else g[j + n].push_back(i);
+                if (A && !B) must[i] = 1;
+                if (!A && B) must[j + n] = 1;
             }
         }
         for (int i = 1; i <= n + m; i++) {
-            if (used[i] && !vis[i] && dfs(i)) {
-                cout << "No" << endl;
-                return;
-            }
+            if (must[i] && !dfs(i)) if (!dfs(i)) return false;
         }
     }
-    cout << "Yes" << endl;
+    return true;
 }
 
-int main() {
+signed main() {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int ttt = 1;
-    cin >> ttt;
-    while (ttt--) Zlin();
+    cin.tie(0);
+    cout.tie(0);
+    int t;
+    cin >> t;
+    while (t--) cout << (solve() ? "Yes" : "No") << '\n';
     return 0;
 }
