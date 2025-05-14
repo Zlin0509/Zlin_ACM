@@ -29,24 +29,38 @@ inline ll qpow(ll a, ll b) {
     return res;
 }
 
-int n, in[N], f[N];
+int n, len[N], son[N];
 vi e[N];
-ll val[N];
+ll val[N], k[N];
 
 inline void dfs(int u, int fa) {
-    f[u] = fa;
     for (int v: e[u]) {
         if (v == fa) continue;
-        ++in[u];
         dfs(v, u);
+        if (len[v] < len[u]) {
+            len[u] = len[v];
+            son[u] = v;
+        }
+    }
+    if (len[u] == 2e9) k[u] = len[u] = 0;
+    else k[u] = qpow((2 - k[son[u]] + mo) % mo, mo - 2);
+    len[u]++;
+}
+
+inline void dfs1(int u, int fa) {
+    if (!son[u]) return;
+    val[u] = k[u] * val[fa] % mo;
+    for (int v: e[u]) {
+        if (v == fa) continue;
+        dfs1(v, u);
     }
 }
 
 inline void Zlin() {
     cin >> n;
     for (int i = 1; i <= n; i++) {
-        val[i] = 0;
-        in[i] = 0;
+        val[i] = son[i] = 0;
+        len[i] = 2e9;
         e[i].clear();
     }
     for (int i = 1, u, v; i < n; i++) {
@@ -55,27 +69,9 @@ inline void Zlin() {
         e[v].push_back(u);
     }
     dfs(1, 0);
-    queue<int> q;
-    for (int i = 1; i <= n; i++) {
-        if (!in[i]) {
-            val[i] = 1;
-            q.push(i);
-        }
-    }
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
-        int v = f[u];
-        val[v] = max(val[v], val[u] * 2);
-        if (!--in[v]) q.push(v);
-    }
-    for (int i = 1; i <= n; i++) {
-        if (i == 1) {
-            cout << 1 << ' ';
-        } else {
-            cout << (1 - qpow(val[i], mo - 2) + mo) % mo << ' ';
-        }
-    }
+    val[1] = 1;
+    for (int v: e[1]) dfs1(v, 1);
+    for (int i = 1; i <= n; i++) cout << val[i] << ' ';
     cout << endl;
 }
 
