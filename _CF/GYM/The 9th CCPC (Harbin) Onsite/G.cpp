@@ -34,6 +34,8 @@ bool check(Line a, Line b) {
 }
 
 bool check1(Line a, Line b) {
+    if (b.rx - a.lx >= 2 || a.rx - b.lx >= 2) return true;
+    return false;
 }
 
 int vis[N << 1];
@@ -97,21 +99,10 @@ inline void Zlin() {
                 e[lx->id].push_back(rx->id);
                 e[rx->id].push_back(lx->id);
             }
+            if (lx->rx < rx->rx) ++lx;
+            else ++rx;
         }
     }
-    if (!dfs(1, 0)) {
-        cout << "NO" << endl;
-        return;
-    }
-    for (int i = 1; i < m; i++) {
-        for (auto [lx, rx, id]: have[i]) {
-            if (!vis[id]) {
-                cout << "NO" << endl;
-                return;
-            }
-        }
-    }
-    cout << "YES" << endl;
 }
 
 int main() {
