@@ -33,6 +33,9 @@ bool check(Line a, Line b) {
     return false;
 }
 
+bool check1(Line a, Line b) {
+}
+
 int vis[N << 1];
 
 inline bool dfs(int u, int fa) {
@@ -87,6 +90,10 @@ inline void Zlin() {
         auto lx = have[i].begin(), rx = have[i + 1].begin();
         while (lx != have[i].end() && rx != have[i + 1].end()) {
             if (check(*lx, *rx)) {
+                if (check1(*lx, *rx)) {
+                    cout << "NO" << endl;
+                    return;
+                }
                 e[lx->id].push_back(rx->id);
                 e[rx->id].push_back(lx->id);
             }
