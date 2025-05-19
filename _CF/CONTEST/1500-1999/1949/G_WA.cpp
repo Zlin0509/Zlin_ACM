@@ -17,25 +17,15 @@ typedef pair<long long, long long> pll;
 
 constexpr int N = 2010;
 
-vi e1[N], e2[N], ans;
+vi e[N], ans;
 int vis[N];
 
 inline void dfs(int u) {
     vis[u] = 1;
-    bool check = false;
-    for (int v: e1[u]) {
+    for (int v: e[u]) {
         if (vis[v]) continue;
-        check = true;
         dfs(v);
         break;
-    }
-    if (!check) {
-        for (int v: e2[u]) {
-            if (vis[v]) continue;
-            check = true;
-            dfs(v);
-            break;
-        }
     }
     ans.push_back(u);
 }
@@ -57,8 +47,7 @@ inline void Zlin() {
         for (int j = 0; j < n; j++) {
             if (a[j] == b[j] || i == j) continue;
             if (a[j] == b[i]) {
-                if (b[j] != '-') e1[i].push_back(j);
-                else e2[i].push_back(j);
+                e[i].push_back(j);
             }
         }
     }
