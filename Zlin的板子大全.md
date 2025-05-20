@@ -2324,6 +2324,26 @@ int phi(int n) {
 }
 ```
 
+## EXGCD
+
+求 `ax + by == gcd(a, b)` 
+
+```c++
+ll exgcd(ll a, ll b, ll &x, ll &y) {
+    if (!b) {
+        x = 1, y = 0;
+        return a;
+    }
+    ll x1, y1;
+    ll g = exgcd(b, a % b, x1, y1);
+    x = y1;
+    y = x1 - a / b * y1;
+    return g;
+}
+```
+
+
+
 ## 逆元
 
 ### 费马定理
@@ -2374,9 +2394,21 @@ inline void init() // 预处理，fac[]表示阶乘, inf[]表示阶乘的逆元
 
 ## 组合数
 
+### 基础
+
+$$
+\sum_{i=0}^{n} \binom{n}{i} \cdot i = n \cdot 2^{n-1}
+$$
+
+$$
+\sum_{i=0}^{n} \binom{n}{i} \cdot i^2 = n(n+1) \cdot 2^{n-2}
+$$
+
+
+
 ### 直接定义公式法
 
-组合数公式 C(n, k)  的定义为：
+组合数公式 C(n, k) 的定义为：
 $$
 C(n, k) = \frac{n!}{k!(n-k)!}
 $$
@@ -3015,7 +3047,7 @@ public:
 >             } while (y != x);
 >         }
 >     }
->     ```
+>    ```
 >     
 >     
 
