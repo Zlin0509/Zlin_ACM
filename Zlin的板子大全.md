@@ -2342,6 +2342,22 @@ ll exgcd(ll a, ll b, ll &x, ll &y) {
 }
 ```
 
+$$
+A \cdot x \equiv B \pmod{M}
+$$
+
+$$
+g = \gcd(A, M)
+$$
+
+$$
+\frac{A}{g} \cdot x \equiv \frac{B}{g} \pmod{\frac{M}{g}}
+$$
+
+$$
+最小循环节t = \frac{M}{g}
+$$
+
 
 
 ## 逆元

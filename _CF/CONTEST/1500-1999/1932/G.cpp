@@ -4,33 +4,72 @@
 
 #include "bits/stdc++.h"
 #define endl '\n'
+#define int long long
 using namespace std;
 
-typedef double db;
-typedef long double ldb;
-typedef long long ll;
-typedef unsigned long long ull;
 typedef vector<int> vi;
-typedef vector<long long> vll;
 typedef pair<int, int> pii;
-typedef pair<long long, long long> pll;
 
-ll exgcd(ll a, ll b, ll &x, ll &y) {
+int exgcd(int a, int b, int &x, int &y) {
     if (!b) {
         x = 1, y = 0;
         return a;
     }
-    ll x1, y1;
-    ll g = exgcd(b, a % b, x1, y1);
+    int x1, y1;
+    int g = exgcd(b, a % b, x1, y1);
     x = y1;
     y = x1 - a / b * y1;
     return g;
 }
 
-inline void Zlin() {
+constexpr int N = 2e5 + 10;
+
+int n, m, H, l[N], s[N], vis[N];
+int dis[N];
+vi e[N];
+
+inline void dij() {
+    dis[1] = 0;
+    priority_queue<pii> pq;
+    pq.push({-dis[1], 1});
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
+        if (vis[u]) continue;
+        vis[u] = 1;
+        for (int v: e[u]) {
+            int x, y, g = exgcd((s[u] - s[v] + H) % H, H, x, y), t = abs(H / g);
+            if ((l[v] - l[u]) % g) continue;
+            x *= (l[v] - l[u]) / g;
+            x = (x % t + t) % t;
+            if (x < dis[u]) x += (dis[u] - x + t - 1) / t * t;
+            if (dis[v] > x + 1) {
+                dis[v] = x + 1;
+                pq.push({-dis[v], v});
+            }
+        }
+    }
 }
 
-int main() {
+inline void Zlin() {
+    cin >> n >> m >> H;
+    for (int i = 1; i <= n; i++) {
+        dis[i] = 2e18;
+        vis[i] = 0;
+        e[i].clear();
+    }
+    for (int i = 1; i <= n; i++) cin >> l[i];
+    for (int i = 1; i <= n; i++) cin >> s[i];
+    for (int i = 1, u, v; i <= m; i++) {
+        cin >> u >> v;
+        e[u].push_back(v);
+        e[v].push_back(u);
+    }
+    dij();
+    cout << (dis[n] == 2e18 ? -1 : dis[n]) << endl;
+}
+
+signed main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
