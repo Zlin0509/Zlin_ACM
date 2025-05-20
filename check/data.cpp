@@ -15,13 +15,25 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-inline void Zlin()
-{
-    cout << rand() % 1000 << endl;
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+inline void Zlin() {
+    int n = rng() % 10 + 1, k = rng() % 10 + 1, q = rng() % 10 + 1;
+    string s;
+    for (int i = 1; i <= n; i++) {
+        char c = 'a' + rng() % 26;
+        s += c;
+    }
+    cout << n << ' ' << k << ' ' << q << endl;
+    cout << s << endl;
+    while (q--) {
+        int l = rng() % n + 1, r = rng() % n + 1;
+        if (l > r) swap(l, r);
+        cout << l << ' ' << r << endl;
+    }
 }
 
-int main()
-{
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;

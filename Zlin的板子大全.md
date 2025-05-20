@@ -195,7 +195,7 @@ void del(int i) {
 bool cmp(const Query &a, const Query &b) {
     int la = get(a.l), lb = get(b.l);
     if (la != lb) return la < lb;
-    return (la & 1) ? (a.r < b.r) : (a.r > b.r);  // 奇偶区块不同方向优化
+    return la & 1 ? a.r < b.r : a.r > b.r;  // 奇偶区块不同方向优化
 }
 
 inline void Zlin() {
