@@ -19,24 +19,48 @@ typedef pair<long long, long long> pll;
 
 constexpr int N = 1e5 + 10;
 
-int n;
-set<pii> line[2];
+int f[N], ans;
+
+inline int find(int u) { return f[u] == u ? u : f[u] = find(f[u]); }
+
+inline void merge(int x, int y) {
+    int fx = find(x), fy = find(y);
+    if (fx == fy) return;
+    f[fy] = fx;
+    --ans;
+}
 
 inline void Zlin() {
-    line[0].clear(), line[1].clear();
+    int n;
     cin >> n;
-    for (int i = 1; i <= n; i++) {
-        int c, l, r;
-        cin >> c >> l >> r;
-        line[c].insert({l, r});
-    }
-    int ans = 0;
-    while (!line[0].empty() && !line[1].empty()) {
-        if (line[0].begin()->first < line[1].begin()->first) {
-        } else {
+    vector<tuple<int, int, int> > v(n);
+    for (auto &[c,l, r]: v) cin >> c >> l >> r;
+    sort(v.begin(), v.end(), [&](auto x, auto y) {
+        return get<2>(x) < get<2>(y);
+    });
+    ans = n;
+    for (int i = 0; i < n; i++) f[i] = i;
+    vi e[2];
+    for (int i = 0; i < n; i++) {
+        auto [c, l, r] = v[i];
+        int lst = -1;
+        while (1) {
+            if (e[c].empty()) {
+                if (~lst) e[c].push_back(lst);
+                break;
+            }
+            int now = e[c].back();
+            if (l <= get<2>(v[now])) {
+                merge(now, i);
+                if (!~lst) lst = now;
+                e[c].pop_back();
+            } else {
+                if (~lst) e[c].push_back(lst);
+                break;
+            }
         }
+        e[c ^ 1].push_back(i);
     }
-    ans += line[0].size() + line[1].size();
     cout << ans << endl;
 }
 
