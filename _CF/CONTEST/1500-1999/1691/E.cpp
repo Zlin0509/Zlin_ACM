@@ -20,7 +20,7 @@ typedef pair<long long, long long> pll;
 constexpr int N = 1e5 + 10;
 
 int n;
-vector<pii> line[2];
+set<pii> line[2];
 
 inline void Zlin() {
     line[0].clear(), line[1].clear();
@@ -28,8 +28,16 @@ inline void Zlin() {
     for (int i = 1; i <= n; i++) {
         int c, l, r;
         cin >> c >> l >> r;
-        line[c].push_back({l, r});
+        line[c].insert({l, r});
     }
+    int ans = 0;
+    while (!line[0].empty() && !line[1].empty()) {
+        if (line[0].begin()->first < line[1].begin()->first) {
+        } else {
+        }
+    }
+    ans += line[0].size() + line[1].size();
+    cout << ans << endl;
 }
 
 signed main() {
