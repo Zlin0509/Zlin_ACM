@@ -24,42 +24,76 @@ struct card {
 
 int n, m;
 vector<card> a, b;
-vi sx, tx;
+vi have, sz[2], res;
 
 
 inline void Zlin() {
-    cin >> n >> m;
-    sx.clear(), tx.clear();
+    have.clear();
+    cin >> n;
     a.assign(n, card());
-    b.assign(m, card());
     for (int i = 0; i < n; i++) {
         cin >> a[i].s;
-        sx.push_back(a[i].s);
+        have.push_back(a[i].s);
     }
     for (int i = 0; i < n; i++) {
         cin >> a[i].t;
-        tx.push_back(a[i].t);
+        have.push_back(a[i].t);
     }
+    cin >> m;
+    b.assign(m, card());
     for (int i = 0; i < m; i++) {
         cin >> b[i].s;
-        sx.push_back(b[i].s);
+        have.push_back(b[i].s);
     }
     for (int i = 0; i < m; i++) {
         cin >> b[i].t;
-        tx.push_back(b[i].t);
+        have.push_back(b[i].t);
     }
-    sort(sx.begin(), sx.end());
-    sx.erase(unique(sx.begin(), sx.end()), sx.end());
-    sort(tx.begin(), tx.end());
-    tx.erase(unique(tx.begin(), tx.end()), tx.end());
+    sort(have.begin(), have.end());
+    have.erase(unique(have.begin(), have.end()), have.end());
+    int siz = have.size();
+    sz[0].assign(siz + 4, 0);
+    sz[1].assign(siz + 4, 0);
+    res.assign(siz + 4, -1);
     for (auto &[s, t]: a) {
-        s = lower_bound(sx.begin(), sx.end(), s) - sx.begin();
-        t = lower_bound(tx.begin(), tx.end(), t) - tx.begin();
+        s = lower_bound(have.begin(), have.end(), s) - have.begin() + 1;
+        t = lower_bound(have.begin(), have.end(), t) - have.begin() + 1;
+        sz[0][s] = max(sz[0][s], t);
     }
     for (auto &[s, t]: b) {
-        s = lower_bound(sx.begin(), sx.end(), s) - sx.begin();
-        t = lower_bound(tx.begin(), tx.end(), t) - tx.begin();
+        s = lower_bound(have.begin(), have.end(), s) - have.begin() + 1;
+        t = lower_bound(have.begin(), have.end(), t) - have.begin() + 1;
+        sz[1][s] = max(sz[1][s], t);
     }
+    for (int i = siz - 1; i; i--) {
+        sz[0][i] = max(sz[0][i], sz[0][i + 1]);
+        sz[1][i] = max(sz[1][i], sz[1][i + 1]);
+    }
+    for (int i = siz; i; i--) {
+        int now = i, cnt = 0, used1 = 0, used2 = 0;
+        while (now < siz && sz[cnt ^ 1][now + 1]) {
+            if (!cnt && res[now] != -1) {
+                cnt = res[now];
+                break;
+            }
+            if (used2 && now == used2) {
+                cnt = 2;
+                break;
+            }
+            if (!used1) {
+                used1 = now;
+            } else {
+                used2 = used1;
+                used1 = now;
+            }
+            now = sz[cnt ^ 1][now + 1];
+            cnt ^= 1;
+        }
+        res[i] = cnt;
+    }
+    vi ans(3);
+    for (auto [s, t]: a) ans[res[t]]++;
+    cout << ans[0] << ' ' << ans[2] << ' ' << ans[1] << endl;
 }
 
 signed main() {
