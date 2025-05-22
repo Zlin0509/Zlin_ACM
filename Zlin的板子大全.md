@@ -2688,6 +2688,36 @@ bool Dfs(int u) {
 
 二分图染色法
 
+### 有向如找环
+
+计算每个点的链长,同时换上点长度为环的大小
+
+```
+inline void dfs(int x, int y) {
+    int xx = x + dx[mp[x][y]], yy = y + dy[mp[x][y]];
+    if (xx > n || xx < 1 || yy > m || yy < 1) return;
+    stk[++top] = {x, y};
+    instk[x][y] = vis[x][y] = 1;
+    if (instk[xx][yy]) {
+        cc.push_back({xx, yy});
+        pii now = {x, y};
+        do {
+            cc.push_back(now);
+            now = fa[now.first][now.second];
+        } while (now != make_pair(xx, yy));
+        for (auto [xs, ys]: cc) val[xs][ys] = cc.size();
+        cc.clear();
+    } else {
+        fa[xx][yy] = {x, y};
+        dfs(xx, yy);
+        if (val[x][y] == 1) val[x][y] = val[xx][yy] + 1;
+    }
+    instk[x][y] = 0;
+}
+```
+
+
+
 ## 最短路算法
 
 ### Dijkstra
