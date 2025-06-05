@@ -1,11 +1,13 @@
 //
-// Created by 27682 on 2025/5/20.
+// Created by Zlin on 2025/5/24.
 //
 
 #include "bits/stdc++.h"
-#define endl '\n'
+#define endl "\n"
+#define int long long
 using namespace std;
-
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+typedef __int128 i128;
 typedef double db;
 typedef long double ldb;
 typedef long long ll;
@@ -15,78 +17,63 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-constexpr int N = 3e5 + 10;
-constexpr ll p = 11451431, mo = 1e9 + 7;
+int n, l, h;
 
-int n, k, q;
-string s;
+vector<pii> a(55), pos(55, {-1, -1});
 
-int sum[N][26], cnt[N];
-ll res, Hash[N], ans[N];
-vll ax;
+set<int> nx, ny;
 
-int len;
-
-inline int get(int i) {
-    return i / len;
-}
-
-inline void add(int i) {
-    res += cnt[Hash[i]]++;
-}
-
-inline void del(int i) {
-    res -= --cnt[Hash[i]];
-}
-
-struct query {
-    int qid, l, r;
-};
-
-vector<query> op;
-
-bool cmp(const query &a, const query &b) {
-    int la = get(a.l), lb = get(b.l);
-    if (la != lb) return la < lb;
-    return la & 1 ? a.r < b.r : a.r > b.r;
+bool check(int lx, int ly, int id) {
+    int rx = lx + a[id].first - 1, ry = ly + a[id].second - 1;
+    if (rx >= l || ry >= h) return false;
+    for (int i = 1; i < id; i++) {
+        if(pos[i] == make_pair(-1,-1)) continue;
+        int llx = pos[i].first, lly = pos[i].second;
+        int rrx = llx + a[i].first - 1, rry = lly + a[i].second - 1;
+        if ((llx >= lx && llx <= rx) || (lx <= llx && rx >= rrx) || (llx <= lx && rrx >= rx)) {
+            if ((ry - rry) * (ly - rry) <= 0) return false;
+            if ((ry - llx) * (ly - lly) <= 0) return false;
+            if (ly <= lly && ry >= rry) return false;
+            if (lly <= ly && rry >= ry) return false;
+        }
+        if ((rrx >= lx && rrx <= rx) || (lx <= llx && rx >= rrx) || (llx <= lx && rrx >= rx)) {
+            if ((ry - rry) * (ly - rry) <= 0) return false;
+            if ((ry - llx) * (ly - lly) <= 0) return false;
+            if (ly <= lly && ry >= rry) return false;
+            if (lly <= ly && rry >= ry) return false;
+        }
+    }
+    return true;
 }
 
 inline void Zlin() {
-    cin >> n >> k >> q;
-    cin >> s, s = ' ' + s;
-    for (int i = 1, l, r; i <= q; i++) {
-        cin >> l >> r;
-        op.push_back({i, l, r});
-    }
+    cin >> n >> l >> h;
+    nx.insert(0), ny.insert(0);
     for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < 26; j++) sum[i][j] = sum[i - 1][j];
-        sum[i][s[i] - 'a'] = (sum[i][s[i] - 'a'] + 1) % k;
+        cin >> a[i].first >> a[i].second;
+        for (int x: nx) {
+            for (int y: ny) {
+                if (check(x, y, i)) {
+                    pos[i] = {x, y};
+                    break;
+                }
+            }
+            if (pos[i] != make_pair(-1, -1)) break;
+        }
+        if (pos[i] == make_pair(-1, -1)) cout << -1 << endl;
+        else {
+            cout << pos[i].first << ' ' << pos[i].second << endl;
+            nx.insert(pos[i].first);
+            ny.insert(pos[i].second);
+            nx.insert(pos[i].first + a[i].first);
+            ny.insert(pos[i].second + a[i].second);
+            nx.insert(pos[i].first + a[i].first - 1);
+            ny.insert(pos[i].second + a[i].second - 1);
+        }
     }
-    for (int i = 1; i <= n; i++) {
-        Hash[i] = sum[i][0];
-        for (int j = 1; j < 26; j++) Hash[i] = (Hash[i] * p % mo + sum[i][j]) % mo;
-        ax.push_back(Hash[i]);
-    }
-    ax.push_back(0);
-    sort(ax.begin(), ax.end());
-    ax.erase(unique(ax.begin(), ax.end()), ax.end());
-    for (int i = 0; i <= n; i++) Hash[i] = lower_bound(ax.begin(), ax.end(), Hash[i]) - ax.begin() + 1;
-    len = sqrt(n) + 1;
-    sort(op.begin(), op.end(), cmp);
-    int l = 0, r = 0;
-    res = 0;
-    cnt[Hash[0]]++;
-    for (auto [id, lx, rx]: op) {
-        while (r < rx) add(++r);
-        while (r > rx) del(r--);
-        while (l + 1 < lx) del(l++);
-        while (l + 1 > lx) add(--l);
-        ans[id] = res;
-    }
-    for (int i = 1; i <= q; i++) cout << ans[i] << endl;
 }
 
-int main() {
+signed main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
