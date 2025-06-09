@@ -16,43 +16,71 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-bool a[110], mp[32][110][110], tmp[110];
+constexpr int N = 210;
+constexpr ll mo = 1e9 + 7;
 
-int n, m, T;
+inline ll qpow(ll a, ll b) {
+    ll res = 1;
+    while (b) {
+        if (b & 1) res = res * a % mo;
+        a = a * a % mo;
+        b >>= 1;
+    }
+    return res;
+}
+
+ll inv2, val[N][N], ans;
+int n, f[N][19], dep[N], len[N];
+vi e[N];
+
+inline void dfs(int u, int fa) {
+    dep[u] = dep[fa] + 1;
+    f[u][0] = fa;
+    for (int i = 1; i < 9; i++) f[u][i] = f[f[u][i - 1]][i - 1];
+    for (int v: e[u]) {
+        if (v == fa) continue;
+        dfs(v, u);
+    }
+}
+
+inline int Lca(int u, int v) {
+    if (dep[u] < dep[v]) swap(u, v);
+    for (int i = 8; ~i; i--)
+        if (dep[f[u][i]] >= dep[v])
+            u = f[u][i];
+    if (u == v) return u;
+    for (int i = 8; ~i; i--)
+        if (f[u][i] != f[v][i])
+            u = f[u][i], v = f[v][i];
+    return f[u][0];
+}
 
 inline void Zlin() {
-    cin >> n >> m >> T;
-    for (int i = 1, u, v; i <= m; i++) {
+    inv2 = qpow(2, mo - 2);
+    cin >> n;
+    for (int i = 1, u, v; i < n; i++) {
         cin >> u >> v;
-        mp[0][u][v] = true;
+        e[u].push_back(v);
+        e[v].push_back(u);
     }
-    for (int z = 1; z < 32; z++)
-        for (int k = 1; k <= n; k++)
-            for (int i = 1; i <= n; i++)
-                for (int j = 1; j <= n; j++)
-                    mp[z][i][j] |= mp[z - 1][i][k] & mp[z - 1][k][j];
-    while (T--) {
-        int x, k;
-        cin >> x >> k;
-        for (int i = 1; i <= n; i++) a[i] = false;
-        a[x] = true;
-        int l = 0;
-        while (k) {
-            if (k & 1) {
-                for (int i = 1; i <= n; i++)
-                    for (int j = 1; j <= n; j++)
-                        tmp[j] |= a[i] & mp[l][i][j];
-                for (int i = 1; i <= n; i++) a[i] = tmp[i], tmp[i] = false;
-            }
-            k >>= 1;
-            ++l;
+    for (int x = 0; x <= n; x++) {
+        for (int y = 0; y <= n; y++) {
+            if (!x) val[x][y] = 1;
+            else if (!y) val[x][y] = 0;
+            else val[x][y] = (val[x - 1][y] + val[x][y - 1]) % mo * inv2 % mo;
         }
-        int cnt = 0;
-        for (int i = 1; i <= n; i++) if (a[i]) ++cnt;
-        cout << cnt << ' ';
-        for (int i = 1; i <= n; i++) if (a[i]) cout << i << ' ';
-        cout << endl;
     }
+    for (int s = 1; s <= n; s++) {
+        dfs(s, 0);
+        for (int j = 1; j <= n; j++) {
+            for (int i = j + 1; i <= n; i++) {
+                int lca = Lca(i, j);
+                ans = (ans + val[dep[i] - dep[lca]][dep[j] - dep[lca]]) % mo;
+            }
+        }
+    }
+    ans = ans * qpow(n, mo - 2) % mo;
+    cout << ans << endl;
 }
 
 signed main() {
