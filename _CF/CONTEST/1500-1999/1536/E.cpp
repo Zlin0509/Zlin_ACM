@@ -19,22 +19,22 @@ typedef pair<long long, long long> pll;
 constexpr ll mo = 1e9 + 7;
 constexpr int N = 2010;
 
-int dx[4]{1, -1, 0, 0}, dy[4]{0, 0, 1, -1};
-
-int n, m;
-ll val[N][N];
-char mp[N][N];
 
 inline void Zlin() {
+    int n, m;
     cin >> n >> m;
-    queue<pii> q;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            cin >> mp[i][j];
-            val[i][j] = 1;
-            if (mp[i][j] == '0') q.emplace(i, j);
+    vector<string> a(n);
+    ll ans = 1;
+    bool tag = false;
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        for (int j = 0; j < m; ++j) {
+            if (a[i][j] == '0') tag = true;
+            else ans = ans * 2 % mo;
         }
     }
+    if (!tag) ans = (ans + mo - 1) % mo;
+    cout << ans << '\n';
 }
 
 signed main() {
