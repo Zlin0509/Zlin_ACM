@@ -3440,55 +3440,66 @@ V是节点数 E是边数
 时间复杂度O(VE^2^)
 
 ```c++
-int S, T;//S 源点 T 汇点
-//链式前向星
-struct edge {
-    ll v, c, next;
-} e[M];
-int head[N], idx = 1;
-ll mf[N], pre[N];//mf 存S_v的流量上限 pre 存每个点的前驱边编号
+struct EK {
+    struct Edge {
+        int from, to, cap, flow;
 
-void add(int u, int v, int c) {
-    ++idx;//先+1，因为要存反边，所以从2开始
-    e[idx] = {v, c, head[u]};
-    head[u] = idx;
-}
+        Edge(int u, int v, int c, int f) : from(u), to(v), cap(c), flow(f) {
+        }
+    };
 
-bool bfs() {
-    memset(mf, 0, sizeof mf);//多组数据记得数组大小
-    queue<int> q;
-    q.push(S);
-    mf[S] = inf;
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
-        for (int i = head[u]; i; i = e[i].next) {
-            int v = e[i].v;
-            if (mf[v] == 0 && e[i].c) {//判断当前结点是否被走过和有没有边
-                mf[v] = min(mf[u], e[i].c);
-                pre[v] = i;
-                q.push(v);
-                if (v == T) return true;
+    int n, m; // n：点数，m：边数
+    vector<Edge> edges; // edges：所有边的集合
+    vector<int> G[MAXN]; // G：点 x -> x 的所有边在 edges 中的下标
+    int a[MAXN], p[MAXN];
+    // a：点 x -> BFS 过程中最近接近点 x 的边给它的最大流
+    // p：点 x -> BFS 过程中最近接近点 x 的边
+
+    void init(int n) {
+        for (int i = 0; i < n; i++) G[i].clear();
+        edges.clear();
+    }
+
+    void AddEdge(int from, int to, int cap) {
+        edges.push_back(Edge(from, to, cap, 0));
+        edges.push_back(Edge(to, from, 0, 0));
+        m = edges.size();
+        G[from].push_back(m - 2);
+        G[to].push_back(m - 1);
+    }
+
+    int Maxflow(int s, int t) {
+        int flow = 0;
+        for (;;) {
+            memset(a, 0, sizeof(a));
+            queue<int> Q;
+            Q.push(s);
+            a[s] = INF;
+            while (!Q.empty()) {
+                int x = Q.front();
+                Q.pop();
+                for (int i = 0; i < G[x].size(); i++) {
+                    // 遍历以 x 作为起点的边
+                    Edge &e = edges[G[x][i]];
+                    if (!a[e.to] && e.cap > e.flow) {
+                        p[e.to] = G[x][i]; // G[x][i] 是最近接近点 e.to 的边
+                        a[e.to] = min(a[x], e.cap - e.flow); // 最近接近点 e.to 的边赋给它的流
+                        Q.push(e.to);
+                    }
+                }
+                if (a[t]) break; // 如果汇点接受到了流，就退出 BFS
             }
+            if (!a[t]) break; // 如果汇点没有接受到流，说明源点和汇点不在同一个连通分量上
+            for (int u = t; u != s; u = edges[p[u]].from) {
+                // 通过 u 追寻 BFS 过程中 s -> t 的路径
+                edges[p[u]].flow += a[t]; // 增加路径上边的 flow 值
+                edges[p[u] ^ 1].flow -= a[t]; // 减小反向路径的 flow 值
+            }
+            flow += a[t];
         }
+        return flow;
     }
-    return false;
-}
-
-ll EK() {
-    ll flow = 0;
-    while (bfs()) {
-        int v = T;
-        while (v != S) {
-            int i = pre[v];
-            e[i].c -= mf[T];//正向边
-            e[i ^ 1].c += mf[T];//反向边
-            v = e[i ^ 1].v;
-        }
-        flow += mf[T];
-    }
-    return flow;
-}
+} ek;
 ```
 
 #### Dinic算法
@@ -3559,6 +3570,86 @@ ll dinic() {
     }
     return flow;
 }
+```
+
+### 费用流
+
+#### 最小费用流
+EK算法改編
+```c++
+struct EK {
+    struct Edge {
+        int from, to, cap, flow, cost;
+
+        Edge(int u, int v, int c, int f, int co) : from(u), to(v), cap(c), flow(f), cost(co) {
+        }
+    };
+
+    int n, m; // n：点数，m：边数
+    vector<Edge> edges; // edges：所有边的集合
+    vector<int> G[MAXN]; // G：点 x -> x 的所有边在 edges 中的下标
+    int dis[MAXN], a[MAXN], p[MAXN]; // dis: 计算最短路径的数组
+    bool inQueue[MAXN]; // 记录是否在队列中
+
+    void init(int n) {
+        for (int i = 0; i < n; i++) G[i].clear();
+        edges.clear();
+    }
+
+    // 添加边 (from -> to, capacity, cost)
+    void AddEdge(int from, int to, int cap, int cost) {
+        edges.push_back(Edge(from, to, cap, 0, cost));
+        edges.push_back(Edge(to, from, 0, 0, -cost)); // 反向边，费用取反
+        m = edges.size();
+        G[from].push_back(m - 2);
+        G[to].push_back(m - 1);
+    }
+
+    // 使用 SPFA (Shortest Path Faster Algorithm) 找增广路径
+    bool SPFA(int s, int t) {
+        fill(dis, dis + n, INF);
+        memset(inQueue, 0, sizeof(inQueue));
+        queue<int> Q;
+        Q.push(s);
+        dis[s] = 0;
+        a[s] = INF;
+        inQueue[s] = true;
+        while (!Q.empty()) {
+            int u = Q.front();
+            Q.pop();
+            inQueue[u] = false;
+            for (int i: G[u]) {
+                Edge &e = edges[i];
+                if (e.cap > e.flow && dis[e.to] > dis[u] + e.cost) {
+                    dis[e.to] = dis[u] + e.cost;
+                    a[e.to] = min(a[u], e.cap - e.flow);
+                    p[e.to] = i;
+                    if (!inQueue[e.to]) {
+                        Q.push(e.to);
+                        inQueue[e.to] = true;
+                    }
+                }
+            }
+        }
+        return dis[t] != INF;
+    }
+
+    // 最大费用流计算
+    int MaxFlow(int s, int t) {
+        int flow = 0, cost = 0;
+        while (SPFA(s, t)) {
+            int f = a[t]; // 增广流量
+            flow += f;
+            cost += f * dis[t]; // 计算费用
+            // 更新流量和反向流量
+            for (int u = t; u != s; u = edges[p[u]].from) {
+                edges[p[u]].flow += f;
+                edges[p[u] ^ 1].flow -= f; // 反向边流量减去
+            }
+        }
+        return cost; // 返回最大费用
+    }
+};
 ```
 
 # 字符串
