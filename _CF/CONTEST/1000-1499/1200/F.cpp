@@ -11,7 +11,6 @@ inline void Zlin() {
 int main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
