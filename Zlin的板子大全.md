@@ -3508,68 +3508,72 @@ struct EK {
 在二分图中， DINIC算法时间复杂度为O(V^0.5^E)
 
 ```c++
-int S, T;//S 源点 T 汇点
-//链式前向星
-struct edge {
-    ll v, c, next;
-} e[M];
-int head[N], cur[N], idx = 1;
-ll dep[N], pre[N];//mf 存S_v的流量上限 pre 存每个点的前驱边编号
+struct MF {
+    struct edge {
+        int v, nxt, cap, flow;
+    } e[N];
 
-void add(int u, int v, int c) {
-    ++idx;//先+1，因为要存反边，所以从2开始
-    e[idx] = {v, c, head[u]};
-    head[u] = idx;
-}
+    int fir[N], cnt = 0;
 
-bool bfs() {//建立分层数组dep
-    memset(dep, 0, sizeof dep);//多组数据记得数组大小
-    queue<int> q;
-    q.push(S);
-    dep[S] = 1;
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
-        for (int i = head[u]; i; i = e[i].next) {
-            int v = e[i].v;
-            if (dep[v] == 0 && e[i].c) {//判断当前结点是否被走过和有没有边
-                dep[v] = dep[v] + 1;
-                pre[v] = i;
-                q.push(v);
-                if (v == T) return true;
+    int n, S, T;
+    ll maxflow = 0;
+    int dep[N], cur[N];
+
+    void init() {
+        memset(fir, -1, sizeof fir);
+        cnt = 0;
+    }
+
+    void addedge(int u, int v, int w) {
+        e[cnt] = {v, fir[u], w, 0};
+        fir[u] = cnt++;
+        e[cnt] = {u, fir[v], 0, 0};
+        fir[v] = cnt++;
+    }
+
+    bool bfs() {
+        queue<int> q;
+        memset(dep, 0, sizeof(int) * (n + 1));
+
+        dep[S] = 1;
+        q.push(S);
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            for (int i = fir[u]; ~i; i = e[i].nxt) {
+                int v = e[i].v;
+                if (!dep[v] && e[i].cap > e[i].flow) {
+                    dep[v] = dep[u] + 1;
+                    q.push(v);
+                }
             }
         }
+        return dep[T];
     }
-    return false;
-}
 
-ll dfs(int u, ll mf) {
-    if (u == T) return mf;
-    ll sum = 0;
-    for (int i = head[u]; i; i = e[i].next) {
-        cur[u] = i;
-        int v = e[i].v;
-        if (dep[v] == dep[u] + 1 && e[i].c) {
-            ll f = dfs(v, min(mf, e[i].c));
-            e[i].c -= f;
-            e[i ^ 1].c += f;
-            sum += f;
-            mf -= f;
-            if (mf == 0) break;
+    int dfs(int u, int flow) {
+        if (u == T || !flow) return flow;
+
+        int ret = 0;
+        for (int &i = cur[u]; ~i; i = e[i].nxt) {
+            int v = e[i].v, d;
+            if (dep[v] == dep[u] + 1 && (d = dfs(v, min(flow - ret, e[i].cap - e[i].flow)))) {
+                ret += d;
+                e[i].flow += d;
+                e[i ^ 1].flow -= d;
+                if (ret == flow) return ret;
+            }
+        }
+        return ret;
+    }
+
+    void dinic() {
+        while (bfs()) {
+            memcpy(cur, fir, sizeof(int) * (n + 1));
+            maxflow += dfs(S, INF);
         }
     }
-    if (sum == 0) dep[u] = 0;//如果流量为0，将这个点去除
-    return sum;
-}
-
-ll dinic() {
-    ll flow = 0;
-    while (bfs()) {
-        memcpy(cur, head, sizeof head);
-        flow += dfs(S, inf);
-    }
-    return flow;
-}
+} mf;
 ```
 
 ### 费用流

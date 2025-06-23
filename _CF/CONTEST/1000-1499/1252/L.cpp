@@ -5,84 +5,151 @@
 #define endl '\n'
 using namespace std;
 
-constexpr int MAXN = 250;
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef vector<int> vi;
+
+constexpr int N = 2010;
 constexpr int INF = 0x3f3f3f3f;
 
-struct EK {
-    struct Edge {
-        int from, to, cap, flow, cost;
+int S, T;
+int m_to[N];
 
-        Edge(int u, int v, int c, int f, int co) : from(u), to(v), cap(c), flow(f), cost(co) {
-        }
-    };
+struct MF {
+    struct edge {
+        int v, nxt, cap, flow;
+    } e[N * N * 2];
 
-    int n, m; // n：点数，m：边数
-    vector<Edge> edges; // edges：所有边的集合
-    vector<int> G[MAXN]; // G：点 x -> x 的所有边在 edges 中的下标
-    int dis[MAXN], a[MAXN], p[MAXN]; // dis: 计算最短路径的数组
-    bool inQueue[MAXN]; // 记录是否在队列中
+    int fir[N * 3], cnt;
 
-    void init(int n) {
-        for (int i = 0; i < n; i++) G[i].clear();
-        edges.clear();
+    int nx, mx;
+    int n;
+    ll maxflow = 0;
+    int dep[N * 3], cur[N * 3];
+
+    void init() {
+        memset(fir, -1, sizeof fir);
+        cnt = 0;
     }
 
-    // 添加边 (from -> to, capacity, cost)
-    void AddEdge(int from, int to, int cap, int cost) {
-        edges.push_back(Edge(from, to, cap, 0, cost));
-        edges.push_back(Edge(to, from, 0, 0, -cost)); // 反向边，费用取反
-        m = edges.size();
-        G[from].push_back(m - 2);
-        G[to].push_back(m - 1);
+    void addedge(int u, int v, int c) {
+        e[cnt] = {v, fir[u], c, 0};
+        fir[u] = cnt++;
+        e[cnt] = {u, fir[v], 0, 0};
+        fir[v] = cnt++;
     }
 
-    // 使用 SPFA (Shortest Path Faster Algorithm) 找增广路径
-    bool SPFA(int s, int t) {
-        fill(dis, dis + n, INF);
-        memset(inQueue, 0, sizeof(inQueue));
-        queue<int> Q;
-        Q.push(s);
-        dis[s] = 0;
-        a[s] = INF;
-        inQueue[s] = true;
-        while (!Q.empty()) {
-            int u = Q.front();
-            Q.pop();
-            inQueue[u] = false;
-            for (int i: G[u]) {
-                Edge &e = edges[i];
-                if (e.cap > e.flow && dis[e.to] > dis[u] + e.cost) {
-                    dis[e.to] = dis[u] + e.cost;
-                    a[e.to] = min(a[u], e.cap - e.flow);
-                    p[e.to] = i;
-                    if (!inQueue[e.to]) {
-                        Q.push(e.to);
-                        inQueue[e.to] = true;
-                    }
+    bool bfs() {
+        queue<int> q;
+        memset(dep, 0, sizeof(int) * (n + 1));
+
+        dep[S] = 1;
+        q.push(S);
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            for (int i = fir[u]; ~i; i = e[i].nxt) {
+                int v = e[i].v;
+                if (!dep[v] && e[i].cap > e[i].flow) {
+                    dep[v] = dep[u] + 1;
+                    q.push(v);
                 }
             }
         }
-        return dis[t] != INF;
+        return dep[T];
     }
 
-    // 最大费用流计算
-    int MaxFlow(int s, int t) {
-        int flow = 0, cost = 0;
-        while (SPFA(s, t)) {
-            int f = a[t]; // 增广流量
-            flow += f;
-            cost += f * dis[t]; // 计算费用
-            // 更新流量和反向流量
-            for (int u = t; u != s; u = edges[p[u]].from) {
-                edges[p[u]].flow += f;
-                edges[p[u] ^ 1].flow -= f; // 反向边流量减去
+    int dfs(int u, int flow) {
+        if (!flow || u == T) return flow;
+        int ret = 0;
+        for (int &i = cur[u]; ~i; i = e[i].nxt) {
+            int v = e[i].v, d;
+            if (dep[v] == dep[u] + 1 && (d = dfs(v, min(flow - ret, e[i].cap - e[i].flow)))) {
+                if (u >= 1 && u <= mx && v >= mx + 1 && v <= mx + nx) m_to[u] = v - mx;
+                ret += d;
+                e[i].flow += d;
+                e[i ^ 1].flow -= d;
+                if (ret == flow) return ret;
             }
         }
-        return cost; // 返回最大费用
+        return ret;
     }
-};
+
+    void dinic() {
+        while (bfs()) {
+            memcpy(cur, fir, sizeof(int) * (n + 1));
+            maxflow += dfs(S, INF);
+        }
+    }
+} mf;
+
+int n, m, c[N], to[N], cir[N];
+vi e[N], mx, b[N], M[10010];
+
+int op[N], cir_siz = 0;
+vi stk;
+
+inline void dfs(int u, int fa) {
+    stk.push_back(u);
+    op[u] = 1;
+    for (int v: e[u]) {
+        if (v == fa) continue;
+        if (op[v] == 1) {
+            int lx = stk.size() - 1;
+            while (stk[lx] != v) cir[stk[lx--]] = 1, ++cir_siz;
+            ++cir_siz;
+            cir[v] = 1;
+        } else if (!op[v]) dfs(v, u);
+    }
+    op[u] = 2;
+    stk.pop_back();
+}
 
 inline void Zlin() {
+    cin >> n >> m;
+    mf.init();
+    S = 0, T = n + m + 2;
+    mf.nx = n, mf.mx = m, mf.n = n + m + 2;
+    for (int i = 1, siz; i <= n; i++) {
+        cin >> to[i];
+        e[i].push_back(to[i]);
+        e[to[i]].push_back(i);
+        cin >> siz;
+        b[i].assign(siz, 0);
+        for (int &it: b[i]) {
+            cin >> it;
+            mx.push_back(it);
+        }
+    }
+    for (int i = 1; i <= m; i++) {
+        cin >> c[i];
+        mx.push_back(c[i]);
+    }
+    sort(mx.begin(), mx.end());
+    mx.erase(unique(mx.begin(), mx.end()), mx.end());
+    for (int i = 1; i <= n; i++) {
+        for (int &it: b[i]) {
+            it = lower_bound(mx.begin(), mx.end(), it) - mx.begin();
+            M[it].push_back(i);
+        }
+    }
+    for (int i = 1; i <= m; i++) {
+        c[i] = lower_bound(mx.begin(), mx.end(), c[i]) - mx.begin();
+        mf.addedge(S, i, 1);
+        for (int v: M[c[i]]) mf.addedge(i, v + m, 1);
+    }
+    dfs(1, 0);
+    for (int i = 1; i <= n; i++) {
+        if (cir[i]) mf.addedge(i + m, n + m + 1, 1);
+        else mf.addedge(i + m, T, 1);
+    }
+    mf.addedge(n + m + 1, T, cir_siz - 1);
+    mf.dinic();
+    if (mf.maxflow != n - 1) {
+        cout << -1 << endl;
+        return;
+    }
+    for (int i = 1; i <= m; i++) cout << m_to[i] << ' ' << to[m_to[i]] << endl;
 }
 
 signed main() {
