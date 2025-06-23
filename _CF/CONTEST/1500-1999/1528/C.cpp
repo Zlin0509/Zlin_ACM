@@ -44,6 +44,10 @@ inline void dfs2(int u) {
     }
 }
 
+constexpr int N = 3e5 + 10;
+
+vi e1[N], e2[N];
+
 inline void Zlin() {
     cin >> n;
     ans = tot = 0;

@@ -3106,30 +3106,21 @@ public:
 >
 >注意点：要在tarjan基础上加特判起点没有祖先的情况
 >
->```c++
->bool cut[N];
->inline void tarjan(int x)
->{
->    int ss = 0;
->    dfn[x] = low[x] = ++tot;
->    stk[++top] = x, instk[x] = 1;
->    for (int y : e[x])
->    {
->        if (!dfn[y])
->        {
->            ++ss;
->            tarjan(y);
->            low[x] = min(low[x], low[y]);
->            if (low[y] >= dfn[x])
->                cut[x] = 1;
->        }
->        else if (instk[y])
->            low[x] = min(low[x], dfn[y]);
->    }
->    if (ss == 1 && x == 1) // ss表示是否在环内，x表示是否为起点
->        cut[x] = 0;
->}
->```
+```c++
+inline void tarjan(int u, int fa) {
+    int child = 0;
+    dfn[u] = low[u] = ++tot;
+    for (int v: e[u]) {
+        if (!dfn[v]) {
+            ++child;
+            tarjan(v, u);
+            low[u] = min(low[u], low[v]);
+            if (fa != -1 && low[v] >= dfn[u]) cut[u] = 1;
+        } else if (v != fa) low[u] = min(low[u], dfn[v]);
+    }
+    if (fa == -1 && child >= 2) cut[u] = 1;
+}
+```
 
 ### 边双连通分量
 
