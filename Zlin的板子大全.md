@@ -3653,7 +3653,200 @@ struct EK {
     }
 };
 ```
+Dinic算法改编
+```c++
+struct MCMF {
+    static const int N = 5e3 + 5, M = 1e5 + 5;
+    int tot = 1, lnk[N], cur[N], ter[M], nxt[M], cap[M], cost[M];
+    ll dis[N], ret;
+    bool vis[N];
 
+    void init(int n) {
+        tot = 1;
+        memset(lnk, 0, sizeof(int) * (n + 2));
+        ret = 0;
+    }
+
+    void add(int u, int v, int w, int c) {
+        ter[++tot] = v, nxt[tot] = lnk[u], lnk[u] = tot, cap[tot] = w, cost[tot] = c;
+    }
+
+    void addedge(int u, int v, int w, int c) { add(u, v, w, c), add(v, u, 0, -c); }
+
+    bool spfa(int s, int t) {
+        memset(dis, 0x3f, sizeof(dis));
+        memcpy(cur, lnk, sizeof(lnk));
+        queue<int> q;
+        q.push(s), dis[s] = 0, vis[s] = true;
+        while (!q.empty()) {
+            int u = q.front();
+            q.pop(), vis[u] = false;
+            for (int i = lnk[u]; i; i = nxt[i]) {
+                int v = ter[i];
+                if (cap[i] && dis[v] > dis[u] + cost[i]) {
+                    dis[v] = dis[u] + cost[i];
+                    if (!vis[v]) q.push(v), vis[v] = true;
+                }
+            }
+        }
+        return dis[t] != dis[N - 1];
+    }
+
+    int dfs(int u, int t, int flow) {
+        if (u == t) return flow;
+        vis[u] = true;
+        int ans = 0;
+        for (int &i = cur[u]; i && ans < flow; i = nxt[i]) {
+            int v = ter[i];
+            if (!vis[v] && cap[i] && dis[v] == dis[u] + cost[i]) {
+                int x = dfs(v, t, min(cap[i], flow - ans));
+                if (x) ret += x * cost[i], cap[i] -= x, cap[i ^ 1] += x, ans += x;
+            }
+        }
+        vis[u] = false;
+        return ans;
+    }
+
+    int dinic(int s, int t) {
+        int ans = 0;
+        while (spfa(s, t)) {
+            int x;
+            while ((x = dfs(s, t, INF))) ans += x;
+        }
+        return ans;
+    }
+} mcmf;
+```
+
+### 上下界费用流
+无源汇上下界
+```c++
+struct MCMF {
+    static const int MAXN = 10010;
+    static const int MAXE = 50010;
+    static const int INF = 0x3f3f3f3f;
+
+    struct Edge {
+        int v, nxt, cap, flow, cost;
+    } e[MAXE];
+
+    int fir[MAXN], cur[MAXN], cnt = 0;
+    int S, T, superS, superT;
+    int dis[MAXN], pre[MAXN];
+    bool vis[MAXN];
+    int demand[MAXN]; // 点的需求
+    long long maxflow = 0, mincost = 0;
+
+    void init(int n) {
+        memset(fir, -1, sizeof(int) * (n + 5));
+        memset(demand, 0, sizeof(int) * (n + 5));
+        cnt = 0;
+        maxflow = mincost = 0;
+    }
+
+    void addRawEdge(int u, int v, int cap, int cost) {
+        e[cnt] = {v, fir[u], cap, 0, cost};
+        fir[u] = cnt++;
+        e[cnt] = {u, fir[v], 0, 0, -cost};
+        fir[v] = cnt++;
+    }
+
+    // 添加带上下界的边：下界 l，上界 r，花费 cost
+    void addEdge(int u, int v, int l, int r, int cost) {
+        // 维护真实花费
+        mincost += 1LL * l * cost;
+
+        // 加边容量 r - l
+        addRawEdge(u, v, r - l, cost);
+
+        // 调整点需求
+        demand[u] -= l;
+        demand[v] += l;
+    }
+
+    bool spfa() {
+        memset(dis, INF, sizeof dis);
+        memset(vis, 0, sizeof vis);
+        memcpy(cur, fir, sizeof fir);
+        std::queue<int> q;
+        dis[S] = 0;
+        vis[S] = true;
+        q.push(S);
+
+        while (!q.empty()) {
+            int u = q.front(); q.pop();
+            vis[u] = false;
+            for (int i = fir[u]; ~i; i = e[i].nxt) {
+                int v = e[i].v;
+                if (e[i].cap > e[i].flow && dis[v] > dis[u] + e[i].cost) {
+                    dis[v] = dis[u] + e[i].cost;
+                    pre[v] = i;
+                    if (!vis[v]) {
+                        vis[v] = true;
+                        q.push(v);
+                    }
+                }
+            }
+        }
+        return dis[T] != INF;
+    }
+
+    int dfs(int u, int flow) {
+        if (u == T || flow == 0) return flow;
+        vis[u] = true;
+        int ret = 0;
+        for (int &i = cur[u]; ~i && ret < flow; i = e[i].nxt) {
+            int v = e[i].v;
+            if (!vis[v] && dis[v] == dis[u] + e[i].cost && e[i].cap > e[i].flow) {
+                int d = dfs(v, std::min(flow - ret, e[i].cap - e[i].flow));
+                if (d) {
+                    e[i].flow += d;
+                    e[i ^ 1].flow -= d;
+                    ret += d;
+                    mincost += 1LL * d * e[i].cost;
+                }
+            }
+        }
+        vis[u] = false;
+        return ret;
+    }
+
+    bool dinic() {
+        bool has_flow = false;
+        while (spfa()) {
+            int flow;
+            memset(vis, 0, sizeof vis);
+            while ((flow = dfs(S, INF))) {
+                maxflow += flow;
+                has_flow = true;
+            }
+        }
+        return has_flow;
+    }
+
+    // 建立超级源汇
+    bool buildSuperGraph(int n) {
+        superS = n + 1, superT = n + 2;
+        S = superS, T = superT;
+        for (int i = 1; i <= n; ++i) {
+            if (demand[i] > 0) {
+                addRawEdge(superS, i, demand[i], 0);
+            } else if (demand[i] < 0) {
+                addRawEdge(i, superT, -demand[i], 0);
+            }
+        }
+
+        // 跑最大流判断是否所有需求都满足
+        int total_demand = 0;
+        for (int i = 1; i <= n; ++i) {
+            if (demand[i] > 0) total_demand += demand[i];
+        }
+        dinic();
+
+        return maxflow == total_demand;
+    }
+};
+```
 # 字符串
 
 ## AC自动机
