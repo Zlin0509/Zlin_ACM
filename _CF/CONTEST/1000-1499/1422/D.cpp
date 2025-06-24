@@ -14,10 +14,13 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-int n, m;
+constexpr int N = 2e5 + 10;
+
+int n, m, sx, sy, fx, fy;
 
 inline void Zlin() {
     cin >> n >> m;
+    cin >> sx >> sy >> fx >> fy;
 }
 
 signed main() {
