@@ -9,15 +9,16 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int, int> pii;
 
-constexpr int N = 1010;
+constexpr int N = 1005;
 constexpr int all = 2520;
+constexpr int MAXN = 2523000;
 
 // all = 2520
 
 int n, k[N], m[N], q;
-vi e[N * all], g[N * all];
+vi e[MAXN], g[MAXN];
 
-int vis[N * all];
+int vis[MAXN];
 
 inline void dfs(int u, int val) {
     vis[u * all + val] = 1;
@@ -29,14 +30,14 @@ inline void dfs(int u, int val) {
     }
 }
 
-int dfn[N * all], low[N * all], tot = 0;
-int stk[N * all], instk[N * all], top = 0;
-int scc[N * all], num = 0;
-set<int> siz[N * all];
+int dfn[MAXN], low[MAXN], tot = 0;
+int stk[MAXN], instk[MAXN], top = 0;
+int scc[MAXN], num = 0;
+
+bitset<N> tmp;
+vector<bitset<N> > have;
 
 inline void tarjan(int u) {
-    if (u / all == 2) {
-    }
     dfn[u] = low[u] = ++tot;
     stk[++top] = u, instk[u] = 1;
     bool spe = false;
@@ -48,17 +49,18 @@ inline void tarjan(int u) {
         } else if (instk[v]) low[u] = min(low[u], dfn[v]);
     }
     if (low[u] == dfn[u]) {
-        int v;
-        ++num;
-        int cnt = 0;
+        int v, cnt = 0;
+        tmp.reset();
         do {
             ++cnt;
             v = stk[top--];
             instk[v] = 0;
             scc[v] = num;
-            siz[num].insert(v / all);
+            tmp[v / all] = true;
         } while (u != v);
-        if (cnt == 1 && !spe) siz[num].erase(siz[num].begin());
+        if (cnt == 1 && !spe) tmp.reset();
+        have.push_back(tmp);
+        ++num;
     }
 }
 
@@ -66,23 +68,23 @@ int in[N * all];
 
 inline void build_new() {
     for (int i = all; i < (n + 1) * all; i++) if (!dfn[i]) tarjan(i);
-    for (int i = 1; i <= num; i++) e[i].clear();
+    for (int i = 0; i < num; i++) e[i].clear();
     for (int i = all; i < (n + 1) * all; i++) for (int j: g[i]) if (scc[i] != scc[j]) e[scc[j]].push_back(scc[i]);
-    for (int i = 1; i <= num; i++) {
+    for (int i = 0; i < num; i++) {
         sort(e[i].begin(), e[i].end());
         e[i].erase(unique(e[i].begin(), e[i].end()), e[i].end());
     }
-    for (int i = 1; i <= num; i++) for (int j: e[i]) ++in[j];
+    for (int i = 0; i < num; i++) for (int j: e[i]) ++in[j];
 }
 
 inline void topo() {
     queue<int> q;
-    for (int i = 1; i <= num; i++) if (!in[i]) q.push(i);
+    for (int i = 0; i < num; i++) if (!in[i]) q.push(i);
     while (!q.empty()) {
         int u = q.front();
         q.pop();
         for (int v: e[u]) {
-            for (int it: siz[u]) siz[v].insert(it);
+            have[v] |= have[u];
             if (!--in[v]) q.push(v);
         }
     }
@@ -112,7 +114,7 @@ inline void Zlin() {
     while (q--) {
         int x, c;
         cin >> x >> c;
-        cout << siz[scc[x * all + ((c + k[x]) % all + all) % all]].size() << endl;
+        cout << have[scc[x * all + ((c + k[x]) % all + all) % all]].count() << endl;
     }
 }
 
