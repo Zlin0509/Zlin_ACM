@@ -139,6 +139,14 @@ string String(int length) {
     return randomString;
 }
 
+vector<int> generate_shuffled_permutation(int n) {
+    vector<int> a(n);
+    iota(a.begin(), a.end(), 1); // 生成 [1, 2, ..., n]
+    mt19937 rng(seed);           // 可选种子，默认使用当前时间
+    shuffle(a.begin(), a.end(), rng);
+    return a;
+}
+
 int main() {
     srand(time(0));
     /*随机生成*/
