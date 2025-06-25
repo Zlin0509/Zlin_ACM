@@ -11,76 +11,69 @@ typedef pair<int, int> pii;
 
 constexpr int N = 2e5 + 5;
 
-int n, tag[N];
-vi a[N], idx, son[N];
-
-vector<ll> have;
+int n, siz[N], tag[N];
+vi v[N];
+vector<pii> e[N];
 
 inline void Zlin() {
-    idx.clear();
-    have.clear();
     cin >> n;
-    for (int i = 1, k; i <= n; i++) {
-        cin >> k;
-        a[i].assign(k, 0);
-        for (int &it: a[i]) {
+    vi idx;
+    for (int i = 1; i <= n; i++) {
+        cin >> siz[i];
+        v[i].assign(siz[i], 0);
+        for (int &it: v[i]) {
             cin >> it;
             idx.push_back(it);
         }
-        tag[i] = 0;
     }
     sort(idx.begin(), idx.end());
     idx.erase(unique(idx.begin(), idx.end()), idx.end());
-    for (int i = 0; i < idx.size(); i++) son[i].clear();
-    for (int i = 1; i <= n; i++) {
-        for (int &it: a[i]) {
-            it = lower_bound(idx.begin(), idx.end(), it) - idx.begin();
-            son[it].push_back(i);
-        }
-    }
+    for (int i = 1; i <= n; i++) for (int &it: v[i]) it = lower_bound(idx.begin(), idx.end(), it) - idx.begin();
     vi l, r;
-    for (int i = 0, z = sqrt(n); i < idx.size(); i++) {
-        sort(son[i].begin(), son[i].end());
-        if (son[i].size() < z) {
-            l.push_back(i);
-        } else {
-            r.push_back(i);
-        }
-    }
+    for (int i = 1, dif = sqrt(n); i <= n; i++) siz[i] >= dif ? l.push_back(i) : r.push_back(i);
 
-    for (int id: l) {
-        for (int i = 0; i < son[id].size(); i++) {
-            for (int j = i + 1; j < son[id].size(); j++) {
-                int x = son[id][i], y = son[id][j];
-                if (x > y) swap(x, y);
-                have.push_back(1ll * y * N + x);
-            }
-        }
+    // 大集合
+    for (int i = 0; i < idx.size(); i++) {
+        tag[i] = 0;
+        e[i].clear();
     }
-    sort(have.begin(), have.end());
-    for (int i = 0; i + 1 < have.size(); i++) {
-        if (have[i] == have[i + 1]) {
-            cout << have[i] / N << ' ' << have[i] % N << endl;
-            return;
-        }
-    }
-
-    for (int id: r) {
-        for (int i: son[id]) tag[i] = 1;
-        for (int i = 0; i < idx.size(); i++) {
-            if (i == id) continue;
-            int now = 0;
-            for (int j: son[i]) {
-                if (tag[j]) {
-                    if (!now) now = j;
-                    else {
-                        cout << now << ' ' << j << endl;
+    for (int id1: l) {
+        for (int val: v[id1]) tag[val] = 1;
+        for (int id2 = 1, check; id2 <= n; id2++) {
+            if (id1 == id2) continue;
+            check = 0;
+            for (int val: v[id2]) {
+                if (tag[val]) {
+                    if (check) {
+                        cout << id1 << ' ' << id2 << endl;
                         return;
                     }
+                    check = 1;
                 }
             }
         }
-        for (int i: son[id]) tag[i] = 0;
+        for (int val: v[id1]) tag[val] = 0;
+    }
+
+    // 小集合
+    for (int id: r) {
+        for (int i = 0; i < siz[id]; i++) {
+            for (int j = i + 1; j < siz[id]; j++) {
+                int x = v[id][i], y = v[id][j];
+                if (x > y) swap(x, y);
+                e[x].push_back({y, id});
+            }
+        }
+    }
+    for (int i = 0; i < idx.size(); i++) {
+        for (pii &j: e[i]) {
+            if (tag[j.first]) {
+                cout << tag[j.first] << ' ' << j.second << endl;
+                return;
+            }
+            tag[j.first] = j.second;
+        }
+        for (pii &j: e[i]) tag[j.first] = 0;
     }
     cout << -1 << endl;
 }
