@@ -352,7 +352,7 @@ const ull mask = mt19937_64(time(nullptr))();
 
 inline ull shift(ull x) {
     x ^= mask;
-    x ^= x << 13;
+    x ^= x << 23;
     x ^= x >> 7;
     x ^= x << 17;
     x ^= mask;
