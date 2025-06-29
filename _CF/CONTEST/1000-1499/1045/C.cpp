@@ -107,6 +107,10 @@ inline void Zlin() {
         else {
             int ax = compID[a], bx = compID[b], s = lca(ax, bx);
             ans = len[ax] + len[bx] - len[s] - len[ffa[s][0]];
+            if (siz[ax]) {
+            }
+            if (siz[bx]) {
+            }
         }
         cout << ans << endl;
     }
