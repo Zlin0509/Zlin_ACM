@@ -4,6 +4,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+typedef vector<int> vi;
+
+constexpr int N = 5e5 + 10;
+
+int n, m, q;
+
 inline void Zlin() {
 }
 
