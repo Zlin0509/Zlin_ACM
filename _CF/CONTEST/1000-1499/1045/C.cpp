@@ -2,6 +2,7 @@
 // Created by 27682 on 2025/6/26.
 //
 #include <bits/stdc++.h>
+#define endl '\n'
 using namespace std;
 
 typedef vector<int> vi;
@@ -9,110 +10,82 @@ typedef pair<int, int> pii;
 
 constexpr int N = 2e5 + 10;
 
+
+namespace Tree {
+    int n = 1e5, fa[N * 2][20], dep[N * 2];
+    vi e[N * 2];
+
+    inline void add(int u, int v) {
+        e[u].push_back(v);
+        e[v].push_back(u);
+    }
+
+    inline void dfs(int u, int f) {
+        dep[u] = dep[f] + 1;
+        fa[u][0] = f;
+        for (int i = 1; i < 20; i++) fa[u][i] = fa[fa[u][i - 1]][i - 1];
+        for (int v: e[u]) {
+            if (v == f) continue;
+            dfs(v, u);
+        }
+    }
+
+    inline int lca(int u, int v) {
+        if (dep[u] < dep[v]) swap(u, v);
+        for (int i = 19; ~i; i--) if (dep[fa[u][i]] >= dep[v]) u = fa[u][i];
+        if (u == v) return u;
+        for (int i = 19; ~i; i--) {
+            if (fa[u][i] != fa[v][i]) {
+                u = fa[u][i];
+                v = fa[v][i];
+            }
+        }
+        return fa[u][0];
+    }
+
+    inline int dis(int u, int v) {
+        return (dep[u] + dep[v] - 2 * dep[lca(u, v)]) / 2;
+    }
+}
+
 int n, m, q;
+vi e[N];
 
-int cnt = 0, comp_count = 0;
-vector<vi> e, tree;
-vi dfn, low, fa, compID, siz;
-vector<bool> vis;
-set<pii> bridges;
+int dfn[N], low[N], tot = 0;
+int stk[N], top = 0;
 
-inline void tarjan(int u) {
-    vis[u] = true;
-    dfn[u] = low[u] = ++cnt;
+void tarjan(int u) {
+    dfn[u] = low[u] = ++tot;
+    stk[++top] = u;
     for (int v: e[u]) {
-        if (!vis[v]) {
-            fa[v] = u;
+        if (!dfn[v]) {
             tarjan(v);
             low[u] = min(low[u], low[v]);
-            if (low[v] > dfn[u])
-                bridges.insert({min(u, v), max(u, v)});
-        } else if (v != fa[u]) low[u] = min(low[u], dfn[v]);
+            if (low[v] >= dfn[u]) {
+                int nx = ++Tree::n, vx;
+                do {
+                    vx = stk[top--];
+                    Tree::add(nx, vx);
+                } while (vx != v);
+                Tree::add(nx, u);
+            }
+        } else low[u] = min(low[u], dfn[v]);
     }
-}
-
-inline void dfs(int u, int ID) {
-    compID[u] = ID;
-    for (int v: e[u])
-        if (compID[v] == -1 && bridges.find({min(u, v), max(u, v)}) == bridges.end())
-            dfs(v, ID);
-}
-
-inline void build(int n) {
-    compID.assign(n + 1, -1);
-    siz.assign(n + 1, 0);
-
-    for (int i = 1; i <= n; i++) {
-        if (compID[i] == -1) dfs(i, ++comp_count);
-        ++siz[compID[i]];
-    }
-    for (auto it: bridges) {
-        int u = compID[it.first], v = compID[it.second];
-        tree[u].push_back(v);
-        tree[v].push_back(u);
-    }
-    for (int i = 1; i <= comp_count; i++) siz[i] = siz[i] > 1;
-}
-
-vi dep, len;
-int ffa[N][22];
-
-inline void dfs1(int u, int fa) {
-    dep[u] = dep[fa] + 1;
-    len[u] += len[fa] + 1;
-    ffa[u][0] = fa;
-    for (int i = 1; i < 22; i++) ffa[u][i] = ffa[ffa[u][i - 1]][i - 1];
-    for (int v: tree[u]) {
-        if (v == fa) continue;
-        dfs1(v, u);
-    }
-}
-
-inline int lca(int u, int v) {
-    if (dep[u] < dep[v]) swap(u, v);
-    for (int i = 20; ~i; i--)
-        if (dep[ffa[u][i]] >= dep[v])
-            u = ffa[u][i];
-    if (u == v) return u;
-    for (int i = 20; ~i; i--)
-        if (ffa[u][i] != ffa[v][i])
-            u = ffa[u][i], v = ffa[v][i];
-    return ffa[u][0];
 }
 
 inline void Zlin() {
     cin >> n >> m >> q;
-    e.assign(n + 1, vi());
-    tree.assign(n + 1, vi());
     for (int i = 1, u, v; i <= m; i++) {
         cin >> u >> v;
         e[u].push_back(v);
         e[v].push_back(u);
     }
-    cnt = comp_count = 0;
-    vis.assign(n + 1, false);
-    fa.assign(n + 1, 0);
-    dfn.assign(n + 1, 0);
-    low.assign(n + 1, 0);
-    bridges.clear();
-    for (int i = 1; i <= n; i++) if (!dfn[i]) tarjan(i);
-    build(n);
-    dep.assign(comp_count + 1, 0);
-    len.assign(comp_count + 1, 0);
-    dfs1(1, 0);
+    tarjan(1);
+    Tree::dfs(1, 0);
     while (q--) {
-        int a, b, ans = 0;
-        cin >> a >> b;
-        if (compID[a] == compID[b]) ans = 1;
-        else {
-            int ax = compID[a], bx = compID[b], s = lca(ax, bx);
-            ans = len[ax] + len[bx] - len[s] - len[ffa[s][0]];
-            if (siz[ax]) {
-            }
-            if (siz[bx]) {
-            }
-        }
-        cout << ans << endl;
+        int x, y;
+        cin >> x >> y;
+        cout << Tree::dis(x, y) << endl;
     }
 }
 

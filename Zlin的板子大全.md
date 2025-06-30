@@ -2538,6 +2538,30 @@ $$
 
 奇数完全图的欧拉路径等于他的所有边，欧拉路径要求图中奇数度的定点不超过二
 
+## 圆方树
+
+对于每一块个点双,建一个方点连接这个点双的所有圆点
+```c++
+void tarjan(int u) {
+    dfn[u] = low[u] = ++tot;
+    stk[++top] = u;
+    for (int v: e[u]) {
+        if (!dfn[v]) {
+            tarjan(v);
+            low[u] = min(low[u], low[v]);
+            if (low[v] >= dfn[u]) {
+                int nx = ++Tree::n, vx;
+                do {
+                    vx = stk[top--];
+                    Tree::add(nx, vx);
+                } while (vx != v);
+                Tree::add(nx, u);
+            }
+        } else low[u] = min(low[u], dfn[v]);
+    }
+}
+```
+
 ## 哈蜜顿路径
 
 ### 状压DP
