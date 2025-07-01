@@ -1,67 +1,43 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int n, m;
-bool vis[1005][1005];
-int a[1005][1005];
+constexpr int N = 1e6 + 5;
 
-int dfs(int i, int j)
-{
-    vis[i][j] = true;
-    int ans = a[i][j];
-    if(i != 0 && a[i-1][j] != 0 && !vis[i-1][j])
-    {
-        ans+=dfs(i-1, j);
-    }
-    if(i != n-1 && a[i+1][j] != 0 && !vis[i+1][j])
-    {
-        ans+=dfs(i+1, j);
-    }
-    if(j != 0 && a[i][j-1] != 0 && !vis[i][j-1])
-    {
-        ans+=dfs(i, j-1);
-    }
-    if(j != m-1 && a[i][j+1] != 0 && !vis[i][j+1])
-    {
-        ans+=dfs(i, j+1);
-    }
-    return ans;
+int n, m, f[N], siz[N];
+
+inline int find(int u) { return f[u] == u ? u : f[u] = find(f[u]); }
+
+inline void merge(int x, int y) {
+    int fx = find(x), fy = find(y);
+    if (fx == fy) return;
+    f[fx] = fy;
+    siz[fy] += siz[fx];
 }
 
-void solve()
-{
+constexpr int dx[4] = {0, 0, 1, -1}, dy[4] = {1, -1, 0, 0};
+
+inline void Zlin() {
     cin >> n >> m;
-    for(int i = 0; i < n; i++)
-    {
-        for(int j = 0; j < m; j++)
-        {
-            vis[i][j] = false;
-            cin >> a[i][j];
-        }
-    }
-    int ans = 0;
-    for(int i = 0; i < n; i++)
-    {
-        for(int j = 0; j < m; j++)
-        {
-            if(!vis[i][j] && a[i][j] != 0)
-            {
-                ans = max(ans, dfs(i, j));
+    for (int i = 0; i < n; i++) for (int j = 0; j < m; j++) cin >> siz[i * m + j], f[i * m + j] = i * m + j;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (!siz[i * m + j]) continue;
+            for (int k = 0; k < 4; k++) {
+                int ii = i + dx[k], jj = j + dy[k];
+                if (ii < 0 || ii >= n || jj < 0 || jj >= m || !siz[ii * m + jj]) continue;
+                merge(i * m + j, ii * m + jj);
             }
         }
     }
+    int ans = 0;
+    for (int i = 0; i < n; i++) for (int j = 0; j < m; j++) ans = max(ans, siz[i * m + j]);
     cout << ans << endl;
 }
 
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(0);cout.tie(0);
-
-    int T;
-    cin>>T;
-    while(T--)
-    {
-        solve();
-    }
+signed main() {
+    ios::sync_with_stdio(false), cin.tie(nullptr);
+    int ttt = 1;
+    cin >> ttt;
+    while (ttt--) Zlin();
+    return 0;
 }

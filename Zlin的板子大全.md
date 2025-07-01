@@ -314,6 +314,12 @@ inline void Zlin() {
 }
 ```
 
+### 树上莫队
+
+通过欧拉序,将每一个点转换为start和end两个时间戳     注意:处理链的情况,如果两个没有祖先关系, 记录一点的ed,另一个点的st, 同时要加上他们LCA所产生的贡献,欧拉序是不包含LCA.st
+
+
+
 ## 哈希
 
 ### 随机数生成
@@ -2018,10 +2024,45 @@ double rotCalipers(const vector<P> &h) {
 
 最后求出来k个答案，要注意0的情况，如果k!=n+1说明存在0
 
-#### 贪心算法
+#### 模版
 
 ```c++
+struct LinearBasis {
+    ll basis[62];
+    bool zero;
 
+    LinearBasis() {
+        memset(basis, 0, sizeof(basis));
+        zero = false;
+    }
+
+    bool insert(ll x) {
+        for (int i = 60; ~i; i--) {
+            if (x >> i & 1) {
+                if (!basis[i]) {
+                    basis[i] = x;
+                    return true;
+                }
+                x ^= basis[i];
+            }
+        }
+        zero = true;
+        return false;
+    }
+
+    // 查询异或最大值
+    ll query_max() {
+        ll res = 0;
+        for (int i = 60; ~i; i--)if ((res ^ basis[i]) > res) res ^= basis[i];
+        return res;
+    }
+
+    // 查询异或最小非 0 值
+    ll query_min() {
+        for (int i = 0; i <= 60; i++) if (basis[i]) return basis[i];
+        return 0; // 如果都是 0
+    }
+} linear;
 ```
 
 #### 高斯消元法
