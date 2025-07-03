@@ -1,109 +1,93 @@
-//
-// Created by 27682 on 2025/6/25.
-//
-#include <bits/stdc++.h>
-#define endl '\n'
+#include<bits/stdc++.h>
 using namespace std;
+#define int long long
+const int inf = 1e15;
+const int N = 3e5 + 7;
+int a[N];
+int b[N];
 
-
-typedef vector<int> vi;
-
-constexpr int N = 2e5 + 10;
-constexpr int INF = 1e9;
-
-int n, a[2][N], vis[N];
-vi idx[2][N], son[N];
-
-int f[N * 2], siz[N * 2];
-
-inline int find(int u) { return f[u] == u ? u : f[u] = find(f[u]); }
-
-inline void merge(int x, int y) {
-    int fx = find(x), fy = find(y);
-    if (fx == fy) return;
-    if (fx > fy) swap(fx, fy);
-    f[fy] = fx;
-    siz[fx] += siz[fy];
-}
-
-inline void Zlin() {
-    cin >> n;
-    for (int i = 1; i <= n * 2; i++) {
-        son[i].clear();
-        idx[0][i].clear(), idx[1][i].clear();
-        f[i] = i;
-        siz[i] = 1;
-        vis[i] = 0;
-    }
-    for (int i = 0; i < 2; i++) {
-        for (int j = 1; j <= n; j++) {
-            cin >> a[i][j];
-            idx[i][a[i][j]].push_back(j);
-        }
-    }
+void solved() {
+    int n, m;
+    cin >> n >> m;
     for (int i = 1; i <= n; i++) {
-        int cl = idx[0][i].size(), cr = idx[1][i].size();
-        if (cl + cr != 2) {
-            cout << -1 << endl;
+        cin >> a[i];
+    }
+    for (int i = 1; i <= m; i++) {
+        cin >> b[i];
+    }
+    sort(a + 1, a + 1 + n);
+    sort(b + 1, b + 1 + m);
+
+    int cnt2 = 0;
+    for (int i = n - m + 1; i <= n; i++) {
+        if (a[i] > b[i - n + m]) {
+            cout << -1 << '\n';
             return;
         }
-        if (cl == 1 && cr == 1) {
-            int x = idx[0][i][0], y = idx[1][i][0];
-            merge(x, y), merge(x + n, y + n);
-        }
-        if (cl == 2) {
-            int x = idx[0][i][0], y = idx[0][i][1];
-            merge(x, y + n), merge(x + n, y);
-        }
-        if (cr == 2) {
-            int x = idx[1][i][0], y = idx[1][i][1];
-            merge(x, y + n), merge(x + n, y);
-        }
+        cnt2 += b[i - n + m] - a[i];
     }
-    for (int i = 1; i <= n * 2; i++) son[find(i)].push_back(i);
-    int ans = 0;
-    vi res;
-    for (int i = 1; i <= n; i++) {
-        if (vis[f[i]]) continue;
-        vis[f[i]] = vis[f[i + n]] = 1;
-        int all = son[f[i]].size(), tot = 0;
-        for (int it: son[f[i]]) if (it <= n) ++tot;
-        ans += min(tot, all - tot);
-        if (tot < all - tot) {
-            for (int it: son[f[i]]) {
-                if (it <= n) {
-                    res.push_back(it);
-                }
-            }
-        } else {
-            for (int it: son[f[i]]) {
-                if (it > n) {
-                    res.push_back(it - n);
-                }
-            }
-        }
-    }
-
-    for (int it: res) swap(a[0][it], a[1][it]);
-    set<int> st;
-    for (int i = 1; i <= n; i++) st.insert(a[0][i]);
-    if (st.size() != n) {
-        cout << 0 << endl;
+    if (cnt2 > n - m) {
+        cout << -1 << '\n';
         return;
     }
-    st.clear();
-    for (int i = 1; i <= n; i++) st.insert(a[1][i]);
-    if (st.size() != n) {
-        cout << 0 << endl;
+    priority_queue<int, vector<int>, greater<int> > pq;
+    for (int i = 1; i <= n - m; i++) {
+        pq.push(a[i]);
+    }
+    int all = n - m;
+    int cnt1 = all - cnt2;
+    vector<int> ans;
+    while (cnt1) {
+        if (pq.size() == 0) {
+            cout << -1 << '\n';
+            return;
+        }
+        int x = pq.top();
+        int y = x + 1;
+        pq.pop();
+        pq.push(y);
+        if (pq.top() > a[n - m + 1]) {
+            cout << -1 << '\n';
+            return;
+        }
+        if (pq.size() == 0) {
+            cout << -1 << '\n';
+            return;
+        }
+        pq.pop();
+        ans.push_back(x);
+        cnt1--;
+    }
+    if (pq.size() != cnt2 or pq.top() > a[n - m + 1] + 1) {
+        cout << -1 << '\n';
         return;
     }
-    cout << 1 << endl;
+    for (int i = n - m + 1; i <= n; i++) {
+        while (b[i + m - n] > a[i]) {
+            ans.push_back(a[i]);
+            a[i]++;
+        }
+    }
+    multiset<int> st;
+    for (int i = 1; i <= n; i++) st.insert(a[i]);
+    for (int it: ans) {
+        st.erase(st.find(it));
+        st.insert(it + 1);
+        st.erase(st.begin());
+    }
+    int check = 1;
+    for (int i = 1; i <= m; i++) {
+        if (*st.begin() != b[i]) {
+            check = 0;
+        }
+        st.erase(st.begin());
+    }
+    cout << check << endl;
 }
 
 signed main() {
-    ios::sync_with_stdio(false), cin.tie(nullptr);
-    int ttt = 1;
-    cin >> ttt;
-    while (ttt--) Zlin();
+    ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+    int _ = 1;
+    while (_--)solved();
     return 0;
 }

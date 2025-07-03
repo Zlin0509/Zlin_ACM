@@ -1,75 +1,98 @@
-//
-// Created by Zlin on 2025/5/24.
-//
-
-#include "bits/stdc++.h"
-#define endl "\n"
-#define int long long
+#include <bits/stdc++.h>
 using namespace std;
-mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
-typedef __int128 i128;
-typedef double db;
-typedef long double ldb;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<int> vi;
-typedef vector<long long> vll;
-typedef pair<int, int> pii;
-typedef pair<long long, long long> pll;
+using ll = long long;
+using ull = unsigned long long;
+const int N = 2e5 + 5;
+const int M = 1 << 13;
+const ll mod = 998244353;
+const ll inf = 1e18 + 1;
+const ull base = 233;
+ll n, cnt[N], m;
+ll a[N], b[N];
+vector<ll> g[N];
 
-int n, l, h;
-
-vector<pii> a(55), pos(55, {-1, -1});
-
-set<int> nx, ny;
-
-bool check(int lx, int ly, int id) {
-    int rx = lx + a[id].first - 1, ry = ly + a[id].second - 1;
-    if (rx >= l || ry >= h) return false;
-    for (int i = 1; i < id; i++) {
-        if (pos[i] == make_pair(-1, -1)) continue;
-        int llx = pos[i].first, lly = pos[i].second;
-        int rrx = llx + a[i].first - 1, rry = lly + a[i].second - 1;
-        if ((rrx >= lx && rrx <= rx) || (llx >= lx && llx <= rx) || (rx >= llx && rx <= rrx) || (
-                lx >= llx && lx <= rrx)) {
-            if (lly >= ly && lly <= ry) return false;
-            if (rry >= ly && rry <= ry) return false;
-            if (ly >= lly && ly <= rry) return false;
-            if (ry >= lly && ry <= rry) return false;
-        }
-    }
-    return true;
-}
-
-inline void Zlin() {
-    cin >> n >> l >> h;
-    nx.insert(0), ny.insert(0);
+void solve() {
+    cin >> n >> m;
     for (int i = 1; i <= n; i++) {
-        cin >> a[i].first >> a[i].second;
-        for (int x: nx) {
-            for (int y: ny) {
-                if (check(x, y, i)) {
-                    pos[i] = {x, y};
-                    break;
-                }
-            }
-            if (pos[i] != make_pair(-1, -1)) break;
-        }
-        if (pos[i] == make_pair(-1, -1)) cout << -1 << endl;
-        else {
-            cout << pos[i].first << ' ' << pos[i].second << endl;
-            nx.insert(pos[i].first);
-            ny.insert(pos[i].second);
-            nx.insert(pos[i].first + a[i].first);
-            ny.insert(pos[i].second + a[i].second);
-        }
+        cin >> a[i];
     }
+    for (int i = 1; i <= m; i++) {
+        cin >> b[i];
+    }
+    sort(a + 1, a + 1 + n);
+    sort(b + 1, b + 1 + m);
+    priority_queue<ll, vector<ll>, greater<long long> > pq1;
+    ll cnt2 = 0, cnt1 = 0;
+    for (int i = n - m + 1, j = 1; i <= n; i++, j++) {
+        if (a[i] > b[j]) {
+            cout << "-1\n";
+            return;
+        }
+        cnt2 += b[j] - a[i];
+    }
+    // cout << cnt2 << "\n";
+    if (cnt2 > n - m) {
+        cout << "-1\n";
+        return;
+    }
+    cnt1 = n - m - cnt2;
+    for (int i = 1; i <= n; i++) {
+        pq1.push(a[i]);
+    }
+    vector<ll> ans;
+    // cout << cnt1 << " " << cnt2 << "\n";
+    ll xx = a[n - m + 1];
+    while (cnt1--) {
+        if (pq1.size() < m) {
+            cout << "-1\n";
+            return;
+        }
+        ll x = pq1.top();
+        ans.push_back(x);
+        if (x + 1 > xx) {
+            xx = x + 1;
+            cnt1++;
+        }
+        pq1.pop();
+        pq1.push(x + 1);
+        pq1.pop();
+    }
+    // cout << ans.size() << "\n";
+    ll idx = 0;
+    while (pq1.size()) {
+        a[++idx] = pq1.top();
+        pq1.pop();
+    }
+    n = idx;
+    for (int i = n - m + 1, j = 1; i <= n; i++, j++) {
+        if (a[i] > b[j]) {
+            cout << "-1\n";
+            return;
+        }
+        pq1.push(a[i]);
+    }
+    idx = 1;
+    while (idx <= m) {
+        while (pq1.top() < b[idx]) {
+            ll x = pq1.top();
+            ans.push_back(x);
+            pq1.pop();
+            pq1.push(x + 1);
+        }
+        pq1.pop();
+        idx++;
+    }
+    cout << ans.size() << "\n";
+    for (auto o: ans) cout << o << " ";
+    cout << "\n";
 }
 
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int ttt = 1;
-    while (ttt--) Zlin();
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int _ = 1;
+    cin >> _;
+    while (_--) solve();
     return 0;
 }

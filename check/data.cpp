@@ -17,33 +17,19 @@ typedef pair<long long, long long> pll;
 
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-vector<int> generate_shuffled_permutation(int n) {
-    vector<int> a(n);
-    iota(a.begin(), a.end(), 1); // 生成 [1, 2, ..., n]
-    shuffle(a.begin(), a.end(), rng);
-    return a;
-}
 
 inline void Zlin() {
-    int n = rng() % 10 + 1;
-    vi a(n), b(n);
-    a = generate_shuffled_permutation(n);
-    b = generate_shuffled_permutation(n);
-    for (int i = 1; i <= 100; i++) {
-        int k = rng() % n;
-        swap(a[k], b[k]);
-    }
-    cout << n << endl;
-    for (int it: a) cout << it << ' ';
+    int n = rng() % (int)3e5 + 1, m = rng() % n + 1;
+    cout << n << ' ' << m << endl;
+    for (int i = 0; i < n; i++) cout << rng() % (int)1e3 << ' ';
     cout << endl;
-    for (int it: b) cout << it << ' ';
+    for (int i = 0; i < m; i++) cout << rng() % (int)1e3 << ' ';
     cout << endl;
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
-    cout << 1 << endl;
     int ttt = 1;
     srand(time(0));
     while (ttt--) Zlin();

@@ -1636,6 +1636,16 @@ pi = 3.14159265358979323846
 cout保留几位小数
 cout << fixed << setprecision(12) << ans << '\n';
 
+### 裴蜀定理
+
+对于任意整数$a,m$ 不全为0
+$$
+a·x + m·y = gcd(a, m)
+$$
+
+
+
+
 ### 极角排序
 
 o表示原点
@@ -1654,21 +1664,18 @@ $$
 ax + by = \gcd(a, b) \quad \Rightarrow \quad a \mod b = a - k \cdot b \, (k = \lfloor a / b \rfloor)
 $$
 
-递归到更小的子问题后，可以逐步构造出 x 和 y 。
+递归到更小的子问题后，可以逐步构造出 x 和 y 。 同时可以求一个值mod另一个值的逆元
 
 ```c++
 // 扩展欧几里得算法，返回 gcd(a, b)，并且计算出 x 和 y
 // 使得 ax + by = gcd(a, b)
-int ext_gcd(int a, int b, int &x, int &y) {
-    if (b == 0) {
-        x = 1;
-        y = 0;
+int exgcd(int a, int b, int &x, int &y) {
+    if (!b) {
+        x = 1, y = 0;
         return a;
     }
-    int x1, y1; // 用于递归返回的 x, y
-    int gcd = ext_gcd(b, a % b, x1, y1);
-    x = y1;
-    y = x1 - (a / b) * y1;
+    int x1, y1, gcd = exgcd(b, a % b, x1, y1);
+    x = y1, y = x1 - a / b * y1;
     return gcd;
 }
 ```
@@ -3108,51 +3115,44 @@ void build_new() {
 
 ```c++
 constexpr int N = 2e5 + 10;
+vi e[N], tree[N];
 int cnt = 0, comp_count = 0;
-vector<vi> e, tree;
-vi dfn, low, fa, compID;
-vector<bool> vis;
+int dfn[N], low[N], fa[N], compID[N], vis[N], siz[N];
 set<pii> bridges;
 
-inline void tarjan(int u)
-{
+inline void tarjan(int u) {
     vis[u] = true;
     dfn[u] = low[u] = ++cnt;
-    for (int v : e[u])
-    {
-        if (!vis[v])
-        {
+    for (int v: e[u]) {
+        if (!vis[v]) {
             fa[v] = u;
             tarjan(v);
             low[u] = min(low[u], low[v]);
             if (low[v] > dfn[u])
                 bridges.insert({min(u, v), max(u, v)});
-        }
-        else if (v != fa[u]) low[u] = min(low[u], dfn[v]);
+        } else if (v != fa[u]) low[u] = min(low[u], dfn[v]);
     }
 }
 
-inline void dfs(int u, int ID)
-{
+inline void dfs(int u, int ID) {
     compID[u] = ID;
-    for (int v : e[u])
+    for (int v: e[u])
         if (compID[v] == -1 && bridges.find({min(u, v), max(u, v)}) == bridges.end())
             dfs(v, ID);
 }
 
-inline void build(int n)
-{
-    compID.assign(n + 1, -1);
+inline void build(int n) {
+    fill(compID + 1, compID + n + 1, -1);
 
     for (int i = 1; i <= n; i++)
         if (compID[i] == -1)
             dfs(i, ++comp_count);
-    for (auto it : bridges)
-    {
+    for (auto it: bridges) {
         int u = compID[it.first], v = compID[it.second];
         tree[u].push_back(v);
         tree[v].push_back(u);
     }
+    for (int i = 1; i <= n; i++) siz[compID[i]]++;
 }
 ```
 
@@ -3292,7 +3292,7 @@ inline void tarjan(int u, int fa) {
 }
 ```
 
-### 边双连通分量
+### 边双连通分量(DCC)
 
 > 基础性质:
 > **1、** 割边不属于任意边双，而其它非割边的边都属于且仅属于一个边双。
@@ -3329,6 +3329,110 @@ inline void tarjan(int u, int fa) {
 >}
 >```
 >
+
+### DCC - SCC
+
+```c++
+struct Tree {
+    struct edge {
+        int v, id;
+    };
+
+    vector<edge> e[N], g[N];
+    int eid = -1;
+    bool bridges[N];
+    int dfn[N], low[N], tick;
+
+    void adde(int u, int v) {
+        ++eid;
+        e[u].push_back({v, eid});
+        e[v].push_back({u, eid});
+    }
+
+    void tarjan(int u, int pid) {
+        dfn[u] = low[u] = ++tick;
+        for (auto [v, id]: e[u]) {
+            if (!dfn[v]) {
+                tarjan(v, id);
+                low[u] = min(low[u], low[v]);
+                if (low[v] > dfn[u]) bridges[id] = true;
+            } else if (id != pid) low[u] = min(low[u], dfn[v]);
+        }
+    }
+
+    int siz[N], compID[N], cnum;
+
+    void dfs(int u, int cid) {
+        ++siz[cid];
+        compID[u] = cid;
+        for (auto [v, eid]: e[u]) {
+            if (compID[v] == -1 && !bridges[eid]) {
+                dfs(v, cid);
+            }
+        }
+    }
+
+    vi tree[N];
+
+    void build(int n) {
+        fill(dfn + 1, dfn + 1 + n, 0);
+        fill(low + 1, low + 1 + n, 0);
+        tick = 0;
+        for (int i = 1; i <= n; i++) if (!dfn[i]) tarjan(i, -1);
+        fill(siz + 1, siz + 1 + n, 0);
+        fill(compID + 1, compID + 1 + n, -1);
+        cnum = 0;
+        for (int i = 1; i <= n; i++) if (compID[i] == -1) dfs(i, ++cnum);
+        for (int u = 1; u <= n; u++) {
+            for (auto [v, id]: e[u]) {
+                if (compID[u] != compID[v]) tree[compID[u]].push_back(compID[v]);
+                else g[u].push_back({v, id});
+            }
+        }
+    }
+
+    bool vis_c[N];
+    ll vis_g[N * 2];
+
+    void dfs1(int u) {
+        for (auto [v, id]: g[u]) {
+            if (vis_g[id]) continue;
+            vis_g[id] = 1ll * u * N + v;
+            dfs1(v);
+        }
+    }
+
+    void dcc_scc(int n) {
+        for (int i = 1; i <= n; i++) if (!vis_c[compID[i]]) dfs1(i), vis_c[compID[i]] = true;
+    }
+
+    int fa[N];
+
+    void dfs2(int u, int f) {
+        fa[u] = f;
+        for (int v: tree[u]) {
+            if (v == f)continue;
+            dfs2(v, u);
+        }
+    }
+
+    int find_s() {
+        int id = 0;
+        for (int i = 1; i <= cnum; i++) if (siz[id] < siz[i]) id = i;
+        dfs2(id, 0);
+        return siz[id];
+    }
+
+    bool check(int u, int v, int tid) {
+        if (fa[compID[u]] == compID[v]) return true;
+        int ux = vis_g[tid] / N, vx = vis_g[tid] % N;
+        if (ux == u && vx == v) return true;
+        return false;
+    }
+} t;
+```
+
+
 
 ## 拓扑排序
 
