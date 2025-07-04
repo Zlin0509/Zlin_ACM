@@ -19,7 +19,7 @@ typedef pair<long long, long long> pll;
 constexpr int N = 2e5 + 10;
 
 int n, a[N];
-vi v[N];
+vi v[N], vx[N];
 
 bool is_prime[N];
 vi primes;
@@ -35,26 +35,37 @@ inline void dd() {
             if (i % j == 0) break;
         }
     }
+    for (int i: primes) {
+        for (int j = 1; i * j < N; j++) {
+            v[i * j].push_back(i);
+        }
+    }
 }
 
 inline void Zlin() {
     cin >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i];
     for (int i = 1; i <= n; i++) {
-        cin >> a[i];
-        for (int it: primes) {
+        int tag = a[i];
+        for (int v: v[a[i]]) {
             int cnt = 0;
-            while (a[i] % it == 0) {
+            while (tag % v == 0) {
                 ++cnt;
-                a[i] /= it;
+                tag /= v;
             }
-            v[it].emplace_back(cnt);
+            vx[v].emplace_back(cnt);
         }
     }
     ll ans = 1;
     for (int it: primes) {
-        sort(v[it].begin(), v[it].end());
-        int tag = v[it][1];
-        while (tag--) ans *= it;
+        sort(vx[it].begin(), vx[it].end());
+        if (vx[it].size() == n - 1) {
+            int tag = vx[it][0];
+            while (tag--) ans *= it;
+        } else if (vx[it].size() == n) {
+            int tag = vx[it][1];
+            while (tag--) ans *= it;
+        }
     }
     cout << ans << endl;
 }

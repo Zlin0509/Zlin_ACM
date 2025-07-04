@@ -17,24 +17,7 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
 inline void Zlin() {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-    s = ' ' + s;
-    for (int i = n / 2 + 1; i <= n; i++) {
-        if (s[i] == '0') {
-            cout << 1 << ' ' << i << ' ' << 1 << ' ' << i - 1 << endl;
-            return;
-        }
-    }
-    for (int i = n - n / 2; i; i--) {
-        if (s[i] == '0') {
-            cout << i << ' ' << n << ' ' << i + 1 << ' ' << n << endl;
-            return;
-        }
-    }
-    cout << 1 << ' ' << n / 2 << ' ' << n - n / 2 + 1 << ' ' << n << endl;
+
 }
 
 signed main() {
