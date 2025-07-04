@@ -16,8 +16,20 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
-inline void Zlin() {
+constexpr int N = 2e5 + 10;
 
+int n, k, a[N], b[N], m1, m2;
+
+inline void Zlin() {
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++) cin >> a[i];
+    cin >> m1;
+    for (int i = 1; i <= m1; i++) {
+    }
+    for (int i = 1; i <= n; i++) cin >> b[i];
+    cin >> m2;
+    for (int i = 1; i <= m2; i++) {
+    }
 }
 
 signed main() {
