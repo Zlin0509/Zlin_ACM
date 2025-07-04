@@ -14,74 +14,38 @@ int n, m, vis[N], L, s, t;
 ll dis[N];
 
 struct line {
-    int u, v, w;
+    int u, v;
+    ll w;
 } line[N * 11];
 
 vi e[N];
 
 priority_queue<pair<ll, int>, vector<pair<ll, int> >, greater<> > pq;
 
-inline void dij1() {
+inline void dij() {
     fill(vis, vis + n, 0);
     fill(dis, dis + n, INF);
     dis[s] = 0;
     pq.emplace(dis[s], s);
     while (!pq.empty()) {
-        int u = pq.top().second;
+        int u = pq.top().second, v;
         pq.pop();
         if (vis[u]) continue;
         vis[u] = 1;
         for (int id: e[u]) {
-            auto [ux, vx, w] = line[id];
-            int v;
-            if (vx == u) v = ux;
-            else v = vx;
-            if (!w || dis[v] < dis[u] + w) continue;
-            dis[v] = dis[u] + w;
-            pq.emplace(dis[v], v);
-        }
-    }
-}
-
-int pre[N];
-
-inline void dij2() {
-    fill(vis, vis + n, 0);
-    fill(dis, dis + n, INF);
-    dis[s] = 0;
-    pq.emplace(dis[s], s);
-    while (!pq.empty()) {
-        int u = pq.top().second;;
-        pq.pop();
-        if (vis[u]) continue;
-        vis[u] = 1;
-        for (int id: e[u]) {
-            auto [ux, vx, w] = line[id];
-            int v;
-            if (vx == u) v = ux;
-            else v = vx;
-            if (!w) w = 1;
-            if (dis[v] < dis[u] + w) continue;
-            pre[v] = u;
-            dis[v] = dis[u] + w;
-            pq.emplace(dis[v], v);
-        }
-    }
-}
-
-inline void dfs(int u, int dif) {
-    if (u == s) return;
-    int v = pre[u];
-    for (int id: e[u]) {
-        auto [ux, vx, w] = line[id];
-        if (ux == v || vx == v) {
-            if (!w) {
-                line[id].w = 1;
-                if (dif) line[id].w += dif, dif = 0;
+            auto [ux, vx, val] = line[id];
+            v = ux == u ? vx : ux;
+            if (dis[v] > dis[u] + val) {
+                dis[v] = dis[u] + val;
+                pq.emplace(dis[v], v);
             }
-            dfs(v, dif);
         }
     }
+}
+
+inline void out() {
+    cout << "YES" << endl;
+    for (int i = 1; i <= m; i++) cout << line[i].u << ' ' << line[i].v << ' ' << line[i].w << endl;
 }
 
 inline void Zlin() {
@@ -89,22 +53,31 @@ inline void Zlin() {
     for (int i = 1, u, v, w; i <= m; i++) {
         cin >> u >> v >> w;
         line[i] = {u, v, w};
+        if (!line[i].w) line[i].w = INF;
         e[u].push_back(i);
         e[v].push_back(i);
     }
-    dij1();
+    dij();
     if (dis[t] < L) {
         cout << "NO" << endl;
         return;
     }
-    dij2();
-    if (dis[t] > L) {
-        cout << "NO" << endl;
+    if (dis[t] == L) {
+        out();
         return;
     }
-    dfs(t, L - dis[t]);
-    cout << "YES" << endl;
-    for (int i = 1; i <= m; i++) cout << line[i].u << ' ' << line[i].v << ' ' << (line[i].w ? line[i].w : INF) << endl;
+    for (int i = 1; i <= m; i++) {
+        if (line[i].w == INF) {
+            line[i].w = 1;
+            dij();
+            if (dis[t] <= L) {
+                line[i].w += L - dis[t];
+                out();
+                return;
+            }
+        }
+    }
+    cout << "NO" << endl;
 }
 
 signed main() {
