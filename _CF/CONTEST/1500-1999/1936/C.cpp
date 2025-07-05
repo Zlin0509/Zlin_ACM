@@ -4,6 +4,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+constexpr int N = 4e5 + 10;
+
 inline void Zlin() {
 }
 
