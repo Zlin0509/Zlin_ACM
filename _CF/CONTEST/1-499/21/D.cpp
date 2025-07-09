@@ -22,7 +22,7 @@ bool floyd() {
             }
         }
     }
-    for (int i = 2; i <= n; i++) if (dis[1][i] == 1e9) return false;
+    for (int i = 2; i <= n; i++) if (deg[i] && dis[1][i] == 1e9) return false;
     return true;
 }
 
