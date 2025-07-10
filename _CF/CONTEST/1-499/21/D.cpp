@@ -15,8 +15,8 @@ int dis[N][N], deg[N], vis[N];
 vi have;
 
 bool floyd() {
-    for (int i = 1; i <= n; i++) {
-        for (int k = 1; k <= n; k++) {
+    for (int k = 1; k <= n; k++) {
+        for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
                 dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j]);
             }
@@ -28,18 +28,20 @@ bool floyd() {
 
 inline void dfs(int u, int val) {
     if (u == have.size()) {
+        for (int i = 0; i < have.size(); i++) if (!vis[i]) return;
         res = min(res, val);
         return;
     }
-    if (vis[u]) return;
+    if (vis[u]) return dfs(u + 1, val);
     vis[u] = true;
     for (int v = 0; v < have.size(); v++) {
         if (!vis[v]) {
             vis[v] = true;
             dfs(v + 1, val + dis[have[u]][have[v]]);
-            vis[u] = false;
+            vis[v] = false;
         }
     }
+    vis[u] = false;
 }
 
 inline void Zlin() {
@@ -51,7 +53,7 @@ inline void Zlin() {
     }
     for (int i = 1, u, v, w; i <= m; i++) {
         cin >> u >> v >> w;
-        dis[u][v] = w, dis[v][u] = w;
+        dis[u][v] = min(dis[u][v], w), dis[v][u] = min(dis[v][u], w);
         ++deg[u], ++deg[v];
         ans += w;
     }
@@ -60,7 +62,7 @@ inline void Zlin() {
         return;
     }
     for (int i = 1; i <= n; i++) if (deg[i] & 1) have.push_back(i);
-    dfs(0, 0);
+    for (int i = 0; i <= have.size(); i++) dfs(i, 0);
     cout << ans + res << endl;
 }
 
