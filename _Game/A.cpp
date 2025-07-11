@@ -1,52 +1,76 @@
 #include <bits/stdc++.h>
-// #define endl '\n'
-#define t1(x) ((x)*2)
-#define t2(x) ((x)*2+1)
 using namespace std;
+using ll = long long;
+const int N = 2e5 + 5;
+const int M = 1e6 + 5;
+const ll inf = 1e18;
+const ll mod = 998244353;
 
-typedef long long ll;
-typedef vector<int> vi;
+typedef long double db;
 
-constexpr int N = 5010;
-constexpr int INF = 1000;
+constexpr db dif = 5e-8;
 
-queue<int> idx[26];
-string s;
-int k;
+struct node {
+    db x, y;
+} s[3];
 
-inline void Zlin() {
-    cin >> s >> k;
-    k = s.length() - k;
-    for (int i = 0; i < s.length(); i++) idx[s[i] - 'a'].push(i + 1);
-    int tag = 0;
-    string ans;
-    for (int i = 0; i < 26; i++) {
-        if (idx[i].empty()) continue;
-        if (idx[i].front() <= k) {
-            k -= idx[i].front();
-            ans += char('a' + i);
-            tag = idx[i].front();
-            break;
-        }
-    }
-    for (int i = 0; i < 26; i++) {
-        while (!idx[i].empty() && idx[i].front() <= tag) idx[i].pop();
-        if (idx[i].empty()) continue;
-        if (idx[i].front() - tag - 1 <= k) {
-            ans += char('a' + i);
-            tag = idx[i].front();
-            break;
-        }
-    }
-    for (int i = tag + 1; i <= tag + k - 3; i++) ans += s[tag + i];
-    char c = 'z';
-    cout << ans << endl;
+db a, b, c, l, r, lx, rx, vl, vr, rr, all;
+db aa, bb, cc, rrr;
+
+db cal_dis(node a, node b) {
+    return sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2));
 }
 
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int ttt = 1;
-    while (ttt--) Zlin();
+db cal_dis1(node a, node b) {
+    return pow(a.x - b.x, 2) + pow(a.y - b.y, 2);
+}
+
+db cal(db x) {
+    db y = all - x;
+    db res = 0;
+    res += sqrt(aa + rrr - cos(x) * 2 * a * rr);
+    res += sqrt(bb + rrr - cos(y) * 2 * b * rr);
+    return res;
+}
+
+bool check() {
+    if (a <= rr + dif || b <= rr + dif) return true;
+    db tmp = aa + cc - bb;
+    if (tmp <= dif) return false;
+    tmp = bb + cc - aa;
+    if (tmp <= dif) return false;
+    db tr = sqrt(1 - pow((aa + cc - bb) / (2 * a * c), 2)) * a;
+    return tr <= rr + dif;
+}
+
+void solve() {
+    for (int i = 0; i < 3; i++) cin >> s[i].x >> s[i].y;
+    swap(s[0], s[2]);
+    cin >> rr;
+    a = cal_dis(s[0], s[1]), b = cal_dis(s[0], s[2]), c = cal_dis(s[1], s[2]);
+    aa = cal_dis1(s[0], s[1]), bb = cal_dis1(s[0], s[2]), cc = cal_dis1(s[1], s[2]), rrr = rr * rr;
+    if (a > b) swap(a, b), swap(aa, bb);
+    if (check()) {
+        cout << fixed << setprecision(12) << c << endl;
+        return;
+    }
+    l = 0, r = all = acos((aa + bb - cc) / (2 * a * b));
+    for (int ttt = 1; ttt <= 3000; ttt++) {
+        lx = l + (r - l) / 3, rx = r - (r - l) / 3;
+        vl = cal(lx), vr = cal(rx);
+        if (vl < vr) r = rx;
+        else l = lx;
+    }
+    db ans = cal(l);
+    cout << fixed << setprecision(16) << ans << endl;
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int _ = 1;
+    cin >> _;
+    while (_--) solve();
     return 0;
 }
