@@ -511,8 +511,10 @@ set<tuple<int, int, int>, cmp> st;
 支持区间反转 根据题目自行添加功能
 
 ```c++
+constexpr int pnum = 15627;
+
 struct Bitset {
-    ull pool[16000]{};
+    ull pool[pnum]{};
 
     Bitset() { memset(pool, 0, sizeof(pool)); }
 
@@ -532,18 +534,18 @@ struct Bitset {
     }
 } t;
 
-Bitset operator^(Bitset a, Bitset b) {
+inline Bitset operator^(Bitset a, Bitset b) {
     Bitset res;
-    for (int i = 0; i < 16000; i++) res[i] = a[i] ^ b[i];
+    for (int i = 0; i < pnum; i++) res[i] = a[i] ^ b[i];
     return res;
 }
 
-Bitset operator >>(Bitset a, int x) {
+inline Bitset operator >>(Bitset a, int x) {
     Bitset res;
     int k = x / 64, t = x % 64;
-    for (int i = 0; i < 16000 - k; i++) res[i] = a[i + k];
+    for (int i = 0; i < pnum - k; i++) res[i] = a[i + k];
     if (t) {
-        for (int i = 0; i < 16000 - 1; i++) {
+        for (int i = 0; i < pnum - 1; i++) {
             res[i] >>= t;
             res[i] ^= res[i + 1] << (64 - t);
         }
@@ -551,12 +553,12 @@ Bitset operator >>(Bitset a, int x) {
     return res;
 }
 
-Bitset operator <<(Bitset a, int x) {
+inline Bitset operator <<(Bitset a, int x) {
     Bitset res;
     int k = x / 64, t = x % 64;
-    for (int i = 0; i < 16000 - k; i++) res[i + k] = a[i];
+    for (int i = 0; i < pnum - k; i++) res[i + k] = a[i];
     if (t) {
-        for (int i = 16000 - 1; ~i; i--) {
+        for (int i = pnum - 1; ~i; i--) {
             res[i] <<= t;
             res[i] ^= res[i - 1] >> (64 - t);
         }
