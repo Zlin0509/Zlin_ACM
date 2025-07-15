@@ -506,6 +506,65 @@ struct cmp {
 set<tuple<int, int, int>, cmp> st;
 ```
 
+### 64位机
+
+支持区间反转 根据题目自行添加功能
+
+```c++
+struct Bitset {
+    ull pool[16000]{};
+
+    Bitset() { memset(pool, 0, sizeof(pool)); }
+
+    ull &operator[](const int i) { return pool[i]; }
+
+    void set(const int i) { pool[i / 64] |= 1ull << i % 64; }
+
+    void flip(const int l, const int r) {
+        if (l > r) return;
+        if (l / 64 == r / 64) {
+            for (int i = l % 64; i <= r % 64; i++) pool[l / 64] ^= 1ull << i;
+            return;
+        }
+        pool[l / 64] ^= ~0ull << (l % 64);
+        for (int i = l / 64 + 1; i < r / 64; i++) pool[i] = ~pool[i];
+        pool[r / 64] ^= ~0ull >> (63 - r % 64);
+    }
+} t;
+
+Bitset operator^(Bitset a, Bitset b) {
+    Bitset res;
+    for (int i = 0; i < 16000; i++) res[i] = a[i] ^ b[i];
+    return res;
+}
+
+Bitset operator >>(Bitset a, int x) {
+    Bitset res;
+    int k = x / 64, t = x % 64;
+    for (int i = 0; i < 16000 - k; i++) res[i] = a[i + k];
+    if (t) {
+        for (int i = 0; i < 16000 - 1; i++) {
+            res[i] >>= t;
+            res[i] ^= res[i + 1] << (64 - t);
+        }
+    }
+    return res;
+}
+
+Bitset operator <<(Bitset a, int x) {
+    Bitset res;
+    int k = x / 64, t = x % 64;
+    for (int i = 0; i < 16000 - k; i++) res[i + k] = a[i];
+    if (t) {
+        for (int i = 16000 - 1; ~i; i--) {
+            res[i] <<= t;
+            res[i] ^= res[i - 1] >> (64 - t);
+        }
+    }
+    return res;
+}
+```
+
 ### priority_queue
 
 不标注默认大根堆，pair内容先比较第一个元素，然后比较第二个元素
