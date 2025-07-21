@@ -37,33 +37,33 @@ struct LinearBasis {
         return false;
     }
 
+    // 查询异或最大值
     ll query_max() {
         ll res = 0;
         for (int i = 60; ~i; i--)if ((res ^ basis[i]) > res) res ^= basis[i];
         return res;
     }
-} mp[55][2];
+};
 
 int n;
-ll a[55];
+ll a[55], ans;
+
+inline void dfs(int idx, LinearBasis base) {
+    if (idx > n) {
+        ans = max(ans, base.query_max());
+        return;
+    }
+    base.insert(a[idx]);
+    dfs(idx + 2, base);
+    dfs(idx + 3, base);
+}
 
 inline void Zlin() {
     cin >> n;
     for (int i = 1; i <= n; i++) cin >> a[i];
-    for (int i = 0; i < 2; i++) {
-        mp[0][i].init(), mp[1][i].init();
-    }
-    ll ans = 0;
-    for (int i = 1; i <= n; i++) {
-        mp[i][0].init(), mp[i][1].init();
-        mp[i][1].insert(a[i]);
-        if (i > 2) {
-            for (ll it: mp[i - 2][1].basis) mp[i][1].insert(it);
-            for (ll it: mp[i - 2][0].basis) mp[i][1].insert(it);
-        }
-        mp[i][0] = mp[i - 1][1];
-        ans = max({ans, mp[i][0].query_max(), mp[i][1].query_max()});
-    }
+    ans = 0;
+    dfs(1, LinearBasis());
+    dfs(2, LinearBasis());
     cout << ans << endl;
 }
 

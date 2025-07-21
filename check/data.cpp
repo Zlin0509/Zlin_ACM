@@ -17,13 +17,14 @@ typedef pair<long long, long long> pll;
 
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
+constexpr int N = 10;
+
+constexpr ll INF = 32;
 
 inline void Zlin() {
-    int n = rng() % (int)3e5 + 1, m = rng() % n + 1;
-    cout << n << ' ' << m << endl;
-    for (int i = 0; i < n; i++) cout << rng() % (int)1e3 << ' ';
-    cout << endl;
-    for (int i = 0; i < m; i++) cout << rng() % (int)1e3 << ' ';
+    int n = rng() % 20 + 1;
+    cout << n << endl;
+    for (int i = 1; i <= n; i++) cout << rng() % INF + 1 << ' ';
     cout << endl;
 }
 
@@ -32,6 +33,7 @@ int main() {
     cin.tie(nullptr), cout.tie(nullptr);
     int ttt = 1;
     srand(time(0));
+    cout << 1 << endl;
     while (ttt--) Zlin();
     return 0;
 }

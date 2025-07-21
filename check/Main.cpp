@@ -14,15 +14,15 @@ int main() {
         system("C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/data.exe > data.txt");
         system(
             "C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/WA.exe < C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/data.txt > WA.txt");
+        system(
+            "C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/AC.exe < C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/data.txt > AC.txt");
         cout << "test " << i << ':';
-        ifstream fin("C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/WA.txt");
-        string res;
-        fin >> res;
-        if (res == "0") {
-            cout << "WA" << endl;
-            return 0;
+        if (system(
+            "fc AC.txt WA.txt")) {
+            cout << "WA" << '\n';
+            break;
         }
-        cout << "AC" << endl;
+        cout << "AC" << '\n';
     }
     return 0;
 }
