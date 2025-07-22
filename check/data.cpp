@@ -22,10 +22,7 @@ constexpr int N = 10;
 constexpr ll INF = 32;
 
 inline void Zlin() {
-    int n = rng() % 20 + 1;
-    cout << n << endl;
-    for (int i = 1; i <= n; i++) cout << rng() % INF + 1 << ' ';
-    cout << endl;
+    cout << rng() % (1 << 31) << ' ' << rng() % (1 << 31) << ' ' << rng() % (1 << 31) << endl;
 }
 
 int main() {

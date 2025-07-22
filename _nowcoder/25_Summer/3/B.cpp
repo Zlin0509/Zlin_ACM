@@ -22,8 +22,7 @@ inline void Zlin() {
     res.clear();
     cin >> a >> b >> c;
     if (!a && !b) {
-        // cout << (c ? -1 : 0) << endl;
-        cout << -1 << endl;
+        cout << (c ? -1 : 0) << endl;
         return;
     }
     if (!a) {
@@ -91,15 +90,13 @@ inline void Zlin() {
         res.emplace_back(4);
         b ^= a;
     }
-    // if (res.size() > 64)
-    //     while (1) {
-    //     };
-    // if (a != b || b != c) cout << 1 / 0 << endl;
-    // cout << res.size() << endl;
-    // for (int it: res) cout << it << ' ';
-    // cout << endl;
-    if (a != b || b != c || a != c || res.size() > 64) cout << 0 << endl;
-    else cout << -1 << endl;
+    if (res.size() > 64)
+        while (1) {
+        };
+    if (a != b || b != c) cout << 1 / 0 << endl;
+    cout << res.size() << endl;
+    for (int it: res) cout << it << ' ';
+    cout << endl;
 }
 
 signed main() {

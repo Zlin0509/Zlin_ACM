@@ -14,20 +14,28 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
+int n, a;
+string s;
+
 inline void Zlin() {
-    int n, a, b;
-    cin >> n >> a >> b;
-    int k = n / (a + b);
-    n -= k * (a + b);
-    if (!k && n <= a) {
-        cout << "Sayonara" << endl;
-        return;
+    cin >> n >> a >> s;
+    int ans = 0, len1 = 0, len0 = 0;
+    for (int i = 0; i < n; i++) {
+        if (s[i] == '0') {
+            len1 = 0;
+            ++len0;
+        }
+        if (s[i] == '1') {
+            len0 = 0;
+            ++len1;
+        }
+        if (len0 == a + 1 || len1 == a) {
+            ans = n;
+            break;
+        }
     }
-    if (n <= a) {
-        cout << n << endl;
-        return;
-    }
-    cout << 0 << endl;
+    if (!ans) for (int i = 0; i < n; i++) ans += s[i] == '1';
+    cout << ans << endl;
 }
 
 signed main() {

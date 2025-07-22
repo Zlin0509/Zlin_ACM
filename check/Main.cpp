@@ -14,15 +14,20 @@ int main() {
         system("C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/data.exe > data.txt");
         system(
             "C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/WA.exe < C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/data.txt > WA.txt");
-        system(
-            "C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/AC.exe < C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/data.txt > AC.txt");
         cout << "test " << i << ':';
-        if (system(
-            "fc AC.txt WA.txt")) {
-            cout << "WA" << '\n';
+        // 检查 WA.txt 第一行是否为 -1
+        ifstream fin("C:/Users/27682/Desktop/Zlin_ACM/cmake-build-debug/WA.txt");
+        string output_line;
+        if (!getline(fin, output_line)) {
+            cout << "WA (empty output)" << '\n';
             break;
         }
-        cout << "AC" << '\n';
+        output_line.erase(remove_if(output_line.begin(), output_line.end(), ::isspace), output_line.end());
+        if (output_line != "-1") {
+            cout << "WA (output: " << output_line << ")" << endl;
+            break;
+        }
+        cout << "AC" << endl;
     }
     return 0;
 }
