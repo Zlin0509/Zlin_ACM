@@ -1,111 +1,64 @@
-//
-// Created by 27682 on 2025/7/22.
-//
-
-#include "bits/stdc++.h"
-#define endl '\n'
+#include <bits/stdc++.h>
 using namespace std;
-mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+using ll = long long;
+using ull = unsigned long long;
+const int N = 2e5 + 5;
+const int M = 21;
+const ll inf = 2e9;
+const ll mod = 998244353;
+ll n, a[N], q;
+ll b[N], d0[N], d1[N];
+bool vis[N];
 
-typedef double db;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<long long> vll;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
-
-ll a, b, c;
-int la, lb, lc, cnt;
-vi res;
-
-inline void Zlin() {
-    res.clear();
-    cin >> a >> b >> c;
-    if (!a && !b) {
-        // cout << (c ? -1 : 0) << endl;
-        cout << -1 << endl;
-        return;
+void solve() {
+    cin >> n >> q;
+    ll op0 = -1, op1 = -1;
+    d0[0] = d1[0] = -1;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+        b[i] = (b[i - 1] + a[i]) / 2;
+        vis[i] = (b[i - 1] + a[i]) & 1;
+        if (vis[i]) op1 = i;
+        else op0 = i;
+        d0[i] = op0, d1[i] = op1;
     }
-    if (!a) {
-        res.emplace_back(3);
-        a ^= b;
-    }
-    if (!b) {
-        res.emplace_back(4);
-        b ^= a;
-    }
-    la = lb = lc = -1, cnt = 0;
-    for (int i = 31; ~i; i--) {
-        if (a >> i & 1 && la == -1) la = i;
-        if (b >> i & 1 && lb == -1) lb = i;
-        if (c >> i & 1 && lc == -1) lc = i;
-    }
-    if (la > lb) {
-        res.emplace_back(4);
-        b ^= a;
-        lb = la;
-    }
-    if (la < lb) {
-        res.emplace_back(3);
-        a ^= b;
-        la = lb;
-    }
-    if (lb >= lc) {
-        while (lb >= 0) {
-            if ((c >> lb & 1) != (a >> lb & 1)) {
-                res.emplace_back(3);
-                a ^= b;
+    while (q--) {
+        ll x, y;
+        cin >> x >> y;
+        ll id = n - y + 1;
+        ll idx = upper_bound(a, a + 1 + n, x) - a;
+        if (idx > id) {
+            cout << "0\n";
+        } else {
+            if (id - idx + 1 < 000) {
+                ll ans = 0;
+                for (int i = idx; i <= id; i++) {
+                    ll len = (a[i] - x + 1) / 2;
+                    x += len;
+                    ans += len;
+                }
+                cout << ans << "\n";
+            } else {
+                ll ret = 0;
+                for (int i = 32; i >= 0; i--) {
+                    if (x >> i & 1) {
+                        if (idx + i >= d0[id]) {
+                            ret = 1;
+                            break;
+                        }
+                    }
+                }
+                cout << b[id] + 1 - x + ret << "\n";
             }
-            res.emplace_back(2);
-            b >>= 1;
-            --lb;
         }
-        res.emplace_back(4);
-        b ^= a;
-    } else {
-        int cnt = 0;
-        while (lb >= 0) {
-            if ((c >> (lc - cnt) & 1) != (a >> (la - cnt) & 1)) {
-                res.emplace_back(3);
-                a ^= b;
-            }
-            if (lb != 0) {
-                res.emplace_back(2);
-                b >>= 1;
-            }
-            --lb;
-            ++cnt;
-        }
-        while (cnt <= lc) {
-            res.emplace_back(1);
-            a <<= 1;
-            ++la;
-            if ((c >> (lc - cnt) & 1) != (a >> (la - cnt) & 1)) {
-                res.emplace_back(3);
-                a ^= b;
-            }
-            ++cnt;
-        }
-        res.emplace_back(2);
-        b >>= 1;
-        res.emplace_back(4);
-        b ^= a;
     }
-    // if (res.size() > 64)
-    //     while (1) {
-    //     };
-    // if (a != b || b != c) cout << 1 / 0 << endl;
-    // cout << res.size() << endl;
-    // for (int it: res) cout << it << ' ';
-    // cout << endl;
-    if (a != b || b != c || a != c || res.size() > 64) cout << 0 << endl;
-    else cout << -1 << endl;
 }
 
-signed main() {
-    ios::sync_with_stdio(false), cin.tie(nullptr);
-    int ttt = 1;
-    cin >> ttt;
-    while (ttt--) Zlin();
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int _ = 1; // cin >> _;
+    while (_--) solve();
     return 0;
 }

@@ -1,36 +1,27 @@
-//
-// Created by Zlin on 2025/2/7.
-//
-
-#include "bits/stdc++.h"
-#define endl "\n"
+#include <bits/stdc++.h>
 using namespace std;
-
-typedef double db;
-typedef long double ldb;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<int> vi;
-typedef vector<long long> vll;
-typedef pair<int, int> pii;
-typedef pair<long long, long long> pll;
-
+using ll = long long;
+using ull = unsigned long long;
+const int N = 2e5 + 5;
+const int M = 21;
+const ll inf = 2e9;
+const ll mod = 998244353;
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-constexpr int N = 10;
-
-constexpr ll INF = 32;
-
-inline void Zlin() {
-    cout << rng() % (1 << 31) << ' ' << rng() % (1 << 31) << ' ' << rng() % (1 << 31) << endl;
+void solve() {
+    ll n = rng() % 100000;
+    cout << n << ' ' << 1 << '\n';
+    ll k = rng() % 1000 + 1, b = rng() % 100000 + 1;
+    for (int i = 1; i <= n; i++) cout << i * k + b << ' ';
+    cout << "\n";
+    cout << rng() % 1000 + 1 << " " << rng() % n + 1 << "\n";
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int ttt = 1;
-    srand(time(0));
-    cout << 1 << endl;
-    while (ttt--) Zlin();
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int _ = 1; // cin >> _;
+    while (_--) solve();
     return 0;
 }
