@@ -2,55 +2,33 @@
 using namespace std;
 using ll = long long;
 using ull = unsigned long long;
-const int N = 2e5 + 5;
-const int M = 21;
-const ll inf = 2e9;
-const ll mod = 998244353;
-ll n, a[N], q;
-ll b[N], d0[N], d1[N];
-bool vis[N];
+const int N = 1e6 + 5;
+const int M = 1e6 + 5;
+const ll inf = 1e18;
+const ll mod = 1e9 + 7;
+mt19937_64 rnd(time(0));
+typedef uint64_t hash_t;
+ll n, a[20], b[20], c[20];
 
 void solve() {
-    cin >> n >> q;
-    ll op0 = -1, op1 = -1;
-    d0[0] = d1[0] = -1;
-    for (int i = 1; i <= n; i++) {
+    ll res = 0;
+    for (int i = 1; i <= 13; i++) {
         cin >> a[i];
-        b[i] = (b[i - 1] + a[i]) / 2;
-        vis[i] = (b[i - 1] + a[i]) & 1;
-        if (vis[i]) op1 = i;
-        else op0 = i;
-        d0[i] = op0, d1[i] = op1;
     }
-    while (q--) {
-        ll x, y;
-        cin >> x >> y;
-        ll id = n - y + 1;
-        ll idx = upper_bound(a, a + 1 + n, x) - a;
-        if (idx > id) {
-            cout << "0\n";
-        } else {
-            if (id - idx + 1 < 000) {
-                ll ans = 0;
-                for (int i = idx; i <= id; i++) {
-                    ll len = (a[i] - x + 1) / 2;
-                    x += len;
-                    ans += len;
-                }
-                cout << ans << "\n";
-            } else {
-                ll ret = 0;
-                for (int i = 32; i >= 0; i--) {
-                    if (x >> i & 1) {
-                        if (idx + i >= d0[id]) {
-                            ret = 1;
-                            break;
-                        }
-                    }
-                }
-                cout << b[id] + 1 - x + ret << "\n";
-            }
-        }
+    sort(a + 1, a + 1 + 13);
+    ll sum = 0, sumc = 0, suma = 0;
+    for (int i = 1; i <= 13; i++) {
+        c[i] = a[i] % 3;
+        b[i] = a[i] - c[i];
+        sum += b[i];
+        sumc += c[i];
+        suma += a[i];
+    }
+    if (a[13] >= (suma - a[13]) * 3) {
+        cout << suma - a[13] << "\n";
+    } else {
+        ll ans = min(sum / 3, suma / 4);
+        cout << ans << "\n";
     }
 }
 
@@ -58,7 +36,8 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    int _ = 1; // cin >> _;
+    int _ = 1;
+    cin >> _;
     while (_--) solve();
     return 0;
 }
