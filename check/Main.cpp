@@ -11,7 +11,7 @@ int main() {
         system("WA.exe < data.txt > WA.txt");
         system("AC.exe < data.txt > AC.txt");
 
-        if (system("fc AC.txt WA.txt")) {
+        if (system("diff AC.txt WA.txt")) {
             cout << "WA!" << endl;
             cout << "Input:" << endl;
             system("type data.txt");

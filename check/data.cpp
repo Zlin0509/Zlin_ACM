@@ -8,12 +8,29 @@ const ll inf = 2e9;
 const ll mod = 998244353;
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
+typedef vector<int> vi;
+
+vi e[1000];
+
+void generateTree(int n) {
+    for (int i = 2; i <= n; i++) {
+        int f = rng() % (i - 1) + 1;
+        e[f].emplace_back(i);
+    }
+}
+
+char idx[3]{'L', 'R', 'D'};
+
 void solve() {
-    int ttt = rng() % 20000 + 1;
-    cout << ttt << endl;
-    while (ttt--) {
-        for (int i = 1; i <= 5; i++) cout << rng() % 10000 << ' ';
-        for (int i = 6; i <= 13; i++) cout << rng() % 10000 << ' ';
+    int n = 5, len = 5;
+    cout << 1 << endl;
+    generateTree(n);
+    cout << n << endl;
+    for (int i = 0; i < len; i++) cout << idx[rng() % 3];
+    cout << endl;
+    for (int i = 1; i <= n; i++) {
+        cout << e[i].size() << ' ';
+        for (int it: e[i]) cout << it << ' ';
         cout << endl;
     }
 }
