@@ -19,8 +19,8 @@ typedef pair<long long, long long> pll;
 constexpr ldb eps = 1E-9;
 
 ldb ans;
-int n, m, sx, sy;
-int a[6], h[7], w[7], vis[7];
+ll n, m, sx, sy;
+ll a[6], h[7], w[7];
 
 void output(long double x) {
     static char s[25];
@@ -29,93 +29,62 @@ void output(long double x) {
     printf("%c", s[strlen(s) - 1]);
 }
 
-db f(db x) {
-    db res = 0;
-    for (int i = 1; i <= 5; i++) res += 1.0 * a[i] * pow(x, i);
+// 定义函数 y = f(x)
+ldb f(ldb x) {
+    ldb res = 0;
+    for (int i = 5; ~i; i--) res = res * x + a[i];
     return res;
 }
 
-db df(db x) {
-    db res = 0;
-    for (int i = 1; i <= 5; i++) {
-        res += i * a[i] * pow(x, i - 1);
-    }
+// f'(x)
+ldb df(ldb x) {
+    ldb res = 0;
+    for (int i = 5; i; i--) res = res * x + i * a[i];
     return res;
 }
 
-db F(db x) {
-    db dfx = df(x);
-    return sqrt(1 + dfx * dfx);
+// sqrt(1 + f'(x)^2)
+ldb g(ldb x) {
+    ldb d = df(x);
+    return sqrtl(1 + d * d);
 }
 
-db simpson(db l, db r) {
-    db mid = (l + r) / 2;
-    return (F(l) + 4 * F(mid) + F(r)) * (r - l) / 6;
+// 单区间辛普森积分
+ldb sim(ldb l, ldb r) {
+    ldb m = (l + r) / 2;
+    return (g(l) + 4 * g(m) + g(r)) * (r - l) / 6;
 }
 
-db adaptive_simpson(db l, db r, db eps, db whole) {
-    db mid = (l + r) / 2;
-    db left = simpson(l, mid), right = simpson(mid, r);
-    if (fabs(left + right - whole) <= 15 * eps)
-        return left + right + (left + right - whole) / 15.0;
-    return adaptive_simpson(l, mid, eps / 2, left) + adaptive_simpson(mid, r, eps / 2, right);
+// 自适应辛普森积分
+ldb ads(ldb l, ldb r, ldb e, ldb s) {
+    ldb m = (l + r) / 2;
+    ldb sl = sim(l, m);
+    ldb sr = sim(m, r);
+    if (fabsl(sl + sr - s) <= 15 * e) return sl + sr + (sl + sr - s) / 15;
+    return ads(l, m, e / 2, sl) + ads(m, r, e / 2, sr);
 }
 
-db arc_length(db l, db r) {
-    return adaptive_simpson(l, r, eps, simpson(l, r));
+// 计算弧长
+ldb arc(ldb a, ldb b, ldb e = 1e-9) {
+    return ads(a, b, e, sim(a, b));
 }
 
 ldb ax, bx;
 
-inline ldb fx(ldb x) {
-    return ax * x + bx;
-}
-
 inline ldb dis(ldb x, ldb y, ldb ax, ldb ay) {
-    return (ax - x) * (ax - x) + (ay - y) * (ay - y);
+    return sqrtl((ax - x) * (ax - x) + (ay - y) * (ay - y));
 }
 
-inline ldb find_nxt(ldb lx, ldb tag) {
-    ldb l = lx, r = 1e18, mid;
-    while (abs(r - l) >= eps) {
+inline ldb find_nxt(ldb lx, ldb h1, ldb h2) {
+    ldb l = lx, r = 1e18, mid, ly = f(lx) + h1;
+    ldb k = (ly - sy) / (lx - sx), b = -k * lx + ly;
+    while (r - l >= eps) {
         mid = (l + r) / 2;
-        if (dis(mid, f(mid), lx, f(lx)) >= tag) r = mid;
-        else l = mid;
-    }
-    r = 1e18;
-    while (abs(r - l) >= eps) {
-        mid = (l + r) / 2;
-        if (f(mid) > fx(mid)) r = mid;
-        else l = mid;
+        ldb my = f(mid);
+        if (dis(mid, my, lx, ly - h1) < max(h1, h2) || k * mid + b > my) l = mid;
+        else r = mid;
     }
     return l;
-}
-
-
-inline void dfs(int dep, vi &base) {
-    if (dep == n) {
-        ldb res = 0;
-        ldb x = 0, y = 0;
-        for (int i = 0; i < dep - 1; i++) {
-            res += arc_length(0, x) * w[base[i]];
-            y = f(x) + h[base[i]];
-            ax = 1.0 * (sy - y) / (sx - x);
-            bx = y - x * (sy - y) / (sx - x);
-            x = find_nxt(x, max(h[base[i]] * h[base[i]], h[base[i + 1]] * h[base[i + 1]]));
-        }
-        res += arc_length(0, x) * w[base[dep - 1]];
-        ans = min(ans, res);
-        return;
-    }
-    for (int i = 0; i < n; i++) {
-        if (!vis[i]) {
-            vis[i] = 1;
-            base.emplace_back(i);
-            dfs(dep + 1, base);
-            base.pop_back();
-            vis[i] = 0;
-        }
-    }
 }
 
 inline void Zlin() {
@@ -124,10 +93,21 @@ inline void Zlin() {
     for (int i = m + 1; i <= 5; i++) a[i] = 0;
     for (int i = 0; i < n; i++) cin >> h[i] >> w[i];
     ans = 1e18;
-    vi base;
-    dfs(0, base);
+    vi base(n);
+    iota(base.begin(), base.end(), 0);
+    do {
+        ldb res = 0, x = 0, sum = 0, lst = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arc(lst, x);
+            res += sum * w[base[i]];
+            if (i == n - 1) break;
+            lst = x;
+            x = find_nxt(x, h[base[i]], h[base[i + 1]]);
+        }
+        ans = min(ans, res);
+    } while (next_permutation(base.begin(), base.end()));
     output(ans);
-    cout << endl;
+    printf("\n");
 }
 
 signed main() {

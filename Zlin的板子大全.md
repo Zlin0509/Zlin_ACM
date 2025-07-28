@@ -2181,6 +2181,52 @@ double rotCalipers(const vector<P> &h) {
 }
 ```
 
+### 求曲线弧长
+
+```c++
+// 定义函数 y = f(x)
+ldb f(ldb x) {
+    ldb res = 0;
+    for (int i = 1; i <= 5; i++) res += a[i] * pow(x, i);
+    return res;
+}
+
+// f'(x)
+ldb df(ldb x) {
+    ldb res = 0;
+    for (int i = 1; i <= 5; i++) res += i * a[i] * pow(x, i - 1);
+    return res;
+}
+
+// sqrt(1 + f'(x)^2)
+ldb g(ldb x) {
+    ldb d = df(x);
+    return sqrtl(1 + d * d);
+}
+
+// 单区间辛普森积分
+ldb sim(ldb l, ldb r) {
+    ldb m = (l + r) / 2;
+    return (g(l) + 4 * g(m) + g(r)) * (r - l) / 6;
+}
+
+// 自适应辛普森积分
+ldb ads(ldb l, ldb r, ldb e, ldb s) {
+    ldb m = (l + r) / 2;
+    ldb sl = sim(l, m);
+    ldb sr = sim(m, r);
+    if (fabsl(sl + sr - s) <= 15 * e) return sl + sr + (sl + sr - s) / 15;
+    return ads(l, m, e / 2, sl) + ads(m, r, e / 2, sr);
+}
+
+// 计算弧长
+ldb arc(ldb a, ldb b, ldb e = 1e-10) {
+    return ads(a, b, e, sim(a, b));
+}
+```
+
+
+
 ## 线性基
 
 可以插入也可以删除
