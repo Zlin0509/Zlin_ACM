@@ -4,7 +4,6 @@
 
 #include "bits/stdc++.h"
 #define endl "\n"
-#define int long long
 using namespace std;
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 typedef __int128 i128;
@@ -18,58 +17,40 @@ typedef pair<int, int> pii;
 typedef pair<long long, long long> pll;
 
 constexpr int N = 110;
+constexpr int INF = 0x3f3f3f3f;
 
 int m, s, t;
 int n;
-int a[N], k[N], b[N], c[N];
+int a[N], k[N], b[N], c[N], sum[N];
 
-struct Node {
-    int turn, s, idx, ret, m;
-};
+int dp[N][N][N];
 
 inline bool work(int p) {
-    queue<Node> pq;
-    pq.emplace(0, 0, 0, 0, m);
-    int now, nxt, tk, tmp;
-    while (!pq.empty()) {
-        auto o = pq.front();
-        pq.pop();
-        if (o.s + o.m * (t - o.turn) >= s) return true;
-        now = o.idx, nxt = now + 1;
-        if (nxt > n) continue;
-        tk = ceil(1.0 * a[nxt] / o.m);
-        Node oo;
-        if (tk + o.turn <= t) {
-            oo.turn = o.turn + tk;
-            oo.s = o.s;
-            oo.idx = o.idx + 1;
-            oo.ret = o.ret + tk;
-            oo.m = o.m + k[oo.idx];
-            pq.emplace(oo);
+    for (int i = 0; i <= t; i++) {
+        for (int j = 0; j <= n; j++) {
+            for (int k = 0; k <= t; k++) {
+                dp[i][j][k] = -INF;
+            }
         }
-        tk = ceil(1.0 * (a[nxt] - c[nxt]) / o.m);
-        if (b[nxt] <= o.ret * p) {
-            tmp = 0;
-            o.ret -= (b[nxt] + p - 1) / p;
-        } else {
-            tmp = (b[nxt] - o.ret * p + p - 1) / p;
-            o.ret = 0;
-        }
-        if (max(tk, tmp) + o.turn <= t) {
-            if (tk <= tmp) {
-                oo.turn = o.turn + tmp;
-                oo.s = o.s + (tmp - tk) * o.m;
-                oo.idx = o.idx + 1;
-                oo.ret = o.ret;
-                oo.m = o.m + k[oo.idx];
-                pq.emplace(oo);
-            } else {
-                oo.turn = o.turn + tk;
-                oo.s = o.s;
-                oo.idx = o.idx + 1;
-                oo.ret = o.ret + tk - tmp;
-                oo.m = o.m + k[oo.idx];
-                pq.emplace(oo);
+    }
+    dp[0][0][0] = 0;
+    for (int j = 0; j <= n; j++) {
+        for (int i = 0, tk, rk; i <= t; i++) {
+            for (int k = 0; k <= i; k++) {
+                if (dp[i][j][k] >= s) return true;
+                if (i + 1 <= t) dp[i + 1][j][k + 1] = max(dp[i + 1][j][k + 1], dp[i][j][k] + sum[j]);
+                if (j + 1 <= n) {
+                    // 不触发
+                    tk = (a[j + 1] + sum[j] - 1) / sum[j];
+                    if (i + tk <= t) dp[i + tk][j + 1][k + tk] = max(dp[i + tk][j + 1][k + tk], dp[i][j][k]);
+                    // 触发
+                    if (!p) continue;
+                    tk = (a[j + 1] - c[j + 1] + sum[j] - 1) / sum[j];
+                    rk = (b[j + 1] + p - 1) / p;
+                    if (i + tk <= t && k + tk - rk >= 0) {
+                        dp[i + tk][j + 1][k + tk - rk] = max(dp[i + tk][j + 1][k + tk - rk], dp[i][j][k]);
+                    }
+                }
             }
         }
     }
@@ -78,14 +59,15 @@ inline bool work(int p) {
 
 inline void Zlin() {
     cin >> m >> s >> t >> n;
-    for (int i = 1; i <= n; i++) cin >> a[i] >> k[i] >> b[i] >> c[i];
-    int l = 0, r = 1e9, mid;
+    sum[0] = m;
+    for (int i = 1; i <= n; i++) cin >> a[i] >> k[i] >> b[i] >> c[i], sum[i] = sum[i - 1] + k[i];
+    int l = 0, r = 1e6, mid;
     while (l < r) {
         mid = l + r >> 1;
         if (work(mid)) r = mid;
         else l = mid + 1;
     }
-    cout << (work(l) ? l : -1) << endl;
+    cout << (l == 1e6 ? -1 : l) << endl;
 }
 
 signed main() {
