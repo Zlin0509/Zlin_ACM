@@ -506,67 +506,6 @@ struct cmp {
 set<tuple<int, int, int>, cmp> st;
 ```
 
-### 64位机
-
-支持区间反转 根据题目自行添加功能
-
-```c++
-constexpr int pnum = 15627;
-
-struct Bitset {
-    ull pool[pnum]{};
-
-    Bitset() { memset(pool, 0, sizeof(pool)); }
-
-    ull &operator[](const int i) { return pool[i]; }
-
-    void set(const int i) { pool[i / 64] |= 1ull << i % 64; }
-
-    void flip(const int l, const int r) {
-        if (l > r) return;
-        if (l / 64 == r / 64) {
-            for (int i = l % 64; i <= r % 64; i++) pool[l / 64] ^= 1ull << i;
-            return;
-        }
-        pool[l / 64] ^= ~0ull << (l % 64);
-        for (int i = l / 64 + 1; i < r / 64; i++) pool[i] = ~pool[i];
-        pool[r / 64] ^= ~0ull >> (63 - r % 64);
-    }
-} t;
-
-inline Bitset operator^(Bitset a, Bitset b) {
-    Bitset res;
-    for (int i = 0; i < pnum; i++) res[i] = a[i] ^ b[i];
-    return res;
-}
-
-inline Bitset operator >>(Bitset a, int x) {
-    Bitset res;
-    int k = x / 64, t = x % 64;
-    for (int i = 0; i < pnum - k; i++) res[i] = a[i + k];
-    if (t) {
-        for (int i = 0; i < pnum - 1; i++) {
-            res[i] >>= t;
-            res[i] ^= res[i + 1] << (64 - t);
-        }
-    }
-    return res;
-}
-
-inline Bitset operator <<(Bitset a, int x) {
-    Bitset res;
-    int k = x / 64, t = x % 64;
-    for (int i = 0; i < pnum - k; i++) res[i + k] = a[i];
-    if (t) {
-        for (int i = pnum - 1; ~i; i--) {
-            res[i] <<= t;
-            res[i] ^= res[i - 1] >> (64 - t);
-        }
-    }
-    return res;
-}
-```
-
 ### priority_queue
 
 不标注默认大根堆，pair内容先比较第一个元素，然后比较第二个元素
@@ -2181,52 +2120,6 @@ double rotCalipers(const vector<P> &h) {
 }
 ```
 
-### 求曲线弧长
-
-```c++
-// 定义函数 y = f(x)
-ldb f(ldb x) {
-    ldb res = 0;
-    for (int i = 1; i <= 5; i++) res += a[i] * pow(x, i);
-    return res;
-}
-
-// f'(x)
-ldb df(ldb x) {
-    ldb res = 0;
-    for (int i = 1; i <= 5; i++) res += i * a[i] * pow(x, i - 1);
-    return res;
-}
-
-// sqrt(1 + f'(x)^2)
-ldb g(ldb x) {
-    ldb d = df(x);
-    return sqrtl(1 + d * d);
-}
-
-// 单区间辛普森积分
-ldb sim(ldb l, ldb r) {
-    ldb m = (l + r) / 2;
-    return (g(l) + 4 * g(m) + g(r)) * (r - l) / 6;
-}
-
-// 自适应辛普森积分
-ldb ads(ldb l, ldb r, ldb e, ldb s) {
-    ldb m = (l + r) / 2;
-    ldb sl = sim(l, m);
-    ldb sr = sim(m, r);
-    if (fabsl(sl + sr - s) <= 15 * e) return sl + sr + (sl + sr - s) / 15;
-    return ads(l, m, e / 2, sl) + ads(m, r, e / 2, sr);
-}
-
-// 计算弧长
-ldb arc(ldb a, ldb b, ldb e = 1e-10) {
-    return ads(a, b, e, sim(a, b));
-}
-```
-
-
-
 ## 线性基
 
 可以插入也可以删除
@@ -2783,6 +2676,17 @@ $$
 [ C(n, k) \mod p = C(n \mod p, k \mod p) \times C(n/p, k/p) \mod p ]
 $$
 
+`````c++
+ll C(ll x, ll y) {//暴力算组合数
+    if (x > y) return 0;
+    return ((jc[y] * inv[x]) % p * inv[y - x]) % p;
+}
+
+ll work(ll n, ll m) {//Lucas 定理
+    if (!n) return 1;
+    return (work(n / p, m / p) * C(n % p, m % p)) % p;
+}
+`````
 
 # 图论
 
