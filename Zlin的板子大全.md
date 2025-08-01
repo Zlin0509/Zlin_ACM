@@ -2573,7 +2573,9 @@ $$
 \sum_{i=0}^{n} \binom{n}{i} \cdot i^2 = n(n+1) \cdot 2^{n-2}
 $$
 
-
+$$
+\sum_{i=0}^{n} \binom{n - i}{k} \cdot i =C(n+1,k+2)
+$$
 
 ### 直接定义公式法
 
