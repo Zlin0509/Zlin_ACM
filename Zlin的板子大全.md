@@ -612,7 +612,7 @@ inline int find(int x) {
 inline void ST_prework() {
     for (int i = 1; i <= n; i++)
         f[i][0] = a[i];
-    int t = log(n) / log(2) + 1;
+    int t = log2(n) + 1;
     for (int j = 1; j < t; j++)
         for (int i = 1; i <= n - (1 << j) + 1; i++)
             f[i][j] = max(f[i][j - 1], f[i + (1 << (j - 1))][j - 1]);

@@ -7,19 +7,11 @@ int main() {
     int ttt = 10000;
     for (int i = 1; i <= ttt; i++) {
         cout << "Test #" << i << " ... ";
-        system("data.exe > data.txt");
-        system("WA.exe < data.txt > WA.txt");
-        system("AC.exe < data.txt > AC.txt");
-
-        if (system("diff AC.txt WA.txt")) {
+        system("/Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/data > data.txt");
+        system("/Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/WA < /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/data.txt > /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/WA.txt");
+        system("/Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/AC < /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/data.txt > /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/AC.txt");
+        if (system("diff /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/AC.txt /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/WA.txt")) {
             cout << "WA!" << endl;
-            cout << "Input:" << endl;
-            system("type data.txt");
-            cout << endl;
-            cout << "WA Output:" << endl;
-            system("type WA.txt");
-            cout << "AC Output:" << endl;
-            system("type AC.txt");
             break;
         }
         cout << "AC" << endl;
