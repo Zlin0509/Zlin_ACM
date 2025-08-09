@@ -17,22 +17,14 @@ typedef pair<ll, ll> pll;
 constexpr int N = 1e5;
 constexpr int INF = 1e9;
 
-int a[1010][11];
+int idx[2] = {1, -1};
 
 inline void Zlin() {
-    int n = rng() % 10 + 1, m = rng() % 5 + 1, k = rng() % m + 1;
-    k = min(k, n);
+    int n = rng() % 1000;
+    cout << n << endl;
     for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            a[i][j] = rng() % 10 + 1;
-        }
-    }
-    cout << n << ' ' << m << ' ' << k << endl;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            cout << a[i][j] << ' ';
-        }
-        cout << endl;
+        int a = rng() % 100 * idx[rng() % 2], b = rng() % 100 * idx[rng() % 2], c = -a - b;
+        cout << a << ' ' << b << ' ' << c << endl;
     }
 }
 
