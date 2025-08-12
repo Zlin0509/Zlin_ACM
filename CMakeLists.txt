@@ -3,5 +3,5 @@ project(Zlin_ACM)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(1006 "_HDU/25 Summer/8/1006.cpp")
 add_executable(main main.cpp)
+add_executable(H _nowcoder/25_Summer/9/H.cpp)
