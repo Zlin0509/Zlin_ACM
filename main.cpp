@@ -1,8 +1,10 @@
 #include <iostream>
 using namespace std;
 
+typedef long long ll;
+
 int main() {
-    long long res = 1e5 * 5 * 64 * log2(2e5);
+    ll res = 100 * 100 * 400 * 10 * 4;
     cout << res << endl;
     return 0;
 }

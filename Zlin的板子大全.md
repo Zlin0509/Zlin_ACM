@@ -1328,7 +1328,7 @@ inline void pushup(int x) // 更新点x的大小
 }
 
 inline void rotate(int x) // 旋转x
-{
+{	
     int y = t[x].p, z = t[y].p;
     int k = t[y].s[1] == x;
     t[z].s[t[z].s[1] == y] = x;
