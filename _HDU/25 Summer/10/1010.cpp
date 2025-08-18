@@ -14,11 +14,22 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-struct Num {
-    vi base;
+constexpr int N = 4e6 + 5;
 
-    Num(int m) {
+int tx, ty;
+
+struct Num {
+    int m;
+    vi base;
+    vector<array<int, 5> > tag;
+
+    Num() {
+    }
+
+    Num(int mx) {
+        m = mx;
         base.assign(m, 0);
+        tag.assign(m, {});
     }
 
     Num operator&(const Num &b) const {
@@ -42,17 +53,67 @@ struct Num {
     }
 
     bool check() {
-        for (int it: base) if (it) return false;
-        return true;
+        for (int it: base) if (it) return true;
+        return false;
     }
-};
 
-int n, m;
-vector<Num> a, sub;
+    bool find(int i, int j) {
+        return base[i] >> j & 1;
+    }
+
+    void work(Num &b) {
+        int op = 0, sx = m, sy = 0;
+        for (int i = m - 1; ~i; i--) {
+            for (int j = 0; j < 5; j++) {
+                if (base[i] >> j & 1) {
+                    if (!b.find(i, j)) op = 1;
+                    if (op) tag[i][j] = 1;
+                } else if (b.find(i, j)) op = 0;
+                if (tag[i][j]) {
+                    if (i < sx) sx = i, sy = j;
+                    else if (i == sx && j > sy) sy = j;
+                }
+            }
+        }
+        if (sx == m) return;
+        if (sx > tx) tx = sx, ty = sy;
+        else if (sx == tx && sy < ty) ty = sy;
+    }
+} x;
+
+int n, m, f[N], vis[N], cnt;
+vector<Num> a;
+vi b;
+
+inline int find(int u) { return f[u] == u ? u : f[u] = find(f[u]); }
+
+inline void modify(int u) {
+    if (vis[find(u)]) return;
+    vis[find(u)] = 1;
+    --cnt;
+}
+
+inline void merge(int x, int y) {
+    int fx = find(x), fy = find(y);
+    if (fx == fy) return;
+    f[fx] = fy;
+}
+
+inline void work(int ix, int jx) {
+    bool check = false;
+    for (int i = 0; i < n; i++) b[i] = a[i].tag[ix][jx], check |= b[i];
+    for (int i = 0; i < n; i++) {
+        if (b[i] || vis[find(i)]) {
+            modify(i);
+            if (i && vis[find(i - 1)]) merge(i, i - 1);
+        }
+    }
+}
 
 inline void Zlin() {
     cin >> n >> m;
-    Num x(m), tmp(m);
+    Num tmp(m);
+    b.assign(n, 0);
     for (int j = 0; j < m; j++) {
         char c;
         cin >> c;
@@ -61,6 +122,7 @@ inline void Zlin() {
     }
     x = tmp;
     a.clear();
+    tx = m, ty = 0;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             char c;
@@ -70,26 +132,18 @@ inline void Zlin() {
         }
         a.emplace_back(tmp);
     }
-    sub.assign(n, Num(m));
-    sub[n - 1] = a[n - 1];
-    for (int i = n - 2; ~i; i--) sub[i] = sub[i + 1] & a[i];
-    if (x < sub[0]) {
-        cout << -1 << endl;
-        return;
-    }
-    Num base(m);
-    int cnt = 0;
-    for (int i = 0; i < n - 1; i++) {
-        if (tmp.check()) tmp = tmp & a[i];
-        else tmp = a[i];
-        Num tmp1 = base | tmp | sub[i + 1];
-        if (tmp1 < x) {
-            ++cnt;
-            base = base | tmp;
-            fill(tmp.base.begin(), tmp.base.end(), 0);
+    for (int z = 0; z < n; z++) f[z] = z, vis[z] = 0, a[z].work(x);
+    cnt = n;
+    int ans = 0;
+    cout << tx << ' ' << ty << endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 4; ~j; j--) {
+            work(i, j);
+            if (i >= tx || tx == m) ans = max(ans, cnt);
         }
     }
-    cout << cnt + 1 << endl;
+    ans = max(ans, cnt);
+    cout << (ans ? ans : -1) << endl;
 }
 
 signed main() {
