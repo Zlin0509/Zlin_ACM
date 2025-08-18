@@ -1777,7 +1777,7 @@ void fft(vector<Cp> &a, int n, int d) {
         for (int p = 0; p < n; p++) {
             a[p].r /= n;
             a[p].i /= n;
-        }
+        }	
     }
 }
 ```
