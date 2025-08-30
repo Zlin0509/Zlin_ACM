@@ -1087,6 +1087,8 @@ db query(int root, int l, int r, int x) {
 
 ### 扫描线
 
+##### 普通板 不知道干嘛用的垃圾
+
 ```c++
 struct Line {
     double x1, x2, y;
@@ -1135,6 +1137,60 @@ void update(int p, int l, int r, int ql, int qr, int v) {
     }
 }
 ```
+
+##### 维护一个区间线段内的最大值
+
+```c++
+struct Seg {
+    static constexpr int N = 5e4;
+
+    struct Node {
+        int l, r;
+        int val, tag;
+    } t[N];
+
+    void pushdown(int i) {
+        if (t[i].l != t[i].r) {
+            t[i << 1].val += t[i].tag;
+            t[i << 1].tag += t[i].tag;
+            t[i << 1 | 1].val += t[i].tag;
+            t[i << 1 | 1].tag += t[i].tag;
+        }
+        t[i].tag = 0;
+    }
+
+    void update(int i) {
+        t[i].val = max(t[i << 1].val, t[i << 1 | 1].val);
+    }
+
+    void build(int i, int l, int r) {
+        t[i] = {l, r, 0, 0};
+        if (l == r) return;
+        int mid = l + r >> 1;
+        build(i << 1, l, mid);
+        build(i << 1 | 1, mid + 1, r);
+    }
+
+    void modify(int i, int l, int r, int val) {
+        if (t[i].r < l || t[i].l > r) return;
+        if (t[i].l >= l && t[i].r <= r) {
+            t[i].val += val;
+            t[i].tag += val;
+            return;
+        }
+        pushdown(i);
+        modify(i << 1, l, r, val);
+        modify(i << 1 | 1, l, r, val);
+        update(i);
+    }
+
+    int query() {
+        return t[1].val;
+    }
+} seg;
+```
+
+
 
 ### 主席树
 
