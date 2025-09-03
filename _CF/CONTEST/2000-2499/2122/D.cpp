@@ -1,5 +1,5 @@
 //
-// Created by Zlin on 2025/8/18.
+// Created by 27682 on 2025/8/31.
 //
 
 #include "bits/stdc++.h"
@@ -14,19 +14,13 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-struct cmp {
-    bool operator<(ll &a, ll &b) const {
-        return a < b;
-    }
-};
-
 inline void Zlin() {
-    cout << 2 * 27 * 1e5 * log(1e5);
 }
 
 signed main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
