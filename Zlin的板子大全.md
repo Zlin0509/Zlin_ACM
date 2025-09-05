@@ -2761,24 +2761,69 @@ ll work(ll n, ll m) {//Lucas 定理
 
 对于每一块个点双,建一个方点连接这个点双的所有圆点
 ```c++
-void tarjan(int u) {
-    dfn[u] = low[u] = ++tot;
-    stk[++top] = u;
-    for (int v: e[u]) {
-        if (!dfn[v]) {
-            tarjan(v);
-            low[u] = min(low[u], low[v]);
-            if (low[v] >= dfn[u]) {
-                int nx = ++Tree::n, vx;
-                do {
-                    vx = stk[top--];
-                    Tree::add(nx, vx);
-                } while (vx != v);
-                Tree::add(nx, u);
-            }
-        } else low[u] = min(low[u], dfn[v]);
+struct BCT {
+    int n, tot, ts;
+    vector<vi> g, tg;
+    vi dfn, low, st;
+    vector<bool> cut;
+
+    BCT(int _n = 0) { init(_n); }
+
+    void init(int _n) {
+        n = _n;
+        g.assign(n + 1, {});
+        tg.assign(n + 1, {});
+        dfn.assign(n + 1, 0);
+        low.assign(n + 1, 0);
+        cut.assign(n + 1, 0);
+        st.clear();
+        ts = 0;
+        tot = n;
     }
-}
+
+    void add(int u, int v) {
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+
+    void tarjan(int u, int fa) {
+        dfn[u] = low[u] = ++ts;
+        st.push_back(u);
+        int son = 0;
+        for (int v: g[u]) {
+            if (!dfn[v]) {
+                tarjan(v, u);
+                low[u] = min(low[u], low[v]);
+                if (low[v] >= dfn[u]) {
+                    son++;
+                    if (fa != -1 || son > 1) cut[u] = true;
+                    ++tot;
+                    tg.resize(tot + 1);
+                    while (true) {
+                        int x = st.back();
+                        st.pop_back();
+                        tg[tot].push_back(x);
+                        tg[x].push_back(tot);
+                        if (x == v) break;
+                    }
+                    tg[tot].push_back(u);
+                    tg[u].push_back(tot);
+                }
+            } else if (v != fa) {
+                low[u] = min(low[u], dfn[v]);
+            }
+        }
+    }
+
+    void build() {
+        for (int i = 1; i <= n; i++) {
+            if (!dfn[i]) {
+                st.clear();
+                tarjan(i, -1);
+            }
+        }
+    }
+} t;
 ```
 
 ## 哈蜜顿路径
@@ -3090,42 +3135,35 @@ inline void spfa() {
 ### 倍增
 
 ```c++
-struct edge {
-    int to, nxt;
-} e[N];
+struct LCA {
+    int dep[N], f[N][22];
 
-int tot = 0, head[N];
+    LCA(int _n) { init(_n); }
 
-void add(int u, int v) {
-    e[++tot] = {v, head[u]};
-    head[u] = tot;
-}
+    void init(int _n) {
+        for (int i = 1; i <= _n; i++) {
+            dep[i] = 0;
+            for (int j = 0; j < 22; j++) f[i][j] = 0;
+        }
+    }
 
-int dep[N], fa[N][22];
+    void dfs(int u, int fa, const vi &g) {
+        f[u][0] = fa;
+        for (int i = 1; i < 22; i++) f[u][i] = f[f[u][i - 1]][i - 1];
+        for (int v: g[u]) {
+            if (v == fa) continue;
+            dfs(v, u, g);
+        }
+    }
 
-inline void dfs(int u, int f) {
-    dep[u] = dep[f] + 1;
-    fa[u][0] = f;
-    for (int i = 1; i <= 19; i++)
-        fa[u][i] = fa[fa[u][i - 1]][i - 1];
-    for (int i = head[u], c; i; i = e[i].nxt)
-        if (e[i].to != f)
-            dfs(e[i].to, u);
-}
-
-inline int lca(int u, int v) {
-    if (dep[u] < dep[v])
-        swap(u, v);
-    for (int i = 19; i >= 0; i--)
-        if (dep[fa[u][i]] >= dep[v])
-            u = fa[u][i]; // 让u，v处于同一层
-    if (u == v)
-        return u;
-    for (int i = 19; i >= 0; i--)
-        if (fa[u][i] != fa[v][i])
-            u = fa[u][i], v = fa[v][i]; // 返回祖先的下一层
-    return fa[u][0];
-}
+    int find(int u, int v) {
+        if (dep[u] < dep[v]) swap(u, v);
+        for (int i = 21; ~i; i--) if (dep[f[u][i]] >= dep[v]) u = f[u][i];
+        if (u == v) return u;
+        for (int i = 21; ~i; i--) if (f[u][i] != f[v][i]) u = f[u][i], v = f[v][i];
+        return f[u][0];
+    }
+};
 ```
 
 ## Tarjan算法
@@ -3341,7 +3379,7 @@ public:
 >     
 >     
 
-### 点双连通分量
+### 点双连通分量(BCC)
 
 > 基础性质：
 > **1、** 除了一种比较特殊的点双，其他的点双都满足：任意两点间都存在至少两条点不重复路径。
