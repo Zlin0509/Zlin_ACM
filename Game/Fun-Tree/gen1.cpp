@@ -9,18 +9,22 @@ int rnd(int l, int r) {
     return dist(rng);
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
+    if (argc < 6) {
+        cerr << "Usage: ./generator <seed> <T_max>\n";
+        return 1;
+    }
 
-    int seed = 112312;
-    int T_max = 1;
+    int seed = stoi(argv[1]);
+    int T_max = stoi(argv[2]);
+    int SUM_N = stoi(argv[3]);
+    int SUM_M = stoi(argv[4]);
+    int SUM_Q = stoi(argv[5]);
     rng.seed(seed);
 
-    const int SUM_N = 2e5;
-    const int SUM_M = 5e5;
-    const int SUM_Q = 1e5;
 
     int T = rnd(1, T_max);
     cout << T << "\n";

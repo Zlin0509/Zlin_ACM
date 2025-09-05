@@ -14,7 +14,7 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-constexpr int N = 2e3 + 10;
+constexpr int N = 1e3 + 10;
 
 /*
 
@@ -55,7 +55,7 @@ int n, m, q;
 struct BCT {
     int n, tot, ts;
     vi g[N]; // 原图邻接表
-    vi tg[N * N]; // 圆方树邻接表
+    vi tg[N * 2]; // 圆方树邻接表
     int dfn[N], low[N];
     int st[N], st_sz;
     bool cut[N];
@@ -71,7 +71,7 @@ struct BCT {
         memset(low, 0, sizeof(int) * (n + 1));
         memset(cut, 0, sizeof(int) * (n + 1));
         for (int i = 0; i <= n; i++) g[i].clear();
-        for (int i = 0; i <= n * (n + 1); i++) tg[i].clear();
+        for (int i = 0; i <= n * n + 1; i++) tg[i].clear();
     }
 
     void add(int u, int v) {
@@ -120,7 +120,7 @@ struct BCT {
 } bct;
 
 struct LCA {
-    int dep[N * N], f[N * N][22];
+    int dep[N * 2], f[N * 2][22];
 
     void init(int n) {
         memset(dep, 0, sizeof(int) * (n + 1));

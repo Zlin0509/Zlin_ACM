@@ -2762,8 +2762,8 @@ ll work(ll n, ll m) {//Lucas 定理
 对于每一块个点双,建一个方点连接这个点双的所有圆点
 ```c++
 struct BCT {
-    int n, tot, ts;
-    vector<vi> g, tg;
+    int n, tot, ts; // n 原图点数, tot 圆方树总点数
+    vector<vi> g, tg; // g 原图, tg 圆方树
     vi dfn, low, st;
     vector<bool> cut;
 
@@ -2797,21 +2797,26 @@ struct BCT {
                 if (low[v] >= dfn[u]) {
                     son++;
                     if (fa != -1 || son > 1) cut[u] = true;
-                    ++tot;
-                    tg.resize(tot + 1);
+                    // 新建一个 BCC 节点
+                    vector<int> bcc;
                     while (true) {
                         int x = st.back();
                         st.pop_back();
-                        tg[tot].push_back(x);
-                        tg[x].push_back(tot);
+                        bcc.push_back(x);
                         if (x == v) break;
                     }
-                    tg[tot].push_back(u);
-                    tg[u].push_back(tot);
+                    bcc.push_back(u);
+                    // 仅当 BCC 中点数 > 2 或者形成环才加入圆方树
+                    if (bcc.size() > 2) {
+                        ++tot;
+                        tg.resize(tot + 1);
+                        for (int x: bcc) {
+                            tg[tot].push_back(x);
+                            tg[x].push_back(tot);
+                        }
+                    }
                 }
-            } else if (v != fa) {
-                low[u] = min(low[u], dfn[v]);
-            }
+            } else if (v != fa) low[u] = min(low[u], dfn[v]);
         }
     }
 
@@ -2823,7 +2828,7 @@ struct BCT {
             }
         }
     }
-} t;
+} bct;
 ```
 
 ## 哈蜜顿路径
@@ -3138,7 +3143,7 @@ inline void spfa() {
 struct LCA {
     int dep[N], f[N][22];
 
-    LCA(int _n) { init(_n); }
+    LCA(int _n = 0) { init(_n); }
 
     void init(int _n) {
         for (int i = 1; i <= _n; i++) {
@@ -3147,11 +3152,12 @@ struct LCA {
         }
     }
 
-    void dfs(int u, int fa, const vi &g) {
+    void dfs(int u, int fa, const vector<vi> &g) {
         f[u][0] = fa;
         for (int i = 1; i < 22; i++) f[u][i] = f[f[u][i - 1]][i - 1];
         for (int v: g[u]) {
             if (v == fa) continue;
+            dep[v] = dep[u] + 1;
             dfs(v, u, g);
         }
     }
@@ -3163,7 +3169,7 @@ struct LCA {
         for (int i = 21; ~i; i--) if (f[u][i] != f[v][i]) u = f[u][i], v = f[v][i];
         return f[u][0];
     }
-};
+} lca;
 ```
 
 ## Tarjan算法
