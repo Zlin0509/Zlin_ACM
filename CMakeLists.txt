@@ -3,6 +3,5 @@ project(Zlin_ACM)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(vail Game/Fun-Tree/vail.cpp)
-add_executable(std Game/Fun-Tree/std.cpp
-)
+add_executable(main main.cpp)
+add_executable(D _CF/CONTEST/2000-2499/2122/D.cpp)
