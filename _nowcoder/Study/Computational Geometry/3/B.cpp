@@ -14,12 +14,12 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-constexpr db eps = 1e-9;
+constexpr db eps = 1e-5;
 const db pi = acos(-1);
 
 template<typename T>
 struct point {
-    T x, y, val;
+    T x, y, val = 0;
 
     bool operator==(const point &a) const { return (abs(x - a.x) <= eps && abs(y - a.y) <= eps); }
     point operator+(const point &a) const { return {x + a.x, y + a.y}; }
@@ -75,28 +75,65 @@ bool argcmp(const Point &a, const Point &b) {
     int x = quad(a), y = quad(b);
     if (x != y) return x < y;
     auto res = a ^ b;
-    if (abs(res) < eps) return a.val > b.val;
+    if (abs(res) <= eps) return a.val > b.val;
     return res > eps;
 }
-
 
 int n;
 vector<Seg> a;
 
 inline void Zlin() {
     cin >> n;
+    ll ans = 0;
     for (int i = 0, x1, x2, y; i < n; i++) {
         cin >> x1 >> x2 >> y;
-        a.emplace_back(Point(x1, y), Point(x2, y));
+        if (x1 > x2) swap(x1, x2);
+        a.emplace_back(Point(x1, y, x1 - x2), Point(x2, y, x2 - x1));
     }
-    ll ans = 0;
     for (int i = 0; i < n; i++) {
         Point s = a[i].a;
+        ll res = a[i].b.val;
+        vector<Point> tmp;
         for (int j = 0; j < n; j++) {
-            if (i == j) continue;
             auto [x, y] = a[j];
-            if (x.y < s.y) {
+            x = x - s, y = y - s;
+            if (x.y == 0) continue;
+            if (x.y < 0) {
+                x = -x, y = -y;
+                swap(x, y);
             }
+            y.val = y.x - x.x, x.val = x.x - y.x;
+            tmp.emplace_back(y);
+            tmp.emplace_back(x);
+        }
+        sort(tmp.begin(), tmp.end(), argcmp);
+        ans = max(ans, res);
+        for (auto [x, y, vx]: tmp) {
+            res += vx;
+            ans = max(ans, res);
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        Point s = a[i].b;
+        ll res = a[i].b.val;
+        vector<Point> tmp;
+        for (int j = 0; j < n; j++) {
+            auto [x, y] = a[j];
+            x = x - s, y = y - s;
+            if (x.y == 0) continue;
+            if (x.y < 0) {
+                x = -x, y = -y;
+                swap(x, y);
+            }
+            y.val = y.x - x.x, x.val = x.x - y.x;
+            tmp.emplace_back(y);
+            tmp.emplace_back(x);
+        }
+        sort(tmp.begin(), tmp.end(), argcmp);
+        ans = max(ans, res);
+        for (auto [x, y, vx]: tmp) {
+            res += vx;
+            ans = max(ans, res);
         }
     }
     cout << ans << endl;
