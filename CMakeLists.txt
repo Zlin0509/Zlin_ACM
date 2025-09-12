@@ -3,4 +3,4 @@ project(Zlin_ACM)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(H "_nowcoder/Study/Computational Geometry/2/H.cpp")
+add_executable(B "_nowcoder/Study/Computational Geometry/3/B.cpp")
