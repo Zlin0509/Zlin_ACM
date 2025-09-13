@@ -14,13 +14,89 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
+constexpr db eps = 1e-7;
+
+template<typename T>
+struct Point {
+    T x, y;
+
+    bool operator==(const Point &a) const { return (abs(x - a.x) <= eps && abs(y - a.y) <= eps); }
+    Point operator+(const Point &a) const { return {x + a.x, y + a.y}; }
+    Point operator-(const Point &a) const { return {x - a.x, y - a.y}; }
+    Point operator-() const { return {-x, -y}; }
+    Point operator*(const T k) const { return {k * x, k * y}; }
+    Point operator/(const T k) const { return {x / k, y / k}; }
+    T operator*(const Point &a) const { return x * a.x + y * a.y; } // Dot
+    T operator^(const Point &a) const { return x * a.y - y * a.x; } // Cross
+    bool operator<(const Point &a) const {
+        if (abs(x - a.x) <= eps) return y < a.y - eps;
+        return x < a.x - eps;
+    }
+
+    bool is_par(const Point &a) const { return abs((*this) ^ a) <= eps; } // 平行
+    bool is_ver(const Point &a) const { return abs((*this) * a) <= eps; } // 垂直
+
+    int toleft(const Point &a) const {
+        auto t = (*this) ^ a;
+        return (t > eps) - (t < -eps);
+    }
+
+
+    T len2() const { return (*this) * (*this); }
+    T dis2(const Point &a) const { return (a - (*this)).len2(); }
+    double len() const { return sqrt(len2()); }
+    double dis(const Point &a) const { return (a - (*this)).len(); }
+    double ang(const Point &a) const { return acos(((*this) * a) / (this->len() * a.len())); } // 普通夹角（只返回大小 [0, π]）
+    double signed_ang(const Point &a) const { return atan2((*this) ^ a, (*this) * a); } // 带方向夹角：逆时针为正，顺时针为负，范围 (-π, π]
+    Point rot(const double rad) const { return {x * cos(rad) - y * sin(rad), x * sin(rad) + y * cos(rad)}; }
+};
+
+template<typename T>
+bool is_on(const Point<T> p, const Point<T> a, const Point<T> b) {
+    return abs((p - a) ^ (p - b)) <= eps && (p - a) * (p - b) <= eps;
+}
+
+template<typename T>
+struct Line {
+    Point<T> p, v; //p+kv
+
+    bool operator==(const Line &a) const { return v.is_par(a.v) && v.is_par(p - a.p); }
+    bool is_par(const Line &a) const { return v.is_par(a.v) && !v.is_par(p - a.p); } // 排除共线
+    bool is_ver(const Line &a) const { return v.is_ver(a.v); }
+    bool is_on(const Point<T> &a) const { return v.is_par(a - p); }
+    int toleft(const Point<T> &a) const { return v.toleft(a - p); }
+    Point<T> inter(const Line &a) const { return p + v * ((a.v ^ (p - a.p)) / (v ^ a.v)); }
+    double dis(const Point<T> &a) const { return abs(v ^ (a - p)) / v.len(); }
+    Point<T> proj(const Point<T> &a) const { return p + v * ((v * (a - p)) / (v * v)); }
+
+    bool operator<(const Line &a) const {
+        if (abs(v ^ a.v) <= eps && v * a.v >= -eps) return toleft(a.p) == -1;
+        return argcmp(v, a.v);
+    }
+};
+
+constexpr int N = 50;
+
+int n;
+vector<Point<db> > a;
+
 inline void Zlin() {
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        db x, y;
+        cin >> x >> y;
+        a.emplace_back(x, y);
+    }
+    db l = 0, r = 2e5, mid;
+    while (fabs(r - l) > eps) {
+        mid = (l + r) / 2;
+    }
+    cout << l << endl;
 }
 
 signed main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
-    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
