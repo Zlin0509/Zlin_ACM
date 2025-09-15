@@ -14,7 +14,7 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-constexpr db eps = 1e-7;
+constexpr db eps = 1e-9;
 
 template<typename T>
 struct Point {
@@ -41,14 +41,18 @@ struct Point {
         return (t > eps) - (t < -eps);
     }
 
-
     T len2() const { return (*this) * (*this); }
     T dis2(const Point &a) const { return (a - (*this)).len2(); }
     double len() const { return sqrt(len2()); }
     double dis(const Point &a) const { return (a - (*this)).len(); }
     double ang(const Point &a) const { return acos(((*this) * a) / (this->len() * a.len())); } // 普通夹角（只返回大小 [0, π]）
     double signed_ang(const Point &a) const { return atan2((*this) ^ a, (*this) * a); } // 带方向夹角：逆时针为正，顺时针为负，范围 (-π, π]
-    Point rot(const double rad) const { return {x * cos(rad) - y * sin(rad), x * sin(rad) + y * cos(rad)}; }
+    Point rot(const double &rad) const { return {x * cos(rad) - y * sin(rad), x * sin(rad) + y * cos(rad)}; }
+
+    Point rot(const long double &sinr) const {
+        const long double cosr = sqrt(1 - sinr * sinr);
+        return Point(x * cosr - y * sinr, x * sinr + y * cosr);
+    }
 };
 
 template<typename T>
@@ -80,6 +84,43 @@ constexpr int N = 50;
 int n;
 vector<Point<db> > a;
 
+inline bool check(db d, Line<db> l, Line<db> r) {
+    Point<db> lx(1e12, 1e12), rx(-1e12, -1e12);
+    bool check = true;
+    for (auto s: a) {
+        if (l.v.toleft(s - l.p) * r.v.toleft(s - r.p) < eps) continue;
+        auto sx = l.proj(s);
+        lx = min(lx, sx);
+        rx = max(rx, sx);
+        check = false;
+    }
+    return lx.dis(rx) <= d + eps || check;
+}
+
+inline bool check(db d, Point<db> a, Point<db> b) {
+    long double len = a.dis(b);
+    Point v = a - b;
+    if (len < d + eps) {
+        v = {-v.y, v.x};
+        return check(d, Line(a, v), Line(b, v));
+    }
+    long double sinx = d / len;
+    v = (a - b).rot(sinx);
+    if (check(d, Line(a, v), Line(b, v))) return true;
+    v = (a - b).rot(-sinx);
+    if (check(d, Line(a, v), Line(b, v))) return true;
+    return false;
+}
+
+inline bool check(db d) {
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (check(d, a[i], a[j])) return true;
+        }
+    }
+    return false;
+}
+
 inline void Zlin() {
     cin >> n;
     for (int i = 0; i < n; i++) {
@@ -87,11 +128,13 @@ inline void Zlin() {
         cin >> x >> y;
         a.emplace_back(x, y);
     }
-    db l = 0, r = 2e5, mid;
+    db l = 0, r = 5e5, mid;
     while (fabs(r - l) > eps) {
         mid = (l + r) / 2;
+        if (check(mid)) r = mid;
+        else l = mid;
     }
-    cout << l << endl;
+    cout << fixed << setprecision(9) << l << endl;
 }
 
 signed main() {
