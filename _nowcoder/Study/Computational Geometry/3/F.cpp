@@ -60,7 +60,7 @@ struct point {
     }
 };
 
-using Point = point<double>;
+using Point = point<ll>;
 
 bool is_on(const Point p, const Point a, const Point b) {
     return abs((p - a) ^ (p - b)) <= eps && (p - a) * (p - b) <= eps;
@@ -81,10 +81,6 @@ bool argcmp(const Point &a, const Point &b) {
     return res > eps;
 }
 
-bool check(const Point &a, const Point &b) {
-    return (a ^ b) < eps && (a * b) > -eps;
-}
-
 constexpr int N = 1000;
 
 int n, ans, c[N], sum[2];
@@ -96,14 +92,13 @@ inline int solve(int idx) {
         if (i == idx) continue;
         tmp.emplace_back(p[i] - p[idx], c[i]);
     }
-    sort(tmp.begin(), tmp.end());
     map<Point, array<int, 2>, decltype(&argcmp)> cnt(&argcmp);
     for (auto [p, r]: tmp) cnt[p][r]++;
     vector<pair<Point, array<int, 2> > > a;
     for (auto it: cnt) a.emplace_back(it);
-    int siz = a.size(), ans = 0;
+    int siz = a.size();
     a.insert(a.end(), a.begin(), a.end());
-    int cntl[2]{};
+    int cntl[2]{}, ans = 1;
     for (int l = 0, r = 0; l < siz; l++) {
         if (l && a[l].first.toleft(a[l - 1].first) == -1) {
             cntl[0] -= a[l].second[0];
@@ -119,6 +114,7 @@ inline int solve(int idx) {
         int cntr[2]{}, cnto[2]{};
         cnto[0] = a[l].second[0];
         cnto[1] = a[l].second[1];
+        cnto[c[idx]]++;
         if (r < a.size() && a[l].first != a[r].first && !a[l].first.toleft(a[r].first)) {
             cnto[0] += a[r].second[0];
             cnto[1] += a[r].second[1];
@@ -134,10 +130,10 @@ inline void Zlin(int _n) {
     n = _n;
     ans = sum[0] = sum[1] = 0;
     p.clear();
-    for (int i = 1, x, y, r; i <= n; i++) {
+    for (int i = 0, x, y, r; i < n; i++) {
         cin >> x >> y >> r;
         p.emplace_back(x, y);
-        c[i - 1] = r;
+        c[i] = r;
         ++sum[r];
     }
     for (int i = 0; i < n; i++) ans = max(ans, solve(i));
