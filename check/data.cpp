@@ -14,18 +14,14 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-constexpr int N = 1e5;
+constexpr int N = 1e6;
 constexpr int INF = 1e9;
 
 int idx[2] = {1, -1};
 
 inline void Zlin() {
-    int n = rng() % 1000;
-    cout << n << endl;
-    for (int i = 1; i <= n; i++) {
-        int a = rng() % 100 * idx[rng() % 2], b = rng() % 100 * idx[rng() % 2], c = -a - b;
-        cout << a << ' ' << b << ' ' << c << endl;
-    }
+    int b = rng() % N + 1, a = rng() % b;
+    cout << a << ' ' << b << endl;
 }
 
 signed main() {

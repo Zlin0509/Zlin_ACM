@@ -1,5 +1,5 @@
 //
-// Created by Zlin on 2025/8/8.
+// Created by 27682 on 2025/9/15.
 //
 
 #include "bits/stdc++.h"
@@ -14,53 +14,39 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-int n;
-vll a, b, c, sa, sb, sc;
-
-
-inline void read() {
-    cin >> n;
-    a.assign(n, 0);
-    b.assign(n, 0);
-    c.assign(n, 0);
-    sa.assign(n, 0);
-    sb.assign(n, 0);
-    sc.assign(n, 0);
-    for (int i = 0; i < n; i++) cin >> a[i] >> b[i] >> c[i];
-}
+ll a, b, c, d;
+ll fac2[60], fac5[50], C;
 
 inline void Zlin() {
-    read();
-    sort(a.begin(), a.end());
-    sort(b.begin(), b.end());
-    sort(c.begin(), c.end());
-    sa[n - 1] = a[n - 1];
-    sb[n - 1] = b[n - 1];
-    sc[n - 1] = c[n - 1];
-    for (int i = n - 2; ~i; i--) {
-        sa[i] = a[i] + sa[i + 1];
-        sb[i] = b[i] + sb[i + 1];
-        sc[i] = c[i] + sc[i + 1];
-    }
-    ll ans = 1e18;
-    for (int i = a[0]; i <= a[n - 1]; i++) {
-        for (int j = b[0]; j <= b[n - 1]; j++) {
-            int k = -i - j;
-            ll tmp = 0;
-            for (int z = 0; z < n; z++) {
-                if (a[z] > i) tmp += a[z] - i;
-                if (b[z] > j) tmp += b[z] - j;
-                if (c[z] > k) tmp += c[z] - k;
-            }
-            ans = min(ans, tmp);
+    cin >> a >> b;
+    C = b;
+    for (int i = 0; i < 21; i++) {
+        for (int j = 0; j < 10; j++) {
+            ll base = fac2[i] * fac5[j];
+            if (b % base == 0) C = min(C, b / base);
         }
     }
-    cout << ans << endl;
+    c = d = 1e9;
+    for (int i = 0; fac2[i] * b < 1e16; i++) {
+        for (int j = 0; fac2[i] * fac2[j] * b < 1e16; j++) {
+            ll cx = (C - fac2[i] * fac5[j] % C * a % C) % C, dx = b * fac2[i] * fac5[j];
+            ll z = gcd(cx, dx);
+            cx /= z, dx /= z;
+            if (dx > 1e9) continue;
+            if (cx < c) c = cx, d = dx;
+            else if (cx == c) d = min(d, dx);
+        }
+    }
+    if (c == 1e9 || d == 1e9) while (1);
+    cout << c << ' ' << d << endl;
 }
 
 signed main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
+    fac2[0] = fac5[0] = 1;
+    for (int i = 1; i < 55; i++) fac2[i] = fac2[i - 1] * 2;
+    for (int i = 1; i < 35; i++) fac5[i] = fac5[i - 1] * 5;
     cin >> ttt;
     while (ttt--) Zlin();
     return 0;

@@ -10,7 +10,7 @@ int main() {
         system("/Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/data > data.txt");
         system("/Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/WA < /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/data.txt > /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/WA.txt");
         system("/Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/AC < /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/data.txt > /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/AC.txt");
-        if (system("diff /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/AC.txt /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/WA.txt")) {
+        if (system("fc /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/AC.txt /Users/zlin/Desktop/Project/Code/Zlin_ACM/cmake-build-debug/WA.txt")) {
             cout << "WA!" << endl;
             break;
         }
