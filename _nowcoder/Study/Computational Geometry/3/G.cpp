@@ -94,7 +94,13 @@ inline void prework(int idx) {
     for (auto o: mp) tmp.emplace_back(o.first);
     int siz = tmp.size();
     tmp.insert(tmp.end(), tmp.begin(), tmp.end());
-    for (int l = 0, r = 0, cnt; l < siz; l++) {
+    for (int l = 0, r = 0, cnt = 0; l < siz; l++) {
+        if (l) cnt -= mp[tmp[l - 1]];
+        cnt += mp[tmp[l]];
+        while (r < tmp.size() && tmp[l].toleft(tmp[r]) == 1) {
+            if (l != r) cnt += mp[tmp[r]];
+            ++r;
+        }
     }
 }
 
