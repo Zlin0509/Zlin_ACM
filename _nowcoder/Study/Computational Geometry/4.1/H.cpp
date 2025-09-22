@@ -62,33 +62,11 @@ struct Point {
     // 逆时针旋转（给定角度的正弦与余弦）
 };
 
-// 极角排序
-struct Argcmp {
-    bool operator()(const Point &a, const Point &b) const {
-        const int qa = a.quad(), qb = b.quad();
-        if (qa != qb) return qa < qb;
-        const auto t = a ^ b;
-        // if (abs(t)<=eps) return a*a<b*b-eps;  // 不同长度的向量需要分开
-        return t > eps;
-    }
-};
-
 // 直线
 struct Line {
     Point p, v; // p 为直线上一点，v 为方向向量
 
-    bool operator==(const Line &a) const { return v.toleft(a.v) == 0 && v.toleft(p - a.p) == 0; }
-    int toleft(const Point &a) const { return v.toleft(a - p); } // to-left 测试
-    bool operator<(const Line &a) const // 半平面交算法定义的排序
-    {
-        if (abs(v ^ a.v) <= eps && v * a.v >= -eps) return toleft(a.p) == -1;
-        return Argcmp()(v, a.v);
-    }
-
-    // 必须用浮点数
-    Point inter(const Line &a) const { return p + v * ((a.v ^ (p - a.p)) / (v ^ a.v)); } // 直线交点
     T dis(const Point &a) const { return abs(v ^ (a - p)) / v.len(); } // 点到直线距离
-    Point proj(const Point &a) const { return p + v * ((v * (a - p)) / (v * v)); } // 点在直线上的投影
 };
 
 // 多边形
@@ -97,44 +75,31 @@ struct Polygon {
 
     size_t nxt(const size_t i) const { return i == p.size() - 1 ? 0 : i + 1; }
     size_t pre(const size_t i) const { return i == 0 ? p.size() - 1 : i - 1; }
-
-    // 回转数
-    // 返回值第一项表示点是否在多边形边上
-    // 对于狭义多边形，回转数为 0 表示点在多边形外，否则点在多边形内
-    pair<bool, int> winding(const Point &a) const {
-        int cnt = 0;
-        for (size_t i = 0; i < p.size(); i++) {
-            const Point u = p[i], v = p[nxt(i)];
-            if (abs((a - u) ^ (a - v)) <= eps && (a - u) * (a - v) <= eps) return {true, 0};
-            if (abs(u.y - v.y) <= eps) continue;
-            const Line uv = {u, v - u};
-            if (u.y < v.y - eps && uv.toleft(a) <= 0) continue;
-            if (u.y > v.y + eps && uv.toleft(a) >= 0) continue;
-            if (u.y < a.y - eps && v.y >= a.y - eps) cnt++;
-            if (u.y >= a.y - eps && v.y < a.y - eps) cnt--;
-        }
-        return {false, cnt};
-    }
-
-    // 多边形面积的两倍
-    // 可用于判断点的存储顺序是顺时针或逆时针
-    T area() const {
-        T sum = 0;
-        for (size_t i = 0; i < p.size(); i++) sum += p[i] ^ p[nxt(i)];
-        return sum;
-    }
-
-    // 多边形的周长
-    T circ() const {
-        T sum = 0;
-        for (size_t i = 0; i < p.size(); i++) sum += p[i].dis(p[nxt(i)]);
-        return sum;
-    }
 };
+
+T p2seg(const Point &u, const Point &v, const Point &p) {
+    Line uv = {u, v - u};
+    if ((p - u) * (v - u) >= -eps && (p - v) * (u - v) >= -eps) return uv.dis(p);
+    return min(p.dis(u), p.dis(v));
+}
 
 //凸多边形
 struct Convex : Polygon {
-    T rotcaliper(Convex &b) const {
+    T rotcaliper(const Convex &b) const {
+        const auto &p1 = this->p, &p2 = b.p;
+        const auto area = [](const Point &u, const Point &v, const Point &w) { return (w - u) ^ (w - v); };
+        T ans = INF;
+        int r = 0;
+        for (int i = 0; i < p2.size(); i++) if (area(p2[i], p1[0], p1[1]) >= area(p2[r], p1[0], p1[1]) - eps) r = i;
+        for (size_t i = 0, j = r; i < p1.size(); i++) {
+            const auto nxti = this->nxt(i);
+            ans = min(ans, p2seg(p1[i], p1[nxti], p2[j]));
+            while (area(p2[b.nxt(j)], p1[i], p1[nxti]) >= area(p2[j], p1[i], p1[nxti]) - eps) {
+                j = b.nxt(j);
+                ans = min(ans, p2seg(p1[i], p1[nxti], p2[j]));
+            }
+        }
+        return ans;
     }
 };
 
@@ -161,9 +126,7 @@ Convex convexhull(vector<Point> p) {
     return Convex{res};
 }
 
-inline void Zlin() {
-    int n, m;
-    cin >> n >> m;
+inline void Zlin(int n, int m) {
     vector<Point> p1, p2;
     for (int i = 0; i < n; i++) {
         T x, y;
@@ -176,12 +139,17 @@ inline void Zlin() {
         p2.emplace_back(x, y);
     }
     Convex c1 = convexhull(p1), c2 = convexhull(p2);
-    cout << fixed << setprecision(9) << c1.rotcaliper(c2) << endl;
+    T ans = min(c1.rotcaliper(c2), c2.rotcaliper(c1));
+    cout << fixed << setprecision(9) << ans << endl;
 }
 
 signed main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
-    int ttt = 1;
-    while (ttt--) Zlin();
+    while (1) {
+        int n, m;
+        cin >> n >> m;
+        if (!n && !m) break;
+        Zlin(n, m);
+    }
     return 0;
 }
