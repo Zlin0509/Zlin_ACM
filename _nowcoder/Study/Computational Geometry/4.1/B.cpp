@@ -217,7 +217,6 @@ Convex convexhull(vector<Point> p) {
     return Convex{res};
 }
 
-
 inline void Zlin() {
     int n;
     vector<Point> p;
