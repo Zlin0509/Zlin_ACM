@@ -3,4 +3,4 @@ project(Zlin_ACM)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(G "_nowcoder/Study/Computational Geometry/4.1/G.cpp")
+add_executable(std Game/Fun-Tree/std.cpp)

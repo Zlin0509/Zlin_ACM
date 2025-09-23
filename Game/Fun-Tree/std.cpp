@@ -1,5 +1,5 @@
 //
-// Created by 27682 on 2025/9/5.
+// Created by Zlin on 2025/9/23.
 //
 
 #include "bits/stdc++.h"
@@ -14,153 +14,89 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-constexpr int N = 2e3 + 10;
+constexpr int N = 2e5 + 10;
 
-/*
+vi e[N], E[N];
 
-1
-5 4 2
-1 2
-2 3
-3 1
-4 5
-4 5
-1 2
+int dfn[N], low[N], tot = 0;
+int cnt = 0;
+int vis[N], fa[N], compID[N], siz[N];
 
-1
-5 5 2
-1 2
-2 3
-3 1
-3 4
-4 5
-4 5
-1 3
+set<pii> bridges;
 
-1
-5 6 2
-1 2
-2 3
-3 1
-3 4
-4 5
-5 1
-4 5
-1 3
-
- */
-
-int n, m, q;
-
-struct BCT {
-    int n, tot, ts;
-    vi g[N]; // 原图邻接表
-    vi tg[N * N]; // 圆方树邻接表
-    int dfn[N], low[N];
-    int st[N], st_sz;
-    bool cut[N];
-
-    BCT() { init(0); }
-
-    void init(int _n) {
-        n = _n;
-        tot = n;
-        ts = 0;
-        st_sz = 0;
-        memset(dfn, 0, sizeof(int) * (n + 1));
-        memset(low, 0, sizeof(int) * (n + 1));
-        memset(cut, 0, sizeof(int) * (n + 1));
-        for (int i = 0; i <= n; i++) g[i].clear();
-        for (int i = 0; i <= n * (n + 1); i++) tg[i].clear();
+inline void tarjan(int u) {
+    vis[u] = true;
+    dfn[u] = low[u] = ++tot;
+    for (int v: E[u]) {
+        if (!vis[v]) {
+            fa[v] = u;
+            tarjan(v);
+            low[u] = min(low[u], low[v]);
+            if (low[v] > dfn[u]) bridges.insert({min(u, v), max(u, v)});
+        } else if (v != fa[u]) low[u] = min(low[u], dfn[v]);
     }
+}
 
-    void add(int u, int v) {
-        g[u].push_back(v);
-        g[v].push_back(u);
+inline void dfs(int u, int ID) {
+    compID[u] = ID;
+    for (int v: E[u])
+        if (compID[v] == -1 && bridges.find({min(u, v), max(u, v)}) == bridges.end())
+            dfs(v, ID);
+}
+
+inline void build(int n) {
+    for (int i = 1; i <= n; i++) if (!dfn[i]) tarjan(i);
+    fill(compID + 1, compID + n + 1, -1);
+    for (int i = 1; i <= n; i++)
+        if (compID[i] == -1)
+            dfs(i, ++cnt);
+    for (auto it: bridges) {
+        int u = compID[it.first], v = compID[it.second];
+        e[u].push_back(v);
+        e[v].push_back(u);
     }
+    for (int i = 1; i <= n; i++) siz[compID[i]]++;
+}
 
-    void tarjan(int u, int fa) {
-        dfn[u] = low[u] = ++ts;
-        st[st_sz++] = u;
-        int son = 0;
-        for (int v: g[u]) {
-            if (!dfn[v]) {
-                tarjan(v, u);
-                low[u] = min(low[u], low[v]);
-                if (low[v] >= dfn[u]) {
-                    son++;
-                    if (fa != -1 || son > 1) cut[u] = true;
-                    vi bcc;
-                    while (true) {
-                        int x = st[--st_sz];
-                        bcc.push_back(x);
-                        if (x == v) break;
-                    }
-                    bcc.push_back(u);
-                    if (bcc.size() > 2) {
-                        ++tot;
-                        tg[tot].clear();
-                        for (int x: bcc) {
-                            tg[tot].push_back(x);
-                            tg[x].push_back(tot);
-                        }
-                    }
-                }
-            } else if (v != fa) low[u] = min(low[u], dfn[v]);
-        }
+int n, m, q, val[N];
+int ffa[N][22], dep[N];
+
+inline void dfs1(int u, int f) {
+    ffa[u][0] = f;
+    for (int i = 1; i < 22; i++) ffa[u][i] = ffa[ffa[u][i - 1]][i - 1];
+    dep[u] = dep[f] + 1;
+    val[u] = (siz[u] > 1) + val[f];
+    for (int v: e[u]) {
+        if (v == f) continue;
+        dfs1(v, u);
     }
+}
 
-    void build() {
-        for (int i = 1; i <= n; i++)
-            if (!dfn[i]) {
-                st_sz = 0;
-                tarjan(i, -1);
-            }
-    }
-} bct;
-
-struct LCA {
-    int dep[N * N], f[N * N][22];
-
-    void init(int n) {
-        memset(dep, 0, sizeof(int) * (n + 1));
-        for (int i = 0; i <= n; i++) memset(f[i], 0, sizeof(f[i]));
-    }
-
-    void dfs(int u, int fa, vi g[]) {
-        f[u][0] = fa;
-        for (int i = 1; i < 22; i++) f[u][i] = f[f[u][i - 1]][i - 1];
-        for (int v: g[u]) {
-            if (v == fa) continue;
-            dep[v] = dep[u] + 1;
-            dfs(v, u, g);
-        }
-    }
-
-    int find(int u, int v) {
-        if (dep[u] < dep[v]) swap(u, v);
-        for (int i = 21; ~i; i--) if (dep[f[u][i]] >= dep[v]) u = f[u][i];
-        if (u == v) return u;
-        for (int i = 21; ~i; i--) if (f[u][i] != f[v][i]) u = f[u][i], v = f[v][i];
-        return f[u][0];
-    }
-} lca;
+inline int lca(int u, int v) {
+    if (dep[u] < dep[v]) swap(u, v);
+    for (int i = 21; ~i; i--) if (dep[ffa[u][i]] >= dep[v]) u = ffa[u][i];
+    if (u == v) return u;
+    for (int i = 21; ~i; i--) if (ffa[u][i] != ffa[v][i]) u = ffa[u][i], v = ffa[v][i];
+    return ffa[u][0];
+}
 
 inline void Zlin() {
-    cin >> n >> m >> q;
-    bct.init(n);
-    for (int i = 1, u, v; i <= m; i++) {
-        cin >> u >> v;
-        bct.add(u, v);
+    cin >> n >> m;
+    for (int i = 0, x, y; i < m; i++) {
+        cin >> x >> y;
+        E[x].emplace_back(y);
+        E[y].emplace_back(x);
     }
-    bct.build();
-    lca.init(bct.tot);
-    for (int i = n + 1; i <= bct.tot; i++) if (!lca.dep[i]) lca.dfs(i, 0, bct.tg);
-    for (int i = 1; i <= n; i++) if (!lca.dep[i]) lca.dfs(i, 0, bct.tg);
+    build(n);
+    dfs1(1, 0);
+    cin >> q;
     while (q--) {
-        int u, v;
-        cin >> u >> v;
-        cout << (lca.find(u, v) > n ? "Yes" : "No") << endl;
+        int x, y;
+        cin >> x >> y;
+        x = compID[x], y = compID[y];
+        int s = lca(x, y);
+        int ans = val[x] + val[y] - val[s] - val[ffa[s][0]];
+        cout << (ans ? "YES" : "NO") << endl;
     }
 }
 
