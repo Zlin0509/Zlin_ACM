@@ -20,7 +20,6 @@ constexpr T eps = 1e-8;
 constexpr T INF = numeric_limits<T>::max();
 constexpr T PI = 3.1415926535897932384l;
 
-// 点与向量
 struct Point {
     T x, y;
 
@@ -62,9 +61,14 @@ struct Point {
     // 逆时针旋转（给定角度的正弦与余弦）
 };
 
-// 极角排序
 struct Argcmp {
-    bool operator()(const Point &a, const Point &b) const {
+    Point o;
+
+    Argcmp(const Point &origin = Point(0, 0)) : o(origin) {
+    }
+
+    bool operator()(const Point &ax, const Point &bx) const {
+        const auto a = ax - o, b = bx - o;
         const int qa = a.quad(), qb = b.quad();
         if (qa != qb) return qa < qb;
         const auto t = a ^ b;
@@ -73,7 +77,6 @@ struct Argcmp {
     }
 };
 
-// 直线
 struct Line {
     Point p, v; // p 为直线上一点，v 为方向向量
 
@@ -91,7 +94,6 @@ struct Line {
     Point proj(const Point &a) const { return p + v * ((v * (a - p)) / (v * v)); } // 点在直线上的投影
 };
 
-//线段
 struct Segment {
     Point a, b;
 
@@ -135,7 +137,6 @@ struct Segment {
     }
 };
 
-// 多边形
 struct Polygon {
     vector<Point> p; // 以逆时针顺序存储
 
@@ -176,7 +177,6 @@ struct Polygon {
     }
 };
 
-//凸多边形
 struct Convex : Polygon {
     // 闵可夫斯基和
     Convex operator+(const Convex &c) const {
@@ -279,30 +279,31 @@ struct Convex : Polygon {
     }
 };
 
-Convex convexhull(vector<Point> p) {
-    vector<Point> res;
-    if (p.empty()) return {res};
-    const auto check = [](const vector<Point> &res, const Point &u) {
-        const auto b1 = res.back(), b2 = *prev(res.end(), 2);
-        return (b1 - b2).toleft(u - b1) <= 0;
-    };
-    sort(p.begin(), p.end());
-    for (const auto &u: p) {
-        while (res.size() > 1 && check(res, u)) res.pop_back();
-        res.emplace_back(u);
+inline Convex prework(const Convex &a, const Convex &b) {
+    const auto &p1 = a.p;
+    const auto &p2 = b.p;
+    vector<Point> res = a.p;
+    int l = 1e6, r = 0;
+    for (int i = 0, nxti; i < p2.size(); i++) {
+        nxti = b.nxt(i);
+        Line s(p1[0], p1[1] - p1[0]);
+        Segment w(p2[i], p2[nxti]);
+        if (w.is_inter(s)) {
+            l = min(l, i);
+            r = max(r, i);
+        }
     }
-    int siz = res.size();
-    res.pop_back();
-    reverse(p.begin(), p.end());
-    for (const auto &u: p) {
-        while (res.size() > siz && check(res, u)) res.pop_back();
-        res.emplace_back(u);
+    for (int i = 0, nxti; i < p1.size(); i++) {
+        nxti = a.nxt(i);
+        Line s(p1[i], p1[nxti] - p1[i]);
+        while (Segment(p2[l], p2[b.nxt(l)]).is_inter(s)) l = b.nxt(l);
+        r = max(r, l + 1);
+        while (Segment(p2[r], p2[b.nxt(r)]).is_inter(s)) r = b.nxt(r);
+        res.emplace_back(s.inter(Line(p2[l], p2[b.nxt(l)] - p2[l])));
+        res.emplace_back(s.inter(Line(p2[r], p2[b.nxt(r)] - p2[r])));
     }
-    res.pop_back();
+    sort(res.begin(), res.end(), Argcmp(p2[0]));
     return {res};
-}
-
-inline void prework(Convex &a, const Convex &b) {
 }
 
 inline void Zlin() {
@@ -319,8 +320,7 @@ inline void Zlin() {
         cin >> x >> y;
         b.p.emplace_back(x, y);
     }
-    prework(a, b);
-    a = convexhull(a.p);
+    a = prework(a, b);
 }
 
 signed main() {
