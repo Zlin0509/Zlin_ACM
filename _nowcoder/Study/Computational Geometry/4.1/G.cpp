@@ -1,5 +1,5 @@
 //
-// Created by Zlin on 2025/9/22.
+// Created by 27682 on 2025/9/23.
 //
 
 #include "bits/stdc++.h"
@@ -14,25 +14,13 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-
 inline void Zlin() {
-    db n, w, u, v;
-    cin >> n >> w >> v >> u;
-    db l = 1e18, r = 0;
-    for (int i = 0; i < n; i++) {
-        double x, y;
-        cin >> x >> y;
-        l = min(l, x - y / u * v);
-        r = max(r, x - y / u * v);
-    }
-    db ans = w / u;
-    if (l < 0) ans += r / v;
-    cout << fixed << setprecision(9) << ans << endl;
 }
 
 signed main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
