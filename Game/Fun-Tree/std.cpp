@@ -80,23 +80,40 @@ inline int lca(int u, int v) {
     return ffa[u][0];
 }
 
+int fx[N];
+
+inline int find(int u) { return fx[u] == u ? u : fx[u] = find(fx[u]); }
+
+inline void merge(int x, int y) {
+    int fxx = find(x), fyy = find(y);
+    if (fxx == fyy) return;
+    fx[fxx] = fyy;
+}
+
 inline void Zlin() {
     cin >> n >> m;
+    for (int i = 1; i <= n; i++) fx[i] = i;
     for (int i = 0, x, y; i < m; i++) {
         cin >> x >> y;
         E[x].emplace_back(y);
         E[y].emplace_back(x);
+        merge(x, y);
     }
     build(n);
-    dfs1(1, 0);
+    fill(vis + 1, vis + 1 + n, 0);
+    for (int i = 1; i <= n; i++) if (!vis[i]) dfs1(i, 0);
     cin >> q;
     while (q--) {
         int x, y;
         cin >> x >> y;
-        x = compID[x], y = compID[y];
-        int s = lca(x, y);
-        int ans = val[x] + val[y] - val[s] - val[ffa[s][0]];
-        cout << (ans ? "YES" : "NO") << endl;
+        if (find(x) != find(y)) {
+            cout << "NO" << endl;
+        } else {
+            x = compID[x], y = compID[y];
+            int s = lca(x, y);
+            int ans = val[x] + val[y] - val[s] - val[ffa[s][0]];
+            cout << (ans ? "YES" : "NO") << endl;
+        }
     }
 }
 

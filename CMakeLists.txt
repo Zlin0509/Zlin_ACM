@@ -3,5 +3,6 @@ project(Zlin_ACM)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(C "_CF/GYM/The 2021 China Collegiate Programming Contest/C.cpp")
-add_executable(WA check/WA.cpp)
+add_executable(std Game/Fun-Tree/std.cpp)
+add_executable(gen1 Game/Fun-Tree/gen1.cpp)
+add_executable(gen Game/Fun-Tree/gen.cpp)
