@@ -91,7 +91,7 @@ inline void merge(int x, int y) {
 }
 
 inline void Zlin() {
-    cin >> n >> m;
+    cin >> n >> m >> q;
     for (int i = 1; i <= n; i++) fx[i] = i;
     for (int i = 0, x, y; i < m; i++) {
         cin >> x >> y;
@@ -101,8 +101,7 @@ inline void Zlin() {
     }
     build(n);
     fill(vis + 1, vis + 1 + n, 0);
-    for (int i = 1; i <= n; i++) if (!vis[i]) dfs1(i, 0);
-    cin >> q;
+    for (int i = 1; i <= cnt; i++) if (!vis[i]) dfs1(i, 0);
     while (q--) {
         int x, y;
         cin >> x >> y;

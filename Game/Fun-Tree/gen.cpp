@@ -8,32 +8,26 @@ long long Rand(long long l, long long r) {
     return dist(rng);
 }
 
-int main(int argc, char *argv[]) {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main() {
+    // int seed = stoi(argv[1]);
+    // rng.seed(seed);
 
-    int seed = stoi(argv[1]);
-    rng.seed(seed);
-
-    // ========== 参数配置 ==========
     int n = 100000; // 最大点数
-    int m = 100000; // 最大边数
-    int q = 100000; // 最大询问数
+    int m = 1000; // 最大边数
+    int q = 1000; // 最大询问数
 
-    cout << n << " " << m << "\n";
+    cout << n << " " << m << " " << q << "\n";
 
-    // ========== 生成额外随机边 ==========
-    for (int i = 1; i <= n; i++) cout << i << ' ' << (i + 1 > n ? 1 : i + 1) << '\n';
+    for (int i = 1; i <= m; i++) cout << i << ' ' << (i + 1 > n ? 1 : i + 1) << '\n';
 
-    cout << q << '\n';
-
-    // ========== 生成 q 个随机询问 ==========
     for (int i = 0; i < q; i++) {
         int u = Rand(1, n);
         int v = Rand(1, n);
         while (u == v) v = Rand(1, n); // 保证 u != v
         cout << u << " " << v << "\n";
     }
+
+    cout << endl;
 
     return 0;
 }
