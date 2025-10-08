@@ -14,32 +14,9 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-using T = __int128;
+using T = long long;
 
 constexpr T eps = 1e-9;
-
-inline T abs(T x) { return x < 0 ? -x : x; }
-
-// 输出 __int128
-void print128(T x) {
-    if (x < 0) {
-        putchar('-');
-        x = -x;
-    }
-    if (x > 9) print128(x / 10);
-    putchar((int) (x % 10) + '0');
-}
-
-// 输入 __int128
-T read128() {
-    T x = 0, sign = 1;
-    char c;
-    while (!isdigit(c = getchar())) if (c == '-') sign = -1;
-    do {
-        x = x * 10 + (c - '0');
-    } while (isdigit(c = getchar()));
-    return x * sign;
-}
 
 struct Point {
     T x, y;
@@ -139,6 +116,7 @@ Convex convexhull(vector<Point> p) {
         res.emplace_back(u);
     }
     res.pop_back();
+    if (res.size() >= 3 && (res[1] - res[0]).toleft(res[2] - res[1]) < 0) reverse(res.begin(), res.end());
     return {res};
 }
 
@@ -148,15 +126,24 @@ T sum[N + 2]{}, all = 0;
 
 inline T cal(size_t i, size_t j, const Point &u, const vector<Point> &p) {
     T res = 0;
-    if ((p[j] - p[i]).toleft(u - p[i]) < 0) swap(i, j);
     if (i < j) {
-        res = all - sum[(j >= 1 ? j - 1 : N)] + sum[(i >= 1 ? i - 1 : N)];
-        res += (p[j] ^ u) + (u ^ p[i]);
+        if ((p[j] - p[i]).toleft(u - p[i]) < 0) {
+            res = all - sum[(j >= 1 ? j - 1 : N)] + sum[(i >= 1 ? i - 1 : N)] + (p[i] ^ p[j]);
+            res = abs(res) + abs((p[j] ^ u) + (u ^ p[i]) + (p[i] ^ p[j]));
+        } else {
+            res = sum[(j >= 1 ? j - 1 : N)] - sum[(i >= 1 ? i - 1 : N)] + (p[j] ^ p[i]);
+            res = abs(res) + abs((p[j] ^ u) + (u ^ p[i]) + (p[i] ^ p[j]));
+        }
     } else {
-        res = sum[(i >= 1 ? i - 1 : N)] - sum[(j >= 2 ? j - 2 : N)];
-        res += (p[i] ^ u) + (u ^ p[j]);
+        if ((p[j] - p[i]).toleft(u - p[i]) < 0) {
+            res = sum[(i >= 1 ? i - 1 : N)] - sum[(j >= 1 ? j - 1 : N)] + (p[i] ^ p[j]);
+            res = abs(res) + abs((p[j] ^ u) + (u ^ p[i]) + (p[i] ^ p[j]));
+        } else {
+            res = all - sum[(i >= 1 ? i - 1 : N)] + sum[(j >= 1 ? j - 1 : N)] + (p[j] ^ p[i]);
+            res = abs(res) + abs((p[j] ^ u) + (u ^ p[i]) + (p[i] ^ p[j]));
+        }
     }
-    return abs(res);
+    return res;
 }
 
 inline void Zlin() {
@@ -166,8 +153,7 @@ inline void Zlin() {
     Convex poly;
     for (int i = 0; i < n; i++) {
         T x, y;
-        x = read128();
-        y = read128();
+        cin >> x >> y;
         if (i < k) poly.p.emplace_back(x, y);
         else v.emplace_back(x, y);
     }
@@ -178,13 +164,14 @@ inline void Zlin() {
         sum[i] = poly.p[i] ^ poly.p[nxti];
         if (i) sum[i] += sum[i - 1];
     }
-    T ans = all = abs(sum[poly.p.size() - 1]);
+    all = sum[siz - 1];
+    T ans = abs(all);
     for (const auto &u: v) {
         if (poly.is_in(u) != 0) continue;
         auto [i, j] = poly.tangent(u);
         ans = max(ans, cal(i, j, u, poly.p));
     }
-    print128(ans / 2);
+    cout << ans / 2;
     if (ans & 1) cout << ".5";
     else cout << ".0";
 }
