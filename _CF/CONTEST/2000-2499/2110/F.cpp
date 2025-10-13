@@ -14,7 +14,31 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
+constexpr int N = 1e6 + 5;
+
 inline void Zlin() {
+    int n;
+    cin >> n;
+    vi a(n);
+    for (int &it: a) cin >> it;
+    int maxn = a[0], ans = 0;
+    auto cal = [](int x, int y) {
+        return x % y + y % x;
+    };
+    cout << 0 << ' ';
+    for (int i = 1; i < n; i++) {
+        ans = max(ans, cal(a[i], maxn));
+        if (a[i] > maxn) {
+            if (a[i] >= maxn * 2) {
+                maxn = a[i];
+                for (int j = 0; j < i; j++) {
+                    ans = max(ans, cal(a[j], maxn));
+                }
+            } else ans = maxn = a[i];
+        }
+        cout << ans << ' ';
+    }
+    cout << endl;
 }
 
 signed main() {
