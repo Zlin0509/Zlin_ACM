@@ -15,8 +15,22 @@ typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
 constexpr ll mo = 998244353;
+constexpr int N = 501;
+
+ll dp[N][N];
 
 inline void Zlin() {
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    s = ' ' + s;
+    memset(dp, 0, sizeof(dp));
+    for (int i = 1; i <= n; i++) {
+        int op = s[i] - '0';
+        for (int j = 0; j <= k; j++) {
+        }
+    }
 }
 
 signed main() {
