@@ -27,10 +27,15 @@ inline void Zlin() {
     s = ' ' + s;
     memset(dp, 0, sizeof(dp));
     for (int i = 1; i <= n; i++) {
-        int op = s[i] - '0';
+        int op = s[i] - '0', tmp;
         for (int j = 0; j <= k; j++) {
+            for (int q = 0; q + j <= k; q++) {
+                tmp = k - q - j;
+                if (tmp - op < q) continue;
+            }
         }
     }
+    cout << dp[n][k] << endl;
 }
 
 signed main() {
