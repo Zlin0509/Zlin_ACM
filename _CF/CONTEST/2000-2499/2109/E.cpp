@@ -15,9 +15,33 @@ typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
 constexpr ll mo = 998244353;
-constexpr int N = 501;
+constexpr int N = 502;
 
 ll dp[N][N];
+
+ll fac[N], inv[N];
+
+inline ll qpow(ll a, ll b) {
+    ll res = 1;
+    while (b) {
+        if (b & 1) res = res * a % mo;
+        a = a * a % mo;
+        b >>= 1;
+    }
+    return res;
+}
+
+inline void init() {
+    fac[0] = inv[0] = 1;
+    for (int i = 1; i < N; i++) fac[i] = fac[i - 1] * i % mo;
+    inv[N - 1] = qpow(fac[N - 1], mo - 2);
+    for (int i = N - 2; i; i--) inv[i] = inv[i + 1] * (i + 1) % mo;
+}
+
+inline ll C(int n, int k) {
+    if (n < k) return 0;
+    return fac[n] * inv[k] % mo * inv[n - k] % mo;
+}
 
 inline void Zlin() {
     int n, k;
@@ -25,22 +49,24 @@ inline void Zlin() {
     string s;
     cin >> s;
     s = ' ' + s;
-    memset(dp, 0, sizeof(dp));
-    for (int i = 1; i <= n; i++) {
-        int op = s[i] - '0', tmp;
+    for (int i = 1; i <= n + 1; i++) for (int j = 0; j <= k; j++) dp[i][j] = 0;
+    dp[n + 1][0] = 1;
+    for (int i = n + 1; i > 1; i--) {
+        int op = s[i - 1] - '0';
         for (int j = 0; j <= k; j++) {
             for (int q = 0; q + j <= k; q++) {
-                tmp = k - q - j;
-                if (tmp - op < q) continue;
+                if (op) dp[i - 1][j + q] = (dp[i - 1][j + q] + dp[i][j] * C((j + q) / 2, q) % mo) % mo;
+                else dp[i - 1][j + q] = (dp[i - 1][j + q] + dp[i][j] * C((j + q + 1) / 2, q) % mo) % mo;
             }
         }
     }
-    cout << dp[n][k] << endl;
+    cout << dp[1][k] << endl;
 }
 
 signed main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
+    init();
     cin >> ttt;
     while (ttt--) Zlin();
     return 0;
