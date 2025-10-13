@@ -14,7 +14,7 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-constexpr int N = 2e5 + 10;
+constexpr int N = 4e5 + 10;
 
 vi e[N], E[N];
 
@@ -119,6 +119,10 @@ inline void Zlin() {
 signed main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
+    clock_t start = clock(); // 开始计时
     while (ttt--) Zlin();
+    clock_t end = clock(); // 结束计时
+    double time_taken = double(end - start) / CLOCKS_PER_SEC;
+    cout << "运行时间: " << time_taken << " 秒" << endl;
     return 0;
 }
