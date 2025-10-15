@@ -1870,30 +1870,69 @@ vector<int> multiply(const vector<int>& A, const vector<int>& B) {
 ### 多项式乘法
 
 ```c++
-// 多项式乘法
-vector<int> multiply(const vector<int> &A, const vector<int> &B) {
+const ldb PI = acosl(-1.0L);
+
+struct Cp {
+    ldb r, i;
+
+    Cp(ldb _r = 0, ldb _i = 0) : r(_r), i(_i) {
+    }
+
+    Cp operator+(const Cp &o) const { return Cp(r + o.r, i + o.i); }
+    Cp operator-(const Cp &o) const { return Cp(r - o.r, i - o.i); }
+    Cp operator*(const Cp &o) const { return Cp(r * o.r - i * o.i, r * o.i + i * o.r); }
+};
+
+// FFT 变换：d = 1 表 FFT，d = -1 表逆 FFT
+void fft(vector<Cp> &a, int d) {
+    int n = a.size();
+    for (int i = 1, j = 0; i < n; ++i) {
+        int bit = n >> 1;
+        for (; j & bit; bit >>= 1) j ^= bit;
+        j ^= bit;
+        if (i < j) swap(a[i], a[j]);
+    }
+
+    for (int len = 2; len <= n; len <<= 1) {
+        ldb ang = 2 * PI / len * d;
+        Cp wn(cosl(ang), sinl(ang));
+        for (int i = 0; i < n; i += len) {
+            Cp w(1, 0);
+            for (int j = 0; j < len / 2; ++j) {
+                Cp u = a[i + j];
+                Cp v = a[i + j + len / 2] * w;
+                a[i + j] = u + v;
+                a[i + j + len / 2] = u - v;
+                w = w * wn;
+            }
+        }
+    }
+
+    if (d == -1)
+        for (auto &x: a) {
+            x.r /= n;
+            x.i /= n;
+        }
+}
+
+// 多项式乘法：输入 A, B（整数向量），返回卷积结果（整数向量）
+vector<ll> multiply(const vector<ll> &A, const vector<ll> &B) {
+    if (A.empty() || B.empty()) return {};
+
     int n = 1;
-    while (n < A.size() + B.size()) n <<= 1;  // 取大于等于 A.size() + B.size() 的最小2的幂
+    while (n < (int) A.size() + (int) B.size() - 1) n <<= 1;
+
     vector<Cp> a(n), b(n);
+    for (size_t i = 0; i < A.size(); ++i) a[i].r = A[i];
+    for (size_t i = 0; i < B.size(); ++i) b[i].r = B[i];
 
-    for (int p = 0; p < A.size(); p++) a[p] = Cp(A[p], 0);
-    for (int p = 0; p < B.size(); p++) b[p] = Cp(B[p], 0);
+    fft(a, 1), fft(b, 1);
+    for (int i = 0; i < n; ++i) a[i] = a[i] * b[i];
+    fft(a, -1);
 
-    // 进行 FFT 变换
-    fft(a, n, 1);
-    fft(b, n, 1);
-
-    // 点乘：每个位置上的系数相乘
-    for (int p = 0; p < n; p++) a[p] = a[p] * b[p];
-
-    // 逆 FFT 变换
-    fft(a, n, -1);
-
-    // 提取结果并处理进位
-    vector<int> res(n);
-    for (int p = 0; p < n; p++)
-        res[p] = round(a[p].r);
-
+    vector<ll> res(A.size() + B.size() - 1);
+    for (size_t i = 0; i < res.size(); ++i)
+        res[i] = llround(a[i].r);
     return res;
 }
 ```
@@ -1905,53 +1944,124 @@ vector<int> multiply(const vector<int> &A, const vector<int> &B) {
 受模数的限制，数也比较大，但精度不易缺失
 
 ```c++
-const int MOD = 998244353;  // 质数模数 p
-const int G = 3;            // 原根 g
+constexpr ll MOD = 998244353, G = 3;
 
-// 快速幂计算 a^b % mod
-int mod_pow(int a, int b, int mod) {
-    int res = 1;
-    while (b > 0) {
-        if (b % 2 == 1) res = 1LL * res * a % mod;
-        a = 1LL * a * a % mod;
-        b /= 2;
+ll qpow(ll a, ll b, ll mod = MOD) {
+    ll res = 1;
+    while (b) {
+        if (b & 1) res = res * a % mod;
+        a = a * a % mod;
+        b >>= 1;
     }
     return res;
 }
 
-// NTT 核心函数
-void ntt(vector<int> &a, int n, int inv) {
-    // 二进制反转置换
+void ntt(vector<ll> &a, int n, int invert) {
     for (int i = 1, j = 0; i < n; i++) {
         int bit = n >> 1;
-        while (j >= bit) {
-            j -= bit;
-            bit >>= 1;
-        }
-        j += bit;
+        for (; j & bit; bit >>= 1) j ^= bit;
+        j ^= bit;
         if (i < j) swap(a[i], a[j]);
     }
 
-    // 进行 NTT
     for (int len = 2; len <= n; len <<= 1) {
-        int wlen = inv == 1 ? mod_pow(G, (MOD - 1) / len, MOD) : mod_pow(mod_pow(G, (MOD - 1) / len, MOD), MOD - 2, MOD);
+        ll wlen = qpow(G, (MOD - 1) / len);
+        if (invert) wlen = qpow(wlen, MOD - 2);
         for (int i = 0; i < n; i += len) {
-            int w = 1;
+            ll w = 1;
             for (int j = 0; j < len / 2; j++) {
-                int u = a[i + j];
-                int v = 1LL * a[i + j + len / 2] * w % MOD;
+                ll u = a[i + j];
+                ll v = a[i + j + len / 2] * w % MOD;
                 a[i + j] = (u + v) % MOD;
                 a[i + j + len / 2] = (u - v + MOD) % MOD;
-                w = 1LL * w * wlen % MOD;
+                w = w * wlen % MOD;
             }
         }
     }
 
-    // 如果是逆变换，需要除以 n (即乘以 n 的逆元)
-    if (inv == -1) {
-        int n_inv = mod_pow(n, MOD - 2, MOD);
-        for (int &x : a) x = 1LL * x * n_inv % MOD;
+    if (invert) {
+        ll inv_n = qpow(n, MOD - 2);
+        for (auto &x: a) x = x * inv_n % MOD;
     }
+}
+
+// 多项式乘法
+vector<ll> multiply(vector<ll> A, vector<ll> B) {
+    int n = 1;
+    while (n < (int) A.size() + (int) B.size()) n <<= 1;
+    A.resize(n);
+    B.resize(n);
+
+    ntt(A, n, 0);
+    ntt(B, n, 0);
+    for (int i = 0; i < n; i++) A[i] = A[i] * B[i] % MOD;
+    ntt(A, n, 1);
+
+    A.resize((int) A.size()); // 可以 trim 掉尾部 0
+    return A;
+}
+```
+
+### 1e18版
+
+```c++
+constexpr ll MOD = 180143985094819841; // 2^48 * 641 + 1
+constexpr ll G = 6; // 原根
+
+// 快速幂
+ll qpow(ll a, ll b) {
+    ll res = 1;
+    while (b) {
+        if (b & 1) res = (i128) res * a % MOD;
+        a = (i128) a * a % MOD;
+        b >>= 1;
+    }
+    return res;
+}
+
+// 原地 NTT, on = 1 为 DFT, on = -1 为 IDFT
+void ntt(vector<ll> &a, int on) {
+    int n = a.size();
+    for (int i = 1, j = 0; i < n - 1; i++) {
+        for (int k = n >> 1; (j ^= k) < k; k >>= 1);
+        if (i < j) swap(a[i], a[j]);
+    }
+
+    for (int m = 2; m <= n; m <<= 1) {
+        ll wn = qpow(G, (MOD - 1) / m);
+        if (on == -1) wn = qpow(wn, MOD - 2);
+        for (int k = 0; k < n; k += m) {
+            ll w = 1;
+            for (int j = 0; j < m / 2; j++) {
+                ll x = a[k + j];
+                ll y = (i128) a[k + j + m / 2] * w % MOD;
+                a[k + j] = (x + y) % MOD;
+                a[k + j + m / 2] = (x - y + MOD) % MOD;
+                w = (i128) w * wn % MOD;
+            }
+        }
+    }
+    if (on == -1) {
+        ll inv_n = qpow(n, MOD - 2);
+        for (auto &x: a) x = (i128) x * inv_n % MOD;
+    }
+}
+
+// 多项式乘法：C = A * B (mod MOD)
+vector<ll> multiply(const vector<ll> &A, const vector<ll> &B) {
+    int n = 1;
+    while (n < (int) A.size() + (int) B.size() - 1) n <<= 1;
+    vector<ll> a(A.begin(), A.end()), b(B.begin(), B.end());
+    a.resize(n);
+    b.resize(n);
+
+    ntt(a, 1);
+    ntt(b, 1);
+    for (int i = 0; i < n; i++) a[i] = (i128) a[i] * b[i] % MOD;
+    ntt(a, -1);
+
+    a.resize(A.size() + B.size() - 1);
+    return a;
 }
 ```
 
