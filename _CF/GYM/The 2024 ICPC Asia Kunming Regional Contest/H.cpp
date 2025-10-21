@@ -1,84 +1,80 @@
 //
-// Created by 27682 on 2025/3/30.
+// Created by 27682 on 2025/10/21.
 //
-#include "bits/stdc++.h"
-using namespace std;
-constexpr double pi = 3.14159265358979323846;
 
-struct node {
-    long long x, y;
+#include "bits/stdc++.h"
+#define endl '\n'
+using namespace std;
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+typedef double db;
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<long long> vll;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+
+using T = long double;
+
+constexpr T eps = 1e-8;
+constexpr T INF = numeric_limits<T>::max();
+constexpr T PI = 3.1415926535897932384l;
+
+struct Point {
+    T x, y;
+
+    T operator^(const Point &a) const { return x * a.y - y * a.x; }
+    T operator*(const Point &a) const { return x * a.x + y * a.y; }
+
+    int quad() const {
+        if (abs(x) <= eps && abs(y) <= eps) return 0;
+        if (abs(y) <= eps) return x > eps ? 1 : 5;
+        if (abs(x) <= eps) return y > eps ? 3 : 7;
+        return y > eps ? (x > eps ? 2 : 4) : (x > eps ? 8 : 6);
+    }
+
+    T len2() const { return (*this) * (*this); }
+    T len() const { return sqrtl(len2()); }
+    T ang(const Point &a) const { return acosl(max(-1.0l, min(1.0l, ((*this) * a) / (len() * a.len())))); }
 };
 
-long long cross(node a, node b) {
-    return a.x * b.x + a.y * b.y;
-}
-
-double clen(node a) {
-    return sqrt(a.x * a.x + a.y * a.y);
-}
-
-double cal(node a, node b) {
-    return acos(cross(a, b) / (clen(a) * clen(b)));
-}
-
-struct xx {
-    double val;
-    int cnt;
+struct Argcmp {
+    bool operator()(const Point &a, const Point &b) const {
+        const int qa = a.quad(), qb = b.quad();
+        if (qa != qb) return qa < qb;
+        const T t = a ^ b;
+        return t > eps;
+    }
 };
 
 inline void Zlin() {
     int n, k;
     cin >> n >> k;
-    vector<double> a;
-    for (int i = 1, x, y; i <= n; i++) {
-        cin >> x >> y;
-        if (!x && !y) {
-            --k;
-        } else {
-            double val = cal({x, y}, {1, 0});
-            if (y < 0)
-                val = 2 * pi - val;
-            a.push_back(val);
+    vector<Point> v(n);
+    for (auto &[x, y]: v) cin >> x >> y;
+    sort(v.begin(), v.end(), Argcmp());
+    map<Point, int, Argcmp> mp;
+    for (const auto &it: v) mp[it]++;
+    v.clear();
+    for (const auto &it: mp) v.emplace_back(it.first);
+    int siz = v.size();
+    v.insert(v.end(), v.begin(), v.end());
+    T ans = PI * 2;
+    for (int i = 0, j = 0, tmp = 0; i < siz; i++) {
+        while (j < v.size() && tmp < k) tmp += mp[v[j++]];
+        if (tmp >= k) {
+            cout << i << ' ' << j << endl;
+            ans = min(ans, fabs(v[i].ang(v[j - 1])));
         }
+        tmp -= mp[v[i]];
     }
-    double ans = 0.0;
-    if (k <= 0) ans = 0;
-    else if (k == n) ans = 2 * pi;
-    else {
-        sort(a.begin(), a.end());
-        vector<xx> have;
-        xx now = {100, 0};
-        for (int i = 0; i < a.size(); i++) {
-            if (a[i] == now.val)
-                ++now.cnt;
-            else {
-                if (now.cnt)
-                    have.push_back(now);
-                now = {a[i], 1};
-            }
-        }
-        if (now.cnt) have.push_back(now);
-        vector<long long> sum(have.size() * 2);
-        for (int i = 0; i < have.size(); i++)
-            sum[i] = sum[i + have.size()] = have[i].cnt;
-        for (int i = 1; i < sum.size(); i++)
-            sum[i] = sum[i] + sum[i - 1];
-        for (int i = 0; i < have.size(); i++) {
-            int l = i, r = lower_bound(sum.begin(), sum.end(), l ? sum[l - 1] + k + 1 : k + 1) - sum.begin();
-            if (r < have.size())
-                ans = max(ans, have[r].val - have[l].val);
-            else
-                ans = max(ans, 2 * pi - have[l].val + have[r - have.size()].val);
-        }
-    }
-    cout << fixed << setprecision(12) << ans << '\n';
+    cout << fixed << setprecision(9) << ans << endl;
 }
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
+signed main() {
+    ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
     cin >> ttt;
     while (ttt--) Zlin();
+    return 0;
 }
