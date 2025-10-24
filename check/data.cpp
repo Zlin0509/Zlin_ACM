@@ -17,11 +17,15 @@ typedef pair<ll, ll> pll;
 constexpr ll N = 8e18;
 constexpr ll INF = 1e18;
 
-int idx[2] = {1, -1};
-
 inline void Zlin() {
-    ll b = (rng()) % N, a = (rng()) % N;
-    cout << a << ' ' << b << endl;
+    int n = rng() % 1000 + 1, m = rng() % (n * (n - 1) / 3) + 1;
+    cout << n << ' ' << m << endl;
+    set<pii> edge;
+    while (edge.size() < m) {
+        int x = rng() % n + 1, y = rng() % n + 1;
+        if (x != y) edge.insert({min(x, y), max(x, y)});
+    }
+    for (const auto [x, y]: edge) cout << x << ' ' << y << endl;
 }
 
 signed main() {

@@ -3520,6 +3520,77 @@ inline void tarjan(int u, int fa) {
 }
 ```
 
+### 维护BCC的边
+
+```c++
+struct BCC {
+    int n, T;
+    vi dfn, low;
+    vector<vi> g;
+    vector<pii> stk;
+    vector<vector<pii> > E; // 每个bcc里的边
+    vector<vi> V; // 每个bcc里的点
+    vector<char> cut;
+
+    BCC(int _n = 0) { init(_n); }
+
+    void init(int _n) {
+        n = _n;
+        T = 0;
+        g.assign(n + 1, {});
+        dfn.assign(n + 1, 0);
+        low.assign(n + 1, 0);
+        cut.assign(n + 1, 0);
+        stk.clear();
+        E.clear();
+        V.clear();
+    }
+
+    void add(int u, int v) {
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+
+    void tj(int u, int fa) {
+        dfn[u] = low[u] = ++T;
+        int ch = 0;
+        for (int v: g[u]) {
+            if (!dfn[v]) {
+                stk.emplace_back(u, v);
+                tj(v, u);
+                low[u] = min(low[u], low[v]);
+                if (low[v] >= dfn[u]) {
+                    vector<pii> ed;
+                    vi vs;
+                    while (true) {
+                        auto e = stk.back();
+                        stk.pop_back();
+                        ed.push_back(e);
+                        vs.push_back(e.first);
+                        vs.push_back(e.second);
+                        if (e.first == u && e.second == v) break;
+                    }
+                    sort(vs.begin(), vs.end());
+                    vs.erase(unique(vs.begin(), vs.end()), vs.end());
+                    E.push_back(ed);
+                    V.push_back(vs);
+                    if (fa != -1 || ++ch > 1) cut[u] = 1;
+                }
+            } else if (v != fa && dfn[v] < dfn[u]) {
+                stk.emplace_back(u, v);
+                low[u] = min(low[u], dfn[v]);
+            }
+        }
+    }
+
+    void build() {
+        for (int i = 1; i <= n; i++) if (!dfn[i]) tj(i, -1);
+    }
+};
+```
+
+
+
 ### 边双连通分量(DCC)
 
 > 基础性质:
