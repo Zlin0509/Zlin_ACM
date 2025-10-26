@@ -298,10 +298,11 @@ inline void Zlin() {
     for (int i = 0; i < n; i++) tag[i] = b.tangent(a.p[i]);
     for (int i = 0, j1 = 0, j2 = 0; i < a.p.size(); i++) {
         while ((a.p[a.nxt(j1)] - a.p[i]).toleft(b.p[tag[i].second] - a.p[i]) >= 0) j1 = a.nxt(j1);
-        while ((a.p[a.nxt(j2)] - a.p[i]).toleft(b.p[tag[i].first] - a.p[i]) <= 0) j2 = a.nxt(j2);
+        while ((a.p[a.nxt(j2)] - a.p[i]).toleft(b.p[tag[i].first] - a.p[i]) > 0) j2 = a.nxt(j2);
+        j2 = a.nxt(j2);
         dif[i] = {j1, j2};
-        if (dif[i].first < i) dif[i].first += n;
-        if (dif[i].second < i) dif[i].second += n;
+        // if (dif[i].first < i) dif[i].first += n;
+        // if (dif[i].second < i) dif[i].second += n;
     }
     ll ans = 0;
     auto p = a.p;
@@ -315,14 +316,18 @@ inline void Zlin() {
         }
         if (i != n - 1) {
             while (l1 < dif[i + 1].second) {
-                int tl = dif[l1].second;
-                if (tl < j) cnt -= j - tl;
+                int tl = dif[l1 >= n ? l1 - n : l1].second;
+                if (tl < j) {
+                    cnt -= j - tl;
+                }
                 ++l1;
             }
         }
         cout << cnt << ' ';
         ans += cnt;
     }
+    cout << endl;
+    for (const auto [x, y]: dif) cout << x << ' ' << y << endl;
     cout << ans << endl;
 }
 
