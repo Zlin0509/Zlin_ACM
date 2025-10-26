@@ -137,8 +137,8 @@ struct Segment {
 struct Polygon {
     vector<Point> p; // 以逆时针顺序存储
 
-    size_t nxt(const size_t i) const { return i == p.size() - 1 ? 0 : i + 1; }
-    size_t pre(const size_t i) const { return i == 0 ? p.size() - 1 : i - 1; }
+    int nxt(const size_t i) const { return i == p.size() - 1 ? 0 : i + 1; }
+    int pre(const size_t i) const { return i == 0 ? p.size() - 1 : i - 1; }
 
     // 回转数
     // 返回值第一项表示点是否在多边形边上
@@ -299,36 +299,48 @@ inline void Zlin() {
     for (int i = 0, j1 = 0, j2 = 0; i < a.p.size(); i++) {
         while ((a.p[a.nxt(j1)] - a.p[i]).toleft(b.p[tag[i].second] - a.p[i]) >= 0) j1 = a.nxt(j1);
         while ((a.p[a.nxt(j2)] - a.p[i]).toleft(b.p[tag[i].first] - a.p[i]) > 0) j2 = a.nxt(j2);
-        j2 = a.nxt(j2);
+        if ((a.p[j2] - a.p[i]).toleft(b.p[tag[i].first] - a.p[i]) > 0) j2 = a.nxt(j2);
+        if ((a.p[j1] - a.p[i]).toleft(a.p[j2] - a.p[i]) < 0) swap(j1, j2);
         dif[i] = {j1, j2};
-        // if (dif[i].first < i) dif[i].first += n;
-        // if (dif[i].second < i) dif[i].second += n;
     }
-    ll ans = 0;
     auto p = a.p;
     p.insert(p.end(), p.begin(), p.end());
-    for (int i = 0, j = 1, cnt = 0; i < n; i++) {
-        int l1 = dif[i].second, r1 = i + n, l2 = i, r2 = dif[i].first;
-        while (j < r2) {
-            int tl = j, tr = dif[j].first;
-            if (tr >= l1) cnt += tr - l1;
-            ++j;
+    const auto len = [](int l1, int r1, int l2, int r2, int n) {
+        auto seg = [&](int l, int r) -> vector<pair<int, int> > {
+            if (l <= r) return {{l, r}};
+            return {{l, n - 1}, {0, r}};
+        };
+        auto f = [&](int L1, int R1, int L2, int R2) {
+            int L = max(L1, L2), R = min(R1, R2);
+            return max(0, R - L + 1);
+        };
+        int ans = 0;
+        for (auto [a, b]: seg(l1, r1))
+            for (auto [c, d]: seg(l2, r2))
+                ans += f(a, b, c, d);
+        return ans;
+    };
+    ll cnt = 0, ans = 0;
+    for (int i = 0, j = 0; i < n; i++) {
+        int lx1 = i, rx1 = dif[i].first;
+        int lx2 = dif[i].second, rx2 = i;
+        if (j != dif[i].first) {
+            do {
+                j = a.nxt(j);
+                int lx3 = j, rx3 = dif[j].first;
+                cnt += len(lx3, rx3, lx2, rx2, n);
+            } while (j != dif[i].first);
         }
-        if (i != n - 1) {
-            while (l1 < dif[i + 1].second) {
-                int tl = dif[l1 >= n ? l1 - n : l1].second;
-                if (tl < j) {
-                    cnt -= j - tl;
-                }
-                ++l1;
-            }
-        }
-        cout << cnt << ' ';
         ans += cnt;
+        if (i != n - 1 && lx2 != dif[i + 1].second) {
+            do {
+                int lx3 = dif[lx2].second, rx3 = lx2;
+                cnt -= len(lx3, rx3, lx1, rx1, n);
+                lx2 = a.nxt(lx2);
+            } while (lx2 != dif[i + 1].second);
+        }
     }
-    cout << endl;
-    for (const auto [x, y]: dif) cout << x << ' ' << y << endl;
-    cout << ans << endl;
+    cout << ans / 3 << endl;
 }
 
 signed main() {
