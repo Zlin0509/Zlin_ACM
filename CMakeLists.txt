@@ -3,4 +3,4 @@ project(Zlin_ACM)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(K "_Qoj/The 2025 ICPC Asia Chengdu Regional Contest/K.cpp")
+add_executable(A "_CF/GYM/2024 China Collegiate Programming Contest (CCPC) Harbin Onsite/A.cpp")
