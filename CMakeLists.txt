@@ -3,4 +3,4 @@ project(Zlin_ACM)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(A "_CF/GYM/2024 China Collegiate Programming Contest (CCPC) Harbin Onsite/A.cpp")
+add_executable(B "_CF/GYM/2024 China Collegiate Programming Contest (CCPC) Harbin Onsite/B.cpp")
