@@ -14,7 +14,7 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-using T = double; //全局数据类型
+using T = ll; //全局数据类型
 constexpr T eps = 1e-8;
 
 struct Point {
