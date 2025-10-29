@@ -3,7 +3,6 @@
 //
 
 #include "bits/stdc++.h"
-#define endl '\n'
 using namespace std;
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
@@ -29,58 +28,51 @@ inline ll qpow(ll a, ll b) {
 
 struct Frac {
     ll a, b;
+    int id;
 
-    Frac(ll _a = 0, ll _b = 1) {
-        a = _a, b = _b;
+    Frac(ll _a = 0, ll _b = 1, int _id = 0) {
+        a = _a, b = _b, id = _id;
         norm();
     }
 
-    bool operator==(const Frac &other) const { return a * other.b == other.a * b; }
-    bool operator<(const Frac &other) const { return a * other.b < other.b * a; }
-    bool operator>(const Frac &other) const { return a * other.b > other.b * a; }
+    bool operator==(const Frac &o) const { return a == o.a && b == o.b; }
+    bool operator<(const Frac &o) const { return a * o.b < o.a * b; }
+    bool operator>(const Frac &o) const { return o < *this; }
 
     void norm() {
         ll z = __gcd(a, b);
         a /= z, b /= z;
     }
-} val[N][N];
+};
 
 int n, m, num;
 int a[N], v[N];
-
-ll dp[N][N >> 1];
+ll f[N], val[N];
 
 inline void Zlin() {
     cin >> n >> m;
     for (int i = 0; i < n; i++) cin >> a[i], a[i] *= -1;
     for (int i = 0; i < m; i++) cin >> v[i];
-    num = n / 2;
-    sort(a, a + n);
-    for (int i = 0; i < m; i++) for (int j = 0; j < n; j++) val[i][j] = Frac(a[j], v[i]);
+    vector<Frac> p;
+    for (int j = 0; j < m; j++) for (int i = 0; i < n; i++) p.emplace_back(a[i], v[j], j);
+    sort(p.begin(), p.end());
+    ll invn = qpow(n, mo - 2);
+    n = n * m;
+    f[0] = 1;
     ll ans = 0;
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            Frac tmp = val[i][j];
-            vll exp;
-            for (int i1 = 0; i1 < m; i1++) {
-                if (i1 == i) continue;
-                int idx = lower_bound(val[i1], val[i1] + n, tmp) - val[i1] + 1;
-                if (idx <= n) exp.emplace_back(idx * qpow(n, mo - 2) % mo);
-            }
-            for (int i1 = 0; i1 < m - 1; i1++) for (int j1 = 0; j1 <= m >> 1; j1++) dp[i1][j1] = 0;
-            dp[0][0] = exp[0], dp[0][1] = (1 - exp[0] + mo) % mo;
-            for (int i1 = 0; i1 < m - 2; i1++) {
-                ll e1 = exp[i1 + 1], e2 = (1 - e1 + mo) % mo;
-                for (int j1 = 0; j1 <= m >> 1; j1++) {
-                    dp[i1 + 1][j1] = (dp[i1 + 1][j1] + dp[i1][j1] * e1 % mo) % mo;
-                    dp[i1 + 1][j1 + 1] = (dp[i1 + 1][j1 + 1] + dp[i1][j1] * e2 % mo) % mo;
-                }
-            }
-            cout << dp[m - 2][m >> 1] * qpow(n, mo - 2) % mo << endl;
-            ans = (ans + dp[m - 2][m >> 1] * qpow(n, mo - 2) % mo) % mo;
-        }
+    for (int i = 0; i < n; i++) {
+        int id = p[i].id;
+        ll tmp = val[id], inv = qpow((1 - tmp + mo) % mo, mo - 2);
+        f[0] = inv * f[0] % mo;
+        for (int j = 1; j < m; j++) f[j] = inv * (f[j] - tmp * f[j - 1] % mo + mo) % mo;
+        ans = (ans + f[m >> 1] * p[i].a % mo * qpow(p[i].b, mo - 2) % mo) % mo;
+        val[id] = (val[id] + invn) % mo;
+        tmp = val[id], inv = (1 - tmp + mo) % mo;
+        f[m] = 0;
+        for (int j = m; j; j--) f[j] = (inv * f[j] % mo + tmp * f[j - 1] % mo) % mo;
+        f[0] = inv * f[0] % mo;
     }
-    cout << ans << endl;
+    cout << ans * invn % mo << endl;
 }
 
 signed main() {
