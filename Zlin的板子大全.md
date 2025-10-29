@@ -466,6 +466,9 @@ cout << "b1 any 1s: " << b1.any() << '\n';       // 检查b1中是否存在至�
 cout << "b1 all 1s: " << b1.all() << '\n';       // 检查b1的所有位是否都是1
 cout << "b1 none 1s: " << b1.none() << '\n';     // 检查b1的所有位是否都是0
 
+size_t pos = bs._Find_first(); // 第一个1的位置（0-based）
+cout << pos << endl;           // 输出 3
+
 // 位操作
 b1.set();                // 将b1的所有位都设置为1
 cout << "b1 after set: " << b1 << '\n';
@@ -1790,51 +1793,48 @@ inline void init(int n) {
 ### 主体
 
 ```c++
+using cd = complex<double>;
 const double PI = acos(-1.0);
 
-struct Cp {
-    double r, i;
-
-    Cp(double _r = 0.0, double _i = 0.0) : r(_r), i(_i) {}
-
-    Cp operator+(const Cp &o) const {
-        return Cp(r + o.r, i + o.i);
+void fft(vector<cd> &a, bool invert) {
+    int n = a.size();
+    for (int i = 1, j = 0; i < n; i++) {
+        int bit = n >> 1;
+        for (; j & bit; bit >>= 1) j ^= bit;
+        j ^= bit;
+        if (i < j) swap(a[i], a[j]);
     }
-
-    Cp operator-(const Cp &o) const {
-        return Cp(r - o.r, i - o.i);
-    }
-
-    Cp operator*(const Cp &o) const {
-        return Cp(r * o.r - i * o.i, r * o.i + i * o.r);
-    }
-};
-
-// 进行 FFT 或 IFFT，d == 1 表示 FFT，d == -1 表示 IFFT
-void fft(vector<Cp> &a, int n, int d) {
-    for (int p = 1, q = 0; p < n - 1; p++) {
-        for (int k = n >> 1; (q ^= k) < k; k >>= 1);
-        if (p < q) swap(a[p], a[q]);
-    }
-    for (int m = 2; m <= n; m <<= 1) {
-        Cp wm(cos(2 * PI / m), sin(d * 2 * PI / m));
-        for (int p = 0; p < n; p += m) {
-            Cp w(1, 0);
-            for (int j = 0; j < m / 2; j++) {
-                Cp u = a[p + j];
-                Cp t = w * a[p + j + m / 2];
-                a[p + j] = u + t;
-                a[p + j + m / 2] = u - t;
-                w = w * wm;
+    for (int len = 2; len <= n; len <<= 1) {
+        double ang = 2 * PI / len * (invert ? -1 : 1);
+        cd wlen(cos(ang), sin(ang));
+        for (int i = 0; i < n; i += len) {
+            cd w(1, 0);
+            for (int j = 0; j < len / 2; j++) {
+                cd u = a[i + j];
+                cd v = a[i + j + len / 2] * w;
+                a[i + j] = u + v;
+                a[i + j + len / 2] = u - v;
+                w *= wlen;
             }
         }
     }
-    if (d == -1) {
-        for (int p = 0; p < n; p++) {
-            a[p].r /= n;
-            a[p].i /= n;
-        }	
-    }
+    if (invert) for (cd &x: a) x /= n;
+}
+
+vll multiply(const vll &A, const vll &B) {
+    vector<cd> fa(A.begin(), A.end()), fb(B.begin(), B.end());
+    int n = 1;
+    while (n < (int) A.size() + (int) B.size()) n <<= 1;
+    fa.resize(n);
+    fb.resize(n);
+    fft(fa, false);
+    fft(fb, false);
+    for (int i = 0; i < n; i++)
+        fa[i] *= fb[i];
+    fft(fa, true);
+    vll res(n);
+    for (int i = 0; i < n; i++) res[i] = llround(fa[i].real()); // 高精度取整
+    return res;
 }
 ```
 
