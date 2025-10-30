@@ -3,4 +3,4 @@ project(Zlin_ACM)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(A "_CF/GYM/The 2021 ICPC Asia Macau Regional Contest/A.cpp")
+add_executable(B _CF/CONTEST/1000-1499/1041/B.cpp)

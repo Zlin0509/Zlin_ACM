@@ -440,10 +440,6 @@ inline void Zlin(int id) {
 }
 ```
 
-## 文件读写操作
-
-### std::ios::
-
 # 数据结构
 
 ## 基础
@@ -2747,6 +2743,45 @@ $$
 $$
 \sum_{i=0}^{n} \binom{n - i}{k} \cdot i =C(n+1,k+2)
 $$
+
+$$
+\sum_{i=0}^{n} (-1)^i \binom{n}{i} = 0 \quad (n \ge 1)
+$$
+
+$$
+\sum_{i=0}^{n} \binom{n}{i} \binom{i}{k} = \binom{n}{k} \cdot 2^{n-k}
+$$
+
+
+$$
+\sum_{i=0}^{n} (-1)^i i \binom{n}{i} = 0 \quad (n \ge 2)
+$$
+
+$$
+\sum_{i=k}^{n} \binom{i}{k} = \binom{n+1}{k+1}
+$$
+
+$$
+\sum_{i=0}^{n} i \binom{n}{i} x^i = n x (1+x)^{n-1}
+$$
+
+$$
+\sum_{i=0}^{n} i^2 \binom{n}{i} x^i = n x (1+x)^{n-1} + n(n-1) x^2 (1+x)^{n-2}
+$$
+
+$$
+\sum_{i=0}^{n} \binom{n}{i} (n-i) = n \cdot 2^{n-1}
+$$
+
+$$
+\sum_{i=0}^{n} i \binom{n}{i} = \sum_{i=0}^{n} \binom{n-1}{i-1} \cdot n = n \cdot 2^{n-1}
+$$
+
+$$
+\sum_{i=0}^{n} \binom{n}{i} = 2^n
+$$
+
+
 
 ### 直接定义公式法
 
