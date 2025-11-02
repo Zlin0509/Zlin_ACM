@@ -1,27 +1,26 @@
 //
-// Created by Zlin on 2024/10/11.
+// Created by 27682 on 2025/11/2.
 //
 
 #include "bits/stdc++.h"
-
+#define endl '\n'
 using namespace std;
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 typedef double db;
-typedef long double ldb;
 typedef long long ll;
-typedef unsigned long long ull;
 typedef vector<int> vi;
 typedef vector<long long> vll;
 typedef pair<int, int> pii;
-typedef pair<long long, long long> pll;
+typedef pair<ll, ll> pll;
 
 inline void Zlin() {
 }
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
+signed main() {
+    ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
     cin >> ttt;
     while (ttt--) Zlin();
+    return 0;
 }
