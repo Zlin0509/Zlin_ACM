@@ -16,7 +16,7 @@ typedef pair<ll, ll> pll;
 
 constexpr int N = 1e7 + 5;
 
-vi primes;
+vi primes, fac[N];
 bool is_p[N];
 
 inline void prework() {
@@ -24,30 +24,58 @@ inline void prework() {
     is_p[0] = is_p[1] = false;
     for (int i = 2; i < N; i++) {
         if (is_p[i]) primes.emplace_back(i);
-        for (int j: primes) {
+        for (const auto &j: primes) {
             if (i * j > N) break;
             is_p[i * j] = false;
             if (i % j == 0) break;
         }
     }
+    primes.emplace_back(N);
 }
 
-inline void work() {
-    int mx = 0;
-    for (int i = 1; i < primes.size(); i++) mx = max(mx, primes[i] - primes[i - 1]);
-    mx = max(mx, N - primes.back());
-    cout << mx;
+ll val[N];
+
+inline ll cal(ll n, int k) {
+    ll res = 0;
+    for (ll i = k; i <= n; i *= k) res += n / i;
+    return res;
 }
 
 inline void Zlin() {
+    int n, m;
+    cin >> n >> m;
+    int l = *(upper_bound(primes.begin(), primes.end(), n) - 1), r = n - 1;
+    for (int i = l; i <= r; i++) val[i] = 1e12;
+    vi mx;
+    for (int i = 1, tmp; i * i <= n; i++) {
+        tmp = n / i;
+        mx.emplace_back(*(upper_bound(primes.begin(), primes.end(), tmp) - 1));
+    }
+    for (int i = l; i <= r; i++) {
+        for (const auto &it: mx) {
+            ll cn = cal(n, it), cx = cal(i, it);
+            if (cn != cx) val[i] = min(val[i], cx);
+        }
+        for (const auto &it: primes) {
+            if (1ll * it * it > m) break;
+            ll cn = cal(n, it), cx = cal(i, it);
+            ll tag = it;
+            for (int j = 1; tag <= m; tag *= it, j++) {
+                ll vn = cn / j, vx = cx / j;
+                if (vn != vx) val[i] = min(val[i], vx);
+            }
+        }
+    }
+    ll ans = 0;
+    for (int i = l; i <= r; i++) ans += val[i];
+    cout << ans << endl;
 }
 
 signed main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
     prework();
-    work();
-    // cin >> ttt;
-    // while (ttt--) Zlin();
+    cin >> ttt;
+    while (ttt--) Zlin();
     return 0;
 }
