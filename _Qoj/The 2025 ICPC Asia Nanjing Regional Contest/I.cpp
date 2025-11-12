@@ -1,5 +1,5 @@
 //
-// Created by Zlin on 2025/11/10.
+// Created by Zlin on 2025/11/12.
 //
 
 #include "bits/stdc++.h"
@@ -14,16 +14,26 @@ typedef vector<long long> vll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-int A, B, X, Y;
-vector<pair<pii, pii> > ans, res;
+constexpr int N = 2005, M = 5005;
+
+int n, m, a[N], b[N], c[N], d[N], e[N], p[N], vis[N][M];
+db dp[N][M];
+
+inline void dij() {
+
+}
 
 inline void Zlin() {
-    cin >> A >> B >> X >> Y;
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++) cin >> a[i] >> b[i] >> c[i] >> d[i] >> e[i] >> p[i];
+    
 }
+
 
 signed main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
     int ttt = 1;
+    cin >> ttt;
     while (ttt--) Zlin();
     return 0;
 }
