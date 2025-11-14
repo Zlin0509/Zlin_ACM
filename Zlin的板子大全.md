@@ -2650,15 +2650,31 @@ int phi(int n) {
 
 ```c++
 ll exgcd(ll a, ll b, ll &x, ll &y) {
-    if (!b) {
+    if (b == 0) {
         x = 1, y = 0;
         return a;
     }
     ll x1, y1;
     ll g = exgcd(b, a % b, x1, y1);
     x = y1;
-    y = x1 - a / b * y1;
+    y = x1 - (a / b) * y1;
     return g;
+}
+
+// 求 a * t ≡ b (mod m) 的一个特解 t（最小非负）
+// 若无解返回 -1
+ll work(ll a, ll b, ll m) {
+    ll x, y;
+    ll g = exgcd(a, m, x, y);
+    if (b % g != 0) return -1;
+    ll a1 = a / g;
+    ll b1 = b / g;
+    ll m1 = m / g;
+    // x 为 a1 关于 m1 的逆元
+    x = (x % m1 + m1) % m1;
+    // t0 = x * b1 (mod m1)
+    ll t0 = ((__int128) x * (b1 % m1)) % m1;
+    return t0;
 }
 ```
 
